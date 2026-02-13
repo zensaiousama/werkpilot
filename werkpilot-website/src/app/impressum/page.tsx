@@ -233,7 +233,7 @@ export default function ImpressumPage() {
                       </h3>
                       <p style={{ color: 'var(--color-text-secondary)' }}>
                         Bei direkten oder indirekten Verweisen auf fremde Webseiten
-                        ("Hyperlinks"), die außerhalb des Verantwortungsbereiches des
+                        (&ldquo;Hyperlinks&rdquo;), die außerhalb des Verantwortungsbereiches des
                         Autors liegen, würde eine Haftungsverpflichtung ausschließlich
                         in dem Fall in Kraft treten, in dem der Autor von den Inhalten
                         Kenntnis hat und es ihm technisch möglich und zumutbar wäre,

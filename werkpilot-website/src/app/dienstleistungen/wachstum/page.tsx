@@ -286,7 +286,7 @@ export default function WachstumPage() {
                       color: 'var(--color-primary)',
                     }}
                   >
-                    Ab CHF 7'500
+                    Ab CHF 7&apos;500
                   </div>
                   <div
                     className="text-sm"
@@ -320,7 +320,7 @@ export default function WachstumPage() {
                 className="text-lg mb-12 text-center max-w-3xl mx-auto"
                 style={{ color: 'var(--color-text-secondary)' }}
               >
-                Alles aus den Paketen "Kunden gewinnen" und "Effizienz" plus
+                Alles aus den Paketen &ldquo;Kunden gewinnen&rdquo; und &ldquo;Effizienz&rdquo; plus
                 erweiterte Enterprise-Features für maximale Flexibilität und Kontrolle.
               </p>
 
@@ -681,7 +681,7 @@ export default function WachstumPage() {
                       className="text-base mb-6 italic"
                       style={{ color: 'var(--color-text)' }}
                     >
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                     <div>
                       <div

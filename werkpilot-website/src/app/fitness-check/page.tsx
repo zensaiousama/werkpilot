@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -58,8 +59,8 @@ export default function FitnessCheckPage() {
     // Simulate API call - in production, send to backend
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    // Save to JSON file (in production: send to Airtable/webhook)
-    console.log('Form submission:', formData);
+    // In production: send to Airtable/webhook
+    // Form data is ready: formData
 
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -105,9 +106,9 @@ export default function FitnessCheckPage() {
               Wir analysieren jetzt Ihre Online-Präsenz und erstellen einen massgeschneiderten
               Bericht mit konkreten Verbesserungsvorschlägen.
             </p>
-            <a href="/" className="btn btn-primary">
+            <Link href="/" className="btn btn-primary">
               Zurück zur Startseite
-            </a>
+            </Link>
           </motion.div>
         </main>
         <Footer />

@@ -30,7 +30,7 @@ export default function HeroSection() {
               href="#how-it-works"
               className="text-white text-lg font-medium hover:text-white/80 transition-colors"
             >
-              So funktioniert's ↓
+              So funktioniert&apos;s ↓
             </a>
           </div>
 

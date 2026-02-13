@@ -215,7 +215,7 @@ export default function EffizienzPage() {
                       color: 'var(--color-primary)',
                     }}
                   >
-                    CHF 3'500
+                    CHF 3&apos;500
                   </div>
                   <div
                     className="text-sm"
@@ -333,7 +333,7 @@ export default function EffizienzPage() {
                 className="text-lg mb-12 text-center max-w-3xl mx-auto"
                 style={{ color: 'var(--color-text-secondary)' }}
               >
-                Das Effizienz-Paket enthält alle Features aus "Kunden gewinnen" plus
+                Das Effizienz-Paket enthält alle Features aus &ldquo;Kunden gewinnen&rdquo; plus
                 umfassende Backoffice-Automatisierung.
               </p>
 
@@ -420,7 +420,7 @@ export default function EffizienzPage() {
                       Kunden gewinnen
                     </div>
                     <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                      CHF 1'500/Mt.
+                      CHF 1&apos;500/Mt.
                     </div>
                   </div>
                   <div className="text-center">
@@ -434,7 +434,7 @@ export default function EffizienzPage() {
                       Effizienz
                     </div>
                     <div className="text-sm" style={{ color: 'var(--color-accent)' }}>
-                      CHF 3'500/Mt.
+                      CHF 3&apos;500/Mt.
                     </div>
                   </div>
                 </div>
@@ -659,7 +659,7 @@ export default function EffizienzPage() {
                       className="text-base mb-6 italic"
                       style={{ color: 'var(--color-text)' }}
                     >
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                     <div>
                       <div

@@ -219,7 +219,7 @@ export default function KundenGewinnenPage() {
                       color: 'var(--color-primary)',
                     }}
                   >
-                    CHF 1'500
+                    CHF 1&apos;500
                   </div>
                   <div
                     className="text-sm"
@@ -375,7 +375,7 @@ export default function KundenGewinnenPage() {
                   color: 'var(--color-primary)',
                 }}
               >
-                So funktioniert's
+                So funktioniert&apos;s
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -511,7 +511,7 @@ export default function KundenGewinnenPage() {
                       className="text-base mb-6 italic"
                       style={{ color: 'var(--color-text)' }}
                     >
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                     <div>
                       <div

@@ -69,7 +69,7 @@ export default function SolutionSection() {
               className="text-6xl font-bold mb-2"
               style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-accent)' }}
             >
-              CHF 1'500
+              CHF 1&apos;500
             </div>
             <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
               Ab /Monat

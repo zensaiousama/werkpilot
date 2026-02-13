@@ -101,7 +101,7 @@ export default function ResultsSection() {
                 </svg>
               </div>
               <p className="text-lg mb-6" style={{ color: 'var(--color-text)' }}>
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </p>
               <div>
                 <p

@@ -38,7 +38,7 @@ export default function HowItWorksSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 style={{ fontFamily: 'var(--font-jakarta)' }}>So funktioniert's</h2>
+          <h2 style={{ fontFamily: 'var(--font-jakarta)' }}>So funktioniert&apos;s</h2>
           <p
             className="text-xl mt-4 max-w-2xl mx-auto"
             style={{ color: 'var(--color-text-secondary)' }}

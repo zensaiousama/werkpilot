@@ -81,6 +81,13 @@ export default function Navigation() {
               Blog
             </Link>
             <Link
+              href="/resources"
+              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
+              style={{ color: 'var(--color-text)' }}
+            >
+              Ressourcen
+            </Link>
+            <Link
               href="/kontakt"
               className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
               style={{ color: 'var(--color-text)' }}
@@ -91,8 +98,9 @@ export default function Navigation() {
               href="/fitness-check"
               className="btn btn-primary text-sm"
               aria-label="Gratis Fitness-Check starten"
+              data-track="cta-nav"
             >
-              Gratis Fitness-Check →
+              Gratis Fitness-Check &rarr;
             </Link>
           </div>
 
@@ -174,6 +182,14 @@ export default function Navigation() {
               Blog
             </Link>
             <Link
+              href="/resources"
+              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
+              style={{ color: 'var(--color-text)' }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Ressourcen
+            </Link>
+            <Link
               href="/kontakt"
               className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
               style={{ color: 'var(--color-text)' }}
@@ -185,8 +201,9 @@ export default function Navigation() {
               href="/fitness-check"
               className="btn btn-primary inline-block mt-4"
               onClick={() => setIsMobileMenuOpen(false)}
+              data-track="cta-nav-mobile"
             >
-              Gratis Fitness-Check →
+              Gratis Fitness-Check &rarr;
             </Link>
           </div>
         )}

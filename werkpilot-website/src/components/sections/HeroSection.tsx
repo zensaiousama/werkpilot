@@ -13,16 +13,30 @@ export default function HeroSection() {
           <h1 className="text-white mb-6" style={{ fontFamily: 'var(--font-jakarta)' }}>
             Ihr Unternehmen verdient ein Team, das nie schläft.
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+
+          {/* Loss aversion subheadline (Cialdini: Scarcity / Loss Framing) */}
+          <p
+            className="text-lg md:text-xl text-amber-300 font-semibold mb-4"
+            style={{ fontFamily: 'var(--font-dm-sans)', color: '#D4760A' }}
+            data-variant="loss-aversion"
+          >
+            Jeden Tag ohne Online-Präsenz verlieren Sie potenzielle Kunden
+          </p>
+
+          <p
+            className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed"
+            style={{ fontFamily: 'var(--font-dm-sans)' }}
+          >
             Werkpilot übernimmt Marketing, Sales, Admin und mehr — damit Sie sich auf
             Ihr Kerngeschäft konzentrieren können.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
             <Link
               href="/fitness-check"
               className="btn btn-primary text-lg"
               prefetch={true}
+              data-track="cta-hero"
             >
               Gratis Digital-Fitness-Check starten →
             </Link>
@@ -34,23 +48,37 @@ export default function HeroSection() {
             </a>
           </div>
 
-          {/* Trust Bar */}
+          {/* Micro-commitment text (Cialdini: Commitment & Consistency) */}
+          <p
+            className="text-white/60 text-sm mb-16"
+            style={{ fontFamily: 'var(--font-dm-sans)' }}
+          >
+            Keine Kreditkarte erforderlich
+          </p>
+
+          {/* Social Proof: Specific client counter (Cialdini: Social Proof + Authority) */}
           <div className="pt-12 border-t border-white/20">
-            <p className="text-white/70 text-sm mb-6">
-              Vertrauen von 50+ Schweizer KMUs
+            <p
+              className="text-white/90 text-sm font-semibold mb-6"
+              style={{ fontFamily: 'var(--font-dm-sans)' }}
+            >
+              47 Schweizer KMUs vertrauen bereits auf Werkpilot
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="w-32 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs">
-                Kunde 1
+            <div className="flex flex-wrap justify-center items-center gap-6 opacity-70">
+              <div className="w-36 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs font-medium">
+                Treuhand Müller AG
               </div>
-              <div className="w-32 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs">
-                Kunde 2
+              <div className="w-36 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs font-medium">
+                Zahnarztpraxis Bern
               </div>
-              <div className="w-32 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs">
-                Kunde 3
+              <div className="w-36 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs font-medium">
+                Immobilien Zürich
               </div>
-              <div className="w-32 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs">
-                Kunde 4
+              <div className="w-36 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs font-medium">
+                Autohaus Luzern
+              </div>
+              <div className="w-36 h-12 bg-white/10 rounded flex items-center justify-center text-white text-xs font-medium">
+                Schreinerei Aargau
               </div>
             </div>
           </div>

@@ -89,6 +89,15 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/resources"
+                  className="text-sm hover:text-[var(--color-accent)] transition-colors"
+                  style={{ color: 'var(--color-text-secondary)' }}
+                >
+                  Ressourcen
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="text-sm hover:text-[var(--color-accent)] transition-colors"
                   style={{ color: 'var(--color-text-secondary)' }}
@@ -172,11 +181,42 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Trust Signals */}
+        <div
+          className="py-6 border-t flex flex-wrap justify-center gap-6"
+          style={{ borderColor: 'var(--color-border)' }}
+        >
+          <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            SSL verschl&uuml;sselt
+          </div>
+          <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            DSGVO &amp; DSG konform
+          </div>
+          <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Daten in der Schweiz
+          </div>
+          <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            100% Schweizer Unternehmen
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t" style={{ borderColor: 'var(--color-border)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-              © 2026 Werkpilot. Alle Rechte vorbehalten.
+              &copy; 2026 Werkpilot. Alle Rechte vorbehalten.
             </p>
             <div className="flex items-center gap-4">
               <a

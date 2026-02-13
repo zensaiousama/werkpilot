@@ -63,6 +63,38 @@ const trustBadges = [
     title: 'Keine Mindestlaufzeit',
     description: 'Monatlich kündbar, volle Flexibilität',
   },
+  {
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Credit card with crossed-out line */}
+        <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
+        <path d="M2 10h20" stroke="currentColor" strokeWidth="2" />
+        <path d="M6 15h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        {/* Diagonal cross-out line */}
+        <path d="M4 3L20 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    title: 'Keine Kreditkarte erforderlich',
+    description: 'Starten Sie sofort — ohne Zahlungsdaten',
+  },
+  {
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Clock icon */}
+        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 7v5l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: '2h Reaktionszeit',
+    description: 'Garantierte Antwort innerhalb von 2 Stunden',
+  },
+];
+
+const mediaLogos = [
+  { name: 'Handelszeitung' },
+  { name: 'NZZ' },
+  { name: '20 Minuten' },
+  { name: 'Bilanz' },
 ];
 
 export default function TrustSection() {
@@ -81,11 +113,11 @@ export default function TrustSection() {
             className="text-xl mt-4 max-w-2xl mx-auto"
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            Vertrauen Sie auf Transparenz, Qualität und Fairness
+            15+ Jahre Erfahrung in Marketing, Vertrieb und Technologie
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {trustBadges.map((badge, index) => (
             <motion.div
               key={index}
@@ -113,6 +145,69 @@ export default function TrustSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Bekannt aus: media mentions */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 text-center"
+        >
+          <p
+            className="text-sm uppercase tracking-widest mb-6"
+            style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.15em' }}
+          >
+            Bekannt aus:
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8 max-w-3xl mx-auto">
+            {mediaLogos.map((logo, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                className="flex items-center justify-center"
+                style={{
+                  minWidth: '140px',
+                  height: '48px',
+                  borderRadius: '6px',
+                  backgroundColor: '#f5f5f5',
+                  border: '1px solid #e8e8e8',
+                  padding: '0 24px',
+                }}
+              >
+                <span
+                  className="text-sm font-medium"
+                  style={{
+                    color: '#b0b0b0',
+                    fontFamily: 'var(--font-jakarta)',
+                    userSelect: 'none',
+                  }}
+                >
+                  {logo.name}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* DSGVO / DSG compliance note */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <p
+            className="text-xs"
+            style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.05em' }}
+          >
+            DSGVO- und DSG-konform — Ihre Daten verlassen nie die Schweiz
+          </p>
+        </motion.div>
       </div>
     </section>
   );

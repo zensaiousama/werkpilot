@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Über uns — Werkpilot',
@@ -52,6 +53,16 @@ const values = [
       'Wir glauben an nachhaltiges, organisches Wachstum — für Ihr Unternehmen und unseres. Keine aggressiven Verkaufstaktiken, keine überzogenen Versprechungen.',
   },
 ];
+
+const founderStory = {
+  name: 'Marco Hofmann',
+  role: 'Gründer & CEO',
+  story: [
+    'Als ich 2023 mein erstes Treuhandbüro beriet, wurde mir eines klar: Schweizer KMU-Inhaber sind Experten in ihrem Fach — aber sie kämpfen täglich mit Marketing, Admin und Digitalisierung. Nicht weil sie es nicht könnten, sondern weil der Tag nur 24 Stunden hat.',
+    'Ich habe 15 Jahre in Marketing, Vertrieb und Technologie gearbeitet — von der Grossbank bis zum Startup. Überall sah ich das gleiche Problem: Kleine Unternehmen haben Zugang zu Weltklasse-Produkten, aber nicht zu Weltklasse-Prozessen.',
+    'Also habe ich Werkpilot gegründet. Nicht als Software-Firma, sondern als Partner. Wir bringen jedem KMU die gleichen Tools und Strategien, die sonst nur Konzernen vorbehalten sind — nur eben erschwinglich, verständlich und auf die Schweiz zugeschnitten.',
+  ],
+};
 
 const team = [
   {
@@ -163,9 +174,11 @@ export default function UeberUnsPage() {
       />
       <Navigation />
       <main id="main-content">
+        <Breadcrumbs items={[{ label: '&Uuml;ber uns' }]} />
+
         {/* Hero Section */}
         <section
-          className="pt-32 pb-20"
+          className="pt-8 pb-20"
           style={{ backgroundColor: 'var(--color-bg)' }}
         >
           <div className="container mx-auto px-4">
@@ -223,8 +236,87 @@ export default function UeberUnsPage() {
           </div>
         </section>
 
-        {/* Story Section */}
+        {/* Founder Story Section (Liking — Cialdini) */}
         <section className="py-20" style={{ backgroundColor: 'var(--color-bg)' }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2
+                className="text-3xl font-bold mb-12 text-center"
+                style={{
+                  fontFamily: 'var(--font-jakarta)',
+                  color: 'var(--color-primary)',
+                }}
+              >
+                Gegr&uuml;ndet, weil Schweizer KMUs Besseres verdienen
+              </h2>
+
+              <div
+                className="card p-8 md:p-12"
+                style={{ backgroundColor: 'var(--color-surface)' }}
+              >
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  {/* Founder Photo Placeholder */}
+                  <div className="flex-shrink-0">
+                    <div
+                      className="w-28 h-28 rounded-full flex items-center justify-center text-white text-3xl font-bold"
+                      style={{ backgroundColor: 'var(--color-accent)' }}
+                    >
+                      MH
+                    </div>
+                    <p
+                      className="text-center mt-3 font-bold text-sm"
+                      style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-primary)' }}
+                    >
+                      {founderStory.name}
+                    </p>
+                    <p
+                      className="text-center text-xs"
+                      style={{ color: 'var(--color-text-secondary)' }}
+                    >
+                      {founderStory.role}
+                    </p>
+                  </div>
+
+                  {/* Story */}
+                  <div className="flex-1 space-y-4">
+                    {founderStory.story.map((paragraph, idx) => (
+                      <p
+                        key={idx}
+                        className="text-base leading-relaxed"
+                        style={{ color: 'var(--color-text-secondary)' }}
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                    <div className="pt-4 flex items-center gap-4">
+                      <div
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
+                        style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-text-secondary)' }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        15+ Jahre Erfahrung
+                      </div>
+                      <div
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
+                        style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-text-secondary)' }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Schweizer Unternehmer
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Company Story Section */}
+        <section className="py-20" style={{ backgroundColor: 'var(--color-surface)' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2

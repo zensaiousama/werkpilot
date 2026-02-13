@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
+import ClientOverlays from "@/components/ClientOverlays";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -61,6 +62,7 @@ export default function RootLayout({
           Zum Hauptinhalt springen
         </a>
         {children}
+        <ClientOverlays />
       </body>
     </html>
   );

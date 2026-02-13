@@ -210,6 +210,58 @@ a, button {
   }
 }
 
+/* Form Input Focus Enhancement */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(46, 117, 182, 0.15);
+  outline: none;
+}
+
+/* Form Input Sizing */
+input,
+select,
+textarea {
+  min-height: 48px;
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* Button disabled state */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Pulse animation for scarcity indicators */
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Success glow animation */
+@keyframes success-glow {
+  0% { box-shadow: 0 0 0 0 rgba(45, 140, 60, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(45, 140, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 140, 60, 0); }
+}
+
+.animate-success-glow {
+  animation: success-glow 1s ease-out;
+}
+
+/* Below-fold content visibility optimization */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
 /* Responsive utilities */
 @media (max-width: 768px) {
   h1 {
@@ -222,5 +274,16 @@ a, button {
 
   h3 {
     font-size: 1.5rem;
+  }
+
+  /* Ensure touch targets are at least 44x44px on mobile */
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Add bottom padding for sticky mobile CTA */
+  body {
+    padding-bottom: 80px;
   }
 }

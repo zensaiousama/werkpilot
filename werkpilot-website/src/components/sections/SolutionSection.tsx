@@ -74,7 +74,23 @@ export default function SolutionSection() {
             <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
               Ab /Monat
             </p>
+            <p className="text-sm mt-1" style={{ color: 'var(--color-success)' }}>
+              Keine Kreditkarte erforderlich
+            </p>
           </div>
+        </motion.div>
+
+        {/* Comparison line */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mb-16"
+        >
+          <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
+            Zum Vergleich: Ein Marketing-Mitarbeiter kostet CHF 7&apos;000/Monat
+          </p>
         </motion.div>
 
         {/* Package Cards */}
@@ -85,12 +101,17 @@ export default function SolutionSection() {
               price: 'CHF 2\'000',
               description: 'SEO, Content, Social Media, Email Marketing',
               link: '/dienstleistungen/kunden-gewinnen',
+              dataTrack: 'cta-package-kunden',
             },
             {
               title: 'Effizienz',
               price: 'CHF 1\'500',
               description: 'Prozess-Automation, Kommunikation, Reporting',
               link: '/dienstleistungen/effizienz',
+              featured: true,
+              badge: 'Beliebteste Wahl',
+              badgeColor: 'var(--color-success)',
+              dataTrack: 'cta-package-effizienz',
             },
             {
               title: 'Wachstum',
@@ -98,6 +119,9 @@ export default function SolutionSection() {
               description: 'Alles + Strategie, Analytics, Expansion',
               link: '/dienstleistungen/wachstum',
               featured: true,
+              badge: 'ENTERPRISE',
+              badgeColor: 'var(--color-warm)',
+              dataTrack: 'cta-package-wachstum',
             },
           ].map((pkg, index) => (
             <motion.div
@@ -107,14 +131,14 @@ export default function SolutionSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className={`card p-8 ${pkg.featured ? 'ring-2' : ''}`}
-              style={pkg.featured ? { borderColor: 'var(--color-accent)' } : {}}
+              style={pkg.featured ? { borderColor: pkg.badgeColor || 'var(--color-accent)' } : {}}
             >
-              {pkg.featured && (
+              {pkg.featured && pkg.badge && (
                 <div
                   className="text-xs font-bold mb-4 inline-block px-3 py-1 rounded-full"
-                  style={{ backgroundColor: 'var(--color-accent)', color: 'white' }}
+                  style={{ backgroundColor: pkg.badgeColor || 'var(--color-accent)', color: 'white' }}
                 >
-                  BELIEBT
+                  {pkg.badge}
                 </div>
               )}
               <h3
@@ -135,7 +159,7 @@ export default function SolutionSection() {
               <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
                 {pkg.description}
               </p>
-              <Link href={pkg.link} className="btn btn-secondary w-full justify-center">
+              <Link href={pkg.link} className="btn btn-secondary w-full justify-center" data-track={pkg.dataTrack}>
                 Mehr erfahren →
               </Link>
             </motion.div>

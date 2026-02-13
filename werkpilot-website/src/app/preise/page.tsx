@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Preise — Werkpilot',
@@ -186,9 +187,11 @@ export default function PreisePage() {
       />
       <Navigation />
       <main id="main-content">
+        <Breadcrumbs items={[{ label: 'Preise' }]} />
+
         {/* Hero Section */}
         <section
-          className="pt-32 pb-20"
+          className="pt-8 pb-20"
           style={{ backgroundColor: 'var(--color-bg)' }}
         >
           <div className="container mx-auto px-4">
@@ -273,6 +276,58 @@ export default function PreisePage() {
                     Keine Setup-Gebühren
                   </span>
                 </div>
+              </div>
+
+              {/* Scarcity Badge */}
+              <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: 'var(--color-success)', opacity: 0.9 }}>
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
+                </span>
+                <span className="text-white text-sm font-bold">Aktuell 2 Pl&auml;tze frei</span>
+                <span className="text-white/80 text-xs">&mdash; Wir nehmen nur 5 neue Kunden pro Monat auf</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Cost Comparison (Anchoring) */}
+        <section className="py-12" style={{ backgroundColor: 'var(--color-surface)' }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="card p-8" style={{ backgroundColor: 'var(--color-bg)' }}>
+                <h2
+                  className="text-2xl font-bold mb-8 text-center"
+                  style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-primary)' }}
+                >
+                  Werkpilot vs. traditionelle L&ouml;sungen
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                  <div className="p-6 rounded-xl" style={{ backgroundColor: 'var(--color-surface)' }}>
+                    <p className="text-sm font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>Marketing-Mitarbeiter</p>
+                    <p className="text-3xl font-bold line-through" style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-warm)' }}>
+                      CHF 7&apos;000
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>pro Monat + Sozialabgaben</p>
+                  </div>
+                  <div className="p-6 rounded-xl" style={{ backgroundColor: 'var(--color-surface)' }}>
+                    <p className="text-sm font-medium mb-2" style={{ color: 'var(--color-text-secondary)' }}>Marketing-Agentur</p>
+                    <p className="text-3xl font-bold line-through" style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-warm)' }}>
+                      CHF 5&apos;000
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>pro Monat + lange Vertr&auml;ge</p>
+                  </div>
+                  <div className="p-6 rounded-xl ring-2" style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-success)' }}>
+                    <p className="text-sm font-bold mb-2" style={{ color: 'var(--color-success)' }}>Werkpilot</p>
+                    <p className="text-3xl font-bold" style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-success)' }}>
+                      ab CHF 1&apos;500
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: 'var(--color-text-secondary)' }}>pro Monat, monatlich k&uuml;ndbar</p>
+                  </div>
+                </div>
+                <p className="text-center text-sm mt-6" style={{ color: 'var(--color-text-secondary)' }}>
+                  43 AI-Spezialisten arbeiten 24/7 f&uuml;r Sie &mdash; f&uuml;r einen Bruchteil der Kosten eines einzelnen Mitarbeiters.
+                </p>
               </div>
             </div>
           </div>
@@ -367,10 +422,14 @@ export default function PreisePage() {
                     href={pkg.ctaLink}
                     className={`btn ${
                       pkg.highlight ? 'btn-primary' : 'btn-secondary'
-                    } w-full text-center justify-center mb-8`}
+                    } w-full text-center justify-center mb-3`}
+                    data-track={`cta-pricing-${pkg.slug}`}
                   >
                     {pkg.cta}
                   </Link>
+                  <p className="text-xs text-center mb-8" style={{ color: 'var(--color-text-secondary)' }}>
+                    Keine Kreditkarte erforderlich
+                  </p>
 
                   <div className="border-t pt-6" style={{ borderColor: 'var(--color-border)' }}>
                     <h3
@@ -655,9 +714,12 @@ export default function PreisePage() {
                 Machen Sie unseren kostenlosen Fitness-Check und erhalten Sie eine
                 persönliche Empfehlung — ohne Verpflichtung.
               </p>
-              <Link href="/fitness-check" className="btn btn-primary">
-                Gratis Fitness-Check starten →
+              <Link href="/fitness-check" className="btn btn-primary" data-track="cta-pricing-bottom">
+                Gratis Fitness-Check starten &rarr;
               </Link>
+              <p className="text-xs mt-4" style={{ color: 'var(--color-text-secondary)' }}>
+                Kostenlos &middot; 2 Minuten &middot; Keine Kreditkarte erforderlich
+              </p>
             </div>
           </div>
         </section>

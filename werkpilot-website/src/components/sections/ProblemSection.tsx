@@ -1,7 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
-
 const problems = [
   {
     title: 'Online mehr Kunden gewinnen',
@@ -24,26 +20,13 @@ export default function ProblemSection() {
   return (
     <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 style={{ fontFamily: 'var(--font-jakarta)' }}>Kennen Sie das?</h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {problems.map((problem, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="card p-8"
-            >
+            <div key={index} className="card p-8">
               <div
                 className="w-16 h-16 rounded-full mb-6 flex items-center justify-center"
                 style={{ backgroundColor: 'var(--color-warm)', opacity: 0.1 }}
@@ -71,7 +54,7 @@ export default function ProblemSection() {
                 {problem.title}
               </h3>
               <p style={{ color: 'var(--color-text-secondary)' }}>{problem.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

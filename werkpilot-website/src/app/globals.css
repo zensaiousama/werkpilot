@@ -178,12 +178,12 @@ a, button {
 }
 
 .btn-primary {
-  background: #B76008;
+  background: #A05507;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #A05507;
+  background: #8E4906;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(212, 118, 10, 0.3);
 }

@@ -3,11 +3,9 @@ import dynamic from 'next/dynamic';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/sections/HeroSection';
+import ProblemSection from '@/components/sections/ProblemSection';
 
-// Dynamically import below-the-fold sections to improve LCP
-const ProblemSection = dynamic(() => import('@/components/sections/ProblemSection'), {
-  loading: () => <div style={{ minHeight: '400px' }} />,
-});
+// Dynamically import below-the-fold sections with framer-motion to improve LCP
 const SolutionSection = dynamic(() => import('@/components/sections/SolutionSection'), {
   loading: () => <div style={{ minHeight: '400px' }} />,
 });

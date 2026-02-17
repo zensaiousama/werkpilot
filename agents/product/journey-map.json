@@ -1,0 +1,263 @@
+{
+  "version": "1.0.0",
+  "description": "Customer journey map defining all stages, touchpoints, and indicators for the CX Agent",
+  "stages": [
+    {
+      "name": "Awareness",
+      "description": "Prospect becomes aware of Werkpilot through marketing, referrals, or search",
+      "indicators": ["website_visit", "blog_read", "social_media_interaction", "ad_click"],
+      "touchpoints": [
+        {
+          "name": "Website Visit",
+          "channel": "web",
+          "description": "First visit to werkpilot.ch",
+          "owner": "marketing",
+          "metrics": ["page_views", "time_on_site", "bounce_rate"]
+        },
+        {
+          "name": "Blog Content",
+          "channel": "content",
+          "description": "Reading blog posts about AI automation",
+          "owner": "marketing",
+          "metrics": ["articles_read", "scroll_depth"]
+        },
+        {
+          "name": "Social Media",
+          "channel": "social",
+          "description": "Engaging with LinkedIn/Twitter content",
+          "owner": "marketing",
+          "metrics": ["likes", "shares", "comments"]
+        },
+        {
+          "name": "Referral",
+          "channel": "word_of_mouth",
+          "description": "Referred by an existing customer or partner",
+          "owner": "sales",
+          "metrics": ["referral_source"]
+        }
+      ],
+      "goals": ["Generate brand recognition", "Drive website traffic"],
+      "kpis": ["website_visitors", "content_engagement_rate"]
+    },
+    {
+      "name": "Consideration",
+      "description": "Prospect evaluates Werkpilot against alternatives and considers purchase",
+      "indicators": ["demo_request", "pricing_page_view", "case_study_download", "webinar_registration"],
+      "touchpoints": [
+        {
+          "name": "Demo Request",
+          "channel": "web",
+          "description": "Submitting a demo request form",
+          "owner": "sales",
+          "metrics": ["demo_requests", "form_completion_rate"]
+        },
+        {
+          "name": "Pricing Page",
+          "channel": "web",
+          "description": "Viewing pricing and package options",
+          "owner": "marketing",
+          "metrics": ["pricing_page_views", "time_on_pricing"]
+        },
+        {
+          "name": "Case Study Download",
+          "channel": "content",
+          "description": "Downloading customer success stories",
+          "owner": "marketing",
+          "metrics": ["downloads"]
+        },
+        {
+          "name": "Webinar Attendance",
+          "channel": "event",
+          "description": "Attending a product webinar or workshop",
+          "owner": "marketing",
+          "metrics": ["registration_rate", "attendance_rate", "questions_asked"]
+        },
+        {
+          "name": "Sales Call",
+          "channel": "phone",
+          "description": "Discovery call with sales team",
+          "owner": "sales",
+          "metrics": ["call_duration", "next_step_conversion"]
+        }
+      ],
+      "goals": ["Qualify leads", "Demonstrate value proposition"],
+      "kpis": ["demo_to_proposal_rate", "average_evaluation_time"]
+    },
+    {
+      "name": "Purchase",
+      "description": "Prospect decides to buy and signs the contract",
+      "indicators": ["proposal_accepted", "contract_signed", "first_payment"],
+      "touchpoints": [
+        {
+          "name": "Proposal Review",
+          "channel": "email",
+          "description": "Reviewing the tailored proposal",
+          "owner": "sales",
+          "metrics": ["proposal_open_rate", "revision_count"]
+        },
+        {
+          "name": "Contract Signing",
+          "channel": "digital",
+          "description": "Signing the service agreement",
+          "owner": "sales",
+          "metrics": ["time_to_sign", "contract_value"]
+        },
+        {
+          "name": "Welcome Email",
+          "channel": "email",
+          "description": "Automated welcome and next steps email",
+          "owner": "operations",
+          "metrics": ["open_rate", "click_rate"]
+        }
+      ],
+      "goals": ["Close deal", "Set expectations for onboarding"],
+      "kpis": ["close_rate", "average_deal_size", "sales_cycle_length"]
+    },
+    {
+      "name": "Onboarding",
+      "description": "New client is set up and trained on the platform within 48 hours",
+      "indicators": ["onboarding_started", "setup_complete", "first_agent_active", "training_complete"],
+      "touchpoints": [
+        {
+          "name": "Kickoff Call",
+          "channel": "video",
+          "description": "Initial setup and planning call",
+          "owner": "operations",
+          "metrics": ["call_duration", "action_items"]
+        },
+        {
+          "name": "Technical Setup",
+          "channel": "platform",
+          "description": "Configuring agents and integrations",
+          "owner": "it",
+          "metrics": ["setup_time_hours", "issues_encountered"]
+        },
+        {
+          "name": "Training Session",
+          "channel": "video",
+          "description": "Product training and best practices",
+          "owner": "operations",
+          "metrics": ["training_duration", "questions_asked"]
+        },
+        {
+          "name": "First Results",
+          "channel": "platform",
+          "description": "Delivering first automated outputs",
+          "owner": "product",
+          "metrics": ["time_to_first_output", "output_quality_score"]
+        }
+      ],
+      "goals": ["Complete setup within 48 hours", "Deliver first value quickly"],
+      "kpis": ["onboarding_time_hours", "time_to_first_value", "onboarding_nps"],
+      "sla": {
+        "target_hours": 48,
+        "escalation_at_hours": 36,
+        "max_hours": 72
+      }
+    },
+    {
+      "name": "Active",
+      "description": "Client is actively using the platform and receiving regular value",
+      "indicators": ["regular_usage", "feature_adoption", "support_interaction", "monthly_review"],
+      "touchpoints": [
+        {
+          "name": "Weekly Reports",
+          "channel": "email",
+          "description": "Automated weekly performance reports",
+          "owner": "product",
+          "metrics": ["open_rate", "engagement_with_reports"]
+        },
+        {
+          "name": "Monthly Review",
+          "channel": "video",
+          "description": "Monthly business review call",
+          "owner": "sales",
+          "metrics": ["review_completion_rate", "action_items"]
+        },
+        {
+          "name": "Support Interactions",
+          "channel": "multi",
+          "description": "Help desk tickets and chat support",
+          "owner": "support",
+          "metrics": ["ticket_volume", "resolution_time", "csat_score"]
+        },
+        {
+          "name": "Feature Updates",
+          "channel": "email",
+          "description": "Notifications about new features and improvements",
+          "owner": "product",
+          "metrics": ["feature_adoption_rate"]
+        }
+      ],
+      "goals": ["Maintain high engagement", "Deliver consistent value"],
+      "kpis": ["monthly_active_usage", "feature_adoption_rate", "support_satisfaction"]
+    },
+    {
+      "name": "Expansion",
+      "description": "Client increases usage through upgrades, add-ons, or expanded scope",
+      "indicators": ["upsell_purchased", "addon_activated", "plan_upgrade", "scope_expansion"],
+      "touchpoints": [
+        {
+          "name": "Upsell Proposal",
+          "channel": "email",
+          "description": "Personalized upgrade recommendation",
+          "owner": "sales",
+          "metrics": ["upsell_conversion_rate", "expansion_revenue"]
+        },
+        {
+          "name": "Success Milestone",
+          "channel": "email",
+          "description": "Celebrating ROI milestones to encourage expansion",
+          "owner": "sales",
+          "metrics": ["milestone_engagement"]
+        },
+        {
+          "name": "New Feature Training",
+          "channel": "video",
+          "description": "Training on newly purchased features",
+          "owner": "operations",
+          "metrics": ["feature_activation_time"]
+        }
+      ],
+      "goals": ["Increase MRR per client", "Deepen platform adoption"],
+      "kpis": ["net_revenue_retention", "expansion_rate", "average_upsell_value"]
+    },
+    {
+      "name": "Advocacy",
+      "description": "Client actively promotes Werkpilot through referrals, testimonials, and reviews",
+      "indicators": ["referral_made", "testimonial_given", "case_study_approved", "public_review"],
+      "touchpoints": [
+        {
+          "name": "NPS Survey",
+          "channel": "email",
+          "description": "Monthly satisfaction survey",
+          "owner": "product",
+          "metrics": ["nps_score", "response_rate"]
+        },
+        {
+          "name": "Referral Program",
+          "channel": "platform",
+          "description": "Formal referral invitation and tracking",
+          "owner": "marketing",
+          "metrics": ["referrals_generated", "referral_conversion_rate"]
+        },
+        {
+          "name": "Case Study",
+          "channel": "content",
+          "description": "Published customer success story",
+          "owner": "marketing",
+          "metrics": ["case_studies_published"]
+        },
+        {
+          "name": "Community Engagement",
+          "channel": "social",
+          "description": "Speaking at events, social media advocacy",
+          "owner": "marketing",
+          "metrics": ["public_mentions", "event_participations"]
+        }
+      ],
+      "goals": ["Generate referrals", "Build social proof"],
+      "kpis": ["referral_rate", "testimonial_count", "case_study_pipeline"]
+    }
+  ]
+}

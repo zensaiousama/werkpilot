@@ -1,0 +1,359 @@
+{
+  "version": "1.0.0",
+  "description": "Quality check criteria per content type for the Quality Management Agent",
+  "minimumScore": 85,
+  "contentTypes": {
+    "general": {
+      "description": "Default quality checks for any content",
+      "checks": [
+        {
+          "name": "grammar_spelling",
+          "description": "No grammar or spelling errors",
+          "weight": 3,
+          "threshold": 90
+        },
+        {
+          "name": "brand_voice",
+          "description": "Aligns with Werkpilot brand voice: professional, approachable, data-driven",
+          "weight": 2,
+          "threshold": 80
+        },
+        {
+          "name": "clarity",
+          "description": "Clear, concise, and easy to understand",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "factual_accuracy",
+          "description": "All claims are accurate and verifiable",
+          "weight": 3,
+          "threshold": 95
+        },
+        {
+          "name": "completeness",
+          "description": "Content covers all necessary points",
+          "weight": 1,
+          "threshold": 80
+        }
+      ]
+    },
+    "blog_post": {
+      "description": "Quality checks for blog posts and articles",
+      "checks": [
+        {
+          "name": "grammar_spelling",
+          "description": "No grammar or spelling errors in body text, headings, and meta",
+          "weight": 3,
+          "threshold": 95
+        },
+        {
+          "name": "brand_voice",
+          "description": "Professional yet approachable tone, Swiss quality standards",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "seo_optimization",
+          "description": "Keyword density 1-2%, meta description under 155 chars, proper heading hierarchy",
+          "weight": 3,
+          "threshold": 80
+        },
+        {
+          "name": "readability",
+          "description": "Flesch-Kincaid grade level 8-12, short paragraphs, bullet points where appropriate",
+          "weight": 2,
+          "threshold": 80
+        },
+        {
+          "name": "factual_accuracy",
+          "description": "All statistics, claims, and references are verifiable",
+          "weight": 3,
+          "threshold": 95
+        },
+        {
+          "name": "structure",
+          "description": "Proper intro/body/conclusion, clear headings, logical flow",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "cta_present",
+          "description": "Contains a clear call-to-action relevant to the topic",
+          "weight": 1,
+          "threshold": 80
+        },
+        {
+          "name": "content_length",
+          "description": "Minimum 600 words for standard posts, 1200 for pillar content",
+          "weight": 1,
+          "threshold": 90
+        }
+      ]
+    },
+    "email": {
+      "description": "Quality checks for outbound emails",
+      "checks": [
+        {
+          "name": "grammar_spelling",
+          "description": "Zero tolerance for errors in email communications",
+          "weight": 3,
+          "threshold": 98
+        },
+        {
+          "name": "subject_line",
+          "description": "Compelling, under 50 chars, no spam trigger words",
+          "weight": 3,
+          "threshold": 85
+        },
+        {
+          "name": "personalization",
+          "description": "Uses recipient name, company, and relevant context",
+          "weight": 2,
+          "threshold": 80
+        },
+        {
+          "name": "cta_clarity",
+          "description": "Clear, single call-to-action per email",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "tone",
+          "description": "Professional, respectful, appropriately formal/informal for context",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "spam_risk",
+          "description": "No spam trigger words (FREE, URGENT, etc.), proper formatting",
+          "weight": 3,
+          "threshold": 90
+        },
+        {
+          "name": "length",
+          "description": "Concise - under 200 words for cold outreach, under 400 for newsletters",
+          "weight": 1,
+          "threshold": 80
+        }
+      ]
+    },
+    "social_media": {
+      "description": "Quality checks for social media posts",
+      "checks": [
+        {
+          "name": "grammar_spelling",
+          "description": "No errors in post text",
+          "weight": 3,
+          "threshold": 95
+        },
+        {
+          "name": "brand_voice",
+          "description": "Matches platform tone (LinkedIn: professional, Twitter: concise and engaging)",
+          "weight": 3,
+          "threshold": 85
+        },
+        {
+          "name": "engagement_potential",
+          "description": "Includes hook, question, or call-to-action to drive engagement",
+          "weight": 2,
+          "threshold": 75
+        },
+        {
+          "name": "hashtag_usage",
+          "description": "Relevant hashtags, appropriate count (LinkedIn: 3-5, Twitter: 1-3)",
+          "weight": 1,
+          "threshold": 80
+        },
+        {
+          "name": "length_compliance",
+          "description": "Within platform character limits, optimized for readability",
+          "weight": 2,
+          "threshold": 90
+        }
+      ]
+    },
+    "report": {
+      "description": "Quality checks for internal and client reports",
+      "checks": [
+        {
+          "name": "data_accuracy",
+          "description": "All numbers, percentages, and trends are mathematically correct",
+          "weight": 4,
+          "threshold": 98
+        },
+        {
+          "name": "grammar_spelling",
+          "description": "No errors in professional reports",
+          "weight": 2,
+          "threshold": 95
+        },
+        {
+          "name": "completeness",
+          "description": "All required sections present, no missing data points",
+          "weight": 3,
+          "threshold": 90
+        },
+        {
+          "name": "actionability",
+          "description": "Includes clear recommendations and next steps",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "data_freshness",
+          "description": "Uses the most recent available data",
+          "weight": 2,
+          "threshold": 90
+        },
+        {
+          "name": "visualization_clarity",
+          "description": "Charts and tables are clear, labeled, and support the narrative",
+          "weight": 1,
+          "threshold": 80
+        },
+        {
+          "name": "executive_summary",
+          "description": "Concise executive summary present at the top",
+          "weight": 2,
+          "threshold": 85
+        }
+      ]
+    },
+    "proposal": {
+      "description": "Quality checks for sales proposals",
+      "checks": [
+        {
+          "name": "grammar_spelling",
+          "description": "Zero tolerance for errors in client-facing proposals",
+          "weight": 3,
+          "threshold": 98
+        },
+        {
+          "name": "personalization",
+          "description": "Tailored to specific client needs, industry, and pain points",
+          "weight": 3,
+          "threshold": 85
+        },
+        {
+          "name": "value_proposition",
+          "description": "Clear ROI and value proposition with supporting evidence",
+          "weight": 3,
+          "threshold": 85
+        },
+        {
+          "name": "pricing_clarity",
+          "description": "Transparent pricing with clear deliverables per tier",
+          "weight": 2,
+          "threshold": 90
+        },
+        {
+          "name": "professional_formatting",
+          "description": "Consistent formatting, branding, and visual hierarchy",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "case_study_relevance",
+          "description": "Includes relevant case studies or social proof",
+          "weight": 1,
+          "threshold": 75
+        },
+        {
+          "name": "timeline_realism",
+          "description": "Proposed timeline is realistic and achievable",
+          "weight": 2,
+          "threshold": 85
+        }
+      ]
+    },
+    "seo_content": {
+      "description": "Quality checks for SEO-optimized content",
+      "checks": [
+        {
+          "name": "keyword_optimization",
+          "description": "Primary keyword in title, H1, first 100 words, meta description. Density 1-2%",
+          "weight": 3,
+          "threshold": 80
+        },
+        {
+          "name": "meta_description",
+          "description": "Under 155 characters, includes keyword, compelling click-through",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "heading_structure",
+          "description": "Proper H1 > H2 > H3 hierarchy, keywords in subheadings",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "internal_links",
+          "description": "2-5 relevant internal links per 1000 words",
+          "weight": 1,
+          "threshold": 75
+        },
+        {
+          "name": "readability",
+          "description": "Short paragraphs, bullet points, scannable format",
+          "weight": 2,
+          "threshold": 80
+        },
+        {
+          "name": "content_depth",
+          "description": "Comprehensive coverage of topic, better than top-ranking competitors",
+          "weight": 2,
+          "threshold": 80
+        },
+        {
+          "name": "grammar_spelling",
+          "description": "No errors that could harm credibility",
+          "weight": 2,
+          "threshold": 95
+        },
+        {
+          "name": "image_alt_text",
+          "description": "All images have descriptive alt text with keywords where natural",
+          "weight": 1,
+          "threshold": 80
+        }
+      ]
+    },
+    "translation": {
+      "description": "Quality checks for translated content (DE/EN)",
+      "checks": [
+        {
+          "name": "accuracy",
+          "description": "Meaning fully preserved from source language",
+          "weight": 4,
+          "threshold": 95
+        },
+        {
+          "name": "fluency",
+          "description": "Natural-sounding in target language, no literal translations",
+          "weight": 3,
+          "threshold": 90
+        },
+        {
+          "name": "terminology",
+          "description": "Correct industry and domain-specific terminology",
+          "weight": 2,
+          "threshold": 90
+        },
+        {
+          "name": "cultural_adaptation",
+          "description": "Appropriate for target market (Swiss German vs German German, etc.)",
+          "weight": 2,
+          "threshold": 85
+        },
+        {
+          "name": "formatting_preserved",
+          "description": "Original formatting, links, and structure maintained",
+          "weight": 1,
+          "threshold": 90
+        }
+      ]
+    }
+  }
+}

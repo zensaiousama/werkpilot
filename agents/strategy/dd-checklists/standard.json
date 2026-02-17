@@ -1,0 +1,378 @@
+{
+  "name": "Standard Due Diligence Checklist",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "targetType": "Swiss KMU / Marketing Agency Acquisition",
+  "phases": [
+    {
+      "phase": "preliminary",
+      "name": "Preliminary Assessment",
+      "timeframe": "Week 1-2",
+      "items": [
+        {
+          "id": "PRE-001",
+          "category": "Strategic Fit",
+          "item": "Alignment with Werkpilot product strategy",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Strategy Lead"
+        },
+        {
+          "id": "PRE-002",
+          "category": "Strategic Fit",
+          "item": "Customer overlap analysis (complementary vs. cannibalization)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Strategy Lead"
+        },
+        {
+          "id": "PRE-003",
+          "category": "Strategic Fit",
+          "item": "Technology stack compatibility assessment",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CTO"
+        },
+        {
+          "id": "PRE-004",
+          "category": "Strategic Fit",
+          "item": "Geographic coverage expansion potential",
+          "priority": "medium",
+          "status": "pending",
+          "responsible": "Strategy Lead"
+        },
+        {
+          "id": "PRE-005",
+          "category": "Valuation",
+          "item": "Initial revenue multiple assessment (industry benchmark: 3-8x ARR)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CFO"
+        }
+      ]
+    },
+    {
+      "phase": "financial",
+      "name": "Financial Due Diligence",
+      "timeframe": "Week 2-4",
+      "items": [
+        {
+          "id": "FIN-001",
+          "category": "Revenue",
+          "item": "Revenue breakdown by customer, product, and geography (3 years)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-002",
+          "category": "Revenue",
+          "item": "Recurring revenue vs. one-time revenue split",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-003",
+          "category": "Revenue",
+          "item": "Customer concentration risk (top 10 client dependency)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-004",
+          "category": "Revenue",
+          "item": "Monthly recurring revenue (MRR) trend and churn rate",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-005",
+          "category": "Costs",
+          "item": "Cost structure analysis (fixed vs. variable)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-006",
+          "category": "Costs",
+          "item": "Employee cost breakdown and salary benchmarking",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-007",
+          "category": "Assets",
+          "item": "Balance sheet review (assets, liabilities, equity)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-008",
+          "category": "Cash Flow",
+          "item": "Cash flow statements (3 years) and working capital analysis",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "FIN-009",
+          "category": "Tax",
+          "item": "Tax compliance review (Swiss cantonal and federal)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "External Auditor"
+        },
+        {
+          "id": "FIN-010",
+          "category": "Projections",
+          "item": "Financial projections validation (3-5 year model)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CFO"
+        }
+      ]
+    },
+    {
+      "phase": "legal",
+      "name": "Legal Due Diligence",
+      "timeframe": "Week 2-4",
+      "items": [
+        {
+          "id": "LEG-001",
+          "category": "Corporate",
+          "item": "Handelsregister extract and articles of association",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        },
+        {
+          "id": "LEG-002",
+          "category": "Corporate",
+          "item": "Shareholder agreements and cap table",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        },
+        {
+          "id": "LEG-003",
+          "category": "Contracts",
+          "item": "Key customer contracts review (terms, duration, termination clauses)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        },
+        {
+          "id": "LEG-004",
+          "category": "Contracts",
+          "item": "Supplier and vendor agreements",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        },
+        {
+          "id": "LEG-005",
+          "category": "IP",
+          "item": "Intellectual property inventory (trademarks, patents, code ownership)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        },
+        {
+          "id": "LEG-006",
+          "category": "Compliance",
+          "item": "DSGVO/nDSG compliance audit (data processing agreements, privacy policies)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        },
+        {
+          "id": "LEG-007",
+          "category": "Employment",
+          "item": "Employment contracts and non-compete clauses",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "HR Lead"
+        },
+        {
+          "id": "LEG-008",
+          "category": "Litigation",
+          "item": "Pending or threatened litigation review",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "Legal Counsel"
+        }
+      ]
+    },
+    {
+      "phase": "technical",
+      "name": "Technical Due Diligence",
+      "timeframe": "Week 3-5",
+      "items": [
+        {
+          "id": "TECH-001",
+          "category": "Architecture",
+          "item": "System architecture documentation and review",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CTO"
+        },
+        {
+          "id": "TECH-002",
+          "category": "Code Quality",
+          "item": "Codebase review (tech debt assessment, test coverage, CI/CD)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CTO"
+        },
+        {
+          "id": "TECH-003",
+          "category": "Infrastructure",
+          "item": "Hosting and infrastructure audit (Swiss data residency compliance)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CTO"
+        },
+        {
+          "id": "TECH-004",
+          "category": "Security",
+          "item": "Security audit (penetration testing, vulnerability assessment)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CTO"
+        },
+        {
+          "id": "TECH-005",
+          "category": "Integration",
+          "item": "API compatibility and integration feasibility with Werkpilot",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CTO"
+        },
+        {
+          "id": "TECH-006",
+          "category": "Data",
+          "item": "Data migration plan (customer data, content, configurations)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CTO"
+        }
+      ]
+    },
+    {
+      "phase": "operational",
+      "name": "Operational Due Diligence",
+      "timeframe": "Week 3-5",
+      "items": [
+        {
+          "id": "OPS-001",
+          "category": "Team",
+          "item": "Key personnel assessment and retention risk",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "HR Lead"
+        },
+        {
+          "id": "OPS-002",
+          "category": "Team",
+          "item": "Organization chart and reporting structure",
+          "priority": "medium",
+          "status": "pending",
+          "responsible": "HR Lead"
+        },
+        {
+          "id": "OPS-003",
+          "category": "Customers",
+          "item": "Customer satisfaction survey / NPS scores",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "Operations Lead"
+        },
+        {
+          "id": "OPS-004",
+          "category": "Processes",
+          "item": "Standard operating procedures documentation",
+          "priority": "medium",
+          "status": "pending",
+          "responsible": "Operations Lead"
+        },
+        {
+          "id": "OPS-005",
+          "category": "Culture",
+          "item": "Cultural fit assessment (values, work style, remote/hybrid)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "HR Lead"
+        }
+      ]
+    },
+    {
+      "phase": "integration",
+      "name": "Integration Planning",
+      "timeframe": "Week 5-6",
+      "items": [
+        {
+          "id": "INT-001",
+          "category": "Strategy",
+          "item": "Integration strategy (absorb, preserve, or symbiosis)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CEO"
+        },
+        {
+          "id": "INT-002",
+          "category": "Timeline",
+          "item": "100-day integration plan with milestones",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "Strategy Lead"
+        },
+        {
+          "id": "INT-003",
+          "category": "Synergies",
+          "item": "Synergy quantification (revenue + cost synergies)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "CFO"
+        },
+        {
+          "id": "INT-004",
+          "category": "Communication",
+          "item": "Communication plan (employees, customers, partners, public)",
+          "priority": "high",
+          "status": "pending",
+          "responsible": "Marketing Lead"
+        },
+        {
+          "id": "INT-005",
+          "category": "Technology",
+          "item": "Technical integration roadmap (systems merge, data migration)",
+          "priority": "critical",
+          "status": "pending",
+          "responsible": "CTO"
+        }
+      ]
+    }
+  ],
+  "scoringCriteria": {
+    "dealBreakers": [
+      "Unresolvable legal/compliance issues",
+      "Customer concentration > 50% in one client",
+      "Key person dependency without retention agreement",
+      "Incompatible technology stack with no migration path",
+      "Hidden liabilities exceeding 20% of deal value"
+    ],
+    "riskWeighting": {
+      "financial": 0.30,
+      "legal": 0.20,
+      "technical": 0.20,
+      "operational": 0.15,
+      "strategic": 0.15
+    }
+  }
+}

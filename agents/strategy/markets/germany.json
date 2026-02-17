@@ -1,0 +1,151 @@
+{
+  "country": "Germany",
+  "code": "DE",
+  "region": "DACH",
+  "lastUpdated": "2026-02-13",
+  "currency": "EUR",
+  "language": ["de"],
+  "marketOverview": {
+    "totalKMUs": 3500000,
+    "targetSegment": "KMU mit 10-250 Mitarbeitenden",
+    "targetKMUCount": 420000,
+    "avgDigitalizationRate": 0.54,
+    "avgMarketingBudgetPerKMU": 28000,
+    "aiAdoptionRate": 0.14,
+    "marketingServiceSpend": {
+      "total": "EUR 28.5 Mrd",
+      "digital": "EUR 12.1 Mrd",
+      "aiAutomation": "EUR 1.8 Mrd"
+    }
+  },
+  "marketSizing": {
+    "TAM": {
+      "value": 28500000000,
+      "currency": "EUR",
+      "description": "Total marketing service spend by German KMUs"
+    },
+    "SAM": {
+      "value": 3200000000,
+      "currency": "EUR",
+      "description": "AI-driven marketing automation for digitally active KMUs"
+    },
+    "SOM": {
+      "value": 6400000,
+      "currency": "EUR",
+      "description": "Realistic Year 2-4 addressable after DACH expansion (0.2% SAM)"
+    }
+  },
+  "keyRegions": [
+    {
+      "name": "Bayern",
+      "code": "BY",
+      "kmuCount": 620000,
+      "digitalReadiness": "high",
+      "priority": 1,
+      "notes": "Munich tech hub, strong Mittelstand, cultural proximity to CH"
+    },
+    {
+      "name": "Baden-Wuerttemberg",
+      "code": "BW",
+      "kmuCount": 510000,
+      "digitalReadiness": "high",
+      "priority": 1,
+      "notes": "Strong industrial base, Stuttgart/Karlsruhe tech scene"
+    },
+    {
+      "name": "Nordrhein-Westfalen",
+      "code": "NW",
+      "kmuCount": 740000,
+      "digitalReadiness": "medium",
+      "priority": 2,
+      "notes": "Largest economy by GDP, Duesseldorf media hub"
+    },
+    {
+      "name": "Berlin",
+      "code": "BE",
+      "kmuCount": 180000,
+      "digitalReadiness": "high",
+      "priority": 2,
+      "notes": "Startup capital, high digital adoption but price-sensitive"
+    },
+    {
+      "name": "Hamburg",
+      "code": "HH",
+      "kmuCount": 110000,
+      "digitalReadiness": "high",
+      "priority": 2,
+      "notes": "Media/advertising hub, strong agency market"
+    }
+  ],
+  "competitiveLandscape": {
+    "directCompetitors": 35,
+    "indirectCompetitors": 120,
+    "marketMaturity": "growing",
+    "entryBarriers": "medium-high",
+    "keyCompetitors": [
+      "HubSpot DE",
+      "Brevo (Sendinblue)",
+      "GetResponse",
+      "ActiveCampaign",
+      "CleverReach"
+    ],
+    "notes": "Highly competitive but fragmented; Swiss quality positioning is a differentiator"
+  },
+  "regulatory": {
+    "dataProtection": "DSGVO/GDPR (Bundesdatenschutzgesetz BDSG supplement)",
+    "gdprEquivalent": true,
+    "vatRate": 19.0,
+    "reducedVatRate": 7.0,
+    "businessRegistration": "Handelsregister (local Amtsgericht)",
+    "companyForms": ["GmbH", "UG (haftungsbeschraenkt)", "Niederlassung"],
+    "industrySpecific": [
+      "BaFin for fintech/financial services clients",
+      "Impressum requirement (TMG)",
+      "Telemediengesetz (TMG) for online services",
+      "UWG (Gesetz gegen unlauteren Wettbewerb) for marketing claims"
+    ]
+  },
+  "localization": {
+    "primaryLanguage": "de-DE",
+    "requiredLanguages": ["de"],
+    "optionalLanguages": ["en"],
+    "culturalNotes": [
+      "Formal address (Sie) is strict in business",
+      "High-German (Hochdeutsch) required, no Swiss German",
+      "Strong emphasis on Datenschutz and compliance",
+      "Price-sensitive market, ROI must be demonstrated",
+      "Mittelstand values tradition and long-term partnerships",
+      "German-specific marketing regulations are strict"
+    ]
+  },
+  "expansionRequirements": {
+    "legalEntity": "GmbH or Niederlassung recommended",
+    "estimatedSetupCost": "EUR 25,000 - 50,000",
+    "timeToMarket": "4-6 months",
+    "localPresence": "Office in Munich or Stuttgart recommended",
+    "partnerships": "Local agencies and IT consultancies as channel partners"
+  },
+  "goToMarket": {
+    "strategy": "partnership-led",
+    "phases": [
+      {
+        "phase": 1,
+        "duration": "0-6 months",
+        "focus": "Bavaria and Baden-Wuerttemberg via Swiss-German corridor",
+        "activities": ["Partner recruitment", "Localized website de-DE", "Trade show presence"]
+      },
+      {
+        "phase": 2,
+        "duration": "6-12 months",
+        "focus": "NRW, Hamburg, Berlin expansion",
+        "activities": ["Direct sales team", "Content marketing DE", "Case studies from DACH"]
+      },
+      {
+        "phase": 3,
+        "duration": "12-24 months",
+        "focus": "National coverage",
+        "activities": ["Self-service onboarding", "Reseller network", "Enterprise segment"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "brand": {
+    "name": "Werkpilot",
+    "tagline": "Ihr digitaler Werkzeugkasten für KMU-Erfolg",
+    "tagline_fr": "Votre boîte à outils digitale pour le succès des PME",
+    "tagline_en": "Your digital toolkit for SME success",
+    "mission": "Schweizer KMU mit intelligenter Automatisierung zu nachhaltigem Wachstum verhelfen.",
+    "founded": 2024,
+    "country": "Schweiz",
+    "legal_name": "Werkpilot GmbH"
+  },
+  "voice": {
+    "tone": "Professional but warm, confident yet approachable",
+    "personality": [
+      "Kompetent wie ein erfahrener Berater",
+      "Zugänglich wie ein guter Nachbar",
+      "Zuverlässig wie Schweizer Qualität",
+      "Innovativ ohne abzuheben"
+    ],
+    "rules": [
+      "NIEMALS das Wort 'KI' oder 'AI' gegenüber Kunden verwenden",
+      "Stattdessen: 'intelligente Automatisierung', 'smarte Lösung', 'digitaler Assistent'",
+      "Immer 'wir' statt 'unser System' oder 'die Plattform'",
+      "Persönlich: 'Sie' (formell), nie 'du' in Business-Kommunikation",
+      "Schweizer Begriffe verwenden: 'Treuhand' nicht 'Steuerberater', 'Natel' erlaubt",
+      "Keine übertriebenen Versprechen: 'unterstützen' statt 'garantieren'",
+      "Aktiv statt passiv: 'Wir erstellen Ihre Website' statt 'Ihre Website wird erstellt'",
+      "Kurze Sätze bevorzugen, max 20 Worte pro Satz"
+    ],
+    "forbidden_words": [
+      "KI", "AI", "künstliche Intelligenz", "artificial intelligence",
+      "Roboter", "Bot", "automatisch" ,
+      "garantiert", "100%", "revolutionär", "disruptiv",
+      "Marktführer", "der Beste", "einzigartig",
+      "billig", "günstig", "Schnäppchen"
+    ],
+    "preferred_words": [
+      "intelligent", "smart", "effizient", "zuverlässig",
+      "professionell", "modern", "digital", "automatisiert",
+      "Schweizer Qualität", "massgeschneidert", "persönlich",
+      "Wachstum", "Erfolg", "Sichtbarkeit", "Vertrauen"
+    ],
+    "language_notes": {
+      "de": "Schweizerisches Hochdeutsch, kein Dialekt in schriftlicher Kommunikation. 'ss' statt 'ß'.",
+      "fr": "Französisch mit Schweizer Sensibilität. Keine France-spezifischen Ausdrücke.",
+      "en": "British English with Swiss context. Professional, international tone."
+    }
+  },
+  "visual": {
+    "colors": {
+      "primary": {
+        "navy": { "hex": "#1B2A4A", "rgb": "27, 42, 74", "usage": "Headlines, primary buttons, navigation" },
+        "blue": { "hex": "#2E75B6", "rgb": "46, 117, 182", "usage": "Links, accents, secondary buttons" }
+      },
+      "secondary": {
+        "green": { "hex": "#2D8C3C", "rgb": "45, 140, 60", "usage": "Success states, CTAs, positive indicators" },
+        "orange": { "hex": "#D4760A", "rgb": "212, 118, 10", "usage": "Warnings, highlights, attention elements" }
+      },
+      "neutral": {
+        "white": { "hex": "#FFFFFF", "usage": "Backgrounds, cards" },
+        "light_gray": { "hex": "#F8F9FA", "usage": "Section backgrounds" },
+        "medium_gray": { "hex": "#6C757D", "usage": "Body text secondary" },
+        "dark": { "hex": "#212529", "usage": "Body text primary" }
+      }
+    },
+    "typography": {
+      "primary": {
+        "family": "Plus Jakarta Sans",
+        "weights": [400, 500, 600, 700],
+        "usage": "Headlines, navigation, buttons"
+      },
+      "secondary": {
+        "family": "DM Sans",
+        "weights": [400, 500, 700],
+        "usage": "Body text, paragraphs, descriptions"
+      },
+      "sizes": {
+        "h1": "2.5rem / 40px",
+        "h2": "2rem / 32px",
+        "h3": "1.5rem / 24px",
+        "h4": "1.25rem / 20px",
+        "body": "1rem / 16px",
+        "small": "0.875rem / 14px",
+        "caption": "0.75rem / 12px"
+      }
+    },
+    "imagery": {
+      "style": "Clean, professional, Swiss aesthetic",
+      "rules": [
+        "Use real Swiss business imagery where possible",
+        "Diverse representation of Swiss business owners",
+        "No stock photos that feel generic or American",
+        "Prefer office/workspace environments over abstract",
+        "Show results: dashboards, growth charts, happy clients",
+        "Never show robots or AI-themed visuals to customers",
+        "Swiss landscapes acceptable for background/hero images"
+      ],
+      "photography": {
+        "style": "Natural light, warm tones, professional setting",
+        "subjects": "Swiss business owners, offices, cityscapes",
+        "avoid": "Overly staged, cold/corporate, stock-looking"
+      }
+    },
+    "logo": {
+      "primary": "werkpilot-logo-navy.svg",
+      "light": "werkpilot-logo-white.svg",
+      "icon": "werkpilot-icon.svg",
+      "minimum_size": "120px width",
+      "clear_space": "Equal to the height of the 'W' in Werkpilot on all sides"
+    }
+  },
+  "content_templates": {
+    "email_subject_patterns": [
+      "[Name], [Benefit für Branche]",
+      "Wie [Branche] in [Stadt] [Ergebnis erreichen]",
+      "[Zahl] Wege, wie [Branche] [Ergebnis]",
+      "Ihr [Zeitraum]-Update von Werkpilot"
+    ],
+    "cta_buttons": [
+      "Kostenlos beraten lassen",
+      "Demo vereinbaren",
+      "Jetzt starten",
+      "Mehr erfahren",
+      "Unverbindlich anfragen"
+    ],
+    "social_hashtags": [
+      "#Werkpilot", "#SwissKMU", "#Digitalisierung",
+      "#KMUSchweiz", "#DigitalesMarketing", "#SwissBusiness"
+    ]
+  },
+  "seasonal_campaigns": {
+    "jahresabschluss": {
+      "period": "November - December",
+      "theme": "Jahresrückblick & Neujahrsvorsätze",
+      "message": "Starten Sie digital ins neue Jahr",
+      "colors_accent": "#D4760A"
+    },
+    "frühling_offensive": {
+      "period": "March - April",
+      "theme": "Frühlingserwachen für Ihr Business",
+      "message": "Neue Saison, neue Kunden",
+      "colors_accent": "#2D8C3C"
+    },
+    "messezeit": {
+      "period": "September - October",
+      "theme": "Messe-Spezial",
+      "message": "Präsentieren Sie sich von Ihrer besten Seite",
+      "colors_accent": "#2E75B6"
+    },
+    "sommer_aktion": {
+      "period": "June - July",
+      "theme": "Sommerfit für Ihr Business",
+      "message": "Nutzen Sie die ruhige Zeit für Ihren digitalen Ausbau",
+      "colors_accent": "#D4760A"
+    }
+  }
+}

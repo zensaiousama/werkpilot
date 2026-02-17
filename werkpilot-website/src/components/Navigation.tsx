@@ -1,28 +1,117 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navLinks = [
+  { href: '/dienstleistungen', label: 'Dienstleistungen' },
+  { href: '/preise', label: 'Preise' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/resources', label: 'Ressourcen' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 20);
+        ticking = false;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Focus trap in mobile menu
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (!isMobileMenuOpen || !mobileMenuRef.current) return;
+
+    if (e.key === 'Escape') {
+      setIsMobileMenuOpen(false);
+      menuButtonRef.current?.focus();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusableElements = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button'
+      );
+      const firstEl = focusableElements[0];
+      const lastEl = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey && document.activeElement === firstEl) {
+        e.preventDefault();
+        lastEl.focus();
+      } else if (!e.shiftKey && document.activeElement === lastEl) {
+        e.preventDefault();
+        firstEl.focus();
+      }
+    }
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobileMenuOpen]);
+
+  // Swipe down to close mobile menu
+  const touchStartY = useRef(0);
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    const diff = e.changedTouches[0].clientY - touchStartY.current;
+    if (diff > 80) setIsMobileMenuOpen(false); // swipe down > 80px closes menu
+  }, []);
+
+  // Close menu on orientation change
+  useEffect(() => {
+    const handleOrientationChange = () => setIsMobileMenuOpen(false);
+    window.addEventListener('orientationchange', handleOrientationChange);
+    return () => window.removeEventListener('orientationchange', handleOrientationChange);
+  }, []);
+
+  const isHomepage = pathname === '/';
+  const showLightLinks = isHomepage && !isScrolled && !isMobileMenuOpen;
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+          ? 'shadow-sm'
+          : ''
       }`}
+      style={{
+        backgroundColor: isScrolled
+          ? 'var(--color-nav-bg)'
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none',
+        borderBottom: isScrolled ? '1px solid var(--color-border)' : 'none',
+      }}
       role="navigation"
       aria-label="Hauptnavigation"
     >
@@ -34,7 +123,9 @@ export default function Navigation() {
             className="flex items-center gap-2 text-xl font-bold"
             style={{ fontFamily: 'var(--font-jakarta)' }}
           >
-            <span style={{ color: 'var(--color-primary)' }}>Werkpilot</span>
+            <span style={{ color: showLightLinks ? '#FFFFFF' : 'var(--color-primary)' }}>
+              Werkpilot
+            </span>
             <svg
               width="20"
               height="20"
@@ -43,57 +134,28 @@ export default function Navigation() {
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              <rect x="8" y="2" width="4" height="7" fill="#D4760A" />
-              <rect x="2" y="8" width="7" height="4" fill="#D4760A" />
-              <rect x="11" y="8" width="7" height="4" fill="#D4760A" />
-              <rect x="8" y="11" width="4" height="7" fill="#D4760A" />
+              <rect x="8" y="2" width="4" height="7" fill="var(--color-warm)" />
+              <rect x="2" y="8" width="7" height="4" fill="var(--color-warm)" />
+              <rect x="11" y="8" width="7" height="4" fill="var(--color-warm)" />
+              <rect x="8" y="11" width="4" height="7" fill="var(--color-warm)" />
             </svg>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/dienstleistungen"
-              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Dienstleistungen
-            </Link>
-            <Link
-              href="/preise"
-              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Preise
-            </Link>
-            <Link
-              href="/ueber-uns"
-              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Über uns
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/resources"
-              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Ressourcen
-            </Link>
-            <Link
-              href="/kontakt"
-              className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Kontakt
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="nav-link text-sm font-medium transition-colors"
+                style={{
+                  color: showLightLinks ? 'rgba(255,255,255,0.85)' : 'var(--color-text)',
+                }}
+                aria-current={pathname === link.href ? 'page' : undefined}
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link
               href="/fitness-check"
               className="btn btn-primary text-sm"
@@ -106,9 +168,10 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            ref={menuButtonRef}
+            className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Menü öffnen"
+            aria-label={isMobileMenuOpen ? 'Menü schliessen' : 'Menü öffnen'}
             aria-expanded={isMobileMenuOpen}
           >
             <svg
@@ -117,94 +180,73 @@ export default function Navigation() {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               {isMobileMenuOpen ? (
-                <>
-                  <path
-                    d="M6 18L18 6M6 6l12 12"
-                    stroke="var(--color-primary)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </>
+                <path
+                  d="M6 18L18 6M6 6l12 12"
+                  stroke={showLightLinks ? '#FFFFFF' : 'var(--color-primary)'}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               ) : (
-                <>
-                  <path
-                    d="M3 12h18M3 6h18M3 18h18"
-                    stroke="var(--color-primary)"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </>
+                <path
+                  d="M3 12h18M3 6h18M3 18h18"
+                  stroke={showLightLinks ? '#FFFFFF' : 'var(--color-primary)'}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               )}
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu — Fullscreen Overlay */}
         {isMobileMenuOpen && (
           <div
-            className="md:hidden pb-6 space-y-4"
+            ref={mobileMenuRef}
+            className="fixed inset-0 top-0 z-40 flex flex-col items-center justify-center mobile-menu-overlay md:hidden"
+            style={{ backgroundColor: '#0F172A' }}
             role="menu"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
-            <Link
-              href="/dienstleistungen"
-              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
+            {/* Close button inside overlay */}
+            <button
+              className="absolute top-6 right-4 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Menü schliessen"
             >
-              Dienstleistungen
-            </Link>
-            <Link
-              href="/preise"
-              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Preise
-            </Link>
-            <Link
-              href="/ueber-uns"
-              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Über uns
-            </Link>
-            <Link
-              href="/blog"
-              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/resources"
-              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Ressourcen
-            </Link>
-            <Link
-              href="/kontakt"
-              className="block py-2 text-base font-medium hover:text-[var(--color-accent)] transition-colors"
-              style={{ color: 'var(--color-text)' }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Kontakt
-            </Link>
-            <Link
-              href="/fitness-check"
-              className="btn btn-primary inline-block mt-4"
-              onClick={() => setIsMobileMenuOpen(false)}
-              data-track="cta-nav-mobile"
-            >
-              Gratis Fitness-Check &rarr;
-            </Link>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 18L18 6M6 6l12 12" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            <div className="flex flex-col items-center gap-6">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="mobile-nav-item text-2xl font-semibold text-white/90 hover:text-white transition-colors"
+                  style={{ animationDelay: `${index * 60}ms` }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-current={pathname === link.href ? 'page' : undefined}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                href="/fitness-check"
+                className="mobile-nav-item btn btn-primary mt-4 text-lg"
+                style={{ animationDelay: `${navLinks.length * 60}ms` }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                data-track="cta-nav-mobile"
+              >
+                Gratis Fitness-Check &rarr;
+              </Link>
+            </div>
           </div>
         )}
       </div>

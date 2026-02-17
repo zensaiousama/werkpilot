@@ -1,0 +1,105 @@
+{
+  "company": "Werkpilot",
+  "tagline": "Swiss AI Automation for Modern Business",
+  "founded": "2025",
+  "headquarters": "Switzerland",
+  "lastUpdated": "2026-02-13",
+  "values": [
+    {
+      "name": "Innovation",
+      "nameDE": "Innovation",
+      "description": "AI-first approach to solving business problems. We constantly explore new technologies and methodologies to deliver better solutions.",
+      "descriptionDE": "KI-zuerst Ansatz zur Loesung geschaeftlicher Probleme. Wir erforschen staendig neue Technologien und Methoden, um bessere Loesungen zu liefern.",
+      "principles": [
+        "Challenge the status quo",
+        "Embrace experimentation and learning from failure",
+        "Stay curious about emerging technologies",
+        "Apply AI where it creates real value, not just because we can"
+      ],
+      "linkedinNarrative": "At Werkpilot, innovation is not just a buzzword. It is how we think every day. From our AI agents that automate entire business processes to the way we optimize our own workflows, we believe the best solutions come from questioning assumptions and building something better.",
+      "icon": "lightbulb"
+    },
+    {
+      "name": "Schweizer Qualitaet",
+      "nameDE": "Schweizer Qualitaet",
+      "description": "Swiss precision and reliability in everything we do. Our clients trust us because we deliver consistently high-quality results.",
+      "descriptionDE": "Schweizer Praezision und Zuverlaessigkeit in allem, was wir tun. Unsere Kunden vertrauen uns, weil wir konstant hochwertige Ergebnisse liefern.",
+      "principles": [
+        "Every deliverable reflects Swiss standards of excellence",
+        "Measure twice, deliver once",
+        "Consistency is more important than occasional brilliance",
+        "Take pride in the details others overlook"
+      ],
+      "linkedinNarrative": "Made in Switzerland is not just about watches and chocolate. At Werkpilot, Swiss quality means every AI automation we build, every piece of content we deliver, and every client interaction reflects the precision and reliability our country is known for.",
+      "icon": "shield-check"
+    },
+    {
+      "name": "Kundenorientierung",
+      "nameDE": "Kundenorientierung",
+      "description": "Customer success is our success. We build lasting partnerships by deeply understanding and exceeding client expectations.",
+      "descriptionDE": "Kundenerfolg ist unser Erfolg. Wir bauen dauerhafte Partnerschaften auf, indem wir Kundenerwartungen tiefgreifend verstehen und uebertreffen.",
+      "principles": [
+        "Listen first, then solve",
+        "Proactively communicate, especially when things go wrong",
+        "Measure success by client outcomes, not just deliverables",
+        "Every client interaction is an opportunity to build trust"
+      ],
+      "linkedinNarrative": "Our clients are not just customers — they are partners on a shared journey toward smarter business. At Werkpilot, we measure our success by theirs. When our AI solutions save a client 20 hours a week, that is what drives us forward.",
+      "icon": "users"
+    },
+    {
+      "name": "Effizienz",
+      "nameDE": "Effizienz",
+      "description": "Automate what can be automated, focus humans on what matters. We practice what we preach by optimizing our own operations.",
+      "descriptionDE": "Automatisiere, was automatisiert werden kann, fokussiere Menschen auf das Wesentliche. Wir leben vor, was wir predigen, indem wir unsere eigenen Prozesse optimieren.",
+      "principles": [
+        "If you do it twice, automate it",
+        "Optimize for outcomes, not busyness",
+        "Respect everyone's time — meetings should have clear agendas and outcomes",
+        "Use data to make decisions, not gut feelings"
+      ],
+      "linkedinNarrative": "We believe the future of work is not about working more hours — it is about working smarter. At Werkpilot, we use our own AI agents to automate internal processes, freeing our team to focus on creativity, strategy, and human connection.",
+      "icon": "zap"
+    },
+    {
+      "name": "Vertrauen",
+      "nameDE": "Vertrauen",
+      "description": "Trust through transparency, reliability, and results. We build trust with clients, freelancers, and each other through consistent actions.",
+      "descriptionDE": "Vertrauen durch Transparenz, Zuverlaessigkeit und Ergebnisse. Wir bauen Vertrauen mit Kunden, Freelancern und untereinander durch konsistentes Handeln auf.",
+      "principles": [
+        "Be transparent about challenges and limitations",
+        "Follow through on every commitment",
+        "Give and receive honest feedback with respect",
+        "Trust the team and give autonomy with accountability"
+      ],
+      "linkedinNarrative": "Trust is the foundation of everything at Werkpilot. From how we handle client data to how we work with our freelance team across 5 countries — transparency and reliability are non-negotiable. When we say we will deliver, we deliver.",
+      "icon": "handshake"
+    }
+  ],
+  "mission": {
+    "en": "To empower businesses with intelligent automation that combines Swiss quality with cutting-edge AI, making world-class efficiency accessible to companies of all sizes.",
+    "de": "Unternehmen mit intelligenter Automatisierung zu staerken, die Schweizer Qualitaet mit modernster KI verbindet und erstklassige Effizienz fuer Unternehmen jeder Groesse zugaenglich macht."
+  },
+  "vision": {
+    "en": "A world where every business operates at its full potential, with AI handling the routine so humans can focus on what truly matters.",
+    "de": "Eine Welt, in der jedes Unternehmen sein volles Potenzial ausschoepft, wobei KI die Routine uebernimmt, damit Menschen sich auf das Wesentliche konzentrieren koennen."
+  },
+  "employerBrandPillars": [
+    {
+      "name": "Work Smart, Not Hard",
+      "description": "Async-first, flexible hours, results-oriented culture"
+    },
+    {
+      "name": "Grow with AI",
+      "description": "Work at the forefront of AI technology, continuous learning"
+    },
+    {
+      "name": "Swiss Roots, Global Reach",
+      "description": "Based in Switzerland, team across the globe"
+    },
+    {
+      "name": "Impact from Day One",
+      "description": "Small team, big impact — your work matters immediately"
+    }
+  ]
+}

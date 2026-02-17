@@ -1,0 +1,84 @@
+{
+  "id": "agent-error-escalation",
+  "name": "Agent Error Escalation",
+  "description": "Workflow for handling agent errors: retry, escalate to ops, notify CEO if critical",
+  "version": "1.0.0",
+  "trigger": "agent_error",
+  "sla": {
+    "maxDurationMinutes": 30,
+    "alertAfterMinutes": 10
+  },
+  "steps": [
+    {
+      "id": "log-error",
+      "name": "Log error details",
+      "agent": "operations-project-tracker",
+      "action": "logIncident",
+      "input": {
+        "type": "agent_error",
+        "agent": "{{trigger.data.agentName}}",
+        "action": "{{trigger.data.action}}",
+        "error": "{{trigger.data.error}}",
+        "taskId": "{{trigger.data.taskId}}",
+        "retryCount": "{{trigger.data.retryCount}}",
+        "severity": "high"
+      },
+      "timeout": 15000,
+      "retries": 1,
+      "onFailure": "continue"
+    },
+    {
+      "id": "retry-task",
+      "name": "Attempt task retry with different strategy",
+      "agent": "process-automation",
+      "action": "retryWithStrategy",
+      "input": {
+        "taskId": "{{trigger.data.taskId}}",
+        "strategy": "alternative-method"
+      },
+      "dependsOn": ["log-error"],
+      "delay": "2m",
+      "timeout": 60000,
+      "retries": 1,
+      "onFailure": "continue"
+    },
+    {
+      "id": "escalate-to-ops",
+      "name": "Escalate to operations team",
+      "agent": "operations-project-tracker",
+      "action": "escalate",
+      "input": {
+        "incidentType": "agent_error",
+        "agentName": "{{trigger.data.agentName}}",
+        "severity": "high",
+        "details": "{{trigger.data.error}}"
+      },
+      "dependsOn": ["retry-task"],
+      "timeout": 20000,
+      "retries": 1,
+      "onFailure": "continue"
+    },
+    {
+      "id": "notify-ceo",
+      "name": "Notify CEO of critical agent error",
+      "agent": "operations-project-tracker",
+      "action": "notifyCEO",
+      "input": {
+        "subject": "Agent Error Alert",
+        "agentName": "{{trigger.data.agentName}}",
+        "error": "{{trigger.data.error}}",
+        "retryCount": "{{trigger.data.retryCount}}"
+      },
+      "dependsOn": ["escalate-to-ops"],
+      "timeout": 15000,
+      "retries": 2,
+      "onFailure": "continue"
+    }
+  ],
+  "onComplete": {
+    "notifyTo": "ops"
+  },
+  "onFailure": {
+    "alertTo": "ceo"
+  }
+}

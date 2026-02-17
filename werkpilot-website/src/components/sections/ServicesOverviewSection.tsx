@@ -1,12 +1,10 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import AnimatedSection from '@/components/AnimatedSection';
 
 const services = [
   {
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path
           d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
           stroke="currentColor"
@@ -23,7 +21,7 @@ const services = [
   },
   {
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path
           d="M13 10V3L4 14h7v7l9-11h-7z"
           stroke="currentColor"
@@ -40,7 +38,7 @@ const services = [
   },
   {
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path
           d="M7 21h10M12 3v18m0 0l-5-5m5 5l5-5"
           stroke="currentColor"
@@ -60,34 +58,104 @@ const services = [
 
 export default function ServicesOverviewSection() {
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Werkpilot Dienstleistungen',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                item: {
+                  '@type': 'Service',
+                  name: 'Kunden gewinnen',
+                  description: 'SEO, Content Marketing, Social Media Management, Email Marketing und Lead Generation für Schweizer KMUs',
+                  provider: { '@type': 'Organization', name: 'Werkpilot' },
+                  areaServed: { '@type': 'Country', name: 'Switzerland' },
+                  offers: {
+                    '@type': 'Offer',
+                    price: '2000',
+                    priceCurrency: 'CHF',
+                    priceSpecification: {
+                      '@type': 'UnitPriceSpecification',
+                      price: '2000',
+                      priceCurrency: 'CHF',
+                      unitText: 'MONTH',
+                    },
+                  },
+                },
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                item: {
+                  '@type': 'Service',
+                  name: 'Effizienz',
+                  description: 'Prozess-Automation, Kommunikation, Reporting und Workflow-Optimierung für Schweizer KMUs',
+                  provider: { '@type': 'Organization', name: 'Werkpilot' },
+                  areaServed: { '@type': 'Country', name: 'Switzerland' },
+                  offers: {
+                    '@type': 'Offer',
+                    price: '1500',
+                    priceCurrency: 'CHF',
+                    priceSpecification: {
+                      '@type': 'UnitPriceSpecification',
+                      price: '1500',
+                      priceCurrency: 'CHF',
+                      unitText: 'MONTH',
+                    },
+                  },
+                },
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                item: {
+                  '@type': 'Service',
+                  name: 'Wachstum',
+                  description: 'Alles aus Kunden + Effizienz plus Strategie, Advanced Analytics und Expansion Support',
+                  provider: { '@type': 'Organization', name: 'Werkpilot' },
+                  areaServed: { '@type': 'Country', name: 'Switzerland' },
+                  offers: {
+                    '@type': 'Offer',
+                    price: '5000',
+                    priceCurrency: 'CHF',
+                    priceSpecification: {
+                      '@type': 'UnitPriceSpecification',
+                      price: '5000',
+                      priceCurrency: 'CHF',
+                      unitText: 'MONTH',
+                    },
+                  },
+                },
+              },
+            ],
+          }),
+        }}
+      />
+      <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 style={{ fontFamily: 'var(--font-jakarta)' }}>Unsere Dienstleistungen</h2>
+        <AnimatedSection className="text-center mb-16">
+          <h2>Unsere Dienstleistungen</h2>
           <p
             className="text-xl mt-4 max-w-2xl mx-auto"
             style={{ color: 'var(--color-text-secondary)' }}
           >
             Wählen Sie das Paket, das zu Ihren Zielen passt
           </p>
-        </motion.div>
+        </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
           {services.map((service, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`card p-8 relative ${service.featured ? 'ring-2' : ''}`}
-              style={service.featured ? { borderColor: 'var(--color-accent)' } : {}}
+              delay={index * 100}
+              className="card p-8 relative"
+              style={service.featured ? { borderColor: '#2563EB', borderWidth: '2px' } : {}}
             >
               {service.featured && (
                 <div
@@ -122,6 +190,7 @@ export default function ServicesOverviewSection() {
                       viewBox="0 0 20 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
                     >
                       <path
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -133,27 +202,22 @@ export default function ServicesOverviewSection() {
                 ))}
               </ul>
               <Link href={service.link} className="btn btn-secondary w-full justify-center">
-                Mehr erfahren →
+                Mehr erfahren &rarr;
               </Link>
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
+        <AnimatedSection className="text-center" delay={400}>
           <Link
             href="/dienstleistungen"
             className="btn btn-primary text-lg"
           >
-            Alle Pakete vergleichen →
+            Alle Pakete vergleichen &rarr;
           </Link>
-        </motion.div>
+        </AnimatedSection>
       </div>
     </section>
+    </>
   );
 }

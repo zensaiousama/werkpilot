@@ -1,0 +1,59 @@
+{
+  "competitors": [
+    {
+      "id": "comp-hubspot",
+      "name": "HubSpot",
+      "type": "international",
+      "focus": "All-in-one marketing, sales, CRM",
+      "targetMarket": "SMB to Enterprise",
+      "monitorUrls": {
+        "homepage": "https://www.hubspot.com",
+        "pricing": "https://www.hubspot.com/pricing",
+        "features": "https://www.hubspot.com/products"
+      },
+      "alertKeywords": ["ai", "automation", "swiss", "kmu", "sme", "pricing"]
+    },
+    {
+      "id": "comp-mailchimp",
+      "name": "Mailchimp",
+      "type": "international",
+      "focus": "Email marketing & automation",
+      "targetMarket": "Small business",
+      "monitorUrls": {
+        "homepage": "https://mailchimp.com",
+        "pricing": "https://mailchimp.com/pricing",
+        "features": "https://mailchimp.com/features"
+      },
+      "alertKeywords": ["ai", "automation", "smb", "pricing"]
+    },
+    {
+      "id": "comp-activecampaign",
+      "name": "ActiveCampaign",
+      "type": "international",
+      "focus": "Marketing automation & CRM",
+      "targetMarket": "SMB",
+      "monitorUrls": {
+        "homepage": "https://www.activecampaign.com",
+        "pricing": "https://www.activecampaign.com/pricing",
+        "features": "https://www.activecampaign.com/marketing-automation"
+      },
+      "alertKeywords": ["ai", "predictive", "automation", "pricing"]
+    }
+  ],
+  "featureComparisonMatrix": {
+    "features": [
+      "Email Marketing",
+      "Marketing Automation",
+      "AI Content Generation",
+      "Social Media Management",
+      "SEO Tools"
+    ],
+    "werkpilot": [true, true, true, true, true],
+    "ratings": {
+      "comp-hubspot": [true, true, true, true, true],
+      "comp-mailchimp": [true, true, true, true, false],
+      "comp-activecampaign": [true, true, false, false, false]
+    },
+    "lastUpdated": "2026-02-14"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "description": "Competitors to monitor for the Product Strategy Agent",
+  "scanFrequency": "weekly",
+  "competitors": [
+    {
+      "name": "Jasper AI",
+      "category": "AI Content Platform",
+      "urls": [
+        "https://www.jasper.ai/pricing",
+        "https://www.jasper.ai/features",
+        "https://www.jasper.ai/blog"
+      ],
+      "notes": "AI marketing content generator, direct competitor for content automation"
+    },
+    {
+      "name": "Copy.ai",
+      "category": "AI Content Platform",
+      "urls": [
+        "https://www.copy.ai/pricing",
+        "https://www.copy.ai/features",
+        "https://www.copy.ai/blog"
+      ],
+      "notes": "AI writing assistant for marketing teams"
+    },
+    {
+      "name": "HubSpot",
+      "category": "Marketing Automation",
+      "urls": [
+        "https://www.hubspot.com/pricing/marketing",
+        "https://www.hubspot.com/products/artificial-intelligence",
+        "https://www.hubspot.com/new"
+      ],
+      "notes": "Full marketing suite with AI features, enterprise competitor"
+    },
+    {
+      "name": "Writesonic",
+      "category": "AI Content Platform",
+      "urls": [
+        "https://writesonic.com/pricing",
+        "https://writesonic.com/features"
+      ],
+      "notes": "AI writing and SEO optimization platform"
+    },
+    {
+      "name": "Surfer SEO",
+      "category": "SEO Platform",
+      "urls": [
+        "https://surferseo.com/pricing",
+        "https://surferseo.com/features"
+      ],
+      "notes": "AI-powered SEO content optimization"
+    },
+    {
+      "name": "Zapier",
+      "category": "Automation Platform",
+      "urls": [
+        "https://zapier.com/pricing",
+        "https://zapier.com/ai"
+      ],
+      "notes": "Automation platform adding AI capabilities, indirect competitor"
+    },
+    {
+      "name": "Make (Integromat)",
+      "category": "Automation Platform",
+      "urls": [
+        "https://www.make.com/en/pricing",
+        "https://www.make.com/en/features"
+      ],
+      "notes": "Visual automation platform, competes on workflow automation"
+    },
+    {
+      "name": "Contentful AI",
+      "category": "CMS with AI",
+      "urls": [
+        "https://www.contentful.com/pricing/",
+        "https://www.contentful.com/products/ai/"
+      ],
+      "notes": "Headless CMS with AI content features"
+    }
+  ]
+}

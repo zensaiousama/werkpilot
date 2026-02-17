@@ -1,0 +1,309 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "company": {
+    "name": "Werkpilot",
+    "legalName": "Werkpilot GmbH",
+    "tagline": {
+      "de": "Digitale Loesungen fuer Schweizer KMU",
+      "fr": "Solutions numeriques pour les PME suisses",
+      "it": "Soluzioni digitali per le PMI svizzere",
+      "en": "Digital Solutions for Swiss SMEs"
+    },
+    "description": {
+      "de": "Werkpilot ist eine Schweizer Digitalagentur, die moderne Websites, Webanwendungen und digitale Loesungen fuer kleine und mittlere Unternehmen (KMU) entwickelt. Wir kombinieren Schweizer Qualitaet mit modernster Technologie.",
+      "en": "Werkpilot is a Swiss digital agency that builds modern websites, web applications, and digital solutions for small and medium enterprises (SMEs). We combine Swiss quality with cutting-edge technology."
+    },
+    "website": "https://werkpilot.ch",
+    "founded": "2025",
+    "location": "Switzerland"
+  },
+  "services": {
+    "website_design": {
+      "name": {
+        "de": "Website Design & Entwicklung",
+        "fr": "Design & Developpement de sites web",
+        "it": "Design & Sviluppo di siti web",
+        "en": "Website Design & Development"
+      },
+      "description": {
+        "de": "Massgeschneiderte, responsive Websites, die auf allen Geraeten perfekt funktionieren. Modernes Design, schnelle Ladezeiten, SEO-optimiert.",
+        "en": "Custom responsive websites that work perfectly on all devices. Modern design, fast loading, SEO optimized."
+      },
+      "features": [
+        "Responsive Design",
+        "SEO Optimization",
+        "CMS Integration",
+        "Performance Optimization",
+        "SSL Security",
+        "Multi-language Support"
+      ],
+      "startingPrice": "CHF 2'900"
+    },
+    "web_applications": {
+      "name": {
+        "de": "Webanwendungen & Portale",
+        "en": "Web Applications & Portals"
+      },
+      "description": {
+        "de": "Individuelle Webanwendungen, Kundenportale, Buchungssysteme und mehr. Von der Idee bis zum Launch.",
+        "en": "Custom web applications, customer portals, booking systems and more. From idea to launch."
+      },
+      "features": [
+        "Custom Development",
+        "User Authentication",
+        "API Integrations",
+        "Database Design",
+        "Admin Dashboards",
+        "Cloud Hosting"
+      ],
+      "startingPrice": "CHF 12'900"
+    },
+    "seo_optimization": {
+      "name": {
+        "de": "SEO & Performance",
+        "en": "SEO & Performance"
+      },
+      "description": {
+        "de": "Werden Sie bei Google gefunden. Technisches SEO, Content-Optimierung und Performance-Tuning fuer Ihre Website.",
+        "en": "Get found on Google. Technical SEO, content optimization, and performance tuning for your website."
+      },
+      "startingPrice": "CHF 1'500"
+    },
+    "ecommerce": {
+      "name": {
+        "de": "E-Commerce Loesungen",
+        "en": "E-Commerce Solutions"
+      },
+      "description": {
+        "de": "Online verkaufen mit professionellem Webshop. Integration von Zahlungssystemen, Versand und Lagerverwaltung.",
+        "en": "Sell online with a professional web shop. Integration of payment systems, shipping, and inventory management."
+      },
+      "startingPrice": "CHF 6'400"
+    },
+    "maintenance": {
+      "name": {
+        "de": "Wartung & Support",
+        "en": "Maintenance & Support"
+      },
+      "description": {
+        "de": "Laufende Wartung, Sicherheits-Updates, Backups und technischer Support fuer Ihre Website.",
+        "en": "Ongoing maintenance, security updates, backups, and technical support for your website."
+      },
+      "startingPrice": "CHF 290/Monat"
+    },
+    "fitness_check": {
+      "name": {
+        "de": "Website Fitness Check",
+        "en": "Website Fitness Check"
+      },
+      "description": {
+        "de": "Kostenlose Analyse Ihrer Website: Performance, SEO, Mobile-Tauglichkeit, Sicherheit und Verbesserungsvorschlaege.",
+        "en": "Free analysis of your website: performance, SEO, mobile readiness, security, and improvement suggestions."
+      },
+      "startingPrice": "Kostenlos / Free",
+      "isFree": true
+    }
+  },
+  "pricing": {
+    "packages": {
+      "starter": {
+        "name": "Starter",
+        "price": "CHF 2'900",
+        "description": {
+          "de": "Professionelle One-Page-Website fuer kleine Unternehmen und Startups",
+          "en": "Professional one-page website for small businesses and startups"
+        },
+        "bestFor": {
+          "de": "Kleine Unternehmen, die eine professionelle Online-Praesenz brauchen",
+          "en": "Small businesses needing a professional online presence"
+        }
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "CHF 5'900",
+        "description": {
+          "de": "Mehrseitige Website mit CMS fuer wachsende Unternehmen",
+          "en": "Multi-page website with CMS for growing businesses"
+        },
+        "bestFor": {
+          "de": "Wachsende Unternehmen mit mehreren Dienstleistungen oder Produkten",
+          "en": "Growing businesses with multiple services or products"
+        }
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "ab CHF 12'900",
+        "description": {
+          "de": "Massgeschneiderte Loesung fuer komplexe Anforderungen",
+          "en": "Custom solution for complex requirements"
+        },
+        "bestFor": {
+          "de": "Unternehmen mit individuellen Anforderungen und Integrationen",
+          "en": "Businesses with custom requirements and integrations"
+        }
+      }
+    },
+    "paymentTerms": {
+      "de": "40% Anzahlung, 30% bei Meilenstein, 30% bei Abschluss. Zahlbar innert 30 Tagen.",
+      "en": "40% deposit, 30% at milestone, 30% at completion. Payable within 30 days."
+    },
+    "paymentMethods": ["Bankueberweisung", "TWINT"]
+  },
+  "process": {
+    "steps": [
+      {
+        "step": 1,
+        "name": {
+          "de": "Erstgespraech",
+          "en": "Initial Consultation"
+        },
+        "description": {
+          "de": "Wir lernen Ihr Unternehmen kennen, verstehen Ihre Ziele und besprechen die Moeglichkeiten.",
+          "en": "We get to know your business, understand your goals, and discuss possibilities."
+        },
+        "duration": "30 min"
+      },
+      {
+        "step": 2,
+        "name": {
+          "de": "Offerte & Konzept",
+          "en": "Quote & Concept"
+        },
+        "description": {
+          "de": "Sie erhalten eine detaillierte Offerte und ein Konzept fuer Ihr Projekt.",
+          "en": "You receive a detailed quote and concept for your project."
+        },
+        "duration": "2-3 Tage"
+      },
+      {
+        "step": 3,
+        "name": {
+          "de": "Design & Entwicklung",
+          "en": "Design & Development"
+        },
+        "description": {
+          "de": "Wir setzen Ihr Projekt um. Sie werden regelmaessig ueber den Fortschritt informiert.",
+          "en": "We implement your project. You are regularly updated on progress."
+        },
+        "duration": "2-8 Wochen"
+      },
+      {
+        "step": 4,
+        "name": {
+          "de": "Review & Launch",
+          "en": "Review & Launch"
+        },
+        "description": {
+          "de": "Sie pruefen das Ergebnis, wir nehmen Anpassungen vor und gehen live.",
+          "en": "You review the result, we make adjustments, and go live."
+        },
+        "duration": "1 Woche"
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": {
+        "de": "Wie lange dauert die Erstellung einer Website?",
+        "en": "How long does it take to create a website?"
+      },
+      "answer": {
+        "de": "Je nach Umfang 2-8 Wochen. Eine einfache One-Page-Website ist in 2 Wochen fertig, komplexere Projekte dauern 6-8 Wochen.",
+        "en": "Depending on scope, 2-8 weeks. A simple one-page website is ready in 2 weeks, more complex projects take 6-8 weeks."
+      }
+    },
+    {
+      "question": {
+        "de": "Kann ich die Website selbst bearbeiten?",
+        "en": "Can I edit the website myself?"
+      },
+      "answer": {
+        "de": "Ja! Ab dem Professional-Paket erhalten Sie ein CMS (Content Management System), mit dem Sie Texte, Bilder und mehr selbst anpassen koennen.",
+        "en": "Yes! Starting from the Professional package, you get a CMS where you can update texts, images, and more yourself."
+      }
+    },
+    {
+      "question": {
+        "de": "Was kostet eine Website?",
+        "en": "What does a website cost?"
+      },
+      "answer": {
+        "de": "Unsere Pakete starten bei CHF 2'900 fuer eine One-Page-Website. Das Professional-Paket kostet CHF 5'900 und Enterprise-Projekte ab CHF 12'900. Genaue Kosten haengen von Ihren Anforderungen ab.",
+        "en": "Our packages start at CHF 2,900 for a one-page website. The Professional package costs CHF 5,900 and Enterprise projects from CHF 12,900. Exact costs depend on your requirements."
+      }
+    },
+    {
+      "question": {
+        "de": "Bieten Sie Hosting an?",
+        "en": "Do you offer hosting?"
+      },
+      "answer": {
+        "de": "Ja, wir bieten Managed Hosting fuer CHF 49/Monat an. Darin enthalten sind Hosting, SSL-Zertifikat, Backups und technischer Support.",
+        "en": "Yes, we offer Managed Hosting for CHF 49/month. This includes hosting, SSL certificate, backups, and technical support."
+      }
+    },
+    {
+      "question": {
+        "de": "Arbeiten Sie auch mit bestehenden Websites?",
+        "en": "Do you work with existing websites?"
+      },
+      "answer": {
+        "de": "Ja, wir koennen bestehende Websites redesignen, optimieren oder erweitern. Starten Sie mit unserem kostenlosen Website Fitness Check.",
+        "en": "Yes, we can redesign, optimize, or extend existing websites. Start with our free Website Fitness Check."
+      }
+    },
+    {
+      "question": {
+        "de": "In welchen Sprachen erstellen Sie Websites?",
+        "en": "In which languages do you create websites?"
+      },
+      "answer": {
+        "de": "Wir erstellen Websites in Deutsch, Franzoesisch, Italienisch und Englisch. Weitere Sprachen auf Anfrage.",
+        "en": "We create websites in German, French, Italian, and English. Additional languages on request."
+      }
+    },
+    {
+      "question": {
+        "de": "Was ist der Website Fitness Check?",
+        "en": "What is the Website Fitness Check?"
+      },
+      "answer": {
+        "de": "Ein kostenloser, umfassender Check Ihrer bestehenden Website. Wir analysieren Performance, SEO, Sicherheit und Mobile-Tauglichkeit und geben Ihnen konkrete Verbesserungsvorschlaege.",
+        "en": "A free, comprehensive check of your existing website. We analyze performance, SEO, security, and mobile readiness and give you specific improvement suggestions."
+      }
+    },
+    {
+      "question": {
+        "de": "Machen Sie auch Online-Shops?",
+        "en": "Do you also build online shops?"
+      },
+      "answer": {
+        "de": "Ja! Wir integrieren E-Commerce-Loesungen ab CHF 6'400. Von einfachen Produktkatalogen bis zu vollstaendigen Webshops mit Zahlung und Versand.",
+        "en": "Yes! We integrate e-commerce solutions from CHF 6,400. From simple product catalogs to complete web shops with payment and shipping."
+      }
+    }
+  ],
+  "differentiators": {
+    "de": [
+      "100% Swiss Quality - Entwicklung in der Schweiz",
+      "Persoenlicher Ansprechpartner fuer jedes Projekt",
+      "Moderne Technologien (Next.js, React, Node.js)",
+      "SEO-optimiert ab Start",
+      "Transparente Preise, keine versteckten Kosten",
+      "Kostenloser Website Fitness Check",
+      "Schnelle Ladezeiten (Lighthouse 100/100)"
+    ],
+    "en": [
+      "100% Swiss Quality - Developed in Switzerland",
+      "Dedicated contact person for every project",
+      "Modern technologies (Next.js, React, Node.js)",
+      "SEO-optimized from the start",
+      "Transparent pricing, no hidden costs",
+      "Free Website Fitness Check",
+      "Fast loading times (Lighthouse 100/100)"
+    ]
+  },
+  "bookingUrl": "https://werkpilot.ch/termin",
+  "fitnessCheckUrl": "https://werkpilot.ch/fitness-check"
+}

@@ -1,0 +1,87 @@
+{
+  "name": "email-routing",
+  "version": "1.0.0",
+  "description": "Routes incoming emails to the appropriate department or agent based on content classification. Handles support requests, sales inquiries, and general correspondence.",
+  "trigger": {
+    "type": "email_received",
+    "event": "new_email",
+    "mailbox": "info@werkpilot.ch"
+  },
+  "retry": true,
+  "maxRetries": 2,
+  "steps": [
+    {
+      "name": "classify_email",
+      "type": "ai_classify",
+      "prompt": "Classify this incoming email and determine how it should be routed.\n\nFrom: {{from}}\nSubject: {{subject}}\nBody: {{body}}\n\nCategories:\n- sales_inquiry: New business interest, pricing questions, demo requests\n- support_request: Technical issues, bug reports, help needed\n- partnership: Collaboration proposals, partnership offers\n- invoice: Bills, payment confirmations, financial documents\n- spam: Unsolicited marketing, phishing attempts\n- general: General questions, feedback, other\n\nReturn JSON: {\n  \"category\": \"...\",\n  \"confidence\": 0.0-1.0,\n  \"department\": \"sales|support|finance|operations|ceo\",\n  \"priority\": \"low|medium|high|urgent\",\n  \"summary\": \"Brief 1-sentence summary\",\n  \"suggestedAction\": \"...\",\n  \"language\": \"de|en|fr|it\"\n}",
+      "model": "claude-haiku-4-5-20251001",
+      "maxTokens": 400,
+      "required": true
+    },
+    {
+      "name": "check_known_sender",
+      "type": "fetch_records",
+      "table": "Contacts",
+      "filter": "{Email} = \"{{from}}\"",
+      "required": false
+    },
+    {
+      "name": "filter_spam",
+      "type": "condition",
+      "condition": {
+        "field": "category",
+        "operator": "not_equals",
+        "value": "spam"
+      },
+      "required": true
+    },
+    {
+      "name": "create_ticket",
+      "type": "create_record",
+      "table": "InboundEmails",
+      "fields": {
+        "From": "{{from}}",
+        "Subject": "{{subject}}",
+        "Category": "{{category}}",
+        "Department": "{{department}}",
+        "Priority": "{{priority}}",
+        "Summary": "{{summary}}",
+        "SuggestedAction": "{{suggestedAction}}",
+        "Language": "{{language}}",
+        "ReceivedAt": "{{receivedAt}}",
+        "Status": "New"
+      },
+      "required": true
+    },
+    {
+      "name": "draft_response",
+      "type": "ai_generate",
+      "prompt": "Draft a brief, professional acknowledgment email in {{language}} for this inquiry.\n\nOriginal email from: {{from}}\nSubject: {{subject}}\nCategory: {{category}}\n\nThe response should:\n- Acknowledge receipt of their message\n- Set expectations for response time (24h for general, 4h for urgent)\n- Be warm and professional (Swiss business style)\n- Be from the Werkpilot team\n\nReturn just the email body text.",
+      "model": "claude-haiku-4-5-20251001",
+      "maxTokens": 500,
+      "required": false
+    },
+    {
+      "name": "notify_on_high_priority",
+      "type": "condition",
+      "condition": {
+        "field": "priority",
+        "operator": "equals",
+        "value": "urgent"
+      },
+      "required": false
+    },
+    {
+      "name": "send_urgent_alert",
+      "type": "notify",
+      "subject": "URGENT Email: {{subject}} (from {{from}})",
+      "html": "<h2>Urgent Email Received</h2><p><strong>From:</strong> {{from}}</p><p><strong>Subject:</strong> {{subject}}</p><p><strong>Category:</strong> {{category}}</p><p><strong>Summary:</strong> {{summary}}</p><p><strong>Suggested Action:</strong> {{suggestedAction}}</p>",
+      "required": false
+    }
+  ],
+  "errorHandling": {
+    "onStepFailure": "continue_if_optional",
+    "onCriticalFailure": "alert_and_stop",
+    "alertEmail": true
+  }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. Mahnung</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .header {
+      border-bottom: 3px solid #1a73e8;
+      padding-bottom: 16px;
+      margin-bottom: 30px;
+    }
+    .company-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a73e8;
+    }
+    .badge {
+      display: inline-block;
+      background: #f8d7da;
+      color: #721c24;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .invoice-box {
+      background: #fff5f5;
+      border: 1px solid #f5c6cb;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .invoice-box table { width: 100%; }
+    .invoice-box td { padding: 4px 0; }
+    .invoice-box td:first-child { color: #666; width: 160px; }
+    .invoice-box td:last-child { font-weight: 600; }
+    .amount-highlight {
+      font-size: 24px;
+      font-weight: 700;
+      color: #dc3545;
+      text-align: center;
+      padding: 16px;
+    }
+    .payment-info {
+      background: #e8f4fd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .payment-info h3 { color: #1a73e8; margin-bottom: 8px; }
+    .deadline-notice {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 20px 0;
+      font-weight: 600;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="company-name">Werkpilot</div>
+  </div>
+
+  <span class="badge">2. Mahnung</span>
+
+  <h1>Zweite Zahlungserinnerung</h1>
+
+  <p>Guten Tag {{CLIENT_NAME}},</p>
+
+  <p>
+    leider mussten wir feststellen, dass trotz unserer ersten Erinnerung vom {{FIRST_REMINDER_DATE}}
+    die nachstehende Rechnung weiterhin unbezahlt ist. Wir bitten Sie, die Angelegenheit umgehend
+    zu pruefen.
+  </p>
+
+  <div class="invoice-box">
+    <table>
+      <tr><td>Rechnungsnummer:</td><td>{{INVOICE_NUMBER}}</td></tr>
+      <tr><td>Rechnungsdatum:</td><td>{{INVOICE_DATE}}</td></tr>
+      <tr><td>Urspruengliche Faelligkeit:</td><td>{{DUE_DATE}}</td></tr>
+      <tr><td>Ueberfaellig seit:</td><td>{{DAYS_OVERDUE}} Tagen</td></tr>
+      <tr><td>1. Mahnung:</td><td>{{FIRST_REMINDER_DATE}}</td></tr>
+    </table>
+    <div class="amount-highlight">CHF {{AMOUNT}}</div>
+  </div>
+
+  <div class="deadline-notice">
+    Bitte begleichen Sie den ausstehenden Betrag bis zum <strong>{{PAYMENT_DEADLINE}}</strong>.
+  </div>
+
+  <p>
+    Sollten Sie Schwierigkeiten mit der Zahlung haben, kontaktieren Sie uns bitte umgehend,
+    damit wir gemeinsam eine Loesung finden koennen. Wir sind an einer konstruktiven
+    Zusammenarbeit interessiert.
+  </p>
+
+  <div class="payment-info">
+    <h3>Zahlungsinformationen</h3>
+    <table>
+      <tr><td>IBAN:</td><td>{{IBAN}}</td></tr>
+      <tr><td>Bank:</td><td>{{BANK_NAME}}</td></tr>
+      <tr><td>Referenz:</td><td>{{PAYMENT_REFERENCE}}</td></tr>
+    </table>
+  </div>
+
+  <p>
+    Falls die Zahlung bereits erfolgt ist, bitten wir um kurze Bestaetigung mit
+    dem Zahlungsbeleg an {{COMPANY_EMAIL}}.
+  </p>
+
+  <p>
+    Freundliche Gruesse,<br>
+    <strong>Werkpilot Finance Team</strong>
+  </p>
+
+  <div class="footer">
+    <p>Werkpilot | {{COMPANY_STREET}}, {{COMPANY_ZIP}} {{COMPANY_CITY}} | {{COMPANY_EMAIL}}</p>
+    <p>Diese E-Mail wurde automatisch generiert. Bei Fragen antworten Sie bitte direkt auf diese Nachricht.</p>
+  </div>
+</body>
+</html>

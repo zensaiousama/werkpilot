@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-13",
+  "description": "Freelancer salary benchmarks by role and market for Werkpilot compensation decisions",
+  "methodology": "Aggregated from Upwork, Fiverr, Glassdoor, jobs.ch, and industry reports. Updated quarterly via AI market research.",
+  "currency": "CHF",
+  "data": {
+    "proofreader-fr/FR/CH": {
+      "role": "proofreader-fr",
+      "market": "FR/CH",
+      "hourlyRates": {
+        "entry": { "min": 20, "max": 30, "typical": 25 },
+        "mid": { "min": 30, "max": 45, "typical": 38 },
+        "senior": { "min": 40, "max": 60, "typical": 50 },
+        "expert": { "min": 55, "max": 80, "typical": 65 }
+      },
+      "projectRates": {
+        "small": { "description": "Blog post proofread (500-1000 words)", "typical": 40 },
+        "medium": { "description": "Website copy review (2000-5000 words)", "typical": 150 },
+        "large": { "description": "Full document proofread (10000+ words)", "typical": 400 }
+      },
+      "factors": [
+        "Swiss French vs. France French specialization",
+        "Technical/legal vocabulary proficiency",
+        "CAT tool experience",
+        "Turnaround time expectations"
+      ],
+      "trends": "Demand for French proofreaders in Switzerland remains stable. AI-assisted content is increasing demand for human review. Rates have increased approximately 5% YoY due to quality expectations.",
+      "confidence": "medium",
+      "researchedAt": "2026-02-13"
+    },
+    "proofreader-it/IT/CH": {
+      "role": "proofreader-it",
+      "market": "IT/CH",
+      "hourlyRates": {
+        "entry": { "min": 18, "max": 28, "typical": 23 },
+        "mid": { "min": 28, "max": 42, "typical": 35 },
+        "senior": { "min": 38, "max": 55, "typical": 48 },
+        "expert": { "min": 50, "max": 75, "typical": 60 }
+      },
+      "projectRates": {
+        "small": { "description": "Blog post proofread (500-1000 words)", "typical": 35 },
+        "medium": { "description": "Website copy review (2000-5000 words)", "typical": 130 },
+        "large": { "description": "Full document proofread (10000+ words)", "typical": 350 }
+      },
+      "factors": [
+        "Swiss Italian vs. Standard Italian",
+        "Ticino market specifics",
+        "Marketing/business content expertise",
+        "Availability (smaller talent pool)"
+      ],
+      "trends": "Italian proofreaders for Swiss market are a niche talent pool. Higher premiums for Swiss Italian specialists. Growing demand from AI content review needs.",
+      "confidence": "medium",
+      "researchedAt": "2026-02-13"
+    },
+    "virtual-assistant/Global": {
+      "role": "virtual-assistant",
+      "market": "Global",
+      "hourlyRates": {
+        "entry": { "min": 8, "max": 15, "typical": 12 },
+        "mid": { "min": 15, "max": 30, "typical": 22 },
+        "senior": { "min": 25, "max": 45, "typical": 35 },
+        "expert": { "min": 40, "max": 65, "typical": 50 }
+      },
+      "projectRates": {
+        "small": { "description": "One-off admin task", "typical": 25 },
+        "medium": { "description": "Weekly admin support (10h/week)", "typical": 800 },
+        "large": { "description": "Full-time VA (40h/week)", "typical": 2800 }
+      },
+      "factors": [
+        "Location and cost of living",
+        "Language skills (multilingual premium)",
+        "Technical skills (Airtable, Zapier, CRM)",
+        "Timezone overlap with CET",
+        "Industry-specific experience"
+      ],
+      "trends": "VA market is highly competitive globally. Premium for VAs with AI tool proficiency. European-timezone VAs command higher rates. German-speaking VAs are significantly more expensive.",
+      "confidence": "high",
+      "researchedAt": "2026-02-13"
+    },
+    "sales-freelancer/DACH": {
+      "role": "sales-freelancer",
+      "market": "DACH",
+      "hourlyRates": {
+        "entry": { "min": 30, "max": 45, "typical": 38 },
+        "mid": { "min": 40, "max": 60, "typical": 50 },
+        "senior": { "min": 55, "max": 80, "typical": 68 },
+        "expert": { "min": 75, "max": 120, "typical": 90 }
+      },
+      "projectRates": {
+        "small": { "description": "Lead list + initial outreach", "typical": 500 },
+        "medium": { "description": "Full sales cycle (1 month)", "typical": 4000 },
+        "large": { "description": "Ongoing sales representation (3 months)", "typical": 12000 }
+      },
+      "factors": [
+        "Existing network in target industry",
+        "Track record with B2B SaaS sales",
+        "Commission vs. base rate preferences",
+        "Swiss market knowledge",
+        "German native vs. business-level German"
+      ],
+      "trends": "High demand for DACH B2B sales freelancers, especially in SaaS and AI. Base rates are increasing as companies compete for talent. Commission-heavy models becoming less popular; freelancers prefer guaranteed base.",
+      "confidence": "medium",
+      "researchedAt": "2026-02-13"
+    },
+    "content-writer/DACH": {
+      "role": "content-writer",
+      "market": "DACH",
+      "hourlyRates": {
+        "entry": { "min": 20, "max": 35, "typical": 28 },
+        "mid": { "min": 35, "max": 55, "typical": 45 },
+        "senior": { "min": 50, "max": 75, "typical": 60 },
+        "expert": { "min": 70, "max": 110, "typical": 85 }
+      },
+      "projectRates": {
+        "small": { "description": "Blog post (800-1200 words)", "typical": 200 },
+        "medium": { "description": "Whitepaper (3000-5000 words)", "typical": 800 },
+        "large": { "description": "Content strategy + 10 pieces", "typical": 3500 }
+      },
+      "factors": [
+        "SEO expertise",
+        "Industry knowledge",
+        "Bilingual DE/EN capability",
+        "AI tool proficiency",
+        "Research capability"
+      ],
+      "trends": "Content writer rates under pressure from AI tools but premium writers commanding higher rates for strategy and editing. Demand shifting from pure writing to content strategy and AI-assisted editing.",
+      "confidence": "high",
+      "researchedAt": "2026-02-13"
+    },
+    "web-developer/Global": {
+      "role": "web-developer",
+      "market": "Global",
+      "hourlyRates": {
+        "entry": { "min": 25, "max": 45, "typical": 35 },
+        "mid": { "min": 45, "max": 75, "typical": 60 },
+        "senior": { "min": 70, "max": 110, "typical": 90 },
+        "expert": { "min": 100, "max": 175, "typical": 130 }
+      },
+      "projectRates": {
+        "small": { "description": "Landing page", "typical": 1500 },
+        "medium": { "description": "Multi-page website", "typical": 5000 },
+        "large": { "description": "Web application", "typical": 20000 }
+      },
+      "factors": [
+        "Tech stack (React, Next.js, Node.js premium)",
+        "Full-stack vs. frontend/backend only",
+        "DevOps/deployment experience",
+        "Design skills",
+        "Location"
+      ],
+      "trends": "Strong demand for full-stack developers with AI integration experience. Next.js and serverless skills command premium. European developers pricing higher due to data privacy regulations requiring EU-based development.",
+      "confidence": "high",
+      "researchedAt": "2026-02-13"
+    }
+  }
+}

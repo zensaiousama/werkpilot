@@ -1,0 +1,71 @@
+{
+  "name": "record-trigger",
+  "version": "1.0.0",
+  "description": "Triggered when a new record is created in Airtable. Routes the record to the appropriate agent workflow based on table and record type.",
+  "trigger": {
+    "type": "airtable_webhook",
+    "event": "record.created",
+    "tables": ["Leads", "Clients", "Contacts", "Invoices"]
+  },
+  "retry": true,
+  "maxRetries": 3,
+  "steps": [
+    {
+      "name": "classify_record",
+      "type": "ai_classify",
+      "prompt": "Classify this new {{table}} record and determine which department should handle it.\n\nRecord data:\n- Table: {{table}}\n- Fields: {{fields}}\n\nDepartments: sales, marketing, finance, operations, ceo\n\nReturn JSON: { \"department\": \"...\", \"action\": \"...\", \"priority\": \"low|medium|high|urgent\", \"reason\": \"...\" }",
+      "model": "claude-haiku-4-5-20251001",
+      "maxTokens": 300,
+      "required": true
+    },
+    {
+      "name": "check_duplicates",
+      "type": "fetch_records",
+      "table": "{{table}}",
+      "filter": "{Email} = \"{{email}}\"",
+      "required": false
+    },
+    {
+      "name": "enrich_record",
+      "type": "ai_generate",
+      "prompt": "Given this new {{table}} record for {{name}} from {{company}}, generate a brief enrichment summary. Include:\n1. What type of inquiry this likely is\n2. Suggested next steps\n3. Any relevant notes for the assigned team\n\nKeep it concise (2-3 sentences).",
+      "model": "claude-haiku-4-5-20251001",
+      "maxTokens": 200,
+      "required": false
+    },
+    {
+      "name": "update_record_status",
+      "type": "update_record",
+      "table": "{{table}}",
+      "fields": {
+        "Status": "Routed",
+        "AssignedDepartment": "{{department}}",
+        "RoutedAt": "{{triggeredAt}}",
+        "EnrichmentNotes": "{{enrichment}}"
+      },
+      "required": true
+    },
+    {
+      "name": "notify_on_urgent",
+      "type": "condition",
+      "condition": {
+        "field": "priority",
+        "operator": "equals",
+        "value": "urgent"
+      },
+      "required": false
+    },
+    {
+      "name": "send_urgent_notification",
+      "type": "notify",
+      "subject": "URGENT: New {{table}} record requires attention",
+      "html": "<h2>Urgent Record Alert</h2><p>A new record in <strong>{{table}}</strong> has been classified as urgent.</p><p><strong>Name:</strong> {{name}}</p><p><strong>Company:</strong> {{company}}</p><p><strong>Assigned to:</strong> {{department}}</p><p><strong>Reason:</strong> {{reason}}</p>",
+      "required": false
+    }
+  ],
+  "errorHandling": {
+    "onStepFailure": "continue_if_optional",
+    "onCriticalFailure": "alert_and_stop",
+    "alertEmail": true
+  }
+}

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import BlogSearch from '@/components/BlogSearch';
 
 export const metadata: Metadata = {
   title: 'Blog — Werkpilot',
@@ -40,6 +41,24 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: 'Werkpilot Blog',
+            description: 'Tipps und Strategien für Schweizer KMUs zu Marketing, Sales und Effizienz.',
+            url: 'https://werkpilot.ch/blog',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Werkpilot',
+              url: 'https://werkpilot.ch',
+            },
+            inLanguage: 'de-CH',
+          }),
+        }}
+      />
       <Navigation />
       <main id="main-content">
         {/* Hero Section */}
@@ -66,6 +85,7 @@ export default function BlogPage() {
                 Lernen Sie, wie Sie Ihr Business durch intelligente Automatisierung
                 voranbringen.
               </p>
+              <BlogSearch />
             </div>
           </div>
         </section>

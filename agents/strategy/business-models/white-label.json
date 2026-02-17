@@ -1,0 +1,140 @@
+{
+  "model": "White-Label",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "description": "License Werkpilot platform to agencies and resellers under their own branding",
+  "targetPartners": [
+    "Marketing agencies (10-50 employees)",
+    "IT consultancies serving KMUs",
+    "Web development agencies",
+    "Freelance marketing consultants with client portfolios"
+  ],
+  "valueProposition": {
+    "forPartners": "Offer AI-powered marketing automation under own brand without building technology",
+    "forWerkpilot": "Scale revenue through partners without proportional sales team growth"
+  },
+  "pricingTiers": [
+    {
+      "tier": "Starter",
+      "monthlyFee": 990,
+      "currency": "CHF",
+      "includedClients": 5,
+      "perExtraClient": 99,
+      "features": [
+        "Custom domain",
+        "Logo and color branding",
+        "Basic dashboard customization",
+        "Standard support"
+      ]
+    },
+    {
+      "tier": "Professional",
+      "monthlyFee": 2490,
+      "currency": "CHF",
+      "includedClients": 20,
+      "perExtraClient": 79,
+      "features": [
+        "Full UI customization",
+        "Custom email templates",
+        "API access",
+        "Priority support",
+        "Training materials",
+        "Co-branded reports"
+      ]
+    },
+    {
+      "tier": "Enterprise",
+      "monthlyFee": 5990,
+      "currency": "CHF",
+      "includedClients": 50,
+      "perExtraClient": 59,
+      "features": [
+        "Dedicated instance",
+        "Custom feature development",
+        "SLA guarantees",
+        "Dedicated account manager",
+        "White-glove onboarding",
+        "Revenue sharing option"
+      ]
+    }
+  ],
+  "revenueProjection": {
+    "year1": {
+      "targetPartners": 10,
+      "avgTier": "Professional",
+      "avgClientsPerPartner": 15,
+      "monthlyRevenue": 32400,
+      "annualRevenue": 388800,
+      "assumptions": "3 Starter, 5 Professional, 2 Enterprise"
+    },
+    "year2": {
+      "targetPartners": 30,
+      "avgTier": "Professional",
+      "avgClientsPerPartner": 25,
+      "monthlyRevenue": 98700,
+      "annualRevenue": 1184400,
+      "assumptions": "8 Starter, 15 Professional, 7 Enterprise"
+    },
+    "year3": {
+      "targetPartners": 60,
+      "avgTier": "Professional",
+      "avgClientsPerPartner": 35,
+      "monthlyRevenue": 215400,
+      "annualRevenue": 2584800,
+      "assumptions": "15 Starter, 30 Professional, 15 Enterprise"
+    }
+  },
+  "costs": {
+    "development": {
+      "initialBuild": 120000,
+      "currency": "CHF",
+      "timeline": "4-6 months",
+      "description": "White-label infrastructure, tenant management, branding engine"
+    },
+    "ongoing": {
+      "hosting": 2000,
+      "support": 4000,
+      "maintenance": 3000,
+      "partnerManagement": 5000,
+      "total": 14000,
+      "period": "monthly"
+    }
+  },
+  "marginAnalysis": {
+    "grossMargin": 0.72,
+    "netMargin": 0.45,
+    "breakeven": "Month 8-10 after launch",
+    "ltv": 89000,
+    "cac": 8500,
+    "ltvCacRatio": 10.5
+  },
+  "risks": [
+    {
+      "risk": "Partner quality control",
+      "severity": "high",
+      "mitigation": "Partner certification program and minimum quality standards"
+    },
+    {
+      "risk": "Support escalation complexity",
+      "severity": "medium",
+      "mitigation": "Tiered support with partner-first resolution"
+    },
+    {
+      "risk": "Brand dilution",
+      "severity": "low",
+      "mitigation": "Optional 'Powered by Werkpilot' badge"
+    },
+    {
+      "risk": "Cannibalization of direct sales",
+      "severity": "medium",
+      "mitigation": "Geographic and segment restrictions per partner agreement"
+    }
+  ],
+  "implementationTimeline": [
+    { "month": "1-2", "milestone": "Multi-tenant architecture and branding engine" },
+    { "month": "3", "milestone": "Partner portal and onboarding flow" },
+    { "month": "4", "milestone": "Billing and usage tracking per tenant" },
+    { "month": "5", "milestone": "Beta launch with 3 pilot partners" },
+    { "month": "6", "milestone": "GA launch and partner recruitment" }
+  ]
+}

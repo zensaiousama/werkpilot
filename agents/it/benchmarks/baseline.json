@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "description": "Baseline quality and cost benchmarks for AI model selection at Werkpilot",
+  "createdAt": "2026-02-13T00:00:00.000Z",
+  "models": {
+    "haiku": {
+      "modelId": "claude-haiku-4-5-20251001",
+      "tier": "fast",
+      "pricing": {
+        "inputPer1MTokens": 0.80,
+        "outputPer1MTokens": 4.00,
+        "currency": "CHF"
+      },
+      "benchmarks": {
+        "classification": { "avgQualityScore": 88, "avgLatencyMs": 400, "avgTokens": 150 },
+        "short_response": { "avgQualityScore": 82, "avgLatencyMs": 500, "avgTokens": 200 },
+        "qa": { "avgQualityScore": 85, "avgLatencyMs": 450, "avgTokens": 180 },
+        "data_extraction": { "avgQualityScore": 90, "avgLatencyMs": 350, "avgTokens": 120 }
+      },
+      "bestFor": ["classification", "routing", "tagging", "simple QA", "data extraction", "short summaries"],
+      "avoidFor": ["long-form content", "complex analysis", "multi-step reasoning"]
+    },
+    "sonnet": {
+      "modelId": "claude-sonnet-4-5-20250929",
+      "tier": "standard",
+      "pricing": {
+        "inputPer1MTokens": 3.00,
+        "outputPer1MTokens": 15.00,
+        "currency": "CHF"
+      },
+      "benchmarks": {
+        "content_generation": { "avgQualityScore": 92, "avgLatencyMs": 2000, "avgTokens": 800 },
+        "email_writing": { "avgQualityScore": 94, "avgLatencyMs": 1500, "avgTokens": 500 },
+        "analysis": { "avgQualityScore": 88, "avgLatencyMs": 2500, "avgTokens": 1000 },
+        "translation": { "avgQualityScore": 91, "avgLatencyMs": 1800, "avgTokens": 600 },
+        "summarization": { "avgQualityScore": 90, "avgLatencyMs": 1200, "avgTokens": 400 }
+      },
+      "bestFor": ["content creation", "email drafting", "mid-level analysis", "translation", "summarization", "report generation"],
+      "avoidFor": ["simple classifications (use Haiku)", "complex multi-step strategy (use Opus)"]
+    },
+    "opus": {
+      "modelId": "claude-opus-4-6",
+      "tier": "powerful",
+      "pricing": {
+        "inputPer1MTokens": 15.00,
+        "outputPer1MTokens": 75.00,
+        "currency": "CHF"
+      },
+      "benchmarks": {
+        "complex_strategy": { "avgQualityScore": 96, "avgLatencyMs": 5000, "avgTokens": 2000 },
+        "multi_step_reasoning": { "avgQualityScore": 97, "avgLatencyMs": 6000, "avgTokens": 2500 },
+        "financial_analysis": { "avgQualityScore": 95, "avgLatencyMs": 4500, "avgTokens": 1800 },
+        "creative_writing": { "avgQualityScore": 95, "avgLatencyMs": 4000, "avgTokens": 1500 }
+      },
+      "bestFor": ["strategic planning", "complex analysis", "multi-step reasoning", "financial modeling", "code generation", "creative content"],
+      "avoidFor": ["simple tasks (cost-prohibitive)", "high-volume classification", "short responses"]
+    }
+  },
+  "taskTypeToModelMapping": {
+    "classification": "haiku",
+    "short_response": "haiku",
+    "qa": "haiku",
+    "data_extraction": "haiku",
+    "tagging": "haiku",
+    "routing": "haiku",
+    "content_generation": "sonnet",
+    "email_writing": "sonnet",
+    "analysis": "sonnet",
+    "translation": "sonnet",
+    "summarization": "sonnet",
+    "report_generation": "sonnet",
+    "complex_strategy": "opus",
+    "multi_step_reasoning": "opus",
+    "financial_analysis": "opus",
+    "creative_writing": "opus",
+    "code_generation": "opus",
+    "strategic_planning": "opus"
+  },
+  "costOptimizationRules": [
+    "Use Haiku for any task with expected output under 200 tokens",
+    "Use Sonnet as the default for most agent tasks",
+    "Reserve Opus for tasks explicitly requiring deep reasoning or strategy",
+    "Cache system prompts to reduce input token costs",
+    "Batch similar requests when possible",
+    "Use structured JSON output to reduce unnecessary token usage",
+    "Keep prompts under 500 tokens where possible"
+  ],
+  "monthlyBudgetCHF": 500,
+  "alertThresholds": {
+    "dailyCostCHF": 25,
+    "weeklyCostCHF": 150,
+    "monthlyCostCHF": 500
+  }
+}

@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Link from 'next/link';
+import AnimatedSection from '@/components/AnimatedSection';
 
 const faqs = [
   {
@@ -69,39 +70,34 @@ export default function FAQSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 style={{ fontFamily: 'var(--font-jakarta)' }}>Häufige Fragen</h2>
-        </motion.div>
+        <AnimatedSection className="text-center mb-16">
+          <h2>Häufige Fragen</h2>
+        </AnimatedSection>
 
         <div className="max-w-3xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              delay={index * 50}
               className="card"
             >
               <button
+                id={`faq-question-${index}`}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full p-6 text-left flex justify-between items-center gap-4"
                 aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
               >
-                <h3
-                  className="text-lg font-bold"
+                <span
+                  className="text-lg font-bold block"
                   style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-primary)' }}
+                  role="heading"
+                  aria-level={3}
                 >
                   {faq.question}
-                </h3>
+                </span>
                 <svg
-                  className={`flex-shrink-0 transform transition-transform ${
+                  className={`flex-shrink-0 transform transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                   width="24"
@@ -109,6 +105,7 @@ export default function FAQSection() {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
                 >
                   <path
                     d="M19 9l-7 7-7-7"
@@ -119,20 +116,36 @@ export default function FAQSection() {
                   />
                 </svg>
               </button>
-              {openIndex === index && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="px-6 pb-6"
-                >
-                  <p style={{ color: 'var(--color-text-secondary)' }}>{faq.answer}</p>
-                </motion.div>
-              )}
-            </motion.div>
+              <div
+                id={`faq-answer-${index}`}
+                className={`faq-answer ${openIndex === index ? 'open' : ''}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+              >
+                <div>
+                  <div className="px-6 pb-6">
+                    <p style={{ color: 'var(--color-text-secondary)' }}>{faq.answer}</p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
           ))}
         </div>
+
+        {/* CTA after FAQ */}
+        <AnimatedSection className="text-center mt-16" delay={400}>
+          <p className="text-lg mb-6" style={{ color: 'var(--color-text-secondary)' }}>
+            Noch Fragen? Wir sind für Sie da.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/fitness-check" className="btn btn-primary" data-track="cta-faq">
+              Gratis Fitness-Check &rarr;
+            </Link>
+            <Link href="/kontakt" className="btn btn-secondary">
+              Kontakt aufnehmen
+            </Link>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

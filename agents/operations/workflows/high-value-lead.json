@@ -1,0 +1,95 @@
+{
+  "id": "high-value-lead",
+  "name": "High-Value Lead Processing",
+  "description": "Automated workflow for high-value leads (score >= 80): auto-qualify, assign agent, send personalized intro",
+  "version": "1.0.0",
+  "trigger": "lead_score_changed",
+  "sla": {
+    "maxDurationMinutes": 60,
+    "alertAfterMinutes": 30
+  },
+  "steps": [
+    {
+      "id": "qualify-lead",
+      "name": "Auto-qualify high-value lead",
+      "agent": "sales-lead-qualifier",
+      "action": "qualifyLead",
+      "input": {
+        "leadId": "{{trigger.data.leadId}}",
+        "score": "{{trigger.data.score}}",
+        "autoQualify": true
+      },
+      "timeout": 30000,
+      "retries": 2,
+      "onFailure": "continue"
+    },
+    {
+      "id": "assign-agent",
+      "name": "Assign to best available sales agent",
+      "agent": "sales-pipeline-manager",
+      "action": "assignLead",
+      "input": {
+        "leadId": "{{trigger.data.leadId}}",
+        "priority": "high",
+        "assignmentStrategy": "best-available"
+      },
+      "dependsOn": ["qualify-lead"],
+      "timeout": 20000,
+      "retries": 1,
+      "onFailure": "abort"
+    },
+    {
+      "id": "send-intro-email",
+      "name": "Send personalized intro email",
+      "agent": "sales-follow-up",
+      "action": "sendIntroEmail",
+      "input": {
+        "leadId": "{{trigger.data.leadId}}",
+        "template": "high-value-intro",
+        "personalize": true
+      },
+      "dependsOn": ["assign-agent"],
+      "delay": "5m",
+      "timeout": 30000,
+      "retries": 2,
+      "onFailure": "continue"
+    },
+    {
+      "id": "schedule-call",
+      "name": "Schedule discovery call",
+      "agent": "sales-follow-up",
+      "action": "scheduleCall",
+      "input": {
+        "leadId": "{{trigger.data.leadId}}",
+        "callType": "discovery",
+        "suggestTimes": true
+      },
+      "dependsOn": ["send-intro-email"],
+      "delay": "30m",
+      "timeout": 20000,
+      "retries": 1,
+      "onFailure": "continue"
+    },
+    {
+      "id": "update-crm",
+      "name": "Update CRM with workflow completion",
+      "agent": "sales-crm-sync",
+      "action": "updateLead",
+      "input": {
+        "leadId": "{{trigger.data.leadId}}",
+        "status": "High-Value Workflow Complete",
+        "nextAction": "Discovery Call Scheduled"
+      },
+      "dependsOn": ["schedule-call"],
+      "timeout": 15000,
+      "retries": 3,
+      "onFailure": "continue"
+    }
+  ],
+  "onComplete": {
+    "notifyTo": "ceo"
+  },
+  "onFailure": {
+    "alertTo": "ceo"
+  }
+}

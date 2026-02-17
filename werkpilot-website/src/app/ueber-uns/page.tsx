@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     description: 'Das Schweizer Unternehmen hinter Ihrem virtuellen Backoffice.',
     images: ['/og-image.png'],
   },
+  alternates: {
+    canonical: 'https://werkpilot.ch/ueber-uns',
+  },
 };
 
 const values = [

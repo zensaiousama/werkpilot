@@ -1,0 +1,80 @@
+{
+  "id": "night-shift-report",
+  "name": "Night Shift Completion Report",
+  "description": "Generate comprehensive report of night shift activities and email to CEO",
+  "version": "1.0.0",
+  "trigger": "task_completed",
+  "sla": {
+    "maxDurationMinutes": 15,
+    "alertAfterMinutes": 10
+  },
+  "steps": [
+    {
+      "id": "collect-metrics",
+      "name": "Collect night shift metrics",
+      "agent": "marketing-analytics",
+      "action": "collectMetrics",
+      "input": {
+        "timeRange": "last-8-hours",
+        "includeAgents": true,
+        "includeTasks": true,
+        "includeContent": true,
+        "includeLeads": true
+      },
+      "timeout": 30000,
+      "retries": 2,
+      "onFailure": "continue"
+    },
+    {
+      "id": "analyze-performance",
+      "name": "Analyze agent performance",
+      "agent": "operations-project-tracker",
+      "action": "analyzePerformance",
+      "input": {
+        "metrics": "{{steps.collect-metrics.output}}",
+        "generateInsights": true
+      },
+      "dependsOn": ["collect-metrics"],
+      "timeout": 40000,
+      "retries": 1,
+      "onFailure": "continue"
+    },
+    {
+      "id": "generate-report",
+      "name": "Generate comprehensive HTML report",
+      "agent": "marketing-content-creator",
+      "action": "generateReport",
+      "input": {
+        "template": "night-shift-summary",
+        "data": "{{steps.analyze-performance.output}}",
+        "format": "html",
+        "language": "de-CH"
+      },
+      "dependsOn": ["analyze-performance"],
+      "timeout": 45000,
+      "retries": 2,
+      "onFailure": "abort"
+    },
+    {
+      "id": "email-ceo",
+      "name": "Email report to CEO",
+      "agent": "operations-project-tracker",
+      "action": "sendCEOEmail",
+      "input": {
+        "subject": "Night Shift Complete - {{steps.analyze-performance.output.date}}",
+        "htmlContent": "{{steps.generate-report.output.html}}",
+        "priority": "normal"
+      },
+      "dependsOn": ["generate-report"],
+      "timeout": 20000,
+      "retries": 3,
+      "onFailure": "abort"
+    }
+  ],
+  "onComplete": {
+    "notifyTo": "none"
+  },
+  "onFailure": {
+    "alertTo": "ceo"
+  }
+}

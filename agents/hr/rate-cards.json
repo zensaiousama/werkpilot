@@ -1,0 +1,167 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-13",
+  "currency": "CHF",
+  "description": "Standard rate cards for Werkpilot freelancer roles by market",
+  "roles": {
+    "proofreader-fr": {
+      "default": {
+        "hourlyRate": 35,
+        "minRate": 25,
+        "maxRate": 50,
+        "perWordRate": 0.04,
+        "level": "mid",
+        "notes": "Standard rate for experienced French proofreaders",
+        "updatedAt": "2026-02-13"
+      },
+      "FR/CH": {
+        "hourlyRate": 40,
+        "minRate": 30,
+        "maxRate": 55,
+        "perWordRate": 0.05,
+        "level": "mid",
+        "notes": "Swiss market premium for native FR-CH proofreaders",
+        "updatedAt": "2026-02-13"
+      },
+      "FR": {
+        "hourlyRate": 30,
+        "minRate": 22,
+        "maxRate": 45,
+        "perWordRate": 0.035,
+        "level": "mid",
+        "notes": "France-based French proofreaders",
+        "updatedAt": "2026-02-13"
+      }
+    },
+    "proofreader-it": {
+      "default": {
+        "hourlyRate": 35,
+        "minRate": 25,
+        "maxRate": 50,
+        "perWordRate": 0.04,
+        "level": "mid",
+        "notes": "Standard rate for experienced Italian proofreaders",
+        "updatedAt": "2026-02-13"
+      },
+      "IT/CH": {
+        "hourlyRate": 40,
+        "minRate": 30,
+        "maxRate": 55,
+        "perWordRate": 0.05,
+        "level": "mid",
+        "notes": "Swiss market premium for native IT-CH proofreaders",
+        "updatedAt": "2026-02-13"
+      },
+      "IT": {
+        "hourlyRate": 28,
+        "minRate": 20,
+        "maxRate": 42,
+        "perWordRate": 0.03,
+        "level": "mid",
+        "notes": "Italy-based Italian proofreaders",
+        "updatedAt": "2026-02-13"
+      }
+    },
+    "va": {
+      "default": {
+        "hourlyRate": 25,
+        "minRate": 15,
+        "maxRate": 40,
+        "level": "mid",
+        "notes": "Standard rate for experienced virtual assistants",
+        "updatedAt": "2026-02-13"
+      },
+      "Global": {
+        "hourlyRate": 20,
+        "minRate": 12,
+        "maxRate": 35,
+        "level": "mid",
+        "notes": "Global market rate, location-adjusted",
+        "updatedAt": "2026-02-13"
+      },
+      "DACH": {
+        "hourlyRate": 30,
+        "minRate": 22,
+        "maxRate": 45,
+        "level": "mid",
+        "notes": "DACH-based VAs with German language skills",
+        "updatedAt": "2026-02-13"
+      },
+      "SEA": {
+        "hourlyRate": 15,
+        "minRate": 8,
+        "maxRate": 25,
+        "level": "mid",
+        "notes": "Southeast Asia-based VAs, strong English",
+        "updatedAt": "2026-02-13"
+      }
+    },
+    "sales": {
+      "default": {
+        "hourlyRate": 45,
+        "minRate": 35,
+        "maxRate": 65,
+        "level": "mid",
+        "commissionStructure": {
+          "basePercentage": 0.6,
+          "commissionPercentage": 0.4,
+          "commissionRate": 0.1,
+          "description": "60% base + 40% performance commission (10% of closed deal value)"
+        },
+        "notes": "Standard rate for B2B sales freelancers",
+        "updatedAt": "2026-02-13"
+      },
+      "DACH": {
+        "hourlyRate": 50,
+        "minRate": 40,
+        "maxRate": 75,
+        "level": "mid",
+        "commissionStructure": {
+          "basePercentage": 0.6,
+          "commissionPercentage": 0.4,
+          "commissionRate": 0.1,
+          "description": "60% base + 40% performance commission (10% of closed deal value)"
+        },
+        "notes": "DACH market sales with native German, higher base due to market",
+        "updatedAt": "2026-02-13"
+      }
+    },
+    "content-writer": {
+      "default": {
+        "hourlyRate": 35,
+        "minRate": 25,
+        "maxRate": 55,
+        "perWordRate": 0.08,
+        "level": "mid",
+        "notes": "Standard rate for experienced content writers",
+        "updatedAt": "2026-02-13"
+      }
+    },
+    "web-developer": {
+      "default": {
+        "hourlyRate": 60,
+        "minRate": 40,
+        "maxRate": 100,
+        "level": "mid",
+        "notes": "Standard rate for web developers (frontend/backend)",
+        "updatedAt": "2026-02-13"
+      }
+    }
+  },
+  "policies": {
+    "rateReviewFrequency": "quarterly",
+    "maxRateIncrease": 0.15,
+    "approvalRequired": "CEO for rates above maxRate",
+    "trialPeriodDiscount": 0.0,
+    "bulkHoursDiscount": {
+      "threshold": 80,
+      "discount": 0.05,
+      "description": "5% discount for 80+ hours/month commitment"
+    },
+    "urgencyPremium": {
+      "sameDay": 1.5,
+      "nextDay": 1.25,
+      "description": "Multiplier for urgent/rush work"
+    }
+  }
+}

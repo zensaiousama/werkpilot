@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-13",
+  "description": "Performance metrics configuration for Werkpilot freelancer performance management",
+  "weights": {
+    "quality": 0.35,
+    "timeliness": 0.25,
+    "availability": 0.15,
+    "clientFeedback": 0.25
+  },
+  "tiers": {
+    "A": {
+      "min": 90,
+      "label": "Top Performer",
+      "bonusMultiplier": 1.15,
+      "description": "Consistently exceeds expectations across all metrics",
+      "actions": ["Recognition in team meeting", "Priority for new projects", "Rate review eligibility"]
+    },
+    "B": {
+      "min": 75,
+      "label": "Strong Performer",
+      "bonusMultiplier": 1.05,
+      "description": "Regularly exceeds expectations in most metrics",
+      "actions": ["Positive feedback", "Growth opportunities"]
+    },
+    "C": {
+      "min": 60,
+      "label": "Meets Expectations",
+      "bonusMultiplier": 1.0,
+      "description": "Consistently meets quality and delivery standards",
+      "actions": ["Standard review", "Identify growth areas"]
+    },
+    "D": {
+      "min": 40,
+      "label": "Needs Improvement",
+      "bonusMultiplier": 0.95,
+      "description": "Below expectations in one or more key areas",
+      "actions": ["Performance Improvement Plan", "Weekly check-ins", "Targeted training"]
+    },
+    "F": {
+      "min": 0,
+      "label": "Under Review",
+      "bonusMultiplier": 0.0,
+      "description": "Significantly below expectations, engagement at risk",
+      "actions": ["Immediate PIP", "Daily check-ins", "Consider reassignment or termination"]
+    }
+  },
+  "roleSpecificKPIs": {
+    "proofreader-fr": {
+      "qualityMetrics": [
+        { "name": "Error Rate", "target": "< 2 errors per 1000 words", "weight": 0.4 },
+        { "name": "Consistency Score", "target": "> 95%", "weight": 0.3 },
+        { "name": "Style Guide Compliance", "target": "> 90%", "weight": 0.3 }
+      ],
+      "timelinessMetrics": [
+        { "name": "On-Time Delivery", "target": "> 95%", "weight": 0.6 },
+        { "name": "Average Turnaround", "target": "< 24 hours for standard tasks", "weight": 0.4 }
+      ],
+      "volumeTarget": "10,000 words/week"
+    },
+    "proofreader-it": {
+      "qualityMetrics": [
+        { "name": "Error Rate", "target": "< 2 errors per 1000 words", "weight": 0.4 },
+        { "name": "Consistency Score", "target": "> 95%", "weight": 0.3 },
+        { "name": "Style Guide Compliance", "target": "> 90%", "weight": 0.3 }
+      ],
+      "timelinessMetrics": [
+        { "name": "On-Time Delivery", "target": "> 95%", "weight": 0.6 },
+        { "name": "Average Turnaround", "target": "< 24 hours for standard tasks", "weight": 0.4 }
+      ],
+      "volumeTarget": "10,000 words/week"
+    },
+    "va": {
+      "qualityMetrics": [
+        { "name": "Task Accuracy", "target": "> 98%", "weight": 0.4 },
+        { "name": "Communication Quality", "target": "> 90%", "weight": 0.3 },
+        { "name": "Process Adherence", "target": "> 95%", "weight": 0.3 }
+      ],
+      "timelinessMetrics": [
+        { "name": "Response Time", "target": "< 2 hours during core hours", "weight": 0.5 },
+        { "name": "Task Completion Rate", "target": "> 95% on time", "weight": 0.5 }
+      ],
+      "volumeTarget": "20-30 hours/week"
+    },
+    "sales": {
+      "qualityMetrics": [
+        { "name": "Lead Qualification Accuracy", "target": "> 70% conversion from qualified to meeting", "weight": 0.3 },
+        { "name": "Proposal Quality Score", "target": "> 85/100", "weight": 0.3 },
+        { "name": "CRM Data Quality", "target": "> 95% complete records", "weight": 0.4 }
+      ],
+      "timelinessMetrics": [
+        { "name": "Lead Follow-up Time", "target": "< 4 hours", "weight": 0.5 },
+        { "name": "Proposal Delivery", "target": "< 48 hours after discovery call", "weight": 0.5 }
+      ],
+      "revenueTargets": {
+        "monthly": "CHF 10,000 new MRR",
+        "quarterly": "CHF 30,000 new MRR",
+        "pipelineValue": "3x monthly target"
+      }
+    }
+  },
+  "reviewCycle": {
+    "weekly": "Performance snapshot updated every Monday",
+    "monthly": "Full performance review generated on 1st of month",
+    "quarterly": "Rate review and comprehensive evaluation",
+    "annual": "Strategic performance and career development review"
+  },
+  "alertThresholds": {
+    "scoreDropAlert": 15,
+    "consecutiveLowWeeks": 3,
+    "missedDeadlineAlert": 2,
+    "clientComplaintAlert": 1
+  }
+}

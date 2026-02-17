@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     description: 'Mehr Kunden. Weniger Admin. Ihr virtuelles Backoffice.',
     images: ['/og-image.png'],
   },
+  alternates: {
+    canonical: 'https://werkpilot.ch/dienstleistungen',
+  },
 };
 
 const packages = [

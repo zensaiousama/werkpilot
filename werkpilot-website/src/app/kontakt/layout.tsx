@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Kontakt — Werkpilot',
     description: 'Wir freuen uns auf Ihre Nachricht.',
-    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://werkpilot.ch/kontakt',
   },
 };
 

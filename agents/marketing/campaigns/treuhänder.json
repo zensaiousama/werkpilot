@@ -1,0 +1,127 @@
+{
+  "campaign": {
+    "name": "Werkpilot für Treuhänder",
+    "id": "camp_treuhaender_001",
+    "status": "draft",
+    "industry": "Treuhand",
+    "languages": ["de", "fr"],
+    "budget": {
+      "daily": 50,
+      "monthly": 1500,
+      "currency": "CHF"
+    },
+    "targeting": {
+      "locations": [
+        { "country": "CH", "regions": ["Zürich", "Bern", "Basel", "Luzern", "St. Gallen", "Aargau"] }
+      ],
+      "demographics": {
+        "business_owners": true,
+        "decision_makers": true,
+        "company_size": "1-50"
+      }
+    },
+    "ad_groups": [
+      {
+        "name": "Treuhand Digitalisierung",
+        "keywords": [
+          "treuhand software",
+          "treuhand digitalisierung",
+          "buchhaltung automatisieren",
+          "treuhänder website",
+          "treuhand kunden gewinnen",
+          "treuhand marketing",
+          "treuhandbüro software"
+        ],
+        "negative_keywords": [
+          "gratis",
+          "kostenlos",
+          "job",
+          "stelle",
+          "ausbildung",
+          "lohn"
+        ],
+        "match_types": ["phrase", "exact"],
+        "ads": [
+          {
+            "type": "responsive_search",
+            "headlines": [
+              "Mehr Mandanten für Ihr Treuhandbüro",
+              "Treuhand-Marketing mit KI-Power",
+              "Automatisiert Kunden gewinnen",
+              "Website + SEO für Treuhänder",
+              "Werkpilot für Treuhand",
+              "Digitale Kundengewinnung"
+            ],
+            "descriptions": [
+              "Werkpilot automatisiert Ihre Kundengewinnung. Website, SEO & Leads auf Autopilot. Jetzt Demo.",
+              "Speziell für Schweizer Treuhänder entwickelt. Mehr Sichtbarkeit, mehr Mandanten, weniger Aufwand.",
+              "Von der Website bis zum Erstgespräch - alles automatisiert. Kostenlose Beratung vereinbaren."
+            ],
+            "final_url": "https://werkpilot.ch/branchen/treuhand",
+            "display_url": "werkpilot.ch/treuhand"
+          }
+        ],
+        "bid_strategy": {
+          "type": "target_cpa",
+          "target_cpa": 45,
+          "max_cpc": 8.50
+        }
+      },
+      {
+        "name": "Treuhand Website",
+        "keywords": [
+          "treuhänder website erstellen",
+          "treuhand webdesign",
+          "homepage treuhänder",
+          "treuhand online präsenz"
+        ],
+        "negative_keywords": ["template", "gratis", "wordpress"],
+        "match_types": ["phrase", "exact"],
+        "ads": [
+          {
+            "type": "responsive_search",
+            "headlines": [
+              "Professionelle Treuhand-Website",
+              "In 7 Tagen online",
+              "SEO-optimiert & modern",
+              "Speziell für Treuhänder",
+              "Mandanten finden Sie online",
+              "Ihre digitale Visitenkarte"
+            ],
+            "descriptions": [
+              "Professionelle Website speziell für Treuhänder. SEO-optimiert, mobilfreundlich, DSGVO-konform.",
+              "Wir erstellen Ihre Treuhand-Website in 7 Tagen. Inkl. SEO, Kontaktformular & Terminbuchung."
+            ],
+            "final_url": "https://werkpilot.ch/website-treuhand",
+            "display_url": "werkpilot.ch/treuhand-website"
+          }
+        ],
+        "bid_strategy": {
+          "type": "target_cpa",
+          "target_cpa": 40,
+          "max_cpc": 7.00
+        }
+      }
+    ],
+    "conversion_tracking": {
+      "goals": [
+        { "name": "demo_request", "value": 150, "type": "form_submit" },
+        { "name": "phone_call", "value": 100, "type": "click_to_call" },
+        { "name": "contact_form", "value": 80, "type": "form_submit" }
+      ]
+    },
+    "schedule": {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "hours": { "start": 7, "end": 20 },
+      "timezone": "Europe/Zurich"
+    },
+    "performance_targets": {
+      "monthly_impressions": 15000,
+      "monthly_clicks": 450,
+      "target_ctr": 3.0,
+      "target_cpa": 45,
+      "target_roas": 5.0,
+      "monthly_conversions": 33
+    }
+  }
+}

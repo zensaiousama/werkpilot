@@ -1,0 +1,197 @@
+{
+  "metadata": {
+    "source": "Swiss Federal Statistical Office (BFS) + Market Research 2026",
+    "lastUpdated": "2026-02-14",
+    "year": 2026,
+    "totalKMUs": 599653
+  },
+  "byIndustry": {
+    "services": {
+      "totalKMUs": 185000,
+      "description": "Professional services, consulting, IT services",
+      "avgEmployees": 8,
+      "avgRevenue": 850000,
+      "digitalReadiness": 72,
+      "aiAdoptionRate": 18
+    },
+    "retail": {
+      "totalKMUs": 98000,
+      "description": "Retail trade, e-commerce, wholesale",
+      "avgEmployees": 12,
+      "avgRevenue": 1200000,
+      "digitalReadiness": 65,
+      "aiAdoptionRate": 12
+    },
+    "construction": {
+      "totalKMUs": 75000,
+      "description": "Construction, renovation, building services",
+      "avgEmployees": 15,
+      "avgRevenue": 1800000,
+      "digitalReadiness": 45,
+      "aiAdoptionRate": 5
+    },
+    "hospitality": {
+      "totalKMUs": 55000,
+      "description": "Hotels, restaurants, tourism",
+      "avgEmployees": 18,
+      "avgRevenue": 950000,
+      "digitalReadiness": 58,
+      "aiAdoptionRate": 8
+    },
+    "health": {
+      "totalKMUs": 42000,
+      "description": "Healthcare, medical practices, wellness",
+      "avgEmployees": 10,
+      "avgRevenue": 780000,
+      "digitalReadiness": 68,
+      "aiAdoptionRate": 15
+    },
+    "manufacturing": {
+      "totalKMUs": 38000,
+      "description": "Small-scale manufacturing, artisans",
+      "avgEmployees": 22,
+      "avgRevenue": 2200000,
+      "digitalReadiness": 52,
+      "aiAdoptionRate": 9
+    },
+    "it_telecom": {
+      "totalKMUs": 32000,
+      "description": "IT, software, telecommunications",
+      "avgEmployees": 7,
+      "avgRevenue": 650000,
+      "digitalReadiness": 95,
+      "aiAdoptionRate": 42
+    },
+    "finance_insurance": {
+      "totalKMUs": 28000,
+      "description": "Financial services, insurance brokers",
+      "avgEmployees": 9,
+      "avgRevenue": 920000,
+      "digitalReadiness": 78,
+      "aiAdoptionRate": 22
+    },
+    "real_estate": {
+      "totalKMUs": 25000,
+      "description": "Real estate, property management",
+      "avgEmployees": 6,
+      "avgRevenue": 580000,
+      "digitalReadiness": 62,
+      "aiAdoptionRate": 11
+    }
+  },
+  "byCanton": {
+    "ZH": {
+      "kmuCount": 125000,
+      "population": 1540000,
+      "economicStrength": "high",
+      "digitalReadiness": 78
+    },
+    "BE": {
+      "kmuCount": 82000,
+      "population": 1040000,
+      "economicStrength": "high",
+      "digitalReadiness": 72
+    },
+    "VD": {
+      "kmuCount": 58000,
+      "population": 805000,
+      "economicStrength": "high",
+      "digitalReadiness": 74
+    },
+    "AG": {
+      "kmuCount": 52000,
+      "population": 685000,
+      "economicStrength": "medium",
+      "digitalReadiness": 68
+    },
+    "SG": {
+      "kmuCount": 45000,
+      "population": 510000,
+      "economicStrength": "medium",
+      "digitalReadiness": 65
+    },
+    "LU": {
+      "kmuCount": 38000,
+      "population": 410000,
+      "economicStrength": "medium",
+      "digitalReadiness": 66
+    },
+    "GE": {
+      "kmuCount": 35000,
+      "population": 505000,
+      "economicStrength": "high",
+      "digitalReadiness": 80
+    },
+    "TI": {
+      "kmuCount": 32000,
+      "population": 355000,
+      "economicStrength": "medium",
+      "digitalReadiness": 62
+    },
+    "ZG": {
+      "kmuCount": 22000,
+      "population": 127000,
+      "economicStrength": "very high",
+      "digitalReadiness": 85
+    },
+    "BS": {
+      "kmuCount": 18000,
+      "population": 195000,
+      "economicStrength": "high",
+      "digitalReadiness": 82
+    }
+  },
+  "trends": {
+    "digitalizationRate": {
+      "2024": 58,
+      "2025": 65,
+      "2026": 68,
+      "forecast2027": 74
+    },
+    "aiAdoptionRate": {
+      "2024": 8,
+      "2025": 12,
+      "2026": 15,
+      "forecast2027": 22
+    },
+    "marketingAutomationAdoption": {
+      "2024": 12,
+      "2025": 18,
+      "2026": 22,
+      "forecast2027": 30
+    },
+    "avgMarketingBudget": {
+      "percentOfRevenue": 6.5,
+      "digitalShare": 58,
+      "growthRate": 12
+    }
+  },
+  "seasonalPatterns": {
+    "january": { "demandLevel": "low", "reason": "Post-holiday slowdown" },
+    "february": { "demandLevel": "medium", "reason": "Budget planning season" },
+    "march": { "demandLevel": "high", "reason": "Q1 push, new initiatives" },
+    "april": { "demandLevel": "medium", "reason": "Spring momentum" },
+    "may": { "demandLevel": "low", "reason": "Holidays (May 1, Ascension)" },
+    "june": { "demandLevel": "medium", "reason": "Mid-year planning" },
+    "july": { "demandLevel": "low", "reason": "Summer holidays" },
+    "august": { "demandLevel": "very low", "reason": "Peak holiday season" },
+    "september": { "demandLevel": "high", "reason": "Back-to-business surge" },
+    "october": { "demandLevel": "high", "reason": "Q4 push" },
+    "november": { "demandLevel": "medium", "reason": "Year-end prep" },
+    "december": { "demandLevel": "low", "reason": "Holiday season" }
+  },
+  "regulatoryChanges": [
+    {
+      "name": "Swiss Data Protection Act (revDSG)",
+      "effectiveDate": "2023-09-01",
+      "impact": "Marketing automation must comply with stricter consent rules",
+      "complianceStatus": "active"
+    },
+    {
+      "name": "AI Act Considerations",
+      "expectedDate": "2025-2027",
+      "impact": "Upcoming EU AI Act may influence Swiss regulations",
+      "complianceStatus": "monitoring"
+    }
+  ]
+}

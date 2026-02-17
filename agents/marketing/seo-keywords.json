@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "purpose": "Target keywords for blog content generation",
+    "updated_by": "content-engine",
+    "last_updated": null
+  },
+  "target_keywords": {
+    "treuhand": {
+      "pillar": "treuhand digitalisierung",
+      "cluster": [
+        { "keyword": "treuhänder website", "priority": 1, "difficulty": "medium", "intent": "informational" },
+        { "keyword": "treuhand marketing", "priority": 1, "difficulty": "low", "intent": "informational" },
+        { "keyword": "treuhand kunden gewinnen", "priority": 1, "difficulty": "low", "intent": "commercial" },
+        { "keyword": "treuhand software", "priority": 2, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "buchhaltung outsourcing", "priority": 2, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "treuhänder online buchen", "priority": 3, "difficulty": "low", "intent": "transactional" },
+        { "keyword": "treuhand seo", "priority": 2, "difficulty": "low", "intent": "informational" }
+      ]
+    },
+    "zahnarzt": {
+      "pillar": "zahnarzt online marketing",
+      "cluster": [
+        { "keyword": "zahnarzt neue patienten", "priority": 1, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "zahnarzt website erstellen", "priority": 1, "difficulty": "low", "intent": "commercial" },
+        { "keyword": "zahnarzt google bewertungen", "priority": 1, "difficulty": "low", "intent": "informational" },
+        { "keyword": "zahnarzt seo", "priority": 2, "difficulty": "low", "intent": "informational" },
+        { "keyword": "zahnarzt online terminbuchung", "priority": 2, "difficulty": "medium", "intent": "informational" },
+        { "keyword": "zahnarztpraxis marketing", "priority": 1, "difficulty": "low", "intent": "commercial" },
+        { "keyword": "zahnarzt social media", "priority": 3, "difficulty": "low", "intent": "informational" }
+      ]
+    },
+    "immobilien": {
+      "pillar": "immobilien marketing digital",
+      "cluster": [
+        { "keyword": "immobilienmakler marketing", "priority": 1, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "immobilien website", "priority": 1, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "immobilien leads generieren", "priority": 1, "difficulty": "low", "intent": "commercial" },
+        { "keyword": "hausverwaltung digitalisierung", "priority": 2, "difficulty": "low", "intent": "informational" },
+        { "keyword": "immobilien seo", "priority": 2, "difficulty": "low", "intent": "informational" },
+        { "keyword": "makler online präsenz", "priority": 2, "difficulty": "low", "intent": "informational" }
+      ]
+    },
+    "general_kmu": {
+      "pillar": "kmu digitalisierung schweiz",
+      "cluster": [
+        { "keyword": "kmu website erstellen", "priority": 1, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "kmu marketing automatisierung", "priority": 1, "difficulty": "low", "intent": "commercial" },
+        { "keyword": "lokales seo schweiz", "priority": 2, "difficulty": "medium", "intent": "informational" },
+        { "keyword": "google my business optimieren", "priority": 2, "difficulty": "medium", "intent": "informational" },
+        { "keyword": "online marketing kmu", "priority": 1, "difficulty": "medium", "intent": "informational" },
+        { "keyword": "website für kleine unternehmen", "priority": 2, "difficulty": "medium", "intent": "commercial" },
+        { "keyword": "content marketing kmu", "priority": 3, "difficulty": "low", "intent": "informational" }
+      ]
+    }
+  }
+}

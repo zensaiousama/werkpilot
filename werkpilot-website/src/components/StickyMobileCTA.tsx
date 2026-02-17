@@ -1,17 +1,36 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 export default function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
+  const ticking = useRef(false);
+  const prefetched = useRef(false);
 
   useEffect(() => {
-    // Hide on fitness-check page (already on the form)
     const isFitnessCheck = window.location.pathname === '/fitness-check';
 
     const handleScroll = () => {
-      setIsVisible(!isFitnessCheck && window.scrollY > 600);
+      if (ticking.current) return;
+      ticking.current = true;
+      requestAnimationFrame(() => {
+        setIsVisible(!isFitnessCheck && window.scrollY > 600);
+
+        // Smart preload: prefetch fitness-check page when user scrolls past 50%
+        if (!prefetched.current) {
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight > 0 && window.scrollY / docHeight > 0.5) {
+            prefetched.current = true;
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = '/fitness-check';
+            document.head.appendChild(link);
+          }
+        }
+
+        ticking.current = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -25,7 +44,7 @@ export default function StickyMobileCTA() {
       }`}
     >
       <div
-        className="p-3 shadow-[0_-2px_10px_rgba(0,0,0,0.1)]"
+        className="p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,0.1)]"
         style={{ backgroundColor: 'var(--color-surface)' }}
       >
         <Link

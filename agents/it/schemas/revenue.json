@@ -1,0 +1,34 @@
+{
+  "name": "Revenue",
+  "version": "1.0.0",
+  "description": "Schema for the Revenue table tracking all income records",
+  "table": "Revenue",
+  "fields": [
+    { "name": "ClientId", "type": "link", "required": true, "target": "Clients", "description": "Reference to the client" },
+    { "name": "Amount", "type": "currency", "required": true, "currency": "CHF", "min": 0.01, "description": "Revenue amount in CHF" },
+    { "name": "Type", "type": "select", "required": true, "options": ["Recurring", "One-Time", "Upsell", "Renewal", "Refund"], "description": "Revenue type" },
+    { "name": "Category", "type": "select", "required": true, "options": ["Website", "Web App", "SEO", "Branding", "Consulting", "Maintenance", "Hosting", "Other"], "description": "Service category" },
+    { "name": "Date", "type": "date", "required": true, "description": "Revenue recognition date" },
+    { "name": "InvoiceId", "type": "link", "required": false, "target": "Invoices", "description": "Associated invoice" },
+    { "name": "Description", "type": "text", "required": false, "description": "Description of the revenue item" },
+    { "name": "PaymentStatus", "type": "select", "required": true, "options": ["Pending", "Paid", "Overdue", "Cancelled"], "default": "Pending", "description": "Payment status" },
+    { "name": "PaymentDate", "type": "date", "required": false, "description": "Date payment was received" },
+    { "name": "PaymentMethod", "type": "select", "required": false, "options": ["Bank Transfer", "Credit Card", "PayPal", "Invoice"], "description": "Payment method used" },
+    { "name": "IsRecurring", "type": "boolean", "required": false, "default": false, "description": "Part of a recurring revenue stream" },
+    { "name": "RecurringFrequency", "type": "select", "required": false, "options": ["Monthly", "Quarterly", "Annually"], "description": "Recurring billing frequency" },
+    { "name": "Notes", "type": "longtext", "required": false, "description": "Additional notes" }
+  ],
+  "indexes": ["ClientId", "Date", "Type", "Category", "PaymentStatus"],
+  "aggregations": {
+    "totalRevenue": "SUM(Amount) WHERE Type != 'Refund'",
+    "mrr": "SUM(Amount) WHERE Type = 'Recurring' AND RecurringFrequency = 'Monthly'",
+    "arr": "SUM(Amount) WHERE IsRecurring = true * 12",
+    "revenueByCategory": "GROUP BY Category, SUM(Amount)",
+    "revenueByMonth": "GROUP BY MONTH(Date), SUM(Amount)"
+  },
+  "validation": {
+    "amountMustBePositive": "Amount > 0 OR Type = 'Refund'",
+    "refundMustBeNegative": "IF Type = 'Refund' THEN Amount < 0",
+    "paidRequiresPaymentDate": "IF PaymentStatus = 'Paid' THEN PaymentDate IS NOT NULL"
+  }
+}

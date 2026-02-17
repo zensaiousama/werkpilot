@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Lead {
+  id              String   @id @default(cuid())
+  firma           String
+  kontakt         String?
+  email           String?
+  telefon         String?
+  website         String?
+  adresse         String?
+  branche         String
+  kanton          String
+  ort             String
+  status          String   @default("New Lead")
+  leadScore       Int      @default(0)
+  fitnessScore    Int      @default(0)
+  umsatzpotenzial Int      @default(2000)
+  googleRating    Float?
+  googleReviews   Int?
+  notizen         String?
+  quelle          String?
+  letzterKontakt  DateTime?
+  assignedAgent   String?
+  priority        Int      @default(0)
+  lastActivityAt  DateTime?
+  tags            String   @default("")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  activities      Activity[]
+
+  @@index([status])
+  @@index([branche])
+  @@index([kanton])
+  @@index([leadScore])
+  @@index([createdAt])
+  @@index([email])
+  @@index([status, branche])
+  @@index([status, kanton])
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  type      String
+  details   String?
+  createdAt DateTime @default(now())
+
+  @@index([leadId])
+  @@index([createdAt])
+  @@index([type])
+}
+
+model Agent {
+  id          String   @id @default(cuid())
+  name        String
+  dept        String
+  status      String   @default("idle")
+  score       Int      @default(0)
+  tasksToday  Int      @default(0)
+  errorsToday Int      @default(0)
+  lastRun     DateTime?
+  config      String?
+  logs        AgentLog[]
+  executions  AgentExecution[]
+
+  @@index([dept])
+  @@index([status])
+  @@index([name])
+  @@unique([name])
+}
+
+model AgentLog {
+  id        String   @id @default(cuid())
+  agentId   String
+  agent     Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  level     String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([agentId])
+  @@index([level])
+  @@index([createdAt])
+  @@index([agentId, createdAt])
+}
+
+model NightShiftTask {
+  id          String    @id @default(cuid())
+  task        String
+  priority    Int       @default(1)
+  status      String    @default("pending")
+  startedAt   DateTime?
+  completedAt DateTime?
+  output      String?
+  durationMs  Int?
+  tokensUsed  Int       @default(0)
+  agentName   String?
+  createdAt   DateTime  @default(now())
+
+  @@index([status])
+  @@index([priority])
+  @@index([createdAt])
+}
+
+model Decision {
+  id             String  @id @default(cuid())
+  title          String
+  context        String
+  options        String
+  recommendation String?
+  chosen         String?
+  status         String  @default("pending")
+  createdAt      DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  title     String
+  message   String
+  type      String   @default("info")
+  read      Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  @@index([read])
+  @@index([createdAt])
+}
+
+model AgentExecution {
+  id          String   @id @default(cuid())
+  agentId     String
+  agent       Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  startedAt   DateTime
+  completedAt DateTime?
+  durationMs  Int?
+  status      String
+  errorMessage String?
+  tokensUsed  Int      @default(0)
+  model       String?
+  createdAt   DateTime @default(now())
+
+  @@index([agentId, startedAt])
+  @@index([status])
+}
+
+model Webhook {
+  id            String   @id @default(cuid())
+  name          String
+  url           String
+  events        String
+  secret        String?
+  active        Boolean  @default(true)
+  lastTriggered DateTime?
+  failCount     Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  @@index([active])
+  @@index([events])
+}

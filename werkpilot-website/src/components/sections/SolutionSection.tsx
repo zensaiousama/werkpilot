@@ -1,142 +1,168 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import AnimatedSection from '@/components/AnimatedSection';
+import PricingAnchor from '@/components/PricingAnchor';
 
 export default function SolutionSection() {
   const [specialists, setSpecialists] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const counterRef = useRef<HTMLDivElement>(null);
 
+  // Only start counting when the counter is visible
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSpecialists((prev) => {
-        if (prev < 43) return prev + 1;
-        clearInterval(interval);
-        return 43;
-      });
-    }, 50);
+    if (!counterRef.current) return;
 
-    return () => clearInterval(interval);
-  }, []);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let start = 0;
+          const end = 43;
+          const duration = 2000;
+          const startTime = performance.now();
+
+          const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic for satisfying deceleration
+            const eased = 1 - Math.pow(1 - progress, 3);
+            start = Math.round(eased * end);
+            setSpecialists(start);
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(counterRef.current);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-surface)' }}>
+    <section className="section gradient-mesh" style={{ backgroundColor: 'var(--color-surface)' }}>
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="mb-6" style={{ fontFamily: 'var(--font-jakarta)' }}>
-            Werkpilot: Ihr komplettes Backoffice — ohne die Kosten eines Teams
+        <AnimatedSection className="text-center mb-16">
+          <h2>
+            Ihr komplettes Backoffice — ohne die Kosten eines Teams
           </h2>
-        </motion.div>
+          <p
+            className="text-lg mt-4 max-w-2xl mx-auto"
+            style={{ color: 'var(--color-text-secondary)' }}
+          >
+            Zum Vergleich: Ein Marketing-Mitarbeiter kostet CHF 7&apos;000/Monat
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection className="mb-16" delay={100}>
+          <PricingAnchor />
+        </AnimatedSection>
 
         {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto"
+        <AnimatedSection
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 max-w-4xl mx-auto"
+          delay={200}
         >
-          <div className="text-center">
+          <div className="text-center p-8" ref={counterRef}>
             <div
-              className="text-6xl font-bold mb-2"
-              style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-accent)' }}
+              className="mb-3"
+              style={{
+                fontSize: '4.5rem',
+                fontFamily: 'var(--font-jakarta)',
+                color: 'var(--color-primary)',
+                fontWeight: 800,
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+                minHeight: '4.5rem',
+              }}
             >
               {specialists}
             </div>
-            <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
+            <p className="text-base font-medium" style={{ color: 'var(--color-text-secondary)' }}>
               Spezialisten arbeiten für Sie
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center p-8">
             <div
-              className="text-6xl font-bold mb-2"
-              style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-accent)' }}
+              className="mb-3"
+              style={{
+                fontSize: '4.5rem',
+                fontFamily: 'var(--font-jakarta)',
+                color: 'var(--color-primary)',
+                fontWeight: 800,
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+              }}
             >
               24/7
             </div>
-            <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
-              Im Einsatz
+            <p className="text-base font-medium" style={{ color: 'var(--color-text-secondary)' }}>
+              Im Einsatz für Ihr KMU
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center p-8">
             <div
-              className="text-6xl font-bold mb-2"
-              style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-accent)' }}
+              className="mb-3"
+              style={{
+                fontSize: '4.5rem',
+                fontFamily: 'var(--font-jakarta)',
+                color: 'var(--color-accent)',
+                fontWeight: 800,
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+              }}
             >
               CHF 1&apos;500
             </div>
-            <p className="text-lg" style={{ color: 'var(--color-text-secondary)' }}>
-              Ab /Monat
-            </p>
-            <p className="text-sm mt-1" style={{ color: 'var(--color-success)' }}>
-              Keine Kreditkarte erforderlich
+            <p className="text-base font-medium" style={{ color: 'var(--color-text-secondary)' }}>
+              Ab /Monat &middot; Keine Kreditkarte
             </p>
           </div>
-        </motion.div>
-
-        {/* Comparison line */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mb-16"
-        >
-          <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
-            Zum Vergleich: Ein Marketing-Mitarbeiter kostet CHF 7&apos;000/Monat
-          </p>
-        </motion.div>
+        </AnimatedSection>
 
         {/* Package Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {[
             {
               title: 'Kunden gewinnen',
-              price: 'CHF 2\'000',
+              price: "CHF 2'000",
               description: 'SEO, Content, Social Media, Email Marketing',
               link: '/dienstleistungen/kunden-gewinnen',
               dataTrack: 'cta-package-kunden',
             },
             {
               title: 'Effizienz',
-              price: 'CHF 1\'500',
+              price: "CHF 1'500",
               description: 'Prozess-Automation, Kommunikation, Reporting',
               link: '/dienstleistungen/effizienz',
               featured: true,
               badge: 'Beliebteste Wahl',
-              badgeColor: 'var(--color-success)',
               dataTrack: 'cta-package-effizienz',
             },
             {
               title: 'Wachstum',
-              price: 'CHF 5\'000',
+              price: "CHF 5'000",
               description: 'Alles + Strategie, Analytics, Expansion',
               link: '/dienstleistungen/wachstum',
-              featured: true,
-              badge: 'ENTERPRISE',
-              badgeColor: 'var(--color-warm)',
               dataTrack: 'cta-package-wachstum',
             },
           ].map((pkg, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className={`card p-8 ${pkg.featured ? 'ring-2' : ''}`}
-              style={pkg.featured ? { borderColor: pkg.badgeColor || 'var(--color-accent)' } : {}}
+              delay={300 + index * 100}
+              className="card p-8"
+              style={pkg.featured ? { borderColor: '#2563EB', borderWidth: '2px' } : {}}
             >
               {pkg.featured && pkg.badge && (
                 <div
-                  className="text-xs font-bold mb-4 inline-block px-3 py-1 rounded-full"
-                  style={{ backgroundColor: pkg.badgeColor || 'var(--color-accent)', color: 'white' }}
+                  className="text-xs font-bold mb-4 inline-block px-3 py-1 rounded-full text-white"
+                  style={{ backgroundColor: '#2563EB' }}
                 >
                   {pkg.badge}
                 </div>
@@ -147,40 +173,45 @@ export default function SolutionSection() {
               >
                 {pkg.title}
               </h3>
-              <div
-                className="text-3xl font-bold mb-4"
-                style={{ fontFamily: 'var(--font-jakarta)', color: 'var(--color-accent)' }}
-              >
-                {pkg.price}
-                <span className="text-lg font-normal" style={{ color: 'var(--color-text-secondary)' }}>
+              <div className="mb-4">
+                <span
+                  style={{
+                    fontSize: '2rem',
+                    fontFamily: 'var(--font-jakarta)',
+                    color: 'var(--color-primary)',
+                    fontWeight: 800,
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  {pkg.price}
+                </span>
+                <span className="text-base ml-1" style={{ color: 'var(--color-text-secondary)' }}>
                   /Monat
                 </span>
               </div>
               <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
                 {pkg.description}
               </p>
-              <Link href={pkg.link} className="btn btn-secondary w-full justify-center" data-track={pkg.dataTrack}>
-                Mehr erfahren →
+              <Link
+                href={pkg.link}
+                className={pkg.featured ? 'btn btn-primary w-full justify-center' : 'btn btn-secondary w-full justify-center'}
+                data-track={pkg.dataTrack}
+              >
+                {pkg.featured ? 'Jetzt starten' : 'Mehr erfahren'} &rarr;
               </Link>
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-12"
-        >
+        <AnimatedSection className="text-center mt-12" delay={800}>
           <Link
             href="/dienstleistungen"
-            className="text-lg font-medium hover:underline"
+            className="text-base font-semibold hover:underline"
             style={{ color: 'var(--color-accent)' }}
           >
-            Alle Pakete vergleichen →
+            Alle Pakete vergleichen &rarr;
           </Link>
-        </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );

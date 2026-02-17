@@ -1,0 +1,136 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "checkIntervalMinutes": 5,
+  "endpoints": {
+    "website": {
+      "name": "Werkpilot Website",
+      "url": "https://werkpilot.ch",
+      "method": "GET",
+      "expectedStatus": 200,
+      "timeoutMs": 10000,
+      "maxResponseTimeMs": 3000,
+      "checkContent": "Werkpilot",
+      "priority": "critical",
+      "enabled": true
+    },
+    "website-api": {
+      "name": "Website API",
+      "url": "https://werkpilot.ch/api/health",
+      "method": "GET",
+      "expectedStatus": 200,
+      "timeoutMs": 5000,
+      "maxResponseTimeMs": 1000,
+      "priority": "critical",
+      "enabled": true
+    },
+    "airtable": {
+      "name": "Airtable API",
+      "url": "https://api.airtable.com/v0/meta/whoami",
+      "method": "GET",
+      "expectedStatus": 200,
+      "timeoutMs": 10000,
+      "maxResponseTimeMs": 5000,
+      "headers": {
+        "Authorization": "Bearer {{AIRTABLE_API_KEY}}"
+      },
+      "priority": "high",
+      "enabled": true
+    },
+    "anthropic": {
+      "name": "Anthropic Claude API",
+      "url": "https://api.anthropic.com/v1/messages",
+      "method": "POST",
+      "expectedStatus": [200, 401],
+      "timeoutMs": 10000,
+      "maxResponseTimeMs": 5000,
+      "priority": "high",
+      "enabled": true,
+      "notes": "401 is expected without valid auth in health check - just verifying reachability"
+    },
+    "deepl": {
+      "name": "DeepL Translation API",
+      "url": "https://api-free.deepl.com/v2/usage",
+      "method": "GET",
+      "expectedStatus": 200,
+      "timeoutMs": 10000,
+      "maxResponseTimeMs": 5000,
+      "headers": {
+        "Authorization": "DeepL-Auth-Key {{DEEPL_API_KEY}}"
+      },
+      "priority": "medium",
+      "enabled": true
+    },
+    "mailerlite": {
+      "name": "MailerLite API",
+      "url": "https://connect.mailerlite.com/api/subscribers?limit=1",
+      "method": "GET",
+      "expectedStatus": 200,
+      "timeoutMs": 10000,
+      "maxResponseTimeMs": 5000,
+      "headers": {
+        "Authorization": "Bearer {{MAILERLITE_API_KEY}}"
+      },
+      "priority": "medium",
+      "enabled": true
+    },
+    "gmail-smtp": {
+      "name": "Gmail SMTP",
+      "type": "smtp",
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "timeoutMs": 10000,
+      "priority": "high",
+      "enabled": true
+    }
+  },
+  "sslChecks": {
+    "werkpilot.ch": {
+      "name": "Werkpilot SSL Certificate",
+      "domain": "werkpilot.ch",
+      "warningDaysBefore": 30,
+      "criticalDaysBefore": 7,
+      "enabled": true
+    }
+  },
+  "alerting": {
+    "channels": {
+      "email": {
+        "enabled": true,
+        "recipients": ["ceo"],
+        "cooldownMinutes": 30
+      }
+    },
+    "rules": {
+      "downAlert": {
+        "description": "Alert when service is down",
+        "condition": "consecutiveFailures >= 2",
+        "severity": "critical",
+        "channels": ["email"]
+      },
+      "slowAlert": {
+        "description": "Alert when service is slow",
+        "condition": "responseTime > maxResponseTimeMs for 3 consecutive checks",
+        "severity": "high",
+        "channels": ["email"]
+      },
+      "sslExpiry": {
+        "description": "Alert when SSL certificate is about to expire",
+        "condition": "daysUntilExpiry <= warningDaysBefore",
+        "severity": "high",
+        "channels": ["email"]
+      },
+      "recoveryNotice": {
+        "description": "Notify when service recovers",
+        "condition": "previousStatus === 'down' && currentStatus === 'up'",
+        "severity": "info",
+        "channels": ["email"]
+      }
+    }
+  },
+  "statusPage": {
+    "enabled": true,
+    "historyDays": 30,
+    "uptimeCalculation": "excludeScheduledMaintenance"
+  }
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rechnung {{INVOICE_NUMBER}}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10pt;
+      color: #333;
+      line-height: 1.5;
+      padding: 40px;
+      max-width: 210mm;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #1a73e8;
+      padding-bottom: 20px;
+    }
+    .company-info { max-width: 60%; }
+    .company-name {
+      font-size: 18pt;
+      font-weight: 700;
+      color: #1a73e8;
+      margin-bottom: 4px;
+    }
+    .company-details { font-size: 9pt; color: #666; }
+    .invoice-meta { text-align: right; }
+    .invoice-title {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #1a73e8;
+      margin-bottom: 8px;
+    }
+    .invoice-number { font-size: 11pt; color: #666; }
+    .addresses {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .address-block { width: 45%; }
+    .address-label {
+      font-size: 8pt;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .address-name {
+      font-weight: 700;
+      font-size: 11pt;
+      margin-bottom: 2px;
+    }
+    .invoice-details-table {
+      width: 100%;
+      margin-bottom: 30px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .invoice-details-table table { width: 100%; }
+    .invoice-details-table td {
+      padding: 4px 12px;
+      font-size: 9pt;
+    }
+    .invoice-details-table td:first-child {
+      color: #666;
+      width: 140px;
+    }
+    .invoice-details-table td:last-child { font-weight: 600; }
+    .line-items { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    .line-items thead th {
+      background: #1a73e8;
+      color: white;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 9pt;
+    }
+    .line-items thead th:last-child,
+    .line-items thead th:nth-child(3),
+    .line-items thead th:nth-child(4) { text-align: right; }
+    .line-items tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      font-size: 9.5pt;
+    }
+    .line-items tbody td:last-child,
+    .line-items tbody td:nth-child(3),
+    .line-items tbody td:nth-child(4) { text-align: right; }
+    .line-items tbody tr:nth-child(even) { background: #fafafa; }
+    .totals {
+      width: 300px;
+      margin-left: auto;
+      margin-bottom: 40px;
+    }
+    .totals table { width: 100%; }
+    .totals td {
+      padding: 6px 0;
+      font-size: 10pt;
+    }
+    .totals td:last-child { text-align: right; }
+    .totals .subtotal { border-top: 1px solid #ddd; }
+    .totals .total {
+      border-top: 2px solid #1a73e8;
+      font-weight: 700;
+      font-size: 13pt;
+      color: #1a73e8;
+    }
+    .payment-info {
+      background: #f0f7ff;
+      border: 1px solid #d0e3f7;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 30px;
+    }
+    .payment-info h3 {
+      font-size: 10pt;
+      color: #1a73e8;
+      margin-bottom: 8px;
+    }
+    .payment-info table { width: 100%; }
+    .payment-info td {
+      padding: 3px 0;
+      font-size: 9pt;
+    }
+    .payment-info td:first-child {
+      color: #666;
+      width: 120px;
+    }
+    .qr-bill-section {
+      border-top: 1px dashed #ccc;
+      padding-top: 20px;
+      margin-top: 40px;
+      page-break-inside: avoid;
+    }
+    .qr-bill-container {
+      display: flex;
+      border: 1px solid #000;
+      min-height: 105mm;
+    }
+    .qr-receipt {
+      width: 62mm;
+      border-right: 1px dashed #000;
+      padding: 8px;
+      font-size: 7pt;
+    }
+    .qr-payment {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 8pt;
+    }
+    .qr-section-title {
+      font-weight: 700;
+      font-size: 9pt;
+      margin-bottom: 6px;
+    }
+    .qr-heading {
+      font-weight: 700;
+      font-size: 6pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 8px;
+      margin-bottom: 2px;
+    }
+    .qr-placeholder {
+      width: 46mm;
+      height: 46mm;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px 0;
+      font-size: 7pt;
+      color: #999;
+    }
+    .qr-amount-box {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .qr-amount-box > div {
+      border: 1px solid #000;
+      padding: 4px 8px;
+      min-width: 40mm;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      font-size: 8pt;
+      color: #999;
+      text-align: center;
+    }
+    @media print {
+      body { padding: 0; }
+      .qr-bill-section { page-break-before: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="company-info">
+      <div class="company-name">Werkpilot</div>
+      <div class="company-details">
+        AI-Powered Business Automation<br>
+        {{COMPANY_STREET}}<br>
+        {{COMPANY_ZIP}} {{COMPANY_CITY}}<br>
+        {{COMPANY_COUNTRY}}<br>
+        {{COMPANY_EMAIL}} | {{COMPANY_PHONE}}<br>
+        UID: {{COMPANY_UID}}
+      </div>
+    </div>
+    <div class="invoice-meta">
+      <div class="invoice-title">RECHNUNG</div>
+      <div class="invoice-number">Nr. {{INVOICE_NUMBER}}</div>
+    </div>
+  </div>
+
+  <div class="addresses">
+    <div class="address-block">
+      <div class="address-label">Rechnungsadresse</div>
+      <div class="address-name">{{CLIENT_NAME}}</div>
+      <div>{{CLIENT_COMPANY}}</div>
+      <div>{{CLIENT_STREET}}</div>
+      <div>{{CLIENT_ZIP}} {{CLIENT_CITY}}</div>
+      <div>{{CLIENT_COUNTRY}}</div>
+    </div>
+    <div class="address-block">
+      <div class="invoice-details-table">
+        <table>
+          <tr><td>Rechnungsdatum:</td><td>{{INVOICE_DATE}}</td></tr>
+          <tr><td>Leistungszeitraum:</td><td>{{SERVICE_PERIOD}}</td></tr>
+          <tr><td>Zahlungsfrist:</td><td>{{DUE_DATE}}</td></tr>
+          <tr><td>Kundennummer:</td><td>{{CLIENT_NUMBER}}</td></tr>
+          <tr><td>Referenz:</td><td>{{REFERENCE}}</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <table class="line-items">
+    <thead>
+      <tr>
+        <th>Pos.</th>
+        <th>Beschreibung</th>
+        <th>Menge</th>
+        <th>Einzelpreis</th>
+        <th>Betrag (CHF)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{LINE_ITEMS}}
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <table>
+      <tr>
+        <td>Zwischensumme:</td>
+        <td>CHF {{SUBTOTAL}}</td>
+      </tr>
+      {{#IF_VAT}}
+      <tr>
+        <td>MwSt. ({{VAT_RATE}}%):</td>
+        <td>CHF {{VAT_AMOUNT}}</td>
+      </tr>
+      {{/IF_VAT}}
+      {{#IF_DISCOUNT}}
+      <tr>
+        <td>Rabatt ({{DISCOUNT_RATE}}%):</td>
+        <td>- CHF {{DISCOUNT_AMOUNT}}</td>
+      </tr>
+      {{/IF_DISCOUNT}}
+      <tr class="total">
+        <td>Gesamtbetrag:</td>
+        <td>CHF {{TOTAL_AMOUNT}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="payment-info">
+    <h3>Zahlungsinformationen</h3>
+    <table>
+      <tr><td>Bank:</td><td>{{BANK_NAME}}</td></tr>
+      <tr><td>IBAN:</td><td>{{IBAN}}</td></tr>
+      <tr><td>BIC/SWIFT:</td><td>{{BIC}}</td></tr>
+      <tr><td>Konto lautend auf:</td><td>Werkpilot - {{COMPANY_CITY}}</td></tr>
+      <tr><td>Zahlungsfrist:</td><td>{{PAYMENT_TERMS}} Tage netto</td></tr>
+      <tr><td>Referenz:</td><td>{{PAYMENT_REFERENCE}}</td></tr>
+    </table>
+  </div>
+
+  <!-- Swiss QR Bill Section -->
+  <div class="qr-bill-section">
+    <div class="qr-bill-container">
+      <!-- Receipt (Empfangsschein) -->
+      <div class="qr-receipt">
+        <div class="qr-section-title">Empfangsschein</div>
+        <div class="qr-heading">Konto / Zahlbar an</div>
+        <div>{{IBAN}}</div>
+        <div>{{COMPANY_LEGAL_NAME}}</div>
+        <div>{{COMPANY_STREET}}</div>
+        <div>{{COMPANY_ZIP}} {{COMPANY_CITY}}</div>
+
+        <div class="qr-heading">Referenz</div>
+        <div>{{QR_REFERENCE}}</div>
+
+        <div class="qr-heading">Zahlbar durch</div>
+        <div>{{CLIENT_NAME}}</div>
+        <div>{{CLIENT_STREET}}</div>
+        <div>{{CLIENT_ZIP}} {{CLIENT_CITY}}</div>
+
+        <div class="qr-heading">Waehrung &nbsp;&nbsp;&nbsp; Betrag</div>
+        <div>CHF &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{TOTAL_AMOUNT}}</div>
+
+        <div style="margin-top: 12px;">
+          <div class="qr-heading">Annahmestelle</div>
+        </div>
+      </div>
+
+      <!-- Payment part (Zahlteil) -->
+      <div class="qr-payment">
+        <div class="qr-section-title">Zahlteil</div>
+
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <div class="qr-placeholder">
+            Swiss QR Code<br>
+            {{QR_DATA}}
+          </div>
+          <div>
+            <div class="qr-heading">Waehrung &nbsp;&nbsp;&nbsp; Betrag</div>
+            <div>CHF &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{TOTAL_AMOUNT}}</div>
+          </div>
+        </div>
+
+        <div class="qr-heading">Konto / Zahlbar an</div>
+        <div>{{IBAN}}</div>
+        <div>{{COMPANY_LEGAL_NAME}}</div>
+        <div>{{COMPANY_STREET}}</div>
+        <div>{{COMPANY_ZIP}} {{COMPANY_CITY}}</div>
+
+        <div class="qr-heading">Referenz</div>
+        <div>{{QR_REFERENCE}}</div>
+
+        <div class="qr-heading">Zusaetzliche Informationen</div>
+        <div>{{ADDITIONAL_INFO}}</div>
+
+        <div class="qr-heading">Zahlbar durch</div>
+        <div>{{CLIENT_NAME}}</div>
+        <div>{{CLIENT_COMPANY}}</div>
+        <div>{{CLIENT_STREET}}</div>
+        <div>{{CLIENT_ZIP}} {{CLIENT_CITY}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Werkpilot | {{COMPANY_STREET}}, {{COMPANY_ZIP}} {{COMPANY_CITY}} |
+    {{COMPANY_EMAIL}} | UID: {{COMPANY_UID}} |
+    Vielen Dank fuer Ihren Auftrag!
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13T00:00:00.000Z",
+  "templates": {
+    "daily": {
+      "name": "Daily Business Report",
+      "description": "End-of-day summary of key business metrics",
+      "schedule": "0 6 * * *",
+      "recipient": "ceo",
+      "sections": [
+        {
+          "name": "Revenue Summary",
+          "metrics": ["revenue.total", "revenue.recurring", "revenue.oneTime"],
+          "comparison": "previous_day",
+          "visualization": "summary_cards"
+        },
+        {
+          "name": "Lead Pipeline",
+          "metrics": ["leads.new", "leads.qualified", "leads.converted", "leads.lost"],
+          "comparison": "previous_day",
+          "visualization": "pipeline_funnel"
+        },
+        {
+          "name": "Client Health",
+          "metrics": ["clients.active", "clients.totalMRR", "clients.new", "clients.churned"],
+          "comparison": "previous_day",
+          "visualization": "summary_cards"
+        },
+        {
+          "name": "Agent Performance",
+          "metrics": ["agents.totalRuns", "agents.completed", "agents.failed", "agents.avgDurationMs"],
+          "comparison": "previous_day",
+          "visualization": "status_table"
+        },
+        {
+          "name": "Error Summary",
+          "metrics": ["errors.total", "errors.critical", "errors.byAgent"],
+          "comparison": "previous_day",
+          "visualization": "alert_list"
+        },
+        {
+          "name": "Anomalies",
+          "metrics": ["anomalies"],
+          "conditional": true,
+          "showOnlyIfPresent": true,
+          "visualization": "alert_list"
+        }
+      ]
+    },
+    "weekly": {
+      "name": "Weekly Growth Report",
+      "description": "Weekly trends, growth metrics, and AI-generated insights",
+      "schedule": "0 5 * * 1",
+      "recipient": "ceo",
+      "sections": [
+        {
+          "name": "Executive Summary",
+          "type": "ai_generated",
+          "model": "standard",
+          "prompt": "Provide a 2-3 sentence executive summary of the week"
+        },
+        {
+          "name": "Revenue Growth",
+          "metrics": ["revenue.total", "revenue.byCategory"],
+          "comparison": "previous_week",
+          "visualization": "bar_chart"
+        },
+        {
+          "name": "Lead Conversion",
+          "metrics": ["leads.new", "leads.qualified", "leads.converted"],
+          "comparison": "previous_week",
+          "visualization": "funnel_chart"
+        },
+        {
+          "name": "Client Metrics",
+          "metrics": ["clients.active", "clients.totalMRR", "clients.new", "clients.churned"],
+          "comparison": "previous_week",
+          "visualization": "trend_line"
+        },
+        {
+          "name": "Agent System Health",
+          "metrics": ["agents.successRate", "agents.avgDuration", "agents.totalCost"],
+          "comparison": "previous_week",
+          "visualization": "status_table"
+        },
+        {
+          "name": "Highlights & Concerns",
+          "type": "ai_generated",
+          "model": "standard",
+          "prompt": "List top 3 highlights and any concerns for the week"
+        },
+        {
+          "name": "Recommendations",
+          "type": "ai_generated",
+          "model": "standard",
+          "prompt": "Provide 2-3 actionable recommendations for next week"
+        }
+      ]
+    },
+    "monthly": {
+      "name": "Monthly Comprehensive Report",
+      "description": "Full monthly report with P&L, cohort analysis, forecasts, and strategic insights",
+      "schedule": "0 4 1 * *",
+      "recipient": "ceo",
+      "sections": [
+        {
+          "name": "Executive Summary",
+          "type": "ai_generated",
+          "model": "powerful",
+          "prompt": "Provide a comprehensive executive summary of the month"
+        },
+        {
+          "name": "P&L Summary",
+          "metrics": ["revenue.total", "costs.estimated", "margin.gross", "margin.net"],
+          "comparison": "previous_month",
+          "visualization": "financial_table"
+        },
+        {
+          "name": "Client Cohort Analysis",
+          "metrics": ["cohort.newClientRevenue", "cohort.existingClientRevenue", "cohort.churnRate", "cohort.expansionRate"],
+          "comparison": "previous_month",
+          "visualization": "cohort_chart"
+        },
+        {
+          "name": "Revenue by Service",
+          "metrics": ["revenue.byCategory"],
+          "comparison": "previous_month",
+          "visualization": "pie_chart"
+        },
+        {
+          "name": "Sales Pipeline",
+          "metrics": ["pipeline.value", "pipeline.conversion", "pipeline.avgDealSize"],
+          "comparison": "previous_month",
+          "visualization": "funnel_chart"
+        },
+        {
+          "name": "3-Month Forecast",
+          "type": "ai_generated",
+          "model": "powerful",
+          "prompt": "Generate a 3-month revenue and growth forecast based on trends"
+        },
+        {
+          "name": "KPI Scorecard",
+          "metrics": ["kpi.all"],
+          "visualization": "scorecard_table"
+        },
+        {
+          "name": "Agent System Report",
+          "metrics": ["agents.uptime", "agents.successRate", "agents.totalCost", "agents.costByDepartment"],
+          "visualization": "department_breakdown"
+        },
+        {
+          "name": "Strategic Recommendations",
+          "type": "ai_generated",
+          "model": "powerful",
+          "prompt": "Provide 3-5 strategic recommendations for the coming month"
+        }
+      ]
+    }
+  },
+  "exportFormats": ["html_email", "csv", "json", "pdf"],
+  "defaultFormat": "html_email"
+}

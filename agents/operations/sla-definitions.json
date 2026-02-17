@@ -1,0 +1,134 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "services": {
+    "blog-content": {
+      "name": "Blog Content Delivery",
+      "description": "Blog posts and articles for client websites",
+      "sla": {
+        "deliveryTimeHours": 48,
+        "qualityScoreMin": 8.0,
+        "revisionTurnaroundHours": 24,
+        "maxRevisions": 2
+      },
+      "metrics": ["wordCount", "readability", "seoScore", "originality"],
+      "priority": "high"
+    },
+    "social-media": {
+      "name": "Social Media Content",
+      "description": "Social media posts and campaigns",
+      "sla": {
+        "deliveryTimeHours": 24,
+        "qualityScoreMin": 7.5,
+        "postsPerWeek": 5,
+        "engagementRateMin": 2.0
+      },
+      "metrics": ["engagement", "reach", "clickThrough"],
+      "priority": "medium"
+    },
+    "email-campaigns": {
+      "name": "Email Marketing Campaigns",
+      "description": "Newsletter and email campaign delivery",
+      "sla": {
+        "deliveryOnSchedule": true,
+        "openRateMin": 20.0,
+        "clickRateMin": 3.0,
+        "bounceRateMax": 2.0,
+        "setupTimeHours": 24
+      },
+      "metrics": ["openRate", "clickRate", "bounceRate", "unsubscribeRate"],
+      "priority": "high"
+    },
+    "seo-reports": {
+      "name": "SEO Analysis Reports",
+      "description": "Monthly SEO performance and recommendation reports",
+      "sla": {
+        "deliveryDayOfMonth": 5,
+        "qualityScoreMin": 8.5,
+        "metricsIncluded": ["rankings", "traffic", "backlinks", "technicalIssues"]
+      },
+      "metrics": ["accuracy", "actionability", "completeness"],
+      "priority": "high"
+    },
+    "monthly-report": {
+      "name": "Monthly Performance Report",
+      "description": "Comprehensive monthly report for clients",
+      "sla": {
+        "deliveryDayOfMonth": 3,
+        "qualityScoreMin": 9.0,
+        "sections": ["overview", "metrics", "achievements", "recommendations"]
+      },
+      "metrics": ["accuracy", "completeness", "timeliness"],
+      "priority": "critical"
+    },
+    "lead-response": {
+      "name": "Lead Response Time",
+      "description": "Initial response to new leads",
+      "sla": {
+        "responseTimeMinutes": 30,
+        "qualificationTimeHours": 4,
+        "followUpWithinHours": 24
+      },
+      "metrics": ["responseTime", "qualificationAccuracy", "conversionRate"],
+      "priority": "critical"
+    },
+    "translation": {
+      "name": "Translation Service",
+      "description": "Content translation with Swiss localization",
+      "sla": {
+        "deliveryTimeHours": 24,
+        "qualityScoreMin": 9.0,
+        "localizationAccuracy": 95,
+        "maxWordsPerDay": 5000
+      },
+      "metrics": ["accuracy", "localizationScore", "glossaryCompliance"],
+      "priority": "medium"
+    },
+    "website-uptime": {
+      "name": "Website Uptime",
+      "description": "Website availability monitoring",
+      "sla": {
+        "uptimePercent": 99.5,
+        "maxResponseTimeMs": 3000,
+        "alertTimeMinutes": 5,
+        "resolutionTimeMinutes": 60
+      },
+      "metrics": ["uptime", "responseTime", "errorRate"],
+      "priority": "critical"
+    },
+    "client-onboarding": {
+      "name": "Client Onboarding",
+      "description": "New client setup and onboarding process",
+      "sla": {
+        "completionTimeDays": 3,
+        "welcomeEmailHours": 2,
+        "firstReportDays": 7,
+        "firstCheckinDays": 14
+      },
+      "metrics": ["completionTime", "clientSatisfaction", "setupAccuracy"],
+      "priority": "high"
+    }
+  },
+  "severityLevels": {
+    "critical": {
+      "responseTimeMinutes": 15,
+      "escalateAfterMinutes": 30,
+      "notifyChannels": ["email", "sms"]
+    },
+    "high": {
+      "responseTimeMinutes": 60,
+      "escalateAfterMinutes": 120,
+      "notifyChannels": ["email"]
+    },
+    "medium": {
+      "responseTimeMinutes": 240,
+      "escalateAfterMinutes": 480,
+      "notifyChannels": ["email"]
+    },
+    "low": {
+      "responseTimeMinutes": 1440,
+      "escalateAfterMinutes": 2880,
+      "notifyChannels": ["email"]
+    }
+  }
+}

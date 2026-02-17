@@ -1,0 +1,51 @@
+{
+  "company": {
+    "name": "Werkpilot",
+    "founded": 2024,
+    "headquarters": "Schweiz",
+    "type": "GmbH",
+    "website": "https://werkpilot.ch"
+  },
+  "milestones": [
+    { "date": "2024-Q3", "event": "Unternehmensgründung", "press_worthy": false },
+    { "date": "2024-Q4", "event": "Launch der Werkpilot-Plattform", "press_worthy": true },
+    { "date": null, "event": "10. Kunde gewonnen", "press_worthy": true, "status": "upcoming" },
+    { "date": null, "event": "50. Kunde gewonnen", "press_worthy": true, "status": "upcoming" },
+    { "date": null, "event": "Expansion Romandie", "press_worthy": true, "status": "upcoming" },
+    { "date": null, "event": "100. Kunde gewonnen", "press_worthy": true, "status": "upcoming" },
+    { "date": null, "event": "Neuer Service Launch", "press_worthy": true, "status": "upcoming" }
+  ],
+  "metrics": {
+    "note": "Updated by agents automatically",
+    "clients_total": 0,
+    "clients_active": 0,
+    "industries_served": 5,
+    "languages": ["de", "fr"],
+    "websites_launched": 0,
+    "avg_client_satisfaction": null,
+    "avg_traffic_increase": null,
+    "avg_lead_increase": null
+  },
+  "industries_served": [
+    "Treuhand & Finanzen",
+    "Zahnarztpraxen & Gesundheitswesen",
+    "Immobilien & Verwaltung",
+    "Anwaltskanzleien & Recht",
+    "Architektur & Ingenieurwesen"
+  ],
+  "key_differentiators": [
+    "Spezialisiert auf Schweizer KMU",
+    "Mehrsprachig: Deutsch & Französisch",
+    "Branchenspezifische Lösungen",
+    "Persönliche Betreuung kombiniert mit intelligenter Automatisierung",
+    "Transparentes, ergebnisorientiertes Reporting"
+  ],
+  "press_release_triggers": {
+    "client_milestones": [10, 25, 50, 100, 250, 500],
+    "revenue_milestones": [100000, 500000, 1000000],
+    "new_services": true,
+    "new_markets": true,
+    "partnerships": true,
+    "awards": true
+  }
+}

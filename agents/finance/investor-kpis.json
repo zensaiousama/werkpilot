@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": null,
+  "description": "Tracked KPIs for investor reporting - auto-updated by Fundraising Agent",
+  "metrics": {
+    "revenue": {
+      "mrr": { "value": null, "unit": "CHF", "description": "Monthly Recurring Revenue" },
+      "arr": { "value": null, "unit": "CHF", "description": "Annual Recurring Revenue" },
+      "momGrowth": { "value": null, "unit": "%", "description": "Month-over-Month Revenue Growth" },
+      "nrr": { "value": null, "unit": "%", "description": "Net Revenue Retention" },
+      "revenuePerEmployee": { "value": null, "unit": "CHF", "description": "Annual Revenue per Employee" }
+    },
+    "customers": {
+      "totalCustomers": { "value": null, "unit": "count", "description": "Total Active Customers" },
+      "newCustomersMonthly": { "value": null, "unit": "count", "description": "New Customers This Month" },
+      "churnRate": { "value": null, "unit": "%", "description": "Monthly Customer Churn Rate" },
+      "logoRetention": { "value": null, "unit": "%", "description": "Logo Retention Rate (Monthly)" },
+      "avgContractValue": { "value": null, "unit": "CHF", "description": "Average Contract Value" }
+    },
+    "unitEconomics": {
+      "cac": { "value": null, "unit": "CHF", "description": "Customer Acquisition Cost" },
+      "ltv": { "value": null, "unit": "CHF", "description": "Customer Lifetime Value" },
+      "ltvCacRatio": { "value": null, "unit": "x", "description": "LTV/CAC Ratio" },
+      "paybackMonths": { "value": null, "unit": "months", "description": "CAC Payback Period" },
+      "grossMargin": { "value": null, "unit": "%", "description": "Gross Margin" }
+    },
+    "efficiency": {
+      "burnRate": { "value": null, "unit": "CHF/month", "description": "Monthly Net Burn Rate" },
+      "runway": { "value": null, "unit": "months", "description": "Cash Runway" },
+      "burnMultiple": { "value": null, "unit": "x", "description": "Burn Multiple (Net Burn / Net New ARR)" },
+      "ruleOf40": { "value": null, "unit": "%", "description": "Rule of 40 Score (Growth Rate + Profit Margin)" },
+      "magicNumber": { "value": null, "unit": "x", "description": "SaaS Magic Number" }
+    },
+    "product": {
+      "activeUsers": { "value": null, "unit": "count", "description": "Monthly Active Users" },
+      "dau_mau": { "value": null, "unit": "%", "description": "DAU/MAU Ratio" },
+      "nps": { "value": null, "unit": "score", "description": "Net Promoter Score" },
+      "avgSessionsPerWeek": { "value": null, "unit": "count", "description": "Avg Sessions per User per Week" },
+      "timeToValue": { "value": null, "unit": "days", "description": "Time to First Value" }
+    },
+    "team": {
+      "headcount": { "value": null, "unit": "count", "description": "Total Team Size" },
+      "engineeringPct": { "value": null, "unit": "%", "description": "Engineering % of Headcount" },
+      "openRoles": { "value": null, "unit": "count", "description": "Open Positions" }
+    },
+    "market": {
+      "tam": { "value": null, "unit": "CHF", "description": "Total Addressable Market" },
+      "sam": { "value": null, "unit": "CHF", "description": "Serviceable Addressable Market" },
+      "som": { "value": null, "unit": "CHF", "description": "Serviceable Obtainable Market" },
+      "marketSharePct": { "value": null, "unit": "%", "description": "Current Market Share" }
+    }
+  },
+  "history": []
+}

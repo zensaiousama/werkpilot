@@ -1,0 +1,150 @@
+{
+  "country": "Austria",
+  "code": "AT",
+  "region": "DACH",
+  "lastUpdated": "2026-02-13",
+  "currency": "EUR",
+  "language": ["de"],
+  "marketOverview": {
+    "totalKMUs": 360000,
+    "targetSegment": "KMU mit 5-250 Mitarbeitenden",
+    "targetKMUCount": 78000,
+    "avgDigitalizationRate": 0.52,
+    "avgMarketingBudgetPerKMU": 24000,
+    "aiAdoptionRate": 0.12,
+    "marketingServiceSpend": {
+      "total": "EUR 3.2 Mrd",
+      "digital": "EUR 1.3 Mrd",
+      "aiAutomation": "EUR 140 Mio"
+    }
+  },
+  "marketSizing": {
+    "TAM": {
+      "value": 3200000000,
+      "currency": "EUR",
+      "description": "Total marketing service spend by Austrian KMUs"
+    },
+    "SAM": {
+      "value": 420000000,
+      "currency": "EUR",
+      "description": "AI-driven marketing automation for digitally active KMUs"
+    },
+    "SOM": {
+      "value": 2100000,
+      "currency": "EUR",
+      "description": "Realistic Year 1-3 addressable with DACH strategy (0.5% SAM)"
+    }
+  },
+  "keyRegions": [
+    {
+      "name": "Wien",
+      "code": "W",
+      "kmuCount": 85000,
+      "digitalReadiness": "high",
+      "priority": 1,
+      "notes": "Capital, largest business concentration, startup ecosystem"
+    },
+    {
+      "name": "Oberoesterreich",
+      "code": "OOE",
+      "kmuCount": 58000,
+      "digitalReadiness": "medium",
+      "priority": 2,
+      "notes": "Strong industrial Mittelstand, Linz tech scene growing"
+    },
+    {
+      "name": "Steiermark",
+      "code": "STMK",
+      "kmuCount": 48000,
+      "digitalReadiness": "medium",
+      "priority": 2,
+      "notes": "Graz is second-largest city, university tech hub"
+    },
+    {
+      "name": "Tirol",
+      "code": "T",
+      "kmuCount": 38000,
+      "digitalReadiness": "medium",
+      "priority": 3,
+      "notes": "Tourism-heavy, seasonal marketing needs, Innsbruck hub"
+    },
+    {
+      "name": "Salzburg",
+      "code": "SBG",
+      "kmuCount": 28000,
+      "digitalReadiness": "medium-high",
+      "priority": 3,
+      "notes": "Tourism and culture, proximity to Munich market"
+    }
+  ],
+  "competitiveLandscape": {
+    "directCompetitors": 12,
+    "indirectCompetitors": 40,
+    "marketMaturity": "early",
+    "entryBarriers": "low-medium",
+    "keyCompetitors": [
+      "HubSpot AT",
+      "Mailchimp (localized)",
+      "Swat.io (Austrian native)",
+      "emarsys (Austrian, now SAP)"
+    ],
+    "notes": "Less saturated than DE; Austrian companies open to Swiss providers due to cultural proximity"
+  },
+  "regulatory": {
+    "dataProtection": "DSGVO/GDPR (Datenschutzgesetz DSG supplement)",
+    "gdprEquivalent": true,
+    "vatRate": 20.0,
+    "reducedVatRate": 10.0,
+    "businessRegistration": "Firmenbuch (via Bezirksgericht)",
+    "companyForms": ["GmbH", "Zweigniederlassung"],
+    "industrySpecific": [
+      "FMA for financial services clients",
+      "E-Commerce-Gesetz (ECG) for online services",
+      "Mediengesetz for advertising content",
+      "Bundeswettbewerbsbehoerde (BWB) for market regulation"
+    ]
+  },
+  "localization": {
+    "primaryLanguage": "de-AT",
+    "requiredLanguages": ["de"],
+    "optionalLanguages": ["en"],
+    "culturalNotes": [
+      "Austrian German has distinct vocabulary (e.g., Jänner, Paradeiser)",
+      "Formal but slightly warmer than German business culture",
+      "Strong emphasis on personal relationships (Vitamin B)",
+      "Wine-and-dine culture for business relationships",
+      "Smaller market means word-of-mouth is critical",
+      "Title-conscious culture (Herr Magister, Frau Doktor)"
+    ]
+  },
+  "expansionRequirements": {
+    "legalEntity": "GmbH or Zweigniederlassung",
+    "estimatedSetupCost": "EUR 15,000 - 30,000",
+    "timeToMarket": "3-4 months",
+    "localPresence": "Vienna office or remote with local account manager",
+    "partnerships": "WKO (Wirtschaftskammer) events, local IT consultancies"
+  },
+  "goToMarket": {
+    "strategy": "direct-plus-referral",
+    "phases": [
+      {
+        "phase": 1,
+        "duration": "0-3 months",
+        "focus": "Vienna via existing Swiss network connections",
+        "activities": ["Localized marketing materials de-AT", "WKO event participation", "Austrian case study development"]
+      },
+      {
+        "phase": 2,
+        "duration": "3-9 months",
+        "focus": "Upper Austria and Styria expansion",
+        "activities": ["Regional partner network", "Industry-specific campaigns", "Referral program launch"]
+      },
+      {
+        "phase": 3,
+        "duration": "9-18 months",
+        "focus": "National coverage including western Austria",
+        "activities": ["Tourism sector focus (Tirol/Salzburg)", "Self-service tier", "Austrian success stories marketing"]
+      }
+    ]
+  }
+}

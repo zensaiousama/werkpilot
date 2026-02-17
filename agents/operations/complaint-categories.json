@@ -1,0 +1,129 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "categories": {
+    "quality": {
+      "name": "Content Quality",
+      "description": "Issues with the quality of delivered content",
+      "subcategories": {
+        "grammar": "Grammar or spelling errors",
+        "tone": "Inappropriate tone or voice",
+        "accuracy": "Factual inaccuracies",
+        "relevance": "Content not relevant to target audience",
+        "originality": "Content too generic or not original",
+        "formatting": "Poor formatting or structure",
+        "localization": "Swiss localization errors"
+      },
+      "defaultSeverity": "medium",
+      "slaResponseHours": 4,
+      "autoActions": ["flag-for-review", "notify-content-team"]
+    },
+    "timeliness": {
+      "name": "Delivery Timeliness",
+      "description": "Issues with delivery schedules and deadlines",
+      "subcategories": {
+        "late-delivery": "Content delivered after deadline",
+        "missed-schedule": "Scheduled content not published",
+        "slow-response": "Slow response to requests",
+        "delayed-report": "Monthly report delivered late"
+      },
+      "defaultSeverity": "high",
+      "slaResponseHours": 2,
+      "autoActions": ["escalate-to-ops", "send-apology"]
+    },
+    "technical": {
+      "name": "Technical Issues",
+      "description": "Technical problems with services or platform",
+      "subcategories": {
+        "website-down": "Website unavailable",
+        "broken-links": "Broken links on website",
+        "email-issues": "Email delivery problems",
+        "api-errors": "API integration failures",
+        "data-loss": "Data loss or corruption",
+        "performance": "Slow website or service performance"
+      },
+      "defaultSeverity": "critical",
+      "slaResponseHours": 1,
+      "autoActions": ["alert-infrastructure", "notify-ceo", "create-incident"]
+    },
+    "communication": {
+      "name": "Communication Issues",
+      "description": "Problems with client communication",
+      "subcategories": {
+        "unresponsive": "No response to client inquiry",
+        "unclear": "Unclear or confusing communication",
+        "missing-updates": "Lack of status updates",
+        "wrong-contact": "Communication sent to wrong person"
+      },
+      "defaultSeverity": "medium",
+      "slaResponseHours": 4,
+      "autoActions": ["notify-account-manager", "schedule-call"]
+    },
+    "billing": {
+      "name": "Billing & Invoicing",
+      "description": "Issues with billing, invoicing, or pricing",
+      "subcategories": {
+        "incorrect-invoice": "Invoice amount incorrect",
+        "missing-invoice": "Invoice not received",
+        "overcharge": "Charged more than agreed",
+        "payment-issues": "Problems processing payment",
+        "scope-dispute": "Disagreement on scope of work"
+      },
+      "defaultSeverity": "high",
+      "slaResponseHours": 2,
+      "autoActions": ["notify-finance", "flag-for-review"]
+    },
+    "service": {
+      "name": "Service Scope",
+      "description": "Issues with the scope or nature of services",
+      "subcategories": {
+        "unmet-expectations": "Service did not meet expectations",
+        "missing-features": "Requested features not delivered",
+        "wrong-deliverable": "Received wrong deliverable",
+        "insufficient-results": "Results below expectations"
+      },
+      "defaultSeverity": "high",
+      "slaResponseHours": 4,
+      "autoActions": ["notify-account-manager", "schedule-review"]
+    }
+  },
+  "severityMatrix": {
+    "critical": {
+      "description": "Service completely unavailable or major data issue",
+      "maxResponseHours": 1,
+      "escalationPath": ["ops-lead", "ceo"],
+      "requiresRootCause": true,
+      "followUpDays": 1
+    },
+    "high": {
+      "description": "Significant impact on client deliverables",
+      "maxResponseHours": 4,
+      "escalationPath": ["ops-lead"],
+      "requiresRootCause": true,
+      "followUpDays": 3
+    },
+    "medium": {
+      "description": "Minor impact, workaround available",
+      "maxResponseHours": 8,
+      "escalationPath": [],
+      "requiresRootCause": false,
+      "followUpDays": 7
+    },
+    "low": {
+      "description": "Cosmetic or minor inconvenience",
+      "maxResponseHours": 24,
+      "escalationPath": [],
+      "requiresRootCause": false,
+      "followUpDays": 14
+    }
+  },
+  "resolutionStatuses": [
+    "open",
+    "acknowledged",
+    "investigating",
+    "in-progress",
+    "resolved",
+    "closed",
+    "wont-fix"
+  ]
+}

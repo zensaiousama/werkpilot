@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "description": "Airtable schema for the Product Roadmap system used by Agent 14 - Product Strategy",
+  "tables": {
+    "Product_Roadmap": {
+      "description": "Master roadmap of planned, in-development, and shipped features",
+      "fields": {
+        "Name": { "type": "singleLineText", "description": "Feature/initiative name" },
+        "Description": { "type": "multilineText", "description": "Detailed description" },
+        "Status": {
+          "type": "singleSelect",
+          "options": ["Planned", "In Development", "Testing", "Shipped", "Archived"],
+          "description": "Current status"
+        },
+        "Priority": {
+          "type": "singleSelect",
+          "options": ["P0 - Critical", "P1 - High", "P2 - Medium", "P3 - Low"],
+          "description": "Priority tier"
+        },
+        "Quarter": { "type": "singleLineText", "description": "Target quarter (e.g., Q1 2026)" },
+        "RICE_Score": { "type": "number", "description": "Computed RICE score" },
+        "Source_Feature": { "type": "linkToRecord", "linkedTable": "Feature_Requests" },
+        "Owner": { "type": "singleLineText", "description": "Person or team responsible" },
+        "Completion_Pct": { "type": "number", "description": "Percentage complete (0-100)" },
+        "Shipped_Date": { "type": "date", "description": "Date feature was shipped" },
+        "Adoption_Rate": { "type": "number", "description": "Adoption percentage among active clients" },
+        "Adoption_Count": { "type": "number", "description": "Number of clients using the feature" },
+        "Adoption_Tracked": { "type": "checkbox", "description": "Whether adoption has been measured" },
+        "Adoption_Date": { "type": "date", "description": "Date adoption was last measured" },
+        "Notes": { "type": "multilineText", "description": "Additional notes" },
+        "Created": { "type": "createdTime" },
+        "Modified": { "type": "lastModifiedTime" }
+      }
+    },
+    "Feature_Requests": {
+      "description": "All feature requests collected from clients, sales, and support",
+      "fields": {
+        "Title": { "type": "singleLineText", "description": "Brief title of the request" },
+        "Description": { "type": "multilineText", "description": "Full description" },
+        "Source": {
+          "type": "singleSelect",
+          "options": ["client-feedback", "sales", "support", "internal", "competitor-gap"],
+          "description": "Origin of the request"
+        },
+        "Source_Record_ID": { "type": "singleLineText", "description": "ID linking to the source record" },
+        "Client": { "type": "singleLineText", "description": "Client who requested it" },
+        "Status": {
+          "type": "singleSelect",
+          "options": ["New", "Under Review", "Approved", "On Roadmap", "Declined", "Duplicate"],
+          "description": "Review status"
+        },
+        "Reach": { "type": "number", "description": "RICE: users affected (0-100 scale)" },
+        "Impact": { "type": "number", "description": "RICE: impact multiplier (0.25-3)" },
+        "Confidence": { "type": "number", "description": "RICE: confidence percentage (0-100)" },
+        "Effort": { "type": "number", "description": "RICE: person-weeks to implement" },
+        "RICE_Score": { "type": "number", "description": "Calculated RICE score" },
+        "RICE_Rationale": { "type": "multilineText", "description": "Explanation of RICE scoring" },
+        "Scored_Date": { "type": "date", "description": "When RICE scoring was performed" },
+        "Vote_Count": { "type": "number", "description": "Number of clients requesting this" },
+        "Roadmap_Item": { "type": "linkToRecord", "linkedTable": "Product_Roadmap" },
+        "Submitted_Date": { "type": "date", "description": "Date the request was submitted" },
+        "Created": { "type": "createdTime" },
+        "Modified": { "type": "lastModifiedTime" }
+      }
+    },
+    "Competitor_Watch": {
+      "description": "Tracks competitor web pages for changes in features, pricing, services",
+      "fields": {
+        "Competitor": { "type": "singleLineText", "description": "Competitor company name" },
+        "URL": { "type": "url", "description": "Page URL being monitored" },
+        "Page_Title": { "type": "singleLineText", "description": "Current page title" },
+        "Content_Hash": { "type": "singleLineText", "description": "Hash of page content for diff detection" },
+        "Last_Scanned": { "type": "dateTime", "description": "Last scan timestamp" },
+        "Last_Change": { "type": "dateTime", "description": "Last detected change timestamp" },
+        "Change_Notes": { "type": "multilineText", "description": "AI-generated summary of changes" },
+        "Category": {
+          "type": "singleSelect",
+          "options": ["Pricing", "Features", "General", "Blog", "Careers"],
+          "description": "Category of the monitored page"
+        },
+        "Created": { "type": "createdTime" },
+        "Modified": { "type": "lastModifiedTime" }
+      }
+    },
+    "Service_Packages": {
+      "description": "Proposed and active service packages",
+      "fields": {
+        "Name": { "type": "singleLineText", "description": "Package name" },
+        "Description": { "type": "multilineText", "description": "Package description" },
+        "Target_Audience": { "type": "singleLineText", "description": "Target customer segment" },
+        "Demand_Signals": { "type": "multilineText", "description": "JSON array of supporting feature requests" },
+        "Price_Range": { "type": "singleLineText", "description": "Estimated price range" },
+        "Confidence": { "type": "number", "description": "Demand confidence score (0-100)" },
+        "Status": {
+          "type": "singleSelect",
+          "options": ["Proposed", "Under Review", "Active", "Retired"],
+          "description": "Package status"
+        },
+        "Proposed_Date": { "type": "date", "description": "Date proposed" },
+        "Created": { "type": "createdTime" },
+        "Modified": { "type": "lastModifiedTime" }
+      }
+    },
+    "Feature_Adoption": {
+      "description": "Tracks which clients use which features",
+      "fields": {
+        "Feature": { "type": "singleLineText", "description": "Feature name" },
+        "Client": { "type": "linkToRecord", "linkedTable": "Clients" },
+        "First_Used": { "type": "date", "description": "Date client first used the feature" },
+        "Usage_Frequency": {
+          "type": "singleSelect",
+          "options": ["Daily", "Weekly", "Monthly", "Rarely"],
+          "description": "How often the client uses the feature"
+        },
+        "Created": { "type": "createdTime" }
+      }
+    }
+  }
+}

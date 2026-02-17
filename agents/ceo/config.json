@@ -1,0 +1,115 @@
+{
+  "agent": "ceo-department",
+  "version": "1.0.0",
+
+  "morningBriefing": {
+    "schedule": "30 6 * * *",
+    "timezone": "Europe/Zurich",
+    "language": "de",
+    "maxDecisionItems": 5,
+    "minDecisionItems": 2,
+    "dataSources": {
+      "agentLogs": [
+        "sales",
+        "marketing",
+        "operations",
+        "finance",
+        "hr",
+        "it",
+        "product",
+        "strategy"
+      ],
+      "airtableTables": [
+        "Clients",
+        "Leads",
+        "Projects",
+        "Revenue",
+        "Tasks",
+        "Decisions",
+        "AgentStatus"
+      ],
+      "gitRepos": [
+        "../../"
+      ]
+    },
+    "briefingOutputDir": "briefings",
+    "nightShiftWindow": {
+      "from": "22:00",
+      "to": "06:30"
+    }
+  },
+
+  "decisionSupport": {
+    "pollInterval": "*/5 * * * *",
+    "categories": [
+      "client-issues",
+      "pricing",
+      "agent-errors",
+      "strategy",
+      "partnerships"
+    ],
+    "urgencyLevels": {
+      "critical": { "responseTime": "1h", "escalate": true },
+      "high": { "responseTime": "4h", "escalate": false },
+      "medium": { "responseTime": "24h", "escalate": false },
+      "low": { "responseTime": "72h", "escalate": false }
+    },
+    "airtableTable": "Decisions",
+    "decisionsOutputDir": "decisions"
+  },
+
+  "productivity": {
+    "focusReminderSchedule": "0 8 * * 1-5",
+    "weeklyReviewSchedule": "0 16 * * 5",
+    "delegationCheckMinutes": 30,
+    "timezone": "Europe/Zurich",
+    "weeklyThemes": {
+      "monday": {
+        "theme": "Strategie",
+        "emoji": "chess_pawn",
+        "focus": "Vision, Roadmap, langfristige Planung"
+      },
+      "tuesday": {
+        "theme": "Kunden",
+        "emoji": "handshake",
+        "focus": "Kundengespräche, Feedback, Beziehungspflege"
+      },
+      "wednesday": {
+        "theme": "Produkt",
+        "emoji": "rocket",
+        "focus": "Features, Bugs, UX-Verbesserungen"
+      },
+      "thursday": {
+        "theme": "Wachstum",
+        "emoji": "chart_with_upwards_trend",
+        "focus": "Marketing, Sales, Partnerschaften"
+      },
+      "friday": {
+        "theme": "Analytics",
+        "emoji": "bar_chart",
+        "focus": "KPIs, Reports, Wochenreview"
+      }
+    },
+    "timeCategories": [
+      "strategie",
+      "kunden",
+      "produkt",
+      "wachstum",
+      "analytics",
+      "admin",
+      "meetings",
+      "deep-work"
+    ]
+  },
+
+  "email": {
+    "subjectPrefix": "[Werkpilot CEO]",
+    "fromName": "Werkpilot AI Assistant"
+  },
+
+  "models": {
+    "briefing": "claude-sonnet-4-5-20250929",
+    "decisions": "claude-sonnet-4-5-20250929",
+    "productivity": "claude-haiku-4-5-20251001"
+  }
+}

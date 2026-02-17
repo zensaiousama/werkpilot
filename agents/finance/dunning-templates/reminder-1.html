@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zahlungserinnerung</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .header {
+      border-bottom: 3px solid #1a73e8;
+      padding-bottom: 16px;
+      margin-bottom: 30px;
+    }
+    .company-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a73e8;
+    }
+    .badge {
+      display: inline-block;
+      background: #fff3cd;
+      color: #856404;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .invoice-box {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .invoice-box table { width: 100%; }
+    .invoice-box td { padding: 4px 0; }
+    .invoice-box td:first-child { color: #666; width: 160px; }
+    .invoice-box td:last-child { font-weight: 600; }
+    .amount-highlight {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a73e8;
+      text-align: center;
+      padding: 16px;
+    }
+    .payment-info {
+      background: #e8f4fd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .payment-info h3 { color: #1a73e8; margin-bottom: 8px; }
+    .cta {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .cta a {
+      background: #1a73e8;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="company-name">Werkpilot</div>
+  </div>
+
+  <span class="badge">Freundliche Erinnerung</span>
+
+  <h1>Zahlungserinnerung</h1>
+
+  <p>Guten Tag {{CLIENT_NAME}},</p>
+
+  <p>
+    wir hoffen, Sie sind zufrieden mit unseren Leistungen. Bei der Durchsicht unserer
+    Buchhaltung ist uns aufgefallen, dass die folgende Rechnung noch offen ist:
+  </p>
+
+  <div class="invoice-box">
+    <table>
+      <tr><td>Rechnungsnummer:</td><td>{{INVOICE_NUMBER}}</td></tr>
+      <tr><td>Rechnungsdatum:</td><td>{{INVOICE_DATE}}</td></tr>
+      <tr><td>Faelligkeitsdatum:</td><td>{{DUE_DATE}}</td></tr>
+      <tr><td>Ueberfaellig seit:</td><td>{{DAYS_OVERDUE}} Tagen</td></tr>
+    </table>
+    <div class="amount-highlight">CHF {{AMOUNT}}</div>
+  </div>
+
+  <p>
+    Moeglicherweise hat sich diese Erinnerung mit Ihrer Zahlung ueberschnitten.
+    In diesem Fall bitten wir Sie, diese Nachricht als gegenstandslos zu betrachten.
+  </p>
+
+  <div class="payment-info">
+    <h3>Zahlungsinformationen</h3>
+    <table>
+      <tr><td>IBAN:</td><td>{{IBAN}}</td></tr>
+      <tr><td>Bank:</td><td>{{BANK_NAME}}</td></tr>
+      <tr><td>Referenz:</td><td>{{PAYMENT_REFERENCE}}</td></tr>
+    </table>
+  </div>
+
+  <p>
+    Wir wuerden uns freuen, wenn Sie die Zahlung in den naechsten Tagen veranlassen koennten.
+    Bei Fragen stehen wir Ihnen gerne zur Verfuegung.
+  </p>
+
+  <p>
+    Freundliche Gruesse,<br>
+    <strong>Werkpilot Finance Team</strong>
+  </p>
+
+  <div class="footer">
+    <p>Werkpilot | {{COMPANY_STREET}}, {{COMPANY_ZIP}} {{COMPANY_CITY}} | {{COMPANY_EMAIL}}</p>
+    <p>Diese E-Mail wurde automatisch generiert. Bei Fragen antworten Sie bitte direkt auf diese Nachricht.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="32" fill="#0F172A"/>
+  <g transform="translate(48, 40)">
+    <!-- Cross/Plus logo mark -->
+    <rect x="36" y="0" width="24" height="44" rx="4" fill="#F59E0B"/>
+    <rect x="0" y="34" width="44" height="24" rx="4" fill="#F59E0B"/>
+    <rect x="52" y="34" width="44" height="24" rx="4" fill="#F59E0B"/>
+    <rect x="36" y="52" width="24" height="44" rx="4" fill="#F59E0B"/>
+  </g>
+  <text x="96" y="152" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.5">Werkpilot</text>
+</svg>

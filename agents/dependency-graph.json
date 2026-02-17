@@ -1,0 +1,128 @@
+{
+  "version": "1.0.0",
+  "description": "Dependency graph for all 42 Werkpilot agents. Boot order is resolved via topological sort.",
+  "bootLayers": [
+    {
+      "layer": 0,
+      "description": "Foundation - no dependencies, boot first",
+      "agents": [
+        "finance-controller",
+        "sales-pipeline-manager",
+        "marketing-analytics",
+        "marketing-competitor-watch",
+        "hr-recruiter",
+        "hr-culture-pulse",
+        "product-feature-tracker",
+        "product-user-feedback",
+        "it-infrastructure-monitor",
+        "it-security-scanner",
+        "it-backup-manager",
+        "operations-project-tracker",
+        "strategy-market-analyst"
+      ]
+    },
+    {
+      "layer": 1,
+      "description": "First-order dependents - depend only on layer 0",
+      "agents": [
+        "finance-invoice-processor",
+        "finance-expense-auditor",
+        "finance-tax-compliance",
+        "sales-lead-qualifier",
+        "sales-follow-up",
+        "sales-crm-sync",
+        "marketing-content-creator",
+        "marketing-seo-optimizer",
+        "marketing-social-media",
+        "hr-onboarding",
+        "hr-payroll-assistant",
+        "product-bug-triager",
+        "product-docs-updater",
+        "it-deployment-agent",
+        "it-log-analyzer",
+        "operations-process-optimizer",
+        "operations-vendor-manager",
+        "operations-quality-assurance",
+        "strategy-okr-tracker",
+        "strategy-partnership-scout",
+        "strategy-innovation-radar"
+      ]
+    },
+    {
+      "layer": 2,
+      "description": "Second-order dependents - depend on layer 0 and 1",
+      "agents": [
+        "finance-forecast",
+        "sales-proposal-writer",
+        "marketing-email-campaigns",
+        "product-release-manager",
+        "ceo-strategic-advisor",
+        "ceo-daily-briefing"
+      ]
+    },
+    {
+      "layer": 3,
+      "description": "Top-level dependents - depend on layer 2",
+      "agents": [
+        "ceo-decision-tracker",
+        "ceo-meeting-prep"
+      ]
+    }
+  ],
+  "edges": {
+    "ceo-strategic-advisor": ["strategy-market-analyst", "finance-controller"],
+    "ceo-daily-briefing": ["finance-controller", "sales-pipeline-manager", "marketing-analytics"],
+    "ceo-decision-tracker": ["ceo-strategic-advisor"],
+    "ceo-meeting-prep": ["ceo-daily-briefing"],
+    "finance-controller": [],
+    "finance-invoice-processor": ["finance-controller"],
+    "finance-expense-auditor": ["finance-controller"],
+    "finance-forecast": ["finance-controller", "sales-pipeline-manager"],
+    "finance-tax-compliance": ["finance-controller"],
+    "sales-pipeline-manager": [],
+    "sales-lead-qualifier": ["sales-pipeline-manager"],
+    "sales-proposal-writer": ["sales-lead-qualifier", "product-feature-tracker"],
+    "sales-follow-up": ["sales-pipeline-manager"],
+    "sales-crm-sync": ["sales-pipeline-manager"],
+    "marketing-content-creator": ["strategy-market-analyst"],
+    "marketing-seo-optimizer": ["marketing-analytics"],
+    "marketing-social-media": ["marketing-content-creator"],
+    "marketing-analytics": [],
+    "marketing-email-campaigns": ["marketing-content-creator", "sales-crm-sync"],
+    "marketing-competitor-watch": [],
+    "hr-recruiter": [],
+    "hr-onboarding": ["hr-recruiter"],
+    "hr-culture-pulse": [],
+    "hr-payroll-assistant": ["finance-controller"],
+    "product-feature-tracker": [],
+    "product-bug-triager": ["product-feature-tracker"],
+    "product-user-feedback": [],
+    "product-release-manager": ["product-feature-tracker", "product-bug-triager"],
+    "product-docs-updater": ["product-feature-tracker"],
+    "it-infrastructure-monitor": [],
+    "it-security-scanner": [],
+    "it-backup-manager": [],
+    "it-deployment-agent": ["it-infrastructure-monitor"],
+    "it-log-analyzer": ["it-infrastructure-monitor"],
+    "operations-project-tracker": [],
+    "operations-process-optimizer": ["operations-project-tracker"],
+    "operations-vendor-manager": ["finance-controller"],
+    "operations-quality-assurance": ["operations-project-tracker"],
+    "strategy-market-analyst": [],
+    "strategy-okr-tracker": ["operations-project-tracker"],
+    "strategy-partnership-scout": ["strategy-market-analyst"],
+    "strategy-innovation-radar": ["strategy-market-analyst"]
+  },
+  "criticalPaths": {
+    "description": "Agents whose failure cascades to most dependents",
+    "agents": [
+      "finance-controller",
+      "sales-pipeline-manager",
+      "strategy-market-analyst",
+      "product-feature-tracker",
+      "it-infrastructure-monitor",
+      "operations-project-tracker",
+      "marketing-analytics"
+    ]
+  }
+}

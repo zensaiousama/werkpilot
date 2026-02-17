@@ -1,0 +1,73 @@
+{
+  "sequence": {
+    "name": "Onboarding Sequence",
+    "id": "seq_onboarding",
+    "trigger": "client_created",
+    "total_emails": 5,
+    "duration_days": 7,
+    "goal": "Guide new clients through setup, build confidence, reduce churn",
+    "segment": "new_clients",
+    "status": "active"
+  },
+  "emails": [
+    {
+      "position": 1,
+      "delay_days": 0,
+      "delay_hours": 1,
+      "subject_a": "Willkommen bei Werkpilot, {{first_name}}! So geht es weiter",
+      "subject_b": "{{company_name}} ist jetzt bei Werkpilot - nächste Schritte",
+      "preview_text": "Ihr persönlicher Fahrplan für die nächsten 7 Tage",
+      "content_brief": "Welcome as client. Outline what happens next (timeline). Introduce their account manager. Set clear expectations. Include checklist of what you need from them.",
+      "cta": "Fragebogen ausfüllen",
+      "cta_url": "https://werkpilot.ch/onboarding/questionnaire",
+      "tags_add": ["client", "onboarding_started"],
+      "tags_remove": ["lead", "prospect"]
+    },
+    {
+      "position": 2,
+      "delay_days": 1,
+      "subject_a": "Tag 2: Wir arbeiten an Ihrem Projekt",
+      "subject_b": "{{first_name}}, hier ist ein erstes Update",
+      "preview_text": "Was wir heute für Sie erledigt haben",
+      "content_brief": "Progress update. Share what's been done (brand analysis, competitor research, content planning). Show activity to build confidence. Ask for any missing information.",
+      "cta": "Status ansehen",
+      "cta_url": "https://werkpilot.ch/dashboard",
+      "tags_add": ["onboarding_day2"]
+    },
+    {
+      "position": 3,
+      "delay_days": 3,
+      "subject_a": "Ihr erster Entwurf ist bereit!",
+      "subject_b": "{{first_name}}, schauen Sie sich das an",
+      "preview_text": "Die erste Version Ihrer neuen Online-Präsenz",
+      "content_brief": "First deliverable preview. Could be website mockup, content strategy, or initial setup. Ask for feedback. Make them feel involved in the process.",
+      "cta": "Entwurf ansehen & Feedback geben",
+      "cta_url": "https://werkpilot.ch/dashboard/review",
+      "tags_add": ["first_deliverable_sent"]
+    },
+    {
+      "position": 4,
+      "delay_days": 5,
+      "subject_a": "Tipps, damit Sie das Maximum aus Werkpilot herausholen",
+      "subject_b": "{{first_name}}, 3 Tipps für den besten Start",
+      "preview_text": "So nutzen unsere erfolgreichsten Kunden Werkpilot",
+      "content_brief": "Best practices from successful clients. Dashboard tutorial. How to read reports. What metrics to focus on. Empower them to be an active participant.",
+      "cta": "Dashboard erkunden",
+      "cta_url": "https://werkpilot.ch/dashboard",
+      "tags_add": ["onboarding_educated"]
+    },
+    {
+      "position": 5,
+      "delay_days": 7,
+      "subject_a": "Woche 1 geschafft! Wie zufrieden sind Sie?",
+      "subject_b": "{{first_name}}, Ihre Meinung zählt",
+      "preview_text": "Eine kurze Frage zu Ihrer ersten Woche",
+      "content_brief": "One-week check-in. NPS survey (1-10). Ask for specific feedback. Remind them of what's coming next. Personal message from founder or account manager.",
+      "cta": "Feedback geben (30 Sekunden)",
+      "cta_url": "https://werkpilot.ch/feedback",
+      "tags_add": ["onboarding_completed", "feedback_requested"],
+      "tags_remove": ["onboarding_started"],
+      "move_to_sequence": "upsell_after_30_days"
+    }
+  ]
+}

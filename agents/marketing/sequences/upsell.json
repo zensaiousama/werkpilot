@@ -1,0 +1,58 @@
+{
+  "sequence": {
+    "name": "Upsell Sequence",
+    "id": "seq_upsell",
+    "trigger": "client_active_30_days",
+    "total_emails": 4,
+    "duration_days": 21,
+    "goal": "Introduce additional services to existing clients",
+    "segment": "active_clients",
+    "status": "active"
+  },
+  "emails": [
+    {
+      "position": 1,
+      "delay_days": 0,
+      "subject_a": "{{first_name}}, Ihre Ergebnisse in den ersten 30 Tagen",
+      "subject_b": "So hat sich Ihre Online-Präsenz entwickelt",
+      "preview_text": "Ihr persönlicher Performance-Report",
+      "content_brief": "Celebrate their results so far. Share specific metrics (traffic, rankings, leads). Build on success momentum. Tease additional possibilities.",
+      "cta": "Vollständigen Report ansehen",
+      "cta_url": "https://werkpilot.ch/dashboard",
+      "tags_add": ["upsell_started"]
+    },
+    {
+      "position": 2,
+      "delay_days": 7,
+      "subject_a": "Das nächste Level: {{upsell_service}} für {{industry}}",
+      "subject_b": "{{first_name}}, bereit für noch mehr Wachstum?",
+      "preview_text": "Wie andere {{industry}} den nächsten Schritt gemacht haben",
+      "content_brief": "Introduce complementary service based on current package. Show how it multiplies existing results. Include case study of client who added this service.",
+      "cta": "Mehr über {{upsell_service}} erfahren",
+      "cta_url": "https://werkpilot.ch/services/{{upsell_slug}}"
+    },
+    {
+      "position": 3,
+      "delay_days": 14,
+      "subject_a": "Exklusiv für Bestandskunden: {{offer}}",
+      "subject_b": "{{first_name}}, ein besonderes Angebot für Sie",
+      "preview_text": "Nur für bestehende Werkpilot-Kunden verfügbar",
+      "content_brief": "Exclusive offer for existing clients. Could be discount on additional service, free audit, or priority access. Create urgency with time-limited element.",
+      "cta": "Angebot sichern",
+      "cta_url": "https://werkpilot.ch/upgrade",
+      "tags_add": ["upsell_offer_sent"]
+    },
+    {
+      "position": 4,
+      "delay_days": 21,
+      "subject_a": "Kurze Frage, {{first_name}}",
+      "subject_b": "Dürfen wir kurz telefonieren?",
+      "preview_text": "5 Minuten für Ihre nächsten Ziele",
+      "content_brief": "Soft close. Ask about their goals for the next quarter. Offer strategic call to discuss growth plan. Personal, non-pushy tone.",
+      "cta": "Strategiegespräch buchen",
+      "cta_url": "https://werkpilot.ch/termin",
+      "tags_add": ["upsell_completed"],
+      "tags_remove": ["upsell_started"]
+    }
+  ]
+}

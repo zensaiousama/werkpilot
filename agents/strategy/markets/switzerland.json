@@ -1,0 +1,132 @@
+{
+  "country": "Switzerland",
+  "code": "CH",
+  "region": "DACH",
+  "lastUpdated": "2026-02-13",
+  "currency": "CHF",
+  "language": ["de", "fr", "it", "en"],
+  "marketOverview": {
+    "totalKMUs": 607000,
+    "targetSegment": "KMU mit 5-250 Mitarbeitenden",
+    "targetKMUCount": 145000,
+    "avgDigitalizationRate": 0.62,
+    "avgMarketingBudgetPerKMU": 42000,
+    "aiAdoptionRate": 0.18,
+    "marketingServiceSpend": {
+      "total": "CHF 6.1 Mrd",
+      "digital": "CHF 2.8 Mrd",
+      "aiAutomation": "CHF 340 Mio"
+    }
+  },
+  "marketSizing": {
+    "TAM": {
+      "value": 6100000000,
+      "currency": "CHF",
+      "description": "Total marketing service spend by Swiss KMUs"
+    },
+    "SAM": {
+      "value": 870000000,
+      "currency": "CHF",
+      "description": "AI-driven marketing automation for digitally active KMUs"
+    },
+    "SOM": {
+      "value": 4350000,
+      "currency": "CHF",
+      "description": "Realistic Year 1-3 addressable with current capacity (0.5% SAM)"
+    }
+  },
+  "keyCantons": [
+    {
+      "name": "Zuerich",
+      "code": "ZH",
+      "kmuCount": 72000,
+      "digitalReadiness": "high",
+      "priority": 1,
+      "notes": "Largest KMU concentration, highest digital maturity"
+    },
+    {
+      "name": "Bern",
+      "code": "BE",
+      "kmuCount": 52000,
+      "digitalReadiness": "medium",
+      "priority": 2,
+      "notes": "Government-adjacent, strong Gewerbe sector"
+    },
+    {
+      "name": "Vaud",
+      "code": "VD",
+      "kmuCount": 38000,
+      "digitalReadiness": "high",
+      "priority": 2,
+      "notes": "French-speaking, tech hub around Lausanne/EPFL"
+    },
+    {
+      "name": "Aargau",
+      "code": "AG",
+      "kmuCount": 34000,
+      "digitalReadiness": "medium",
+      "priority": 3,
+      "notes": "Industrial sector strong, growing tech adoption"
+    },
+    {
+      "name": "St. Gallen",
+      "code": "SG",
+      "kmuCount": 28000,
+      "digitalReadiness": "medium",
+      "priority": 3,
+      "notes": "Eastern Switzerland hub, strong in manufacturing"
+    },
+    {
+      "name": "Basel-Stadt",
+      "code": "BS",
+      "kmuCount": 15000,
+      "digitalReadiness": "high",
+      "priority": 2,
+      "notes": "Pharma/life sciences, high purchasing power"
+    }
+  ],
+  "competitiveLandscape": {
+    "directCompetitors": 8,
+    "indirectCompetitors": 25,
+    "marketMaturity": "early-growth",
+    "entryBarriers": "medium",
+    "notes": "Swiss market still early for AI marketing automation, strong trust-based selling required"
+  },
+  "regulatory": {
+    "dataProtection": "nDSG (neues Datenschutzgesetz, seit 01.09.2023)",
+    "gdprEquivalent": true,
+    "vatRate": 8.1,
+    "businessRegistration": "Handelsregister (cantonal)",
+    "industrySpecific": [
+      "FINMA regulations for financial services clients",
+      "Swissmedic for pharma/health clients",
+      "SRG/BAKOM for media-related services"
+    ]
+  },
+  "localization": {
+    "primaryLanguage": "de-CH",
+    "requiredLanguages": ["de", "fr"],
+    "optionalLanguages": ["it", "en"],
+    "culturalNotes": [
+      "Formal address (Sie) in business contexts",
+      "Swiss German variants matter for local credibility",
+      "High emphasis on quality, precision, and reliability",
+      "Personal relationships and trust are essential",
+      "Price sensitivity lower than DE/AT but value-conscious"
+    ]
+  },
+  "industries": {
+    "highPotential": [
+      { "name": "Gastgewerbe/Hospitality", "kmuShare": 0.12, "digitalGap": "high" },
+      { "name": "Detailhandel/Retail", "kmuShare": 0.11, "digitalGap": "high" },
+      { "name": "Gesundheitswesen", "kmuShare": 0.08, "digitalGap": "medium" },
+      { "name": "Immobilien", "kmuShare": 0.06, "digitalGap": "high" },
+      { "name": "Handwerk/Bau", "kmuShare": 0.14, "digitalGap": "very-high" }
+    ],
+    "earlyAdopters": [
+      { "name": "IT/Tech", "kmuShare": 0.07, "digitalGap": "low" },
+      { "name": "Beratung/Consulting", "kmuShare": 0.05, "digitalGap": "low" },
+      { "name": "Finanzdienstleistungen", "kmuShare": 0.04, "digitalGap": "low" }
+    ]
+  }
+}

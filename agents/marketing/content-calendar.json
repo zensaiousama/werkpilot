@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "generated_by": "content-engine",
+    "planning_horizon_weeks": 4,
+    "articles_per_month": 10,
+    "languages": ["de", "fr", "en"],
+    "primary_language": "de",
+    "last_generated": null
+  },
+  "content_types": {
+    "how_to": { "frequency": 3, "per": "month", "avg_words": 1500, "priority": "high" },
+    "case_study": { "frequency": 2, "per": "month", "avg_words": 1200, "priority": "high" },
+    "industry_insight": { "frequency": 2, "per": "month", "avg_words": 1000, "priority": "medium" },
+    "comparison": { "frequency": 1, "per": "month", "avg_words": 1800, "priority": "medium" },
+    "listicle": { "frequency": 1, "per": "month", "avg_words": 1200, "priority": "low" },
+    "news_commentary": { "frequency": 1, "per": "month", "avg_words": 800, "priority": "low" }
+  },
+  "planned_articles": [
+    {
+      "week": 1,
+      "title": "Warum Ihre Treuhand-Website Kunden abschreckt (und wie Sie das ändern)",
+      "slug": "treuhand-website-optimierung",
+      "type": "how_to",
+      "industry": "treuhand",
+      "target_keyword": "treuhand website",
+      "secondary_keywords": ["treuhänder website erstellen", "treuhand online präsenz"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1500,
+      "publish_date": null
+    },
+    {
+      "week": 1,
+      "title": "7 Fehler, die Zahnärzte beim Online-Marketing machen",
+      "slug": "zahnarzt-online-marketing-fehler",
+      "type": "listicle",
+      "industry": "zahnarzt",
+      "target_keyword": "zahnarzt marketing",
+      "secondary_keywords": ["zahnarzt neue patienten", "zahnarztpraxis marketing"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1200,
+      "publish_date": null
+    },
+    {
+      "week": 1,
+      "title": "Digitalisierung für KMU: Was bringt es wirklich?",
+      "slug": "digitalisierung-kmu-schweiz",
+      "type": "industry_insight",
+      "industry": "general",
+      "target_keyword": "kmu digitalisierung schweiz",
+      "secondary_keywords": ["digitalisierung schweizer kmu", "kmu digital"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1000,
+      "publish_date": null
+    },
+    {
+      "week": 2,
+      "title": "Wie ein Treuhänder in Zürich seinen Umsatz um 40% steigerte",
+      "slug": "fallstudie-treuhaender-zuerich",
+      "type": "case_study",
+      "industry": "treuhand",
+      "target_keyword": "treuhänder kunden gewinnen",
+      "secondary_keywords": ["treuhand marketing erfolg", "treuhand digitalisierung"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1200,
+      "publish_date": null
+    },
+    {
+      "week": 2,
+      "title": "Google Bewertungen für Zahnärzte: Der komplette Leitfaden",
+      "slug": "zahnarzt-google-bewertungen-leitfaden",
+      "type": "how_to",
+      "industry": "zahnarzt",
+      "target_keyword": "zahnarzt google bewertungen",
+      "secondary_keywords": ["zahnarzt bewertungen sammeln", "google rezensionen zahnarzt"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1800,
+      "publish_date": null
+    },
+    {
+      "week": 3,
+      "title": "Immobilien-Marketing: Website vs. Portal - Was bringt mehr Leads?",
+      "slug": "immobilien-website-vs-portal",
+      "type": "comparison",
+      "industry": "immobilien",
+      "target_keyword": "immobilien marketing",
+      "secondary_keywords": ["immobilien website", "makler leads generieren"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1800,
+      "publish_date": null
+    },
+    {
+      "week": 3,
+      "title": "SEO für KMU: So werden Sie lokal gefunden",
+      "slug": "seo-kmu-lokal-gefunden",
+      "type": "how_to",
+      "industry": "general",
+      "target_keyword": "seo kmu schweiz",
+      "secondary_keywords": ["lokales seo", "google maps eintrag optimieren"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1500,
+      "publish_date": null
+    },
+    {
+      "week": 3,
+      "title": "Comment les fiduciaires suisses gagnent des clients en ligne",
+      "slug": "fiduciaire-clients-en-ligne",
+      "type": "how_to",
+      "industry": "treuhand",
+      "target_keyword": "fiduciaire marketing",
+      "secondary_keywords": ["fiduciaire clients", "marketing fiduciaire suisse"],
+      "language": "fr",
+      "status": "planned",
+      "estimated_words": 1500,
+      "publish_date": null
+    },
+    {
+      "week": 4,
+      "title": "Fallstudie: Zahnarztpraxis verdoppelt Neupatientenzahl in 6 Monaten",
+      "slug": "fallstudie-zahnarzt-neupatienten",
+      "type": "case_study",
+      "industry": "zahnarzt",
+      "target_keyword": "zahnarzt neue patienten gewinnen",
+      "secondary_keywords": ["zahnarztpraxis marketing", "zahnarzt neupatienten"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1200,
+      "publish_date": null
+    },
+    {
+      "week": 4,
+      "title": "Die Zukunft der Schweizer Immobilienbranche ist digital",
+      "slug": "immobilien-digitalisierung-schweiz",
+      "type": "industry_insight",
+      "industry": "immobilien",
+      "target_keyword": "immobilien digitalisierung",
+      "secondary_keywords": ["immobilien digital schweiz", "makler digitalisierung"],
+      "language": "de",
+      "status": "planned",
+      "estimated_words": 1000,
+      "publish_date": null
+    }
+  ],
+  "recurring_series": [
+    {
+      "name": "Branchenreport",
+      "frequency": "monthly",
+      "description": "Monatliche Analyse einer Branche und ihrer digitalen Chancen"
+    },
+    {
+      "name": "KMU-Digitaltipp",
+      "frequency": "weekly",
+      "description": "Kurzer, actionabler Tipp für die digitale Präsenz"
+    },
+    {
+      "name": "Erfolgsgeschichte",
+      "frequency": "biweekly",
+      "description": "Case Study eines Werkpilot-Kunden"
+    }
+  ]
+}

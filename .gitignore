@@ -1,1 +1,5 @@
-node_modules/\n.next/\n*.db\n.env
+node_modules/
+.next/
+*.db
+.env
+.DS_Store

@@ -1,0 +1,154 @@
+{
+  "name": "Werkpilot Default Glossary",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "description": "Default translation glossary for Werkpilot Swiss business terms",
+  "entries": {
+    "Werkpilot": {
+      "translations": {
+        "de-CH": "Werkpilot",
+        "fr-CH": "Werkpilot",
+        "it-CH": "Werkpilot",
+        "en": "Werkpilot"
+      },
+      "notes": "Brand name - never translate",
+      "doNotTranslate": true
+    },
+    "AI Agent": {
+      "translations": {
+        "de-CH": "KI-Agent",
+        "fr-CH": "Agent IA",
+        "it-CH": "Agente IA",
+        "en": "AI Agent"
+      }
+    },
+    "Automation": {
+      "translations": {
+        "de-CH": "Automatisierung",
+        "fr-CH": "Automatisation",
+        "it-CH": "Automazione",
+        "en": "Automation"
+      }
+    },
+    "Dashboard": {
+      "translations": {
+        "de-CH": "Dashboard",
+        "fr-CH": "Tableau de bord",
+        "it-CH": "Pannello di controllo",
+        "en": "Dashboard"
+      }
+    },
+    "Workflow": {
+      "translations": {
+        "de-CH": "Arbeitsablauf",
+        "fr-CH": "Flux de travail",
+        "it-CH": "Flusso di lavoro",
+        "en": "Workflow"
+      }
+    },
+    "KMU": {
+      "translations": {
+        "de-CH": "KMU",
+        "fr-CH": "PME",
+        "it-CH": "PMI",
+        "en": "SME"
+      },
+      "notes": "Small and Medium Enterprise"
+    },
+    "Offerte": {
+      "translations": {
+        "de-CH": "Offerte",
+        "fr-CH": "Offre",
+        "it-CH": "Offerta",
+        "en": "Quote/Proposal"
+      }
+    },
+    "Rechnung": {
+      "translations": {
+        "de-CH": "Rechnung",
+        "fr-CH": "Facture",
+        "it-CH": "Fattura",
+        "en": "Invoice"
+      }
+    },
+    "Kundenbetreuung": {
+      "translations": {
+        "de-CH": "Kundenbetreuung",
+        "fr-CH": "Service clientèle",
+        "it-CH": "Assistenza clienti",
+        "en": "Customer Support"
+      }
+    },
+    "Datenschutz": {
+      "translations": {
+        "de-CH": "Datenschutz",
+        "fr-CH": "Protection des données",
+        "it-CH": "Protezione dei dati",
+        "en": "Data Protection"
+      }
+    },
+    "Mehrwertsteuer": {
+      "translations": {
+        "de-CH": "Mehrwertsteuer (MWST)",
+        "fr-CH": "Taxe sur la valeur ajoutée (TVA)",
+        "it-CH": "Imposta sul valore aggiunto (IVA)",
+        "en": "Value Added Tax (VAT)"
+      }
+    },
+    "Handelsregister": {
+      "translations": {
+        "de-CH": "Handelsregister",
+        "fr-CH": "Registre du commerce",
+        "it-CH": "Registro di commercio",
+        "en": "Commercial Register"
+      }
+    },
+    "Geschäftsleitung": {
+      "translations": {
+        "de-CH": "Geschäftsleitung",
+        "fr-CH": "Direction",
+        "it-CH": "Direzione",
+        "en": "Management"
+      }
+    },
+    "Bericht": {
+      "translations": {
+        "de-CH": "Bericht",
+        "fr-CH": "Rapport",
+        "it-CH": "Rapporto",
+        "en": "Report"
+      }
+    },
+    "Leistung": {
+      "translations": {
+        "de-CH": "Leistung",
+        "fr-CH": "Performance",
+        "it-CH": "Prestazione",
+        "en": "Performance"
+      }
+    },
+    "Digitalisierung": {
+      "translations": {
+        "de-CH": "Digitalisierung",
+        "fr-CH": "Numérisation",
+        "it-CH": "Digitalizzazione",
+        "en": "Digitalization"
+      }
+    }
+  },
+  "doNotTranslate": [
+    "Werkpilot",
+    "API",
+    "URL",
+    "JSON",
+    "PDF",
+    "SEO",
+    "KPI",
+    "CRM",
+    "ERP",
+    "SaaS",
+    "Claude",
+    "Airtable",
+    "MailerLite"
+  ]
+}

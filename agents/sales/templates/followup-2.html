@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f4f7;
+      color: #333333;
+      -webkit-text-size-adjust: 100%;
+    }
+    .email-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+    }
+    .header {
+      background-color: #1a1a2e;
+      padding: 24px 30px;
+      text-align: left;
+    }
+    .header a {
+      color: #00d4ff;
+      font-size: 22px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .preheader {
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      font-size: 1px;
+      line-height: 1px;
+      color: #f4f4f7;
+    }
+    .body-content {
+      padding: 32px 30px;
+      line-height: 1.7;
+      font-size: 15px;
+      color: #333333;
+    }
+    .body-content p {
+      margin: 0 0 16px 0;
+    }
+    .testimonial-box {
+      background-color: #fafafa;
+      border: 1px solid #eeeeee;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial-box::before {
+      content: "\201C";
+      font-size: 48px;
+      color: #00d4ff;
+      position: absolute;
+      top: -5px;
+      left: 12px;
+      font-style: normal;
+    }
+    .testimonial-author {
+      font-style: normal;
+      font-size: 13px;
+      color: #666666;
+      margin-top: 12px;
+    }
+    .stats-row {
+      display: flex;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .stat-box {
+      flex: 1;
+      text-align: center;
+      padding: 16px;
+      background-color: #f0f8ff;
+      border-radius: 8px;
+    }
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00d4ff;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #666666;
+      margin-top: 4px;
+    }
+    .footer {
+      padding: 20px 30px;
+      background-color: #f8f9fa;
+      font-size: 11px;
+      color: #999999;
+      line-height: 1.5;
+      border-top: 1px solid #eeeeee;
+    }
+    .footer a {
+      color: #00d4ff;
+      text-decoration: none;
+    }
+    .unsubscribe {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #eeeeee;
+      font-size: 10px;
+      color: #bbbbbb;
+    }
+  </style>
+</head>
+<body>
+  <div class="preheader">{{preheader}}</div>
+  <div class="email-wrapper">
+    <div class="header">
+      <a href="https://werkpilot.ch">Werkpilot</a>
+    </div>
+    <div class="body-content">
+      {{body}}
+    </div>
+    <div class="footer">
+      <p>
+        Werkpilot GmbH | Digitale Loesungen fuer Schweizer KMU<br>
+        <a href="https://werkpilot.ch">werkpilot.ch</a>
+      </p>
+      <div class="unsubscribe">
+        {{unsubscribe_footer}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "id": "new-lead",
+  "name": "New Lead Pipeline",
+  "description": "End-to-end workflow for processing new leads from scraping through CRM entry",
+  "version": "1.0.0",
+  "trigger": {
+    "type": "event",
+    "event": "lead.discovered",
+    "sources": ["google-scraper", "website-form", "manual-entry"]
+  },
+  "sla": {
+    "maxDurationMinutes": 30,
+    "alertAfterMinutes": 20
+  },
+  "steps": [
+    {
+      "id": "scrape-enrich",
+      "name": "Scrape & Enrich Lead Data",
+      "agent": "sales-lead-qualifier",
+      "action": "enrichLead",
+      "input": {
+        "source": "{{trigger.source}}",
+        "leadData": "{{trigger.data}}"
+      },
+      "timeout": 60000,
+      "retries": 2,
+      "onFailure": "skip"
+    },
+    {
+      "id": "score-lead",
+      "name": "Score Lead Quality",
+      "agent": "sales-lead-qualifier",
+      "action": "scoreLead",
+      "dependsOn": ["scrape-enrich"],
+      "input": {
+        "leadData": "{{steps.scrape-enrich.output}}"
+      },
+      "timeout": 30000,
+      "retries": 2,
+      "onFailure": "abort"
+    },
+    {
+      "id": "fitness-check",
+      "name": "Werkpilot Fitness Check",
+      "agent": "sales-lead-qualifier",
+      "action": "fitnessCheck",
+      "dependsOn": ["score-lead"],
+      "input": {
+        "leadData": "{{steps.scrape-enrich.output}}",
+        "score": "{{steps.score-lead.output.score}}"
+      },
+      "timeout": 45000,
+      "retries": 1,
+      "condition": "{{steps.score-lead.output.score}} >= 40",
+      "onFailure": "skip"
+    },
+    {
+      "id": "crm-update",
+      "name": "Update CRM Record",
+      "agent": "sales-crm-sync",
+      "action": "createOrUpdateLead",
+      "dependsOn": ["fitness-check"],
+      "input": {
+        "leadData": "{{steps.scrape-enrich.output}}",
+        "score": "{{steps.score-lead.output.score}}",
+        "fitnessResult": "{{steps.fitness-check.output}}",
+        "stage": "{{steps.score-lead.output.score >= 70 ? 'hot' : steps.score-lead.output.score >= 40 ? 'warm' : 'cold'}}"
+      },
+      "timeout": 30000,
+      "retries": 3,
+      "onFailure": "retry"
+    },
+    {
+      "id": "send-notification",
+      "name": "Send Lead Notification",
+      "agent": "sales-follow-up",
+      "action": "notifyNewLead",
+      "dependsOn": ["crm-update"],
+      "input": {
+        "leadData": "{{steps.scrape-enrich.output}}",
+        "score": "{{steps.score-lead.output.score}}",
+        "crmId": "{{steps.crm-update.output.recordId}}"
+      },
+      "timeout": 30000,
+      "retries": 2,
+      "condition": "{{steps.score-lead.output.score}} >= 70",
+      "onFailure": "skip"
+    }
+  ],
+  "onComplete": {
+    "action": "log",
+    "notifyIf": "{{steps.score-lead.output.score}} >= 80"
+  },
+  "onFailure": {
+    "action": "alert",
+    "alertTo": "ceo",
+    "retryWorkflow": false
+  }
+}

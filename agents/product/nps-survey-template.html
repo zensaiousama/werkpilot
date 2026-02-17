@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Werkpilot NPS Survey</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: Arial, Helvetica, sans-serif;">
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+    <!-- Header -->
+    <tr>
+      <td style="padding: 30px 40px; background: linear-gradient(135deg, #1a237e 0%, #283593 100%); text-align: center;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600;">Werkpilot</h1>
+        <p style="color: #b3b8ff; margin: 8px 0 0 0; font-size: 14px;">Quick Feedback - [MONTH_YEAR]</p>
+      </td>
+    </tr>
+
+    <!-- Greeting -->
+    <tr>
+      <td style="padding: 30px 40px 10px 40px;">
+        <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0;">
+          Hi [CLIENT_NAME],
+        </p>
+        <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 15px 0 0 0;">
+          We would love your honest feedback. It takes less than 60 seconds and helps us serve you better.
+        </p>
+      </td>
+    </tr>
+
+    <!-- NPS Question -->
+    <tr>
+      <td style="padding: 20px 40px;">
+        <div style="background-color: #f8f9ff; border-radius: 12px; padding: 25px; text-align: center;">
+          <p style="color: #1a237e; font-size: 18px; font-weight: 600; margin: 0 0 20px 0;">
+            How likely are you to recommend Werkpilot to a colleague?
+          </p>
+
+          <!-- Score Buttons -->
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin: 0 auto;">
+            <tr>
+              <!-- Scores 1-5 (Detractor) -->
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=1" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ef5350; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">1</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=2" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ef5350; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">2</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=3" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ff7043; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">3</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=4" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ff7043; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">4</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=5" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ffa726; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">5</a>
+              </td>
+              <!-- Scores 6-7 (Passive) -->
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=6" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ffa726; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">6</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=7" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ffca28; color: #333333; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">7</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=8" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #ffca28; color: #333333; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">8</a>
+              </td>
+              <!-- Scores 9-10 (Promoter) -->
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=9" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #66bb6a; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">9</a>
+              </td>
+              <td style="text-align: center; padding: 3px;">
+                <a href="[SURVEY_URL]&score=10" style="display: inline-block; width: 36px; height: 36px; line-height: 36px; background-color: #43a047; color: #ffffff; text-decoration: none; border-radius: 50%; font-size: 14px; font-weight: bold;">10</a>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Scale labels -->
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 8px;">
+            <tr>
+              <td style="text-align: left; color: #999; font-size: 11px; padding-left: 5px;">Not likely</td>
+              <td style="text-align: right; color: #999; font-size: 11px; padding-right: 5px;">Very likely</td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Comment Prompt -->
+    <tr>
+      <td style="padding: 10px 40px 20px 40px; text-align: center;">
+        <p style="color: #666666; font-size: 14px; margin: 0 0 15px 0;">
+          After clicking a score, you will be able to add an optional comment.
+        </p>
+        <p style="color: #666666; font-size: 13px; margin: 0;">
+          Your feedback directly shapes how we improve Werkpilot for [COMPANY_NAME].
+        </p>
+      </td>
+    </tr>
+
+    <!-- Divider -->
+    <tr>
+      <td style="padding: 0 40px;">
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 0;">
+      </td>
+    </tr>
+
+    <!-- Footer -->
+    <tr>
+      <td style="padding: 20px 40px 30px 40px; text-align: center;">
+        <p style="color: #999999; font-size: 12px; line-height: 1.5; margin: 0;">
+          This survey was sent by Werkpilot as part of our monthly feedback program.<br>
+          Your responses are confidential and used only to improve our services.
+        </p>
+        <p style="color: #999999; font-size: 11px; margin: 15px 0 0 0;">
+          Werkpilot GmbH | Zurich, Switzerland<br>
+          <a href="https://werkpilot.ch" style="color: #1a237e; text-decoration: none;">werkpilot.ch</a>
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

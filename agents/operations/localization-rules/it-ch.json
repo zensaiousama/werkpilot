@@ -1,0 +1,89 @@
+{
+  "locale": "it-CH",
+  "name": "Swiss Italian (Italiano della Svizzera)",
+  "description": "Localization rules for Ticinese / Swiss Italian",
+  "greetings": {
+    "formal": ["Buongiorno", "Buonasera", "Arrivederci"],
+    "informal": ["Ciao", "Salve"],
+    "farewell": ["Arrivederci", "A presto", "Buona giornata"]
+  },
+  "dateFormat": {
+    "short": "DD.MM.YYYY",
+    "long": "D MMMM YYYY",
+    "time": "HH:mm",
+    "dateTime": "DD.MM.YYYY, HH:mm",
+    "notes": "Swiss Italian uses DD.MM.YYYY with dots, consistent with other Swiss locales"
+  },
+  "currency": {
+    "code": "CHF",
+    "symbol": "CHF",
+    "format": "CHF #'###.##",
+    "decimalSeparator": ".",
+    "thousandsSeparator": "'",
+    "position": "before",
+    "examples": {
+      "1000": "CHF 1'000.00",
+      "1234.50": "CHF 1'234.50"
+    },
+    "replace": {
+      "€": "CHF",
+      "EUR": "CHF"
+    }
+  },
+  "phoneFormat": {
+    "countryCode": "+41",
+    "format": "+41 XX XXX XX XX",
+    "examples": {
+      "mobile": "+41 79 123 45 67",
+      "landline": "+41 91 123 45 67"
+    }
+  },
+  "address": {
+    "format": "{street} {number}\n{zip} {city}",
+    "zipFormat": "4 digits",
+    "regions": ["Ticino", "Grigioni italiano"]
+  },
+  "vocabulary": {
+    "swissItalianTerms": {
+      "natel": "cellulare/telefonino (mobile phone)",
+      "azione": "offerta speciale (special offer in shops)",
+      "bancomat": "sportello bancario (ATM)",
+      "autopostale": "bus postale (PostBus)",
+      "patente": "licenza di condurre (driver's license)"
+    },
+    "germanisms": {
+      "description": "Swiss Italian incorporates some German-derived words",
+      "examples": {
+        "putzen": "pulire (to clean)",
+        "Wanderweg": "sentiero escursionistico (hiking path)",
+        "Abstimmung": "votazione (vote/referendum)"
+      }
+    }
+  },
+  "governance": {
+    "description": "Swiss Italian uses Swiss political/administrative terms",
+    "terms": {
+      "Comune": "Municipality",
+      "Cantone": "Canton",
+      "Confederazione": "Confederation",
+      "Gran Consiglio": "Cantonal Parliament (Ticino)",
+      "Consiglio di Stato": "Cantonal Government (Ticino)"
+    }
+  },
+  "legalTerms": {
+    "company_types": ["SA", "Sagl", "Ditta individuale", "Società in nome collettivo"],
+    "tax_terms": {
+      "VAT": "Imposta sul valore aggiunto (IVA)",
+      "standard_rate": "8.1%",
+      "reduced_rate": "2.6%"
+    }
+  },
+  "ticinoSpecific": {
+    "description": "Terms specific to Canton Ticino",
+    "institutions": {
+      "USI": "Università della Svizzera italiana",
+      "SUPSI": "Scuola universitaria professionale della Svizzera italiana",
+      "RSI": "Radiotelevisione svizzera di lingua italiana"
+    }
+  }
+}

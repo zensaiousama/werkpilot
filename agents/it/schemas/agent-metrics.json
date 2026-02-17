@@ -1,0 +1,43 @@
+{
+  "name": "AgentMetrics",
+  "version": "1.0.0",
+  "description": "Schema for tracking performance metrics of all AI agents in the Werkpilot system",
+  "table": "AgentMetrics",
+  "fields": [
+    { "name": "AgentName", "type": "text", "required": true, "description": "Unique agent identifier (e.g., sales-pipeline-manager)" },
+    { "name": "Department", "type": "select", "required": true, "options": ["ceo", "finance", "sales", "marketing", "hr", "product", "it", "operations", "strategy"], "description": "Department the agent belongs to" },
+    { "name": "RunDate", "type": "datetime", "required": true, "description": "Timestamp when the agent run started" },
+    { "name": "Duration", "type": "number", "required": false, "unit": "ms", "description": "Run duration in milliseconds" },
+    { "name": "Status", "type": "select", "required": true, "options": ["completed", "failed", "timeout", "skipped", "partial"], "description": "Final run status" },
+    { "name": "RecordsProcessed", "type": "number", "required": false, "default": 0, "description": "Number of records processed in this run" },
+    { "name": "RecordsCreated", "type": "number", "required": false, "default": 0, "description": "Number of new records created" },
+    { "name": "RecordsUpdated", "type": "number", "required": false, "default": 0, "description": "Number of records updated" },
+    { "name": "Errors", "type": "number", "required": false, "default": 0, "description": "Number of errors encountered" },
+    { "name": "ErrorDetails", "type": "longtext", "required": false, "description": "JSON array of error details" },
+    { "name": "TokensUsed", "type": "number", "required": false, "default": 0, "description": "Total AI tokens consumed" },
+    { "name": "InputTokens", "type": "number", "required": false, "default": 0, "description": "Input/prompt tokens consumed" },
+    { "name": "OutputTokens", "type": "number", "required": false, "default": 0, "description": "Output/completion tokens consumed" },
+    { "name": "CostCHF", "type": "currency", "required": false, "currency": "CHF", "default": 0, "description": "Estimated cost of this run in CHF" },
+    { "name": "ModelUsed", "type": "text", "required": false, "description": "AI model used (e.g., claude-sonnet-4-5-20250929)" },
+    { "name": "APICallCount", "type": "number", "required": false, "default": 0, "description": "Number of external API calls made" },
+    { "name": "EmailsSent", "type": "number", "required": false, "default": 0, "description": "Number of emails sent during run" },
+    { "name": "Priority", "type": "select", "required": false, "options": ["Low", "Medium", "High", "Critical"], "description": "Run priority level" },
+    { "name": "TriggerType", "type": "select", "required": false, "options": ["cron", "manual", "webhook", "dependency"], "description": "What triggered this run" },
+    { "name": "Notes", "type": "longtext", "required": false, "description": "Additional run notes or context" }
+  ],
+  "indexes": ["AgentName", "RunDate", "Status", "Department"],
+  "aggregations": {
+    "successRate": "COUNT(Status='completed') / COUNT(*) * 100",
+    "avgDuration": "AVG(Duration) GROUP BY AgentName",
+    "totalCost": "SUM(CostCHF)",
+    "costByAgent": "GROUP BY AgentName, SUM(CostCHF)",
+    "costByDepartment": "GROUP BY Department, SUM(CostCHF)",
+    "dailyRuns": "GROUP BY DATE(RunDate), COUNT(*)",
+    "errorRate": "COUNT(Status='failed') / COUNT(*) * 100 GROUP BY AgentName"
+  },
+  "retention": {
+    "detailedRecords": "90 days",
+    "aggregatedRecords": "365 days",
+    "archivePolicy": "compress and move to cold storage after 90 days"
+  }
+}

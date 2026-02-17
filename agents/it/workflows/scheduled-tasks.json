@@ -1,0 +1,72 @@
+{
+  "name": "scheduled-tasks",
+  "version": "1.0.0",
+  "description": "Manages execution of scheduled tasks across all departments. Acts as a meta-workflow that dispatches tasks to their respective agent handlers based on cron triggers.",
+  "trigger": {
+    "type": "cron",
+    "event": "scheduled_trigger"
+  },
+  "retry": true,
+  "maxRetries": 2,
+  "steps": [
+    {
+      "name": "load_task_config",
+      "type": "fetch_records",
+      "table": "CronJobs",
+      "filter": "{TaskName} = \"{{taskName}}\"",
+      "required": true
+    },
+    {
+      "name": "validate_task",
+      "type": "condition",
+      "condition": {
+        "field": "taskEnabled",
+        "operator": "equals",
+        "value": true
+      },
+      "required": true
+    },
+    {
+      "name": "check_dependencies",
+      "type": "ai_classify",
+      "prompt": "Check if this scheduled task can run safely.\n\nTask: {{taskName}}\nTriggered at: {{triggeredAt}}\nDependencies: {{dependencies}}\nLast run status: {{lastRunStatus}}\n\nReturn JSON: { \"canRun\": true/false, \"reason\": \"...\", \"waitForDependencies\": [] }",
+      "model": "claude-haiku-4-5-20251001",
+      "maxTokens": 200,
+      "required": true
+    },
+    {
+      "name": "update_task_status",
+      "type": "update_record",
+      "table": "CronJobs",
+      "fields": {
+        "LastRunAt": "{{triggeredAt}}",
+        "Status": "Running"
+      },
+      "required": true
+    },
+    {
+      "name": "execute_delay",
+      "type": "delay",
+      "delayMs": 500,
+      "required": false
+    },
+    {
+      "name": "record_completion",
+      "type": "create_record",
+      "table": "AgentMetrics",
+      "fields": {
+        "AgentName": "automation-{{taskName}}",
+        "RunDate": "{{triggeredAt}}",
+        "Status": "completed",
+        "Notes": "Scheduled task executed via automation agent"
+      },
+      "required": false
+    }
+  ],
+  "errorHandling": {
+    "onStepFailure": "continue_if_optional",
+    "onCriticalFailure": "retry_then_alert",
+    "alertEmail": true,
+    "rollback": false
+  }
+}

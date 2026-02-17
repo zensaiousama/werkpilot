@@ -1,0 +1,190 @@
+{
+  "company": [
+    {
+      "id": "okr-001",
+      "objective": "Achieve CHF 1M ARR by end of 2026",
+      "owner": "CEO",
+      "quarter": "Q1-Q4 2026",
+      "keyResults": [
+        {
+          "kr": "Reach 100 active customers",
+          "target": 100,
+          "unit": "customers",
+          "baseline": 15,
+          "current": 28
+        },
+        {
+          "kr": "Achieve CHF 10K MRR average per customer",
+          "target": 10000,
+          "unit": "CHF",
+          "baseline": 7500,
+          "current": 8200
+        },
+        {
+          "kr": "Maintain 85%+ customer retention rate",
+          "target": 85,
+          "unit": "%",
+          "baseline": 78,
+          "current": 82
+        }
+      ]
+    },
+    {
+      "id": "okr-002",
+      "objective": "Establish Werkpilot as the leading AI marketing automation platform for Swiss KMUs",
+      "owner": "CEO",
+      "quarter": "Q1-Q4 2026",
+      "keyResults": [
+        {
+          "kr": "Achieve 1000+ website visitors per month",
+          "target": 1000,
+          "unit": "visitors",
+          "baseline": 350,
+          "current": 520
+        },
+        {
+          "kr": "Publish 24 high-quality blog posts and case studies",
+          "target": 24,
+          "unit": "posts",
+          "baseline": 0,
+          "current": 6
+        },
+        {
+          "kr": "Secure 3 strategic partnerships",
+          "target": 3,
+          "unit": "partnerships",
+          "baseline": 0,
+          "current": 1
+        }
+      ]
+    }
+  ],
+  "departments": {
+    "sales": [
+      {
+        "id": "okr-101",
+        "objective": "Build a predictable and scalable sales pipeline",
+        "owner": "Head of Sales",
+        "quarter": "Q1 2026",
+        "keyResults": [
+          {
+            "kr": "Generate 50 qualified leads per month",
+            "target": 50,
+            "unit": "leads",
+            "baseline": 20,
+            "current": 35
+          },
+          {
+            "kr": "Close 10 new customers this quarter",
+            "target": 10,
+            "unit": "customers",
+            "baseline": 3,
+            "current": 5
+          },
+          {
+            "kr": "Achieve CHF 250K in closed-won deals",
+            "target": 250000,
+            "unit": "CHF",
+            "baseline": 0,
+            "current": 120000
+          }
+        ]
+      }
+    ],
+    "marketing": [
+      {
+        "id": "okr-201",
+        "objective": "Drive awareness and inbound lead generation",
+        "owner": "Head of Marketing",
+        "quarter": "Q1 2026",
+        "keyResults": [
+          {
+            "kr": "Increase organic traffic by 200%",
+            "target": 200,
+            "unit": "%",
+            "baseline": 0,
+            "current": 120
+          },
+          {
+            "kr": "Generate 100 MQLs through content marketing",
+            "target": 100,
+            "unit": "MQLs",
+            "baseline": 15,
+            "current": 42
+          },
+          {
+            "kr": "Achieve 5% website conversion rate",
+            "target": 5,
+            "unit": "%",
+            "baseline": 2.1,
+            "current": 3.4
+          }
+        ]
+      }
+    ],
+    "product": [
+      {
+        "id": "okr-301",
+        "objective": "Deliver AI features that delight customers",
+        "owner": "Head of Product",
+        "quarter": "Q1 2026",
+        "keyResults": [
+          {
+            "kr": "Launch 3 major AI-powered features",
+            "target": 3,
+            "unit": "features",
+            "baseline": 0,
+            "current": 1
+          },
+          {
+            "kr": "Achieve 8.5+ NPS score",
+            "target": 8.5,
+            "unit": "score",
+            "baseline": 7.2,
+            "current": 7.8
+          },
+          {
+            "kr": "Reduce critical bugs to < 5 per month",
+            "target": 5,
+            "unit": "bugs",
+            "baseline": 12,
+            "current": 8
+          }
+        ]
+      }
+    ],
+    "strategy": [
+      {
+        "id": "okr-401",
+        "objective": "Validate market expansion opportunities in DACH region",
+        "owner": "Head of Strategy",
+        "quarter": "Q1 2026",
+        "keyResults": [
+          {
+            "kr": "Complete TAM/SAM/SOM analysis for Germany and Austria",
+            "target": 2,
+            "unit": "markets",
+            "baseline": 0,
+            "current": 1
+          },
+          {
+            "kr": "Identify and validate 5 partnership opportunities",
+            "target": 5,
+            "unit": "partnerships",
+            "baseline": 0,
+            "current": 2
+          },
+          {
+            "kr": "Produce quarterly market intelligence reports",
+            "target": 1,
+            "unit": "reports",
+            "baseline": 0,
+            "current": 0
+          }
+        ]
+      }
+    ]
+  },
+  "teams": {},
+  "historical": []
+}

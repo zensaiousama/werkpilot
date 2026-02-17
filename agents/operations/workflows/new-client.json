@@ -1,0 +1,118 @@
+{
+  "id": "new-client",
+  "name": "New Client Onboarding",
+  "description": "Complete onboarding workflow for new clients from contract signing to first check-in",
+  "version": "1.0.0",
+  "trigger": {
+    "type": "event",
+    "event": "client.signed",
+    "sources": ["sales-pipeline-manager", "manual-entry"]
+  },
+  "sla": {
+    "maxDurationMinutes": 1440,
+    "alertAfterMinutes": 720
+  },
+  "steps": [
+    {
+      "id": "onboard-setup",
+      "name": "Initialize Client Onboarding",
+      "agent": "hr-onboarding",
+      "action": "initClientOnboarding",
+      "input": {
+        "clientData": "{{trigger.data}}",
+        "contractDetails": "{{trigger.contractDetails}}"
+      },
+      "timeout": 120000,
+      "retries": 2,
+      "onFailure": "retry"
+    },
+    {
+      "id": "create-accounts",
+      "name": "Setup Client Accounts & Access",
+      "agent": "it-infrastructure-monitor",
+      "action": "setupClientAccess",
+      "dependsOn": ["onboard-setup"],
+      "input": {
+        "clientId": "{{steps.onboard-setup.output.clientId}}",
+        "services": "{{trigger.data.services}}",
+        "tier": "{{trigger.data.tier}}"
+      },
+      "timeout": 180000,
+      "retries": 3,
+      "onFailure": "retry"
+    },
+    {
+      "id": "create-crm-entry",
+      "name": "Create Full CRM Client Record",
+      "agent": "sales-crm-sync",
+      "action": "createClient",
+      "dependsOn": ["onboard-setup"],
+      "input": {
+        "clientData": "{{trigger.data}}",
+        "onboardingId": "{{steps.onboard-setup.output.onboardingId}}"
+      },
+      "timeout": 60000,
+      "retries": 3,
+      "onFailure": "retry"
+    },
+    {
+      "id": "welcome-email",
+      "name": "Send Welcome Package",
+      "agent": "marketing-email-campaigns",
+      "action": "sendWelcomeSequence",
+      "dependsOn": ["create-accounts", "create-crm-entry"],
+      "input": {
+        "clientData": "{{trigger.data}}",
+        "accessDetails": "{{steps.create-accounts.output}}",
+        "language": "{{trigger.data.language || 'de-CH'}}"
+      },
+      "timeout": 60000,
+      "retries": 2,
+      "onFailure": "skip"
+    },
+    {
+      "id": "first-report",
+      "name": "Generate Initial Assessment Report",
+      "agent": "operations-project-tracker",
+      "action": "createInitialReport",
+      "dependsOn": ["create-accounts"],
+      "input": {
+        "clientId": "{{steps.onboard-setup.output.clientId}}",
+        "services": "{{trigger.data.services}}",
+        "goals": "{{trigger.data.goals}}"
+      },
+      "timeout": 300000,
+      "retries": 2,
+      "delay": "24h",
+      "onFailure": "skip"
+    },
+    {
+      "id": "schedule-checkin",
+      "name": "Schedule First Check-in",
+      "agent": "sales-follow-up",
+      "action": "scheduleCheckin",
+      "dependsOn": ["welcome-email"],
+      "input": {
+        "clientId": "{{steps.onboard-setup.output.clientId}}",
+        "contactEmail": "{{trigger.data.email}}",
+        "scheduleDays": 7
+      },
+      "timeout": 30000,
+      "retries": 2,
+      "delay": "48h",
+      "onFailure": "skip"
+    }
+  ],
+  "onComplete": {
+    "action": "notify",
+    "notifyTo": "ceo",
+    "message": "New client {{trigger.data.companyName}} onboarding complete"
+  },
+  "onFailure": {
+    "action": "alert",
+    "alertTo": "ceo",
+    "severity": "high",
+    "retryWorkflow": true,
+    "maxWorkflowRetries": 2
+  }
+}

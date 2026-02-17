@@ -1,0 +1,110 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "currency": "USD",
+  "budgetPeriod": "monthly",
+  "apis": {
+    "claude": {
+      "monthlyBudget": 500,
+      "warningThreshold": 0.8,
+      "criticalThreshold": 0.95,
+      "models": {
+        "claude-haiku-4-5-20251001": {
+          "monthlyBudget": 100,
+          "description": "Fast model for simple tasks (classification, extraction)",
+          "rateLimit": {
+            "requestsPerMinute": 60,
+            "tokensPerMinute": 100000
+          }
+        },
+        "claude-sonnet-4-5-20250929": {
+          "monthlyBudget": 300,
+          "description": "Standard model for most agent tasks",
+          "rateLimit": {
+            "requestsPerMinute": 40,
+            "tokensPerMinute": 80000
+          }
+        },
+        "claude-opus-4-6": {
+          "monthlyBudget": 100,
+          "description": "Powerful model for complex analysis only",
+          "rateLimit": {
+            "requestsPerMinute": 20,
+            "tokensPerMinute": 40000
+          }
+        }
+      }
+    },
+    "deepl": {
+      "monthlyBudget": 50,
+      "warningThreshold": 0.8,
+      "criticalThreshold": 0.95,
+      "freeCharacters": 500000,
+      "rateLimit": {
+        "requestsPerSecond": 5,
+        "charactersPerMonth": 5000000
+      }
+    },
+    "mailerlite": {
+      "monthlyBudget": 30,
+      "warningThreshold": 0.8,
+      "criticalThreshold": 0.95,
+      "freeEmails": 1000,
+      "rateLimit": {
+        "requestsPerMinute": 120,
+        "emailsPerDay": 500
+      }
+    },
+    "airtable": {
+      "monthlyBudget": 20,
+      "warningThreshold": 0.8,
+      "criticalThreshold": 0.95,
+      "rateLimit": {
+        "requestsPerSecond": 5,
+        "requestsPerDay": 100000
+      }
+    },
+    "openai": {
+      "monthlyBudget": 50,
+      "warningThreshold": 0.8,
+      "criticalThreshold": 0.95,
+      "rateLimit": {
+        "requestsPerMinute": 60,
+        "tokensPerMinute": 150000
+      }
+    }
+  },
+  "totalMonthlyBudget": 650,
+  "alertRecipients": ["ceo"],
+  "costOptimization": {
+    "downgradeRules": [
+      {
+        "description": "Use Haiku for simple text classification",
+        "condition": "action in ['classify', 'categorize', 'extractField', 'sentiment']",
+        "recommendedModel": "claude-haiku-4-5-20251001"
+      },
+      {
+        "description": "Use Haiku for short-form content under 200 words",
+        "condition": "maxTokens < 300 and action in ['summarize', 'title', 'tagline']",
+        "recommendedModel": "claude-haiku-4-5-20251001"
+      },
+      {
+        "description": "Use Sonnet for standard content and analysis",
+        "condition": "action in ['write', 'analyze', 'report', 'translate']",
+        "recommendedModel": "claude-sonnet-4-5-20250929"
+      },
+      {
+        "description": "Reserve Opus for strategic and complex multi-step reasoning",
+        "condition": "action in ['strategize', 'complexAnalysis', 'codeReview']",
+        "recommendedModel": "claude-opus-4-6"
+      }
+    ],
+    "peakHours": {
+      "description": "Avoid non-critical tasks during peak hours",
+      "peakStart": "09:00",
+      "peakEnd": "12:00",
+      "timezone": "Europe/Zurich",
+      "deferrable": ["seo-optimizer", "competitor-watch", "innovation-radar", "backup-manager"]
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "campaign": {
+    "name": "Werkpilot für Immobilien",
+    "id": "camp_immobilien_001",
+    "status": "draft",
+    "industry": "Immobilien",
+    "languages": ["de", "fr"],
+    "budget": {
+      "daily": 70,
+      "monthly": 2100,
+      "currency": "CHF"
+    },
+    "targeting": {
+      "locations": [
+        { "country": "CH", "regions": ["Zürich", "Bern", "Basel", "Genève", "Lausanne", "Zug", "Luzern", "St. Gallen"] }
+      ],
+      "demographics": {
+        "business_owners": true,
+        "decision_makers": true,
+        "company_size": "1-50",
+        "industries": ["real_estate", "property_management"]
+      }
+    },
+    "ad_groups": [
+      {
+        "name": "Immobilien Marketing",
+        "keywords": [
+          "immobilien marketing",
+          "immobilien website",
+          "makler marketing",
+          "immobilien seo",
+          "immobilien online marketing",
+          "immobilienmakler website",
+          "immobilien leads",
+          "immobilien kundengewinnung"
+        ],
+        "negative_keywords": [
+          "wohnung mieten",
+          "haus kaufen",
+          "immobilien suchen",
+          "job",
+          "stelle",
+          "gratis"
+        ],
+        "match_types": ["phrase", "exact"],
+        "ads": [
+          {
+            "type": "responsive_search",
+            "headlines": [
+              "Mehr Aufträge für Ihr Immobilienbüro",
+              "Immobilien-Marketing automatisiert",
+              "Leads für Immobilienmakler",
+              "Website + SEO für Makler",
+              "Werkpilot Immobilien",
+              "Sichtbarkeit steigern"
+            ],
+            "descriptions": [
+              "Werkpilot bringt qualifizierte Leads für Ihr Immobiliengeschäft. Website, SEO & Ads automatisiert.",
+              "Speziell für Schweizer Immobilienprofis: Mehr Sichtbarkeit, mehr Anfragen. Kostenlose Beratung.",
+              "Von der Website bis zum Abschluss - digitale Kundengewinnung für Immobilienprofis."
+            ],
+            "final_url": "https://werkpilot.ch/branchen/immobilien",
+            "display_url": "werkpilot.ch/immobilien"
+          }
+        ],
+        "bid_strategy": {
+          "type": "target_cpa",
+          "target_cpa": 65,
+          "max_cpc": 12.00
+        }
+      },
+      {
+        "name": "Hausverwaltung Digital",
+        "keywords": [
+          "hausverwaltung software",
+          "hausverwaltung digitalisierung",
+          "immobilien verwaltung website",
+          "stockwerkeigentümer verwaltung",
+          "liegenschaftsverwaltung marketing"
+        ],
+        "negative_keywords": ["bewertung", "gratis", "mieter"],
+        "match_types": ["phrase", "exact"],
+        "ads": [
+          {
+            "type": "responsive_search",
+            "headlines": [
+              "Hausverwaltung digitalisieren",
+              "Mehr Mandate gewinnen",
+              "Professionelle Online-Präsenz",
+              "Verwaltung effizienter machen",
+              "Website für Verwaltungen",
+              "Werkpilot Immobilien"
+            ],
+            "descriptions": [
+              "Digitale Kundengewinnung für Hausverwaltungen. Website, SEO & automatisiertes Marketing.",
+              "Werkpilot hilft Liegenschaftsverwaltungen, neue Mandate zu gewinnen. Jetzt beraten lassen."
+            ],
+            "final_url": "https://werkpilot.ch/branchen/immobilien",
+            "display_url": "werkpilot.ch/verwaltung"
+          }
+        ],
+        "bid_strategy": {
+          "type": "target_cpa",
+          "target_cpa": 60,
+          "max_cpc": 11.00
+        }
+      }
+    ],
+    "conversion_tracking": {
+      "goals": [
+        { "name": "demo_request", "value": 250, "type": "form_submit" },
+        { "name": "phone_call", "value": 150, "type": "click_to_call" },
+        { "name": "contact_form", "value": 120, "type": "form_submit" }
+      ]
+    },
+    "schedule": {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "hours": { "start": 8, "end": 19 },
+      "timezone": "Europe/Zurich"
+    },
+    "performance_targets": {
+      "monthly_impressions": 25000,
+      "monthly_clicks": 700,
+      "target_ctr": 2.8,
+      "target_cpa": 65,
+      "target_roas": 5.0,
+      "monthly_conversions": 32
+    }
+  }
+}

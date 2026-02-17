@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13T00:00:00.000Z",
+  "environment": "production",
+  "system": {
+    "name": "Werkpilot AI Agent System",
+    "description": "Autonomous AI workforce for Werkpilot GmbH",
+    "timezone": "Europe/Zurich",
+    "locale": "de-CH"
+  },
+  "integrations": {
+    "airtable": {
+      "enabled": true,
+      "baseUrl": "https://api.airtable.com/v0",
+      "rateLimitPerSecond": 5,
+      "maxRetries": 3,
+      "retryDelayMs": 1000,
+      "tables": [
+        "Contacts", "Clients", "Leads", "Revenue", "Invoices",
+        "SystemHealth", "SyncLog", "AgentMetrics", "AgentVersions",
+        "Migrations", "APIDocs", "WorkflowRuns", "Alerts",
+        "PromptVersions", "AIBenchmarks", "CostTracking"
+      ]
+    },
+    "mailerlite": {
+      "enabled": true,
+      "baseUrl": "https://connect.mailerlite.com/api",
+      "rateLimitPerMinute": 120,
+      "maxRetries": 3,
+      "retryDelayMs": 2000,
+      "syncGroups": ["clients", "leads", "newsletter", "partners"]
+    },
+    "googleWorkspace": {
+      "enabled": true,
+      "services": ["contacts", "calendar", "drive"],
+      "domain": "werkpilot.ch",
+      "syncCalendar": "primary",
+      "driveRootFolder": "Werkpilot-AI-Agents"
+    },
+    "anthropic": {
+      "enabled": true,
+      "models": {
+        "fast": "claude-haiku-4-5-20251001",
+        "standard": "claude-sonnet-4-5-20250929",
+        "powerful": "claude-opus-4-6"
+      },
+      "defaultModel": "standard",
+      "maxTokensDefault": 2000,
+      "monthlyBudgetCHF": 500
+    }
+  },
+  "healthChecks": {
+    "intervalMinutes": 15,
+    "timeoutMs": 10000,
+    "alertThresholds": {
+      "responseTimeWarnMs": 5000,
+      "responseTimeCriticalMs": 15000,
+      "consecutiveFailures": 3
+    },
+    "notifications": {
+      "emailOnDown": true,
+      "emailOnRecovery": true,
+      "dailyDigest": true
+    }
+  },
+  "dataSync": {
+    "crmToEmail": {
+      "enabled": true,
+      "schedule": "0 2 * * *",
+      "batchSize": 50,
+      "tagMapping": {
+        "Client": ["client", "active"],
+        "Lead": ["lead"],
+        "Partner": ["partner"],
+        "Churned": ["churned", "inactive"]
+      }
+    },
+    "crmToGoogle": {
+      "enabled": true,
+      "schedule": "0 2 * * *",
+      "syncContacts": true,
+      "syncCalendar": false
+    }
+  },
+  "agentDefaults": {
+    "maxRestarts": 3,
+    "timeoutMs": 300000,
+    "logRetentionDays": 30,
+    "metricsRetentionDays": 90
+  },
+  "migrations": [
+    {
+      "id": "mig-001",
+      "name": "Add CRM Status Field to Mailerlite",
+      "type": "config_change",
+      "description": "Add crm_status custom field to Mailerlite subscriber schema",
+      "createdAt": "2026-02-13T00:00:00.000Z",
+      "configChanges": {
+        "mailerlite.customFields": ["crm_status", "company", "industry"]
+      }
+    },
+    {
+      "id": "mig-002",
+      "name": "Agent Metrics Schema Update",
+      "type": "schema_update",
+      "description": "Add cost tracking fields to AgentMetrics table",
+      "createdAt": "2026-02-13T00:00:00.000Z",
+      "fields": [
+        { "table": "AgentMetrics", "name": "TokensUsed", "action": "add", "type": "number" },
+        { "table": "AgentMetrics", "name": "CostCHF", "action": "add", "type": "currency" },
+        { "table": "AgentMetrics", "name": "ModelUsed", "action": "add", "type": "text" }
+      ]
+    }
+  ],
+  "security": {
+    "apiKeyRotationDays": 90,
+    "lastKeyRotation": "2026-01-15T00:00:00.000Z",
+    "ipWhitelist": [],
+    "encryptSensitiveFields": true
+  }
+}

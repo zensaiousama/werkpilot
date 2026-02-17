@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "language": "fr",
+    "region": "CH",
+    "last_updated": null,
+    "update_frequency": "weekly"
+  },
+  "industries": {
+    "fiduciaire": {
+      "primary": [
+        { "keyword": "fiduciaire", "volume": 8100, "cpc": 4.80, "difficulty": 62 },
+        { "keyword": "fiduciaire genève", "volume": 2900, "cpc": 6.20, "difficulty": 70 },
+        { "keyword": "fiduciaire lausanne", "volume": 1900, "cpc": 5.80, "difficulty": 65 },
+        { "keyword": "comptabilité PME", "volume": 3600, "cpc": 5.50, "difficulty": 55 },
+        { "keyword": "expert comptable suisse", "volume": 2400, "cpc": 7.10, "difficulty": 68 }
+      ],
+      "long_tail": [
+        { "keyword": "fiduciaire pour PME suisse", "volume": 320, "cpc": 4.20, "difficulty": 28 },
+        { "keyword": "fiduciaire digitalisation", "volume": 170, "cpc": 3.50, "difficulty": 22 },
+        { "keyword": "meilleure fiduciaire genève", "volume": 480, "cpc": 6.80, "difficulty": 38 },
+        { "keyword": "fiduciaire création entreprise", "volume": 390, "cpc": 5.10, "difficulty": 30 }
+      ],
+      "pain_points": [
+        "fiduciaire trouver clients",
+        "marketing fiduciaire",
+        "site web fiduciaire",
+        "fiduciaire visibilité en ligne"
+      ]
+    },
+    "dentiste": {
+      "primary": [
+        { "keyword": "dentiste", "volume": 74000, "cpc": 3.50, "difficulty": 82 },
+        { "keyword": "dentiste genève", "volume": 8100, "cpc": 7.80, "difficulty": 80 },
+        { "keyword": "dentiste lausanne", "volume": 5400, "cpc": 7.20, "difficulty": 78 },
+        { "keyword": "cabinet dentaire", "volume": 9900, "cpc": 4.50, "difficulty": 72 }
+      ],
+      "long_tail": [
+        { "keyword": "marketing cabinet dentaire suisse", "volume": 140, "cpc": 4.80, "difficulty": 20 },
+        { "keyword": "site web dentiste suisse", "volume": 210, "cpc": 5.50, "difficulty": 25 },
+        { "keyword": "dentiste nouveaux patients", "volume": 170, "cpc": 5.20, "difficulty": 22 },
+        { "keyword": "dentiste avis google", "volume": 320, "cpc": 3.20, "difficulty": 28 }
+      ],
+      "pain_points": [
+        "dentiste trouver patients",
+        "marketing dentiste",
+        "cabinet dentaire en ligne",
+        "dentiste référencement google"
+      ]
+    },
+    "immobilier": {
+      "primary": [
+        { "keyword": "immobilier", "volume": 110000, "cpc": 4.20, "difficulty": 88 },
+        { "keyword": "agence immobilière", "volume": 18100, "cpc": 6.50, "difficulty": 78 },
+        { "keyword": "immobilier genève", "volume": 12100, "cpc": 8.80, "difficulty": 85 },
+        { "keyword": "gérance immobilière", "volume": 4400, "cpc": 5.20, "difficulty": 58 }
+      ],
+      "long_tail": [
+        { "keyword": "marketing agence immobilière suisse", "volume": 110, "cpc": 5.20, "difficulty": 18 },
+        { "keyword": "site web agence immobilière", "volume": 280, "cpc": 6.00, "difficulty": 25 },
+        { "keyword": "immobilier leads suisse", "volume": 90, "cpc": 6.80, "difficulty": 15 },
+        { "keyword": "gérance immobilière digitalisation", "volume": 70, "cpc": 4.50, "difficulty": 12 }
+      ],
+      "pain_points": [
+        "agence immobilière trouver clients",
+        "marketing immobilier suisse",
+        "site web immobilier moderne",
+        "leads immobilier"
+      ]
+    }
+  },
+  "generic_werkpilot": {
+    "brand": [
+      { "keyword": "werkpilot", "volume": 30, "cpc": 0.50, "difficulty": 5 },
+      { "keyword": "werkpilot suisse", "volume": 10, "cpc": 0.30, "difficulty": 3 }
+    ],
+    "service": [
+      { "keyword": "digitalisation PME suisse", "volume": 590, "cpc": 4.50, "difficulty": 42 },
+      { "keyword": "site web PME suisse", "volume": 880, "cpc": 5.20, "difficulty": 48 },
+      { "keyword": "marketing automatisé PME", "volume": 210, "cpc": 3.80, "difficulty": 28 },
+      { "keyword": "marketing digital PME suisse", "volume": 390, "cpc": 4.20, "difficulty": 35 },
+      { "keyword": "création site web professionnel", "volume": 1600, "cpc": 5.80, "difficulty": 52 }
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "model": "Franchise / Regional License",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "description": "License the Werkpilot brand, methodology, and technology to regional operators who serve local KMU markets",
+  "targetFranchisees": [
+    "Experienced marketing professionals wanting to start a business",
+    "Existing small agencies wanting to upgrade with AI technology",
+    "Regional IT consultants looking to add marketing services",
+    "Serial entrepreneurs in underserved markets"
+  ],
+  "valueProposition": {
+    "forFranchisees": "Proven AI marketing business with full technology stack, brand, and methodology",
+    "forWerkpilot": "Rapid geographic expansion with local market expertise and low capital risk"
+  },
+  "franchiseStructure": {
+    "territories": {
+      "type": "canton-based",
+      "exclusivity": "Semi-exclusive (max 2 franchisees per canton for large cantons)",
+      "protectedRadius": "30km for exclusive territories",
+      "duration": "5 years with renewal option"
+    },
+    "requirements": {
+      "initialInvestment": {
+        "min": 50000,
+        "max": 120000,
+        "currency": "CHF",
+        "includes": ["Franchise fee", "Initial training", "Setup costs", "First 3 months working capital"]
+      },
+      "franchiseFee": 25000,
+      "monthlyRoyalty": "8% of gross revenue",
+      "marketingFundContribution": "2% of gross revenue",
+      "minimumClients": 10,
+      "qualifications": [
+        "5+ years marketing or business experience",
+        "Clean financial background check",
+        "Completion of Werkpilot certification (4 weeks)",
+        "Local market knowledge"
+      ]
+    }
+  },
+  "franchiseeSupport": {
+    "initial": [
+      "4-week intensive training (2 weeks online, 2 weeks in Zurich)",
+      "Complete operations manual (200+ pages)",
+      "Brand and marketing starter kit",
+      "First 5 client templates and playbooks",
+      "Dedicated launch manager for first 90 days"
+    ],
+    "ongoing": [
+      "Full Werkpilot technology platform access",
+      "Monthly group coaching calls",
+      "Quarterly in-person meetups",
+      "Shared marketing resources and campaigns",
+      "Central lead generation support",
+      "Continuous platform updates and new features",
+      "Annual conference (Werkpilot Summit)"
+    ]
+  },
+  "revenueProjection": {
+    "year1": {
+      "targetFranchisees": 5,
+      "avgRevenuePerFranchisee": 180000,
+      "totalSystemRevenue": 900000,
+      "werkpilotRevenue": {
+        "franchiseFees": 125000,
+        "royalties": 72000,
+        "marketingFund": 18000,
+        "technologyFees": 59400,
+        "total": 274400
+      },
+      "assumptions": "5 franchisees in ZH, BE, VD, BS, LU"
+    },
+    "year2": {
+      "targetFranchisees": 15,
+      "avgRevenuePerFranchisee": 280000,
+      "totalSystemRevenue": 4200000,
+      "werkpilotRevenue": {
+        "franchiseFees": 250000,
+        "royalties": 336000,
+        "marketingFund": 84000,
+        "technologyFees": 178200,
+        "total": 848200
+      },
+      "assumptions": "15 franchisees covering all major cantons"
+    },
+    "year3": {
+      "targetFranchisees": 25,
+      "avgRevenuePerFranchisee": 380000,
+      "totalSystemRevenue": 9500000,
+      "werkpilotRevenue": {
+        "franchiseFees": 250000,
+        "royalties": 760000,
+        "marketingFund": 190000,
+        "technologyFees": 297000,
+        "total": 1497000
+      },
+      "assumptions": "25 franchisees including DACH expansion"
+    }
+  },
+  "costs": {
+    "development": {
+      "initialBuild": 180000,
+      "currency": "CHF",
+      "timeline": "6-9 months",
+      "description": "Operations manual, training program, franchise management system, legal framework"
+    },
+    "ongoing": {
+      "franchiseManagement": 6000,
+      "training": 4000,
+      "centralMarketing": 5000,
+      "legal": 2000,
+      "events": 3000,
+      "total": 20000,
+      "period": "monthly"
+    }
+  },
+  "marginAnalysis": {
+    "grossMargin": 0.65,
+    "netMargin": 0.38,
+    "breakeven": "Month 14-18 after first franchise sold",
+    "franchiseeLTV": 185000,
+    "franchiseeCAC": 15000,
+    "ltvCacRatio": 12.3
+  },
+  "risks": [
+    {
+      "risk": "Franchisee quality inconsistency",
+      "severity": "high",
+      "mitigation": "Rigorous selection, mandatory certification, mystery shopper audits"
+    },
+    {
+      "risk": "Brand reputation damage by underperforming franchisee",
+      "severity": "high",
+      "mitigation": "Service level requirements, client satisfaction monitoring, termination clauses"
+    },
+    {
+      "risk": "Swiss franchise law complexity",
+      "severity": "medium",
+      "mitigation": "Specialized franchise attorney, OR/KKG compliance review"
+    },
+    {
+      "risk": "Franchisee churn",
+      "severity": "medium",
+      "mitigation": "Strong unit economics, continuous support, community building"
+    },
+    {
+      "risk": "Slow recruitment pace",
+      "severity": "medium",
+      "mitigation": "Multiple recruitment channels, referral bonuses, pilot program"
+    }
+  ],
+  "implementationTimeline": [
+    { "month": "1-2", "milestone": "Legal framework and franchise agreement drafting" },
+    { "month": "3-4", "milestone": "Operations manual and training curriculum development" },
+    { "month": "5", "milestone": "Franchise management platform build" },
+    { "month": "6-7", "milestone": "Pilot franchise (internal or close partner)" },
+    { "month": "8", "milestone": "Franchisee recruitment campaign launch" },
+    { "month": "9", "milestone": "First external franchisees onboarded" }
+  ]
+}

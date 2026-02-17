@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "language": "de",
+    "region": "CH",
+    "last_updated": null,
+    "update_frequency": "weekly"
+  },
+  "industries": {
+    "treuhand": {
+      "primary": [
+        { "keyword": "treuhänder", "volume": 12100, "cpc": 5.20, "difficulty": 65 },
+        { "keyword": "treuhandbüro", "volume": 4400, "cpc": 4.80, "difficulty": 58 },
+        { "keyword": "treuhand zürich", "volume": 2900, "cpc": 6.50, "difficulty": 72 },
+        { "keyword": "buchhaltung outsourcing", "volume": 1900, "cpc": 7.20, "difficulty": 55 },
+        { "keyword": "steuerberatung schweiz", "volume": 3600, "cpc": 8.10, "difficulty": 70 },
+        { "keyword": "treuhand gründung", "volume": 1200, "cpc": 5.90, "difficulty": 48 }
+      ],
+      "long_tail": [
+        { "keyword": "treuhänder für kleine unternehmen", "volume": 480, "cpc": 4.50, "difficulty": 35 },
+        { "keyword": "treuhand buchhaltung outsourcing schweiz", "volume": 320, "cpc": 5.80, "difficulty": 30 },
+        { "keyword": "bester treuhänder zürich", "volume": 590, "cpc": 7.90, "difficulty": 42 },
+        { "keyword": "treuhand digitalisierung", "volume": 210, "cpc": 3.20, "difficulty": 25 },
+        { "keyword": "treuhand online buchen", "volume": 170, "cpc": 4.10, "difficulty": 28 },
+        { "keyword": "treuhänder für startups", "volume": 390, "cpc": 5.50, "difficulty": 32 }
+      ],
+      "pain_points": [
+        "treuhand kunden gewinnen",
+        "treuhänder marketing",
+        "treuhand website erstellen",
+        "treuhand seo optimierung",
+        "treuhandbüro online sichtbarkeit"
+      ]
+    },
+    "zahnarzt": {
+      "primary": [
+        { "keyword": "zahnarzt", "volume": 90500, "cpc": 3.80, "difficulty": 85 },
+        { "keyword": "zahnarztpraxis", "volume": 14800, "cpc": 4.20, "difficulty": 75 },
+        { "keyword": "zahnarzt zürich", "volume": 9900, "cpc": 8.50, "difficulty": 82 },
+        { "keyword": "zahnarzt bern", "volume": 6600, "cpc": 7.80, "difficulty": 78 },
+        { "keyword": "zahnarzt basel", "volume": 5400, "cpc": 7.20, "difficulty": 76 },
+        { "keyword": "zahnarzt notfall", "volume": 8100, "cpc": 6.90, "difficulty": 70 }
+      ],
+      "long_tail": [
+        { "keyword": "neue patienten zahnarztpraxis", "volume": 320, "cpc": 5.20, "difficulty": 30 },
+        { "keyword": "zahnarzt marketing schweiz", "volume": 210, "cpc": 4.80, "difficulty": 25 },
+        { "keyword": "zahnarztpraxis website erstellen", "volume": 170, "cpc": 6.10, "difficulty": 28 },
+        { "keyword": "zahnarzt google bewertungen", "volume": 480, "cpc": 3.50, "difficulty": 32 },
+        { "keyword": "zahnarzt seo optimierung", "volume": 140, "cpc": 5.90, "difficulty": 22 },
+        { "keyword": "zahnarzt online terminbuchung", "volume": 590, "cpc": 4.40, "difficulty": 35 }
+      ],
+      "pain_points": [
+        "zahnarzt neue patienten gewinnen",
+        "zahnarztpraxis marketing",
+        "zahnarzt online sichtbarkeit",
+        "zahnarzt bewertungen sammeln",
+        "zahnarzt website design"
+      ]
+    },
+    "immobilien": {
+      "primary": [
+        { "keyword": "immobilien", "volume": 135000, "cpc": 4.50, "difficulty": 90 },
+        { "keyword": "immobilienmakler", "volume": 22200, "cpc": 6.80, "difficulty": 80 },
+        { "keyword": "hausverwaltung", "volume": 18100, "cpc": 5.20, "difficulty": 72 },
+        { "keyword": "immobilien zürich", "volume": 14800, "cpc": 9.50, "difficulty": 85 },
+        { "keyword": "liegenschaftsverwaltung", "volume": 5400, "cpc": 5.80, "difficulty": 60 },
+        { "keyword": "immobilienbewertung", "volume": 8100, "cpc": 7.90, "difficulty": 68 }
+      ],
+      "long_tail": [
+        { "keyword": "immobilienmakler marketing schweiz", "volume": 170, "cpc": 5.50, "difficulty": 22 },
+        { "keyword": "immobilien website erstellen", "volume": 320, "cpc": 6.20, "difficulty": 28 },
+        { "keyword": "hausverwaltung kunden gewinnen", "volume": 140, "cpc": 4.80, "difficulty": 20 },
+        { "keyword": "immobilien seo schweiz", "volume": 110, "cpc": 5.10, "difficulty": 18 },
+        { "keyword": "makler leads generieren", "volume": 210, "cpc": 7.30, "difficulty": 25 },
+        { "keyword": "immobilien online marketing", "volume": 390, "cpc": 5.90, "difficulty": 32 }
+      ],
+      "pain_points": [
+        "immobilienmakler kunden finden",
+        "immobilien leads generieren",
+        "makler website modern",
+        "hausverwaltung digitalisieren",
+        "immobilien online präsenz"
+      ]
+    },
+    "anwalt": {
+      "primary": [
+        { "keyword": "anwalt", "volume": 60500, "cpc": 6.50, "difficulty": 88 },
+        { "keyword": "rechtsanwalt", "volume": 33100, "cpc": 7.20, "difficulty": 85 },
+        { "keyword": "anwaltskanzlei", "volume": 9900, "cpc": 6.80, "difficulty": 75 },
+        { "keyword": "anwalt zürich", "volume": 8100, "cpc": 9.80, "difficulty": 82 }
+      ],
+      "long_tail": [
+        { "keyword": "anwalt marketing schweiz", "volume": 140, "cpc": 5.20, "difficulty": 20 },
+        { "keyword": "kanzlei website erstellen", "volume": 210, "cpc": 6.50, "difficulty": 25 },
+        { "keyword": "anwalt neue mandanten", "volume": 170, "cpc": 7.80, "difficulty": 22 },
+        { "keyword": "anwalt seo optimierung", "volume": 110, "cpc": 5.90, "difficulty": 18 }
+      ],
+      "pain_points": [
+        "anwalt mandanten gewinnen",
+        "kanzlei online marketing",
+        "anwalt website modern",
+        "anwalt google sichtbarkeit"
+      ]
+    },
+    "architekt": {
+      "primary": [
+        { "keyword": "architekt", "volume": 40500, "cpc": 4.20, "difficulty": 82 },
+        { "keyword": "architekturbüro", "volume": 9900, "cpc": 4.80, "difficulty": 70 },
+        { "keyword": "architekt zürich", "volume": 5400, "cpc": 6.50, "difficulty": 75 }
+      ],
+      "long_tail": [
+        { "keyword": "architekturbüro marketing", "volume": 110, "cpc": 3.80, "difficulty": 18 },
+        { "keyword": "architekt website erstellen", "volume": 170, "cpc": 5.20, "difficulty": 22 },
+        { "keyword": "architekt kunden gewinnen", "volume": 140, "cpc": 4.50, "difficulty": 20 }
+      ],
+      "pain_points": [
+        "architekt aufträge finden",
+        "architekturbüro website",
+        "architekt online marketing"
+      ]
+    }
+  },
+  "generic_werkpilot": {
+    "brand": [
+      { "keyword": "werkpilot", "volume": 50, "cpc": 0.50, "difficulty": 5 },
+      { "keyword": "werkpilot schweiz", "volume": 20, "cpc": 0.30, "difficulty": 3 }
+    ],
+    "service": [
+      { "keyword": "kmu digitalisierung schweiz", "volume": 720, "cpc": 4.80, "difficulty": 45 },
+      { "keyword": "kmu website erstellen", "volume": 1300, "cpc": 5.50, "difficulty": 50 },
+      { "keyword": "kmu marketing automatisierung", "volume": 320, "cpc": 4.20, "difficulty": 30 },
+      { "keyword": "schweizer kmu online marketing", "volume": 210, "cpc": 3.90, "difficulty": 28 },
+      { "keyword": "website für kmu schweiz", "volume": 590, "cpc": 5.80, "difficulty": 42 },
+      { "keyword": "digitales marketing kmu", "volume": 480, "cpc": 4.50, "difficulty": 35 }
+    ]
+  }
+}

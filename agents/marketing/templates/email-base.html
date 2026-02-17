@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>{{EMAIL_TITLE}}</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* Werkpilot Brand Styles */
+    .email-body { background-color: #F8F9FA; }
+    .email-container { max-width: 600px; margin: 0 auto; background-color: #FFFFFF; }
+
+    h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; color: #1B2A4A; margin: 0; }
+    p, li, td { font-family: 'DM Sans', Arial, Helvetica, sans-serif; color: #212529; font-size: 16px; line-height: 1.6; }
+
+    .btn-primary {
+      background-color: #2E75B6;
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-block;
+    }
+    .btn-secondary {
+      background-color: #2D8C3C;
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-block;
+    }
+
+    .footer-text { font-size: 12px; color: #6C757D; line-height: 1.5; }
+    .footer-link { color: #2E75B6; text-decoration: underline; }
+
+    /* Mobile */
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .mobile-padding { padding: 20px !important; }
+      .mobile-center { text-align: center !important; }
+      h1 { font-size: 24px !important; }
+      h2 { font-size: 20px !important; }
+    }
+  </style>
+</head>
+<body class="email-body" style="margin: 0; padding: 0; background-color: #F8F9FA;">
+
+  <!-- Preview Text (hidden) -->
+  <div style="display: none; max-height: 0px; overflow: hidden;">
+    {{PREVIEW_TEXT}}
+    &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847;
+  </div>
+
+  <!-- Email Wrapper -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #F8F9FA;">
+    <tr>
+      <td align="center" style="padding: 20px 10px;">
+
+        <!-- Email Container -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="email-container" style="max-width: 600px; width: 100%; background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+          <!-- Header with Logo -->
+          <tr>
+            <td style="background-color: #1B2A4A; padding: 24px 32px; text-align: center;">
+              <a href="https://werkpilot.ch" style="text-decoration: none;">
+                <img src="https://werkpilot.ch/email/logo-white.png" alt="Werkpilot" width="160" style="display: inline-block;" />
+              </a>
+            </td>
+          </tr>
+
+          <!-- Hero Section (optional) -->
+          <!--
+          <tr>
+            <td style="padding: 0;">
+              <img src="{{HERO_IMAGE}}" alt="" width="600" style="width: 100%; display: block;" />
+            </td>
+          </tr>
+          -->
+
+          <!-- Main Content -->
+          <tr>
+            <td class="mobile-padding" style="padding: 40px 32px;">
+
+              <!-- Greeting -->
+              <h1 style="font-size: 28px; font-weight: 700; color: #1B2A4A; margin-bottom: 16px;">
+                {{HEADLINE}}
+              </h1>
+
+              <!-- Body Content -->
+              <div style="margin-bottom: 24px;">
+                {{BODY_CONTENT}}
+              </div>
+
+              <!-- CTA Button -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 32px 0;">
+                <tr>
+                  <td align="center" style="border-radius: 6px; background-color: #2E75B6;">
+                    <a href="{{CTA_URL}}" class="btn-primary" style="background-color: #2E75B6; color: #FFFFFF; text-decoration: none; padding: 14px 28px; border-radius: 6px; font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 16px; display: inline-block;">
+                      {{CTA_TEXT}}
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Additional Content (optional) -->
+              {{ADDITIONAL_CONTENT}}
+
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding: 0 32px;">
+              <hr style="border: none; border-top: 1px solid #E9ECEF; margin: 0;" />
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="mobile-padding" style="padding: 24px 32px; text-align: center;">
+
+              <!-- Social Icons -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto 16px auto;">
+                <tr>
+                  <td style="padding: 0 8px;">
+                    <a href="https://linkedin.com/company/werkpilot">
+                      <img src="https://werkpilot.ch/email/icon-linkedin.png" alt="LinkedIn" width="24" height="24" />
+                    </a>
+                  </td>
+                  <td style="padding: 0 8px;">
+                    <a href="https://instagram.com/werkpilot">
+                      <img src="https://werkpilot.ch/email/icon-instagram.png" alt="Instagram" width="24" height="24" />
+                    </a>
+                  </td>
+                  <td style="padding: 0 8px;">
+                    <a href="https://werkpilot.ch">
+                      <img src="https://werkpilot.ch/email/icon-website.png" alt="Website" width="24" height="24" />
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Company Info -->
+              <p class="footer-text" style="font-size: 12px; color: #6C757D; margin: 0 0 8px 0;">
+                Werkpilot GmbH | Schweiz
+              </p>
+              <p class="footer-text" style="font-size: 12px; color: #6C757D; margin: 0 0 8px 0;">
+                <a href="https://werkpilot.ch" class="footer-link" style="color: #2E75B6;">werkpilot.ch</a>
+                &nbsp;|&nbsp;
+                <a href="mailto:info@werkpilot.ch" class="footer-link" style="color: #2E75B6;">info@werkpilot.ch</a>
+              </p>
+
+              <!-- Unsubscribe -->
+              <p class="footer-text" style="font-size: 11px; color: #ADB5BD; margin: 16px 0 0 0;">
+                Sie erhalten diese E-Mail, weil Sie sich bei Werkpilot angemeldet haben.<br>
+                <a href="{{UNSUBSCRIBE_URL}}" style="color: #ADB5BD; text-decoration: underline;">Abmelden</a>
+                &nbsp;|&nbsp;
+                <a href="{{PREFERENCES_URL}}" style="color: #ADB5BD; text-decoration: underline;">E-Mail-Einstellungen</a>
+              </p>
+
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Email Container -->
+
+      </td>
+    </tr>
+  </table>
+  <!-- /Email Wrapper -->
+
+</body>
+</html>

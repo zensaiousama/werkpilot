@@ -1,0 +1,124 @@
+{
+  "id": "content-publish",
+  "name": "Content Publishing Pipeline",
+  "description": "End-to-end content creation, review, optimization, publishing and social sharing",
+  "version": "1.0.0",
+  "trigger": {
+    "type": "scheduled",
+    "schedule": "0 8 * * 1-5",
+    "sources": ["marketing-content-creator", "manual-request"]
+  },
+  "sla": {
+    "maxDurationMinutes": 120,
+    "alertAfterMinutes": 90
+  },
+  "steps": [
+    {
+      "id": "write-content",
+      "name": "Create Content Draft",
+      "agent": "marketing-content-creator",
+      "action": "createContent",
+      "input": {
+        "contentType": "{{trigger.data.type || 'blog'}}",
+        "topic": "{{trigger.data.topic}}",
+        "language": "{{trigger.data.language || 'de-CH'}}",
+        "keywords": "{{trigger.data.keywords || []}}",
+        "targetLength": "{{trigger.data.targetLength || 1200}}"
+      },
+      "timeout": 180000,
+      "retries": 2,
+      "onFailure": "abort"
+    },
+    {
+      "id": "quality-check",
+      "name": "QA Review Content",
+      "agent": "operations-quality-assurance",
+      "action": "reviewContent",
+      "dependsOn": ["write-content"],
+      "input": {
+        "content": "{{steps.write-content.output.content}}",
+        "contentType": "{{trigger.data.type || 'blog'}}",
+        "language": "{{trigger.data.language || 'de-CH'}}"
+      },
+      "timeout": 120000,
+      "retries": 1,
+      "onFailure": "skip"
+    },
+    {
+      "id": "seo-optimize",
+      "name": "SEO Optimization",
+      "agent": "marketing-seo-optimizer",
+      "action": "optimizeContent",
+      "dependsOn": ["quality-check"],
+      "input": {
+        "content": "{{steps.quality-check.output.revisedContent || steps.write-content.output.content}}",
+        "keywords": "{{trigger.data.keywords || []}}",
+        "targetUrl": "{{trigger.data.targetUrl}}"
+      },
+      "timeout": 120000,
+      "retries": 2,
+      "onFailure": "skip"
+    },
+    {
+      "id": "publish-content",
+      "name": "Publish to Website",
+      "agent": "marketing-content-creator",
+      "action": "publishContent",
+      "dependsOn": ["seo-optimize"],
+      "input": {
+        "content": "{{steps.seo-optimize.output.optimizedContent || steps.write-content.output.content}}",
+        "metadata": "{{steps.seo-optimize.output.metadata || {}}}",
+        "contentType": "{{trigger.data.type || 'blog'}}",
+        "publishDate": "{{trigger.data.publishDate || 'now'}}"
+      },
+      "timeout": 60000,
+      "retries": 3,
+      "onFailure": "retry"
+    },
+    {
+      "id": "social-share",
+      "name": "Share on Social Media",
+      "agent": "marketing-social-media",
+      "action": "shareContent",
+      "dependsOn": ["publish-content"],
+      "input": {
+        "contentUrl": "{{steps.publish-content.output.url}}",
+        "title": "{{steps.write-content.output.title}}",
+        "summary": "{{steps.write-content.output.summary}}",
+        "platforms": "{{trigger.data.platforms || ['linkedin', 'twitter']}}",
+        "language": "{{trigger.data.language || 'de-CH'}}"
+      },
+      "timeout": 60000,
+      "retries": 2,
+      "delay": "30m",
+      "onFailure": "skip"
+    },
+    {
+      "id": "track-analytics",
+      "name": "Setup Analytics Tracking",
+      "agent": "marketing-analytics",
+      "action": "trackContent",
+      "dependsOn": ["publish-content"],
+      "input": {
+        "contentUrl": "{{steps.publish-content.output.url}}",
+        "contentId": "{{steps.publish-content.output.contentId}}",
+        "campaign": "{{trigger.data.campaign || 'organic'}}"
+      },
+      "timeout": 30000,
+      "retries": 2,
+      "onFailure": "skip"
+    }
+  ],
+  "onComplete": {
+    "action": "log",
+    "updateRecord": {
+      "table": "Content",
+      "status": "Published"
+    }
+  },
+  "onFailure": {
+    "action": "alert",
+    "alertTo": "marketing-lead",
+    "retryWorkflow": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "description": "Benchmark test definitions for comparing AI model performance across Werkpilot tasks",
+  "runFrequency": "weekly",
+  "tests": [
+    {
+      "name": "Marketing Copy Generation",
+      "category": "content",
+      "prompt": "Write a compelling 100-word product description for an AI-powered business automation tool targeting Swiss SMEs. The tool automates marketing, sales, and operations. Highlight ROI and time savings. Use professional but approachable tone.",
+      "criteria": "Clarity, persuasiveness, brand alignment, call to action, word count adherence",
+      "maxTokens": 512,
+      "temperature": 0.7
+    },
+    {
+      "name": "Data Extraction Accuracy",
+      "category": "analysis",
+      "prompt": "Extract all key metrics from this text and return them as structured data:\n\n\"In Q4 2025, Werkpilot achieved CHF 2.3M in revenue, representing 15% year-over-year growth. Our customer base expanded to 847 active clients, a 23% increase. Monthly churn improved to 2.1%, down from 3.4% the previous quarter. ARPU rose to CHF 2,718, and our NPS score reached 72. The sales pipeline contains 156 qualified leads worth an estimated CHF 4.1M.\"",
+      "criteria": "Completeness of extraction, accuracy of values, proper structuring, no hallucinated data",
+      "maxTokens": 512,
+      "temperature": 0.1
+    },
+    {
+      "name": "Email Personalization",
+      "category": "outreach",
+      "prompt": "Write a personalized follow-up email to a prospect who attended our webinar on 'AI Automation for Swiss Businesses' but has not responded to our initial outreach. Details: Company is a tech startup with 50 employees based in Zurich, the attendee is the COO, they asked a question about integration during the Q&A. Keep under 150 words.",
+      "criteria": "Personalization depth, professional tone, clear CTA, conciseness, relevance to attendee context",
+      "maxTokens": 512,
+      "temperature": 0.6
+    },
+    {
+      "name": "Sentiment Analysis",
+      "category": "analysis",
+      "prompt": "Analyze the sentiment of these customer feedback entries and classify each as Positive, Neutral, or Negative. Also extract the main topic.\n\n1. \"The automation saved us 20 hours per week, absolutely love it!\"\n2. \"Setup was confusing, took 3 days instead of the promised 1 day.\"\n3. \"Works as expected. Nothing special but gets the job done.\"\n4. \"Your support team was incredibly responsive when we had issues.\"\n5. \"The pricing increase was disappointing, considering we signed up at the old rate.\"",
+      "criteria": "Correct sentiment classification, accurate topic extraction, nuanced analysis",
+      "maxTokens": 512,
+      "temperature": 0.2
+    },
+    {
+      "name": "Report Summarization",
+      "category": "content",
+      "prompt": "Summarize this weekly sales report into 3 key bullet points for the CEO:\n\nThis week we closed 4 new deals totaling CHF 38,500 MRR. Two were enterprise clients in the financial sector (CHF 15,000 and CHF 12,000 MRR), one was a mid-market manufacturing company (CHF 8,500 MRR), and one was a startup in the health tech space (CHF 3,000 MRR). We lost one deal to a competitor (Jasper AI) who offered a lower price point. Pipeline grew by 12 new qualified leads, primarily from the LinkedIn campaign. Three proposals are pending response, worth a combined CHF 22,000 MRR. The average sales cycle shortened from 21 to 18 days.",
+      "criteria": "Key information capture, brevity, executive-appropriate language, actionable insights",
+      "maxTokens": 256,
+      "temperature": 0.3
+    },
+    {
+      "name": "Translation Quality DE-EN",
+      "category": "translation",
+      "prompt": "Translate this German marketing text into natural-sounding English, maintaining the professional tone:\n\n\"Werkpilot revolutioniert die Art und Weise, wie Schweizer KMU ihre Geschaeftsprozesse automatisieren. Unsere KI-gesteuerten Agenten uebernehmen repetitive Aufgaben in Marketing, Vertrieb und Betrieb - damit sich Ihr Team auf das Wesentliche konzentrieren kann. Starten Sie noch heute und erleben Sie, wie Automatisierung Ihr Unternehmen transformiert.\"",
+      "criteria": "Natural fluency, accuracy, tone preservation, no literal translations",
+      "maxTokens": 256,
+      "temperature": 0.4
+    },
+    {
+      "name": "SEO Meta Description",
+      "category": "seo",
+      "prompt": "Write an SEO-optimized meta description (max 155 characters) for a landing page about AI-powered marketing automation for Swiss businesses. Target keyword: 'KI Marketing Automatisierung Schweiz'.",
+      "criteria": "Character limit adherence, keyword inclusion, compelling copy, click-worthy",
+      "maxTokens": 128,
+      "temperature": 0.5
+    },
+    {
+      "name": "JSON Schema Generation",
+      "category": "technical",
+      "prompt": "Generate a JSON schema for a customer record with fields: company_name (required string), industry (enum: tech, finance, healthcare, manufacturing, retail, other), employee_count (positive integer), annual_revenue_chf (number), contact_email (email format), subscription_plan (enum: starter, professional, enterprise), onboarding_date (date), health_score (number 0-100). Include descriptions for each field.",
+      "criteria": "Valid JSON schema, correct types, proper constraints, comprehensive descriptions",
+      "maxTokens": 1024,
+      "temperature": 0.1
+    }
+  ]
+}

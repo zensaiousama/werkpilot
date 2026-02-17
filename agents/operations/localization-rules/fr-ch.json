@@ -1,0 +1,112 @@
+{
+  "locale": "fr-CH",
+  "name": "Swiss French (Français de Suisse)",
+  "description": "Localization rules for Swiss French",
+  "greetings": {
+    "formal": ["Bonjour", "Bonsoir", "Madame", "Monsieur"],
+    "informal": ["Salut", "Coucou"],
+    "farewell": ["Au revoir", "Bonne journée", "Adieu"],
+    "notes": "Adieu can be used informally as goodbye (not just 'farewell forever')"
+  },
+  "numbers": {
+    "description": "Swiss French uses septante (70), huitante (80), nonante (90) instead of soixante-dix, quatre-vingts, quatre-vingt-dix",
+    "replace": {
+      "soixante-dix": "septante",
+      "soixante et onze": "septante et un",
+      "soixante-douze": "septante-deux",
+      "soixante-treize": "septante-trois",
+      "soixante-quatorze": "septante-quatre",
+      "soixante-quinze": "septante-cinq",
+      "soixante-seize": "septante-six",
+      "soixante-dix-sept": "septante-sept",
+      "soixante-dix-huit": "septante-huit",
+      "soixante-dix-neuf": "septante-neuf",
+      "quatre-vingts": "huitante",
+      "quatre-vingt-un": "huitante et un",
+      "quatre-vingt-deux": "huitante-deux",
+      "quatre-vingt-trois": "huitante-trois",
+      "quatre-vingt-quatre": "huitante-quatre",
+      "quatre-vingt-cinq": "huitante-cinq",
+      "quatre-vingt-six": "huitante-six",
+      "quatre-vingt-sept": "huitante-sept",
+      "quatre-vingt-huit": "huitante-huit",
+      "quatre-vingt-neuf": "huitante-neuf",
+      "quatre-vingt-dix": "nonante",
+      "quatre-vingt-onze": "nonante et un",
+      "quatre-vingt-douze": "nonante-deux",
+      "quatre-vingt-treize": "nonante-trois",
+      "quatre-vingt-quatorze": "nonante-quatre",
+      "quatre-vingt-quinze": "nonante-cinq",
+      "quatre-vingt-seize": "nonante-six",
+      "quatre-vingt-dix-sept": "nonante-sept",
+      "quatre-vingt-dix-huit": "nonante-huit",
+      "quatre-vingt-dix-neuf": "nonante-neuf"
+    }
+  },
+  "dateFormat": {
+    "short": "DD.MM.YYYY",
+    "long": "D MMMM YYYY",
+    "time": "HH:mm",
+    "dateTime": "DD.MM.YYYY, HH:mm",
+    "notes": "Swiss French uses DD.MM.YYYY with dots, not DD/MM/YYYY with slashes"
+  },
+  "currency": {
+    "code": "CHF",
+    "symbol": "CHF",
+    "format": "CHF #'###.##",
+    "decimalSeparator": ".",
+    "thousandsSeparator": "'",
+    "position": "before",
+    "examples": {
+      "1000": "CHF 1'000.00",
+      "1234.50": "CHF 1'234.50"
+    },
+    "replace": {
+      "€": "CHF",
+      "EUR": "CHF"
+    }
+  },
+  "phoneFormat": {
+    "countryCode": "+41",
+    "format": "+41 XX XXX XX XX",
+    "examples": {
+      "mobile": "+41 79 123 45 67",
+      "landline": "+41 22 123 45 67"
+    }
+  },
+  "address": {
+    "format": "{street} {number}\n{zip} {city}",
+    "zipFormat": "4 digits",
+    "regions": ["Genève", "Vaud", "Neuchâtel", "Fribourg", "Valais", "Jura", "Berne"]
+  },
+  "vocabulary": {
+    "swissFrenchTerms": {
+      "déjeuner": "dîner (midday meal in Swiss French)",
+      "dîner": "souper (evening meal in Swiss French)",
+      "petit-déjeuner": "déjeuner (breakfast in Swiss French)",
+      "cornet": "sachet/sac (plastic bag)",
+      "panosse": "serpillière (mop)",
+      "linge": "serviette (towel)",
+      "bancomat": "distributeur automatique (ATM)",
+      "natel": "téléphone portable (mobile phone)",
+      "course": "commission (errand/shopping)"
+    },
+    "notes": "Some terms overlap with Belgian French (septante, nonante)"
+  },
+  "meals": {
+    "description": "Swiss French meal names differ from France French",
+    "replace": {
+      "petit-déjeuner": "déjeuner",
+      "déjeuner": "dîner",
+      "dîner": "souper"
+    }
+  },
+  "legalTerms": {
+    "company_types": ["SA", "Sàrl", "Entreprise individuelle", "Société en nom collectif"],
+    "tax_terms": {
+      "VAT": "Taxe sur la valeur ajoutée (TVA)",
+      "standard_rate": "8.1%",
+      "reduced_rate": "2.6%"
+    }
+  }
+}

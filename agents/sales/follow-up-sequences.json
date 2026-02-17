@@ -1,0 +1,190 @@
+{
+  "sequences": {
+    "standard": {
+      "name": "Standard Cold Outreach",
+      "description": "Default 5-step cold email sequence for Swiss SME leads",
+      "steps": [
+        {
+          "step": 1,
+          "name": "initial",
+          "template": "initial.html",
+          "delayDays": 0,
+          "description": "Personalized initial outreach referencing specific business problem",
+          "goal": "Open dialogue, offer Fitness Check"
+        },
+        {
+          "step": 2,
+          "name": "followup_1",
+          "template": "followup-1.html",
+          "delayDays": 3,
+          "description": "Value-add follow-up with industry-specific insight",
+          "goal": "Provide value, re-engage"
+        },
+        {
+          "step": 3,
+          "name": "followup_2",
+          "template": "followup-2.html",
+          "delayDays": 7,
+          "description": "Social proof follow-up with case study or testimonial",
+          "goal": "Build credibility through proof"
+        },
+        {
+          "step": 4,
+          "name": "followup_3",
+          "template": "followup-3.html",
+          "delayDays": 14,
+          "description": "Direct value proposition with specific ROI numbers",
+          "goal": "Create urgency with concrete benefits"
+        },
+        {
+          "step": 5,
+          "name": "breakup",
+          "template": "breakup.html",
+          "delayDays": 21,
+          "description": "Friendly breakup email, leave door open",
+          "goal": "Final touch, respect their time"
+        }
+      ]
+    },
+    "warm_referral": {
+      "name": "Warm Referral Sequence",
+      "description": "Shorter sequence for leads from referrals or partnerships",
+      "steps": [
+        {
+          "step": 1,
+          "name": "initial",
+          "template": "initial.html",
+          "delayDays": 0,
+          "description": "Reference the referral source, build immediate trust"
+        },
+        {
+          "step": 2,
+          "name": "followup_1",
+          "template": "followup-1.html",
+          "delayDays": 5,
+          "description": "Gentle follow-up with relevant case study"
+        },
+        {
+          "step": 3,
+          "name": "breakup",
+          "template": "breakup.html",
+          "delayDays": 12,
+          "description": "Friendly closing, keep relationship open"
+        }
+      ]
+    }
+  },
+  "industrySubjects": {
+    "gastro": {
+      "de": [
+        "Mehr Gaeste durch bessere Online-Praesenz?",
+        "Ihre Website arbeitet nicht so hart wie Ihr Kuechenteam",
+        "Online-Reservierungen steigern: So geht's"
+      ],
+      "fr": [
+        "Plus de clients grace a une meilleure presence en ligne?",
+        "Votre site web travaille-t-il aussi dur que votre equipe?"
+      ],
+      "it": [
+        "Piu clienti grazie a una migliore presenza online?"
+      ]
+    },
+    "handwerk": {
+      "de": [
+        "Neue Auftraege ohne Mundpropaganda?",
+        "Ihre Handwerkskunst verdient eine bessere Website",
+        "Digitale Sichtbarkeit fuer Handwerksbetriebe"
+      ],
+      "fr": [
+        "De nouvelles commandes sans bouche-a-oreille?"
+      ],
+      "it": [
+        "Nuovi ordini senza passaparola?"
+      ]
+    },
+    "retail": {
+      "de": [
+        "Online verkaufen: Ihr naechster Wachstumsschritt",
+        "Ihre Kunden suchen Sie online – finden sie Sie?",
+        "Mehr Umsatz durch digitale Praesenz"
+      ],
+      "fr": [
+        "Vendre en ligne: votre prochaine etape de croissance"
+      ],
+      "it": [
+        "Vendere online: il vostro prossimo passo di crescita"
+      ]
+    },
+    "health": {
+      "de": [
+        "Patienten gewinnen mit moderner Online-Praesenz",
+        "Online-Terminbuchung: Weniger Telefonate, mehr Patienten",
+        "Ihre Praxis digital sichtbar machen"
+      ],
+      "fr": [
+        "Gagner des patients avec une presence en ligne moderne"
+      ],
+      "it": [
+        "Acquisire pazienti con una presenza online moderna"
+      ]
+    },
+    "consulting": {
+      "de": [
+        "Ihre Expertise verdient mehr Sichtbarkeit",
+        "Leads generieren als Berater: Der digitale Weg",
+        "Positionierung als Experte durch starke Online-Praesenz"
+      ],
+      "fr": [
+        "Votre expertise merite plus de visibilite"
+      ],
+      "it": [
+        "La vostra competenza merita piu visibilita"
+      ]
+    },
+    "default": {
+      "de": [
+        "Digitale Chancen fuer Ihr Unternehmen",
+        "Kostenloser Website Fitness-Check fuer Ihr KMU",
+        "Mehr Kunden durch professionelle Online-Praesenz"
+      ],
+      "fr": [
+        "Opportunites numeriques pour votre entreprise",
+        "Check-up gratuit de votre site web"
+      ],
+      "it": [
+        "Opportunita digitali per la vostra azienda",
+        "Check-up gratuito del vostro sito web"
+      ]
+    }
+  },
+  "kantonLanguageMap": {
+    "ZH": "de", "BE": "de", "LU": "de", "UR": "de", "SZ": "de",
+    "OW": "de", "NW": "de", "GL": "de", "ZG": "de", "SO": "de",
+    "BS": "de", "BL": "de", "SH": "de", "AR": "de", "AI": "de",
+    "SG": "de", "GR": "de", "AG": "de", "TG": "de",
+    "GE": "fr", "VD": "fr", "NE": "fr", "JU": "fr",
+    "FR": "fr", "VS": "fr",
+    "TI": "it",
+    "default": "de"
+  },
+  "rateLimits": {
+    "maxPerDay": 50,
+    "maxPerHour": 15,
+    "cooldownMinutes": 2
+  },
+  "compliance": {
+    "note": "Swiss B2B cold email - UWG Art. 3 compliant",
+    "requirements": [
+      "B2B recipients only (no B2C)",
+      "Clear sender identification (Werkpilot GmbH)",
+      "Functional unsubscribe in every email",
+      "No deceptive subject lines",
+      "Business-relevant content only"
+    ],
+    "unsubscribeText": {
+      "de": "Falls Sie keine weiteren E-Mails erhalten moechten, antworten Sie einfach mit 'Abmelden' oder klicken Sie hier: {unsubscribe_url}",
+      "fr": "Si vous ne souhaitez plus recevoir d'e-mails, repondez simplement avec 'Desabonner' ou cliquez ici: {unsubscribe_url}",
+      "it": "Se non desiderate ricevere ulteriori e-mail, rispondete semplicemente con 'Annulla iscrizione' o cliccate qui: {unsubscribe_url}"
+    }
+  }
+}

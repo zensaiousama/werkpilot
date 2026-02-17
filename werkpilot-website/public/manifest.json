@@ -1,0 +1,49 @@
+{
+  "name": "Werkpilot — Das Betriebssystem für Schweizer KMUs",
+  "short_name": "Werkpilot",
+  "description": "Mehr Kunden. Weniger Admin. Ihr virtuelles Backoffice.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2563EB",
+  "orientation": "portrait-primary",
+  "lang": "de-CH",
+  "dir": "ltr",
+  "categories": ["business", "productivity"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Fitness-Check",
+      "short_name": "Check",
+      "url": "/fitness-check",
+      "description": "Gratis Digital-Fitness-Check starten"
+    },
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "url": "/kontakt",
+      "description": "Kontaktieren Sie uns"
+    }
+  ]
+}

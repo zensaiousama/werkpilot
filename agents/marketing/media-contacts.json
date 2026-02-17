@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "last_updated": null,
+    "total_contacts": 0,
+    "note": "Contacts managed in Airtable (table: MediaContacts). This file serves as fallback and reference."
+  },
+  "target_media": {
+    "national_business": [
+      {
+        "outlet": "Handelszeitung",
+        "type": "print_online",
+        "language": "de",
+        "focus": "Wirtschaft, Unternehmen, Startups",
+        "reach": "120000",
+        "relevance": "high",
+        "sections": ["KMU", "Digitalisierung", "Startups"],
+        "contacts": [],
+        "url": "https://www.handelszeitung.ch",
+        "pitch_angle": "KMU-Digitalisierung, Schweizer Startup-Erfolg"
+      },
+      {
+        "outlet": "Bilanz",
+        "type": "print_online",
+        "language": "de",
+        "focus": "Wirtschaft, Management, Technologie",
+        "reach": "85000",
+        "relevance": "high",
+        "sections": ["Unternehmen", "Technologie"],
+        "contacts": [],
+        "url": "https://www.bilanz.ch",
+        "pitch_angle": "Tech-Innovation für KMU, Gründerporträt"
+      },
+      {
+        "outlet": "NZZ",
+        "type": "print_online",
+        "language": "de",
+        "focus": "Wirtschaft, Politik, Gesellschaft",
+        "reach": "350000",
+        "relevance": "medium",
+        "sections": ["Wirtschaft", "Technologie", "Zürich"],
+        "contacts": [],
+        "url": "https://www.nzz.ch",
+        "pitch_angle": "Digitalisierung Schweizer Wirtschaft, KMU-Zukunft"
+      },
+      {
+        "outlet": "PME Magazine",
+        "type": "print_online",
+        "language": "fr",
+        "focus": "PME, Entrepreneurship, Management",
+        "reach": "45000",
+        "relevance": "very_high",
+        "sections": ["Digital", "Startups", "Management"],
+        "contacts": [],
+        "url": "https://www.pme.ch",
+        "pitch_angle": "Digitalisation PME suisses, success story romande"
+      }
+    ],
+    "tech_media": [
+      {
+        "outlet": "Startupticker",
+        "type": "online",
+        "language": "de",
+        "focus": "Schweizer Startups",
+        "relevance": "very_high",
+        "contacts": [],
+        "url": "https://www.startupticker.ch",
+        "pitch_angle": "Startup Launch, Finanzierung, Milestones"
+      },
+      {
+        "outlet": "ICTjournal",
+        "type": "online",
+        "language": "fr",
+        "focus": "IT und Digitalisierung Romandie",
+        "relevance": "high",
+        "contacts": [],
+        "url": "https://www.ictjournal.ch",
+        "pitch_angle": "Solution digitale pour PME suisses"
+      },
+      {
+        "outlet": "Inside IT",
+        "type": "online",
+        "language": "de",
+        "focus": "IT Schweiz",
+        "relevance": "medium",
+        "contacts": [],
+        "url": "https://www.inside-it.ch",
+        "pitch_angle": "KMU-Digitalisierung, SaaS-Innovation"
+      }
+    ],
+    "regional": [
+      {
+        "outlet": "Tages-Anzeiger",
+        "type": "print_online",
+        "language": "de",
+        "focus": "Zürich, Wirtschaft",
+        "relevance": "medium",
+        "contacts": [],
+        "url": "https://www.tagesanzeiger.ch",
+        "pitch_angle": "Zürcher Startup-Szene, lokale KMU-Erfolgsgeschichten"
+      },
+      {
+        "outlet": "Berner Zeitung",
+        "type": "print_online",
+        "language": "de",
+        "focus": "Bern, Wirtschaft",
+        "relevance": "medium",
+        "contacts": [],
+        "url": "https://www.bernerzeitung.ch",
+        "pitch_angle": "Berner KMU digital unterwegs"
+      },
+      {
+        "outlet": "Le Temps",
+        "type": "print_online",
+        "language": "fr",
+        "focus": "Romandie, Wirtschaft",
+        "relevance": "high",
+        "contacts": [],
+        "url": "https://www.letemps.ch",
+        "pitch_angle": "Innovation numérique pour PME romandes"
+      },
+      {
+        "outlet": "Tribune de Genève",
+        "type": "print_online",
+        "language": "fr",
+        "focus": "Genf, Wirtschaft",
+        "relevance": "medium",
+        "contacts": [],
+        "url": "https://www.tdg.ch",
+        "pitch_angle": "Startup genevois, économie numérique"
+      }
+    ],
+    "industry_specific": [
+      {
+        "outlet": "TREX - Der Treuhandexperte",
+        "type": "print",
+        "language": "de",
+        "focus": "Treuhandbranche",
+        "relevance": "very_high",
+        "contacts": [],
+        "pitch_angle": "Digitalisierung in der Treuhandbranche"
+      },
+      {
+        "outlet": "Schweizerische Zahnärzte-Zeitung",
+        "type": "print",
+        "language": "de",
+        "focus": "Zahnmedizin",
+        "relevance": "high",
+        "contacts": [],
+        "pitch_angle": "Digitales Praxismarketing für Zahnärzte"
+      },
+      {
+        "outlet": "Immobilien Business",
+        "type": "print_online",
+        "language": "de",
+        "focus": "Immobilienbranche",
+        "relevance": "high",
+        "contacts": [],
+        "url": "https://www.immobilienbusiness.ch",
+        "pitch_angle": "Digitale Kundengewinnung für Immobilienprofis"
+      }
+    ]
+  },
+  "pitch_templates": {
+    "milestone": "Schweizer KMU-Plattform Werkpilot erreicht [MILESTONE] - Digitalisierung im Mittelstand nimmt Fahrt auf",
+    "new_service": "Werkpilot lanciert [SERVICE] - Neue Möglichkeiten für Schweizer KMU",
+    "thought_leadership": "[FOUNDER_NAME] von Werkpilot: '[QUOTE]' - Warum [TOPIC] für Schweizer KMU entscheidend ist",
+    "case_study": "Wie [CLIENT_INDUSTRY] mit Werkpilot [RESULT] erreichte"
+  }
+}

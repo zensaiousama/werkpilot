@@ -1,0 +1,19 @@
+{
+  "name": "werkpilot-agents",
+  "version": "1.0.0",
+  "description": "Werkpilot AI Agents with Performance Monitoring",
+  "main": "index.js",
+  "scripts": {
+    "example": "node example-agent.js",
+    "test": "node shared/utils/test-monitoring.js"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "monitoring",
+    "performance",
+    "cost-tracking"
+  ],
+  "author": "Werkpilot",
+  "license": "MIT"
+}

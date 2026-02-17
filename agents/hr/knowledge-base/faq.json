@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-13T00:00:00.000Z",
+  "categories": {
+    "getting-started": [
+      {
+        "question": "How do I get started as a freelancer at Werkpilot?",
+        "answer": "After your application is accepted, you will receive an onboarding guide via email. This includes tool access setup, your first week checklist, and links to essential SOPs. Complete the onboarding checklist within your first week and reach out to your project manager with any questions.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "What tools do I need to set up?",
+        "answer": "You will need access to: Google Workspace (provided), Airtable (invitation sent during onboarding), Slack for communication, and any role-specific tools mentioned in your onboarding guide. Ensure you have a reliable internet connection and a quiet workspace for video calls.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "What are the working hours and timezone expectations?",
+        "answer": "Werkpilot operates on an async-first basis with core overlap hours of 10:00-14:00 CET. You are expected to be reachable during these hours on weekdays. Outside of core hours, you can work flexibly as long as deadlines are met.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      }
+    ],
+    "work-processes": [
+      {
+        "question": "How do I receive and accept tasks?",
+        "answer": "Tasks are assigned through Airtable. You will receive a notification when a new task is assigned to you. Review the task brief, confirm acceptance within 4 hours, and update the status to 'in-progress' when you begin working on it.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "What is the quality review process?",
+        "answer": "All deliverables go through our quality review process: 1) Self-review using the checklist, 2) Submit for peer review, 3) QA reviewer scores and provides feedback, 4) Address feedback and resubmit if needed. See the Quality Review SOP for full details.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "How should I handle AI-generated content?",
+        "answer": "AI-generated content must always be reviewed and edited by a human before delivery. Check for: factual accuracy, natural language flow, brand voice consistency, and any AI hallucinations. You are responsible for the final quality regardless of how the draft was produced.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "What do I do if I cannot meet a deadline?",
+        "answer": "Notify your project manager at least 24 hours before the deadline. Provide a brief explanation and a realistic revised timeline. Early communication is always better than a late surprise. Repeated missed deadlines will affect your timeliness score.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      }
+    ],
+    "compensation": [
+      {
+        "question": "How do I submit an invoice?",
+        "answer": "Submit invoices through the Invoices section in Airtable by the 5th of each month for the previous month's work. Include: your name, period, hours worked, hourly rate, total amount, and payment details. Invoices are processed within 10 business days.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "When do I get paid?",
+        "answer": "Payments are processed on the 15th and last day of each month. After your invoice is approved, it will be included in the next payment cycle. Bank transfers typically take 1-3 business days depending on your bank and location.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "How are bonuses calculated?",
+        "answer": "Performance bonuses are calculated monthly based on your composite performance score. Top performers (Tier A, score 90+) receive a 15% bonus multiplier, Strong performers (Tier B, 75-89) receive 5%. Bonuses are paid with your regular compensation.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "Can I negotiate my rate?",
+        "answer": "Rate reviews happen quarterly as part of the performance review cycle. If you believe your rate should be adjusted, prepare evidence of your performance metrics, market benchmarks, and any expanded responsibilities. Discuss with your project manager during the review.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      }
+    ],
+    "communication": [
+      {
+        "question": "What communication channels should I use?",
+        "answer": "Use Slack for quick questions and daily communication, email for formal communications and external contacts, and Airtable comments for task-specific discussions. For urgent issues, use Slack with @mention of the relevant person.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "How quickly should I respond to messages?",
+        "answer": "During core hours (10:00-14:00 CET), respond within 2 hours. Outside core hours, respond within 24 hours. For urgent requests marked with [URGENT], respond as soon as possible. Set your Slack status to indicate your availability.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "Who do I contact for different issues?",
+        "answer": "Task questions: your project manager. Technical issues: #support Slack channel. HR/contract questions: hr@werkpilot.ch. Payment issues: finance@werkpilot.ch. General questions: your onboarding buddy or the #general channel.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      }
+    ],
+    "performance": [
+      {
+        "question": "How is my performance measured?",
+        "answer": "Performance is measured across four dimensions: Quality Score (35% weight), Timeliness (25%), Availability (15%), and Client Feedback (25%). These are combined into a composite score (0-100) that determines your performance tier (A through F).",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "When are performance reviews?",
+        "answer": "Performance reviews are generated monthly and shared by the 5th of the following month. Weekly performance snapshots are also tracked. You can view your current scores at any time in your Airtable freelancer profile.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "What happens if my performance drops?",
+        "answer": "If your composite score drops below 60 (Tier D), you will receive a Performance Improvement Plan (PIP) with specific goals for a 30-day period. You will receive additional support and weekly check-ins. The goal is to help you succeed, not to penalize you.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      }
+    ],
+    "policies": [
+      {
+        "question": "What is the confidentiality policy?",
+        "answer": "All client information, internal processes, and Werkpilot proprietary data are strictly confidential. You signed an NDA as part of your onboarding. Do not share any work-related information outside of approved channels. This includes screenshots, client names, and project details.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "Can I work for other clients/companies?",
+        "answer": "Yes, you are a freelancer and may work for other clients. However, you must not work for direct competitors of Werkpilot or our clients without prior approval. Always ensure your Werkpilot commitments and deadlines are met regardless of other engagements.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      },
+      {
+        "question": "How do I request time off?",
+        "answer": "As a freelancer, you manage your own schedule. However, please notify your project manager at least 1 week in advance for planned absences of 3+ days, and at least 2 weeks for absences longer than a week. Update your availability in Airtable accordingly.",
+        "addedAt": "2026-02-13T00:00:00.000Z",
+        "views": 0
+      }
+    ]
+  }
+}

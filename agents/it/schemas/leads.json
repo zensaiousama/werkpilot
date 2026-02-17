@@ -1,0 +1,36 @@
+{
+  "name": "Leads",
+  "version": "1.0.0",
+  "description": "Schema for the Leads table tracking all inbound prospects",
+  "table": "Leads",
+  "fields": [
+    { "name": "Name", "type": "text", "required": true, "description": "Full name of the lead" },
+    { "name": "Email", "type": "email", "required": true, "unique": true, "description": "Email address" },
+    { "name": "Company", "type": "text", "required": false, "description": "Company or organization name" },
+    { "name": "Phone", "type": "phone", "required": false, "description": "Phone number" },
+    { "name": "Source", "type": "select", "required": true, "options": ["Website", "Referral", "Google", "Social Media", "Cold Outreach", "Event", "Partner"], "description": "Lead acquisition channel" },
+    { "name": "Score", "type": "number", "required": false, "min": 0, "max": 100, "description": "AI-generated lead quality score" },
+    { "name": "Status", "type": "select", "required": true, "options": ["New", "Contacted", "Qualified", "Proposal", "Negotiation", "Converted", "Lost"], "description": "Current pipeline stage" },
+    { "name": "AssignedTo", "type": "text", "required": false, "description": "Assigned sales agent or team member" },
+    { "name": "Industry", "type": "select", "required": false, "options": ["Technology", "Healthcare", "Finance", "Retail", "Manufacturing", "Education", "Other"], "description": "Industry vertical" },
+    { "name": "Budget", "type": "currency", "required": false, "currency": "CHF", "description": "Estimated budget" },
+    { "name": "ServiceInterest", "type": "multiselect", "required": false, "options": ["Website", "Web App", "SEO", "Branding", "Consulting", "Maintenance"], "description": "Services the lead is interested in" },
+    { "name": "Notes", "type": "longtext", "required": false, "description": "Free-text notes about the lead" },
+    { "name": "CreatedDate", "type": "date", "required": true, "auto": true, "description": "Date lead was created" },
+    { "name": "LastContactDate", "type": "date", "required": false, "description": "Date of last contact attempt" },
+    { "name": "ConvertedDate", "type": "date", "required": false, "description": "Date lead was converted to client" },
+    { "name": "LostReason", "type": "text", "required": false, "description": "Reason for losing the lead" }
+  ],
+  "indexes": ["Email", "Status", "Source", "CreatedDate"],
+  "relationships": [
+    { "field": "ConvertedTo", "target": "Clients", "type": "one-to-one" }
+  ],
+  "validation": {
+    "uniqueFields": ["Email"],
+    "requiredOnStatus": {
+      "Qualified": ["Score", "Budget"],
+      "Lost": ["LostReason"],
+      "Converted": ["ConvertedDate"]
+    }
+  }
+}

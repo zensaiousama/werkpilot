@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "description": "Competitor pricing page URLs to monitor monthly",
+  "lastScanned": null,
+  "competitors": [
+    {
+      "name": "Jasper AI",
+      "pricing_url": "https://www.jasper.ai/pricing",
+      "category": "AI Content Platform",
+      "notes": "Direct competitor for AI content generation"
+    },
+    {
+      "name": "Copy.ai",
+      "pricing_url": "https://www.copy.ai/pricing",
+      "category": "AI Content Platform",
+      "notes": "AI writing assistant with workflow automation"
+    },
+    {
+      "name": "HubSpot Marketing",
+      "pricing_url": "https://www.hubspot.com/pricing/marketing",
+      "category": "Marketing Automation",
+      "notes": "Enterprise marketing suite with AI features"
+    },
+    {
+      "name": "Writesonic",
+      "pricing_url": "https://writesonic.com/pricing",
+      "category": "AI Content Platform",
+      "notes": "AI writing and SEO optimization"
+    },
+    {
+      "name": "Surfer SEO",
+      "pricing_url": "https://surferseo.com/pricing",
+      "category": "SEO Platform",
+      "notes": "AI-powered SEO content optimization"
+    },
+    {
+      "name": "Zapier",
+      "pricing_url": "https://zapier.com/pricing",
+      "category": "Automation Platform",
+      "notes": "Workflow automation with AI capabilities"
+    },
+    {
+      "name": "Make (Integromat)",
+      "pricing_url": "https://www.make.com/en/pricing",
+      "category": "Automation Platform",
+      "notes": "Visual automation platform"
+    },
+    {
+      "name": "Semrush",
+      "pricing_url": "https://www.semrush.com/pricing/",
+      "category": "SEO & Marketing",
+      "notes": "All-in-one marketing toolkit"
+    },
+    {
+      "name": "Ahrefs",
+      "pricing_url": "https://ahrefs.com/pricing",
+      "category": "SEO Platform",
+      "notes": "SEO tools and content optimization"
+    },
+    {
+      "name": "ActiveCampaign",
+      "pricing_url": "https://www.activecampaign.com/pricing",
+      "category": "Email & Automation",
+      "notes": "Email marketing and CRM automation"
+    }
+  ]
+}

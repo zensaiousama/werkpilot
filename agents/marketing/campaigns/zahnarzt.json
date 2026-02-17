@@ -1,0 +1,131 @@
+{
+  "campaign": {
+    "name": "Werkpilot für Zahnärzte",
+    "id": "camp_zahnarzt_001",
+    "status": "draft",
+    "industry": "Zahnarztpraxis",
+    "languages": ["de", "fr"],
+    "budget": {
+      "daily": 60,
+      "monthly": 1800,
+      "currency": "CHF"
+    },
+    "targeting": {
+      "locations": [
+        { "country": "CH", "regions": ["Zürich", "Bern", "Basel", "Genève", "Lausanne", "Luzern", "Winterthur"] }
+      ],
+      "demographics": {
+        "business_owners": true,
+        "decision_makers": true,
+        "company_size": "1-20",
+        "industries": ["healthcare", "dental"]
+      }
+    },
+    "ad_groups": [
+      {
+        "name": "Zahnarzt Neupatienten",
+        "keywords": [
+          "zahnarzt marketing",
+          "zahnarztpraxis marketing",
+          "zahnarzt neue patienten",
+          "zahnarzt website",
+          "zahnarzt seo",
+          "zahnarzt google",
+          "zahnarzt online marketing",
+          "dental marketing schweiz"
+        ],
+        "negative_keywords": [
+          "gratis",
+          "job",
+          "stelle",
+          "zahnarzt finden",
+          "zahnarzt in der nähe",
+          "zahnarzt termin"
+        ],
+        "match_types": ["phrase", "exact"],
+        "ads": [
+          {
+            "type": "responsive_search",
+            "headlines": [
+              "Mehr Patienten für Ihre Praxis",
+              "Zahnarzt-Marketing automatisiert",
+              "Neue Patienten auf Knopfdruck",
+              "Website + SEO für Zahnärzte",
+              "Werkpilot Dental Marketing",
+              "Online sichtbar werden"
+            ],
+            "descriptions": [
+              "Werkpilot bringt neue Patienten in Ihre Zahnarztpraxis. Website, SEO & Google Ads automatisiert.",
+              "Speziell für Schweizer Zahnärzte: Mehr Sichtbarkeit, mehr Neupatienten. Jetzt kostenlos beraten lassen.",
+              "Von der Website bis zur Terminbuchung - alles aus einer Hand. Starten Sie jetzt."
+            ],
+            "final_url": "https://werkpilot.ch/branchen/zahnarzt",
+            "display_url": "werkpilot.ch/zahnarzt"
+          }
+        ],
+        "bid_strategy": {
+          "type": "target_cpa",
+          "target_cpa": 55,
+          "max_cpc": 10.00
+        }
+      },
+      {
+        "name": "Zahnarzt Digitalisierung",
+        "keywords": [
+          "zahnarztpraxis digitalisierung",
+          "zahnarzt software",
+          "praxis management digital",
+          "zahnarzt online buchung",
+          "zahnarzt bewertungen",
+          "zahnarzt google bewertungen"
+        ],
+        "negative_keywords": ["praxissoftware", "abrechnung", "kassensystem"],
+        "match_types": ["phrase", "exact"],
+        "ads": [
+          {
+            "type": "responsive_search",
+            "headlines": [
+              "Digitale Zahnarztpraxis",
+              "Bewertungen automatisieren",
+              "Online-Buchung einrichten",
+              "Google-Ranking verbessern",
+              "Praxis-Website in 7 Tagen",
+              "Patienten begeistern"
+            ],
+            "descriptions": [
+              "Digitalisieren Sie Ihre Zahnarztpraxis mit Werkpilot. Online-Terminbuchung, Bewertungsmanagement & SEO.",
+              "Automatische Patientengewinnung für Schweizer Zahnärzte. Moderne Website, top Google-Ranking."
+            ],
+            "final_url": "https://werkpilot.ch/branchen/zahnarzt",
+            "display_url": "werkpilot.ch/digital-zahnarzt"
+          }
+        ],
+        "bid_strategy": {
+          "type": "target_cpa",
+          "target_cpa": 50,
+          "max_cpc": 9.00
+        }
+      }
+    ],
+    "conversion_tracking": {
+      "goals": [
+        { "name": "demo_request", "value": 200, "type": "form_submit" },
+        { "name": "phone_call", "value": 120, "type": "click_to_call" },
+        { "name": "contact_form", "value": 100, "type": "form_submit" }
+      ]
+    },
+    "schedule": {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "hours": { "start": 7, "end": 19 },
+      "timezone": "Europe/Zurich"
+    },
+    "performance_targets": {
+      "monthly_impressions": 20000,
+      "monthly_clicks": 600,
+      "target_ctr": 3.0,
+      "target_cpa": 55,
+      "target_roas": 4.5,
+      "monthly_conversions": 33
+    }
+  }
+}

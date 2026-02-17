@@ -1,102 +1,71 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import AnimatedSection from '@/components/AnimatedSection';
+import GuaranteeBadge from '@/components/GuaranteeBadge';
 
 export default function FinalCTASection() {
   return (
     <section
-      className="section relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #1B2A4A 0%, #2E75B6 100%)',
-      }}
+      className="hero-gradient relative overflow-hidden"
+      style={{ padding: '120px 0' }}
     >
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          {/* Scarcity badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-6"
-          >
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
-            </span>
-            <span className="text-white/90 text-sm font-medium">
-              Aktuell 2 Plätze frei
-            </span>
-          </motion.div>
+      {/* Reuse hero orbs for visual consistency */}
+      <div className="hero-orb hero-orb-1" aria-hidden="true" />
+      <div className="hero-orb hero-orb-2" aria-hidden="true" />
 
-          <h2 className="text-white mb-4" style={{ fontFamily: 'var(--font-jakarta)' }}>
+      <div className="container mx-auto px-4 relative z-10">
+        <AnimatedSection className="max-w-3xl mx-auto text-center">
+          {/* Scarcity badge */}
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 mb-8"
+            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: '#34D399' }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ backgroundColor: '#10B981' }} />
+            </span>
+            <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem', fontWeight: 500 }}>
+              Aktuell 2 Plätze frei diesen Monat
+            </span>
+          </div>
+
+          <h2 style={{ color: '#FFFFFF' }}>
             Bereit für mehr Kunden und weniger Stress?
           </h2>
 
-          <p className="text-white/80 text-sm mb-6 font-medium tracking-wide">
-            Wir nehmen nur 5 neue Kunden pro Monat auf
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.25rem', lineHeight: 1.6, marginBottom: '1rem', maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto' }}>
+            Starten Sie mit einem gratis Digital-Fitness-Check und erfahren Sie,
+            wie viele Kunden Sie online verpassen.
           </p>
 
-          <p className="text-xl text-white/90 mb-8 leading-relaxed">
-            Starten Sie mit einem gratis Digital-Fitness-Check
-          </p>
-
-          {/* Comparison anchor */}
-          <p className="text-white/70 text-sm mb-8">
+          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.875rem', marginBottom: '2rem' }}>
             Ein Marketing-Team kostet CHF 7&apos;000/Monat. Werkpilot ab CHF 1&apos;500.
           </p>
 
           <Link
             href="/fitness-check"
-            className="btn btn-primary text-lg mb-6 inline-block"
+            className="btn btn-primary btn-glow text-lg mb-6 inline-flex"
             data-track="cta-final"
           >
-            Jetzt kostenlos starten →
+            Jetzt kostenlos starten &rarr;
           </Link>
 
           {/* Trust micro-badges */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-6">
-            {[
-              'Keine Kreditkarte',
-              '2 Minuten',
-              '100% kostenlos',
-              'Unverbindlich',
-            ].map((label) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-1.5 text-white/70 text-sm"
-              >
-                <svg
-                  className="w-4 h-4 text-green-400 flex-shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
+            {['Keine Kreditkarte', '2 Minuten', '100% kostenlos', 'Unverbindlich'].map((label) => (
+              <span key={label} className="inline-flex items-center gap-1.5" style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem' }}>
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#34D399" strokeWidth={2.5} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 {label}
               </span>
             ))}
           </div>
-        </motion.div>
-      </div>
 
-      {/* Decorative elements */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          background:
-            'radial-gradient(circle at 20% 50%, rgba(212, 118, 10, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(45, 140, 60, 0.4) 0%, transparent 50%)',
-        }}
-      />
+          <div className="mt-8">
+            <GuaranteeBadge />
+          </div>
+        </AnimatedSection>
+      </div>
     </section>
   );
 }

@@ -1,0 +1,39 @@
+{
+  "name": "Clients",
+  "version": "1.0.0",
+  "description": "Schema for the Clients table tracking active and past client accounts",
+  "table": "Clients",
+  "fields": [
+    { "name": "CompanyName", "type": "text", "required": true, "description": "Legal company name" },
+    { "name": "ContactName", "type": "text", "required": true, "description": "Primary contact person" },
+    { "name": "ContactEmail", "type": "email", "required": true, "description": "Primary contact email" },
+    { "name": "Phone", "type": "phone", "required": false, "description": "Primary phone number" },
+    { "name": "Website", "type": "url", "required": false, "description": "Client website URL" },
+    { "name": "Status", "type": "select", "required": true, "options": ["Onboarding", "Client", "Paused", "Churned"], "description": "Current client status" },
+    { "name": "Industry", "type": "select", "required": false, "options": ["Technology", "Healthcare", "Finance", "Retail", "Manufacturing", "Education", "Hospitality", "Other"], "description": "Industry vertical" },
+    { "name": "Services", "type": "multiselect", "required": true, "options": ["Website", "Web App", "SEO", "Branding", "Consulting", "Maintenance", "Hosting"], "description": "Active services" },
+    { "name": "MRR", "type": "currency", "required": true, "currency": "CHF", "min": 0, "description": "Monthly recurring revenue" },
+    { "name": "ContractValue", "type": "currency", "required": false, "currency": "CHF", "description": "Total contract value" },
+    { "name": "StartDate", "type": "date", "required": true, "description": "Client relationship start date" },
+    { "name": "ContractEndDate", "type": "date", "required": false, "description": "Current contract end date" },
+    { "name": "PaymentOverdue", "type": "boolean", "required": false, "default": false, "description": "Has overdue payments" },
+    { "name": "OpenTickets", "type": "number", "required": false, "default": 0, "description": "Number of open support tickets" },
+    { "name": "HealthScore", "type": "number", "required": false, "min": 0, "max": 100, "description": "AI-calculated client health score" },
+    { "name": "LastInteraction", "type": "date", "required": false, "description": "Date of last interaction" },
+    { "name": "Notes", "type": "longtext", "required": false, "description": "Internal notes about the client" },
+    { "name": "Tags", "type": "multiselect", "required": false, "options": ["VIP", "Enterprise", "SME", "Startup", "Government"], "description": "Client classification tags" }
+  ],
+  "indexes": ["CompanyName", "ContactEmail", "Status", "Industry"],
+  "relationships": [
+    { "field": "LeadId", "target": "Leads", "type": "one-to-one", "description": "Original lead record" },
+    { "field": "Invoices", "target": "Invoices", "type": "one-to-many" },
+    { "field": "Revenue", "target": "Revenue", "type": "one-to-many" }
+  ],
+  "validation": {
+    "uniqueFields": ["ContactEmail"],
+    "requiredOnStatus": {
+      "Client": ["MRR", "Services", "StartDate"],
+      "Churned": ["ContractEndDate"]
+    }
+  }
+}

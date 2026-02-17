@@ -1,0 +1,174 @@
+{
+  "model": "API-as-a-Service",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "description": "Expose Werkpilot AI capabilities as RESTful APIs for developers and platforms to integrate",
+  "targetCustomers": [
+    "SaaS platforms needing AI marketing features",
+    "E-commerce platforms (Shopify, WooCommerce integrations)",
+    "CRM vendors wanting AI add-ons",
+    "Development agencies building custom solutions",
+    "Enterprise IT departments"
+  ],
+  "valueProposition": {
+    "forCustomers": "Add enterprise-grade AI marketing capabilities without building from scratch",
+    "forWerkpilot": "Usage-based recurring revenue with minimal sales touchpoints"
+  },
+  "apiEndpoints": [
+    {
+      "category": "Content Generation",
+      "endpoints": [
+        "POST /api/v1/content/generate",
+        "POST /api/v1/content/translate",
+        "POST /api/v1/content/optimize-seo",
+        "POST /api/v1/content/social-media"
+      ]
+    },
+    {
+      "category": "Analytics & Insights",
+      "endpoints": [
+        "GET /api/v1/analytics/market-trends",
+        "POST /api/v1/analytics/competitor-analysis",
+        "GET /api/v1/analytics/keyword-research",
+        "POST /api/v1/analytics/sentiment"
+      ]
+    },
+    {
+      "category": "Automation",
+      "endpoints": [
+        "POST /api/v1/automation/email-sequence",
+        "POST /api/v1/automation/lead-scoring",
+        "POST /api/v1/automation/campaign-optimize",
+        "POST /api/v1/automation/ab-test"
+      ]
+    },
+    {
+      "category": "Personalization",
+      "endpoints": [
+        "POST /api/v1/personalize/segment",
+        "POST /api/v1/personalize/recommend",
+        "POST /api/v1/personalize/dynamic-content"
+      ]
+    }
+  ],
+  "pricingModel": {
+    "type": "usage-based with tiers",
+    "tiers": [
+      {
+        "tier": "Developer",
+        "monthlyBase": 0,
+        "currency": "CHF",
+        "includedCalls": 1000,
+        "perExtraCall": 0.05,
+        "rateLimit": "10 req/min",
+        "features": ["Sandbox environment", "Community support", "Basic docs"]
+      },
+      {
+        "tier": "Growth",
+        "monthlyBase": 299,
+        "currency": "CHF",
+        "includedCalls": 25000,
+        "perExtraCall": 0.02,
+        "rateLimit": "100 req/min",
+        "features": ["Production access", "Email support", "Webhooks", "Analytics dashboard"]
+      },
+      {
+        "tier": "Business",
+        "monthlyBase": 999,
+        "currency": "CHF",
+        "includedCalls": 100000,
+        "perExtraCall": 0.01,
+        "rateLimit": "500 req/min",
+        "features": ["Priority support", "SLA 99.9%", "Custom models", "Dedicated endpoints"]
+      },
+      {
+        "tier": "Enterprise",
+        "monthlyBase": "custom",
+        "currency": "CHF",
+        "includedCalls": "unlimited",
+        "rateLimit": "custom",
+        "features": ["Dedicated infrastructure", "Custom SLA", "On-premise option", "Integration support"]
+      }
+    ]
+  },
+  "revenueProjection": {
+    "year1": {
+      "targetDevelopers": 200,
+      "paidCustomers": 40,
+      "avgMonthlyPerPaid": 520,
+      "monthlyRevenue": 20800,
+      "annualRevenue": 249600,
+      "assumptions": "25 Growth, 12 Business, 3 Enterprise at CHF 2500"
+    },
+    "year2": {
+      "targetDevelopers": 800,
+      "paidCustomers": 150,
+      "avgMonthlyPerPaid": 680,
+      "monthlyRevenue": 102000,
+      "annualRevenue": 1224000,
+      "assumptions": "90 Growth, 48 Business, 12 Enterprise"
+    },
+    "year3": {
+      "targetDevelopers": 2000,
+      "paidCustomers": 400,
+      "avgMonthlyPerPaid": 850,
+      "monthlyRevenue": 340000,
+      "annualRevenue": 4080000,
+      "assumptions": "240 Growth, 120 Business, 40 Enterprise"
+    }
+  },
+  "costs": {
+    "development": {
+      "initialBuild": 200000,
+      "currency": "CHF",
+      "timeline": "5-7 months",
+      "description": "API gateway, developer portal, rate limiting, billing, documentation"
+    },
+    "ongoing": {
+      "infrastructure": 8000,
+      "support": 5000,
+      "documentation": 2000,
+      "monitoring": 1500,
+      "total": 16500,
+      "period": "monthly"
+    }
+  },
+  "marginAnalysis": {
+    "grossMargin": 0.68,
+    "netMargin": 0.40,
+    "breakeven": "Month 12-14 after launch",
+    "ltv": 24000,
+    "cac": 2800,
+    "ltvCacRatio": 8.6
+  },
+  "risks": [
+    {
+      "risk": "API abuse and security",
+      "severity": "high",
+      "mitigation": "Rate limiting, API key rotation, WAF, anomaly detection"
+    },
+    {
+      "risk": "Cost unpredictability (AI inference costs)",
+      "severity": "high",
+      "mitigation": "Caching layer, usage caps, cost-per-call monitoring"
+    },
+    {
+      "risk": "Low conversion from free to paid",
+      "severity": "medium",
+      "mitigation": "Value-gating, trial periods, developer evangelism"
+    },
+    {
+      "risk": "API breaking changes causing churn",
+      "severity": "medium",
+      "mitigation": "Semantic versioning, deprecation policies, migration guides"
+    }
+  ],
+  "implementationTimeline": [
+    { "month": "1-2", "milestone": "API architecture, gateway, authentication" },
+    { "month": "3", "milestone": "Core endpoints (content generation, analytics)" },
+    { "month": "4", "milestone": "Developer portal, documentation, sandbox" },
+    { "month": "5", "milestone": "Billing integration, usage tracking" },
+    { "month": "6", "milestone": "Beta with 20 developer partners" },
+    { "month": "7", "milestone": "Public launch and developer marketing" }
+  ]
+}

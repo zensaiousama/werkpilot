@@ -1,0 +1,113 @@
+{
+  "locale": "de-CH",
+  "name": "Swiss German (Hochdeutsch)",
+  "description": "Localization rules for Swiss Standard German",
+  "greetings": {
+    "formal": ["Grüezi", "Guten Tag", "Grüezi mitenand"],
+    "informal": ["Hoi", "Sali", "Hallo zäme"],
+    "farewell": ["Uf Widerluege", "Adieu", "Tschüss"],
+    "replace": {
+      "Hallo": "Grüezi",
+      "Guten Tag": "Grüezi",
+      "Auf Wiedersehen": "Uf Widerluege",
+      "Tschüss": "Adieu"
+    }
+  },
+  "orthography": {
+    "eszett": {
+      "description": "Swiss German does not use ß (Eszett), always use ss",
+      "replace": {
+        "ß": "ss"
+      },
+      "examples": {
+        "Straße": "Strasse",
+        "Gruß": "Gruss",
+        "Fuß": "Fuss",
+        "groß": "gross",
+        "außen": "aussen",
+        "heißen": "heissen",
+        "Maß": "Mass",
+        "Spaß": "Spass"
+      }
+    }
+  },
+  "dateFormat": {
+    "short": "DD.MM.YYYY",
+    "long": "D. MMMM YYYY",
+    "time": "HH:mm",
+    "dateTime": "DD.MM.YYYY, HH:mm",
+    "examples": {
+      "2026-02-13": "13.02.2026",
+      "long": "13. Februar 2026"
+    }
+  },
+  "currency": {
+    "code": "CHF",
+    "symbol": "CHF",
+    "format": "CHF #'###.##",
+    "decimalSeparator": ".",
+    "thousandsSeparator": "'",
+    "position": "before",
+    "examples": {
+      "1000": "CHF 1'000.00",
+      "1234.50": "CHF 1'234.50",
+      "99.90": "CHF 99.90"
+    },
+    "replace": {
+      "€": "CHF",
+      "EUR": "CHF"
+    }
+  },
+  "phoneFormat": {
+    "countryCode": "+41",
+    "format": "+41 XX XXX XX XX",
+    "examples": {
+      "mobile": "+41 79 123 45 67",
+      "landline": "+41 44 123 45 67",
+      "tollfree": "0800 123 456"
+    }
+  },
+  "address": {
+    "format": "{street} {number}\n{zip} {city}",
+    "zipFormat": "4 digits",
+    "cantons": ["AG", "AI", "AR", "BE", "BL", "BS", "FR", "GE", "GL", "GR", "JU", "LU", "NE", "NW", "OW", "SG", "SH", "SO", "SZ", "TG", "TI", "UR", "VD", "VS", "ZG", "ZH"]
+  },
+  "vocabulary": {
+    "replace": {
+      "Januar": "Januar",
+      "Februar": "Februar",
+      "Samstag": "Samstag",
+      "Velo": "Velo",
+      "Trottoir": "Trottoir",
+      "Billet": "Billet",
+      "parkieren": "parkieren",
+      "Kondukteur": "Kondukteur",
+      "Spital": "Spital",
+      "Poulet": "Poulet",
+      "Rüebli": "Rüebli",
+      "Natel": "Natel",
+      "Znüni": "Znüni",
+      "Zvieri": "Zvieri"
+    },
+    "germanToSwiss": {
+      "Fahrrad": "Velo",
+      "Bürgersteig": "Trottoir",
+      "Fahrkarte": "Billet",
+      "Krankenhaus": "Spital",
+      "Hähnchen": "Poulet",
+      "Karotte": "Rüebli",
+      "Handy": "Natel",
+      "Frühstückspause": "Znüni",
+      "Nachmittagspause": "Zvieri"
+    }
+  },
+  "legalTerms": {
+    "company_types": ["AG", "GmbH", "Einzelunternehmen", "Kollektivgesellschaft", "Kommanditgesellschaft", "Verein", "Stiftung", "Genossenschaft"],
+    "tax_terms": {
+      "VAT": "Mehrwertsteuer (MWST)",
+      "standard_rate": "8.1%",
+      "reduced_rate": "2.6%",
+      "special_rate": "3.8%"
+    }
+  }
+}

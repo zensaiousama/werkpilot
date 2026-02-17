@@ -1,0 +1,80 @@
+{
+  "sequence": {
+    "name": "Welcome Sequence",
+    "id": "seq_welcome",
+    "trigger": "subscriber_created",
+    "total_emails": 5,
+    "duration_days": 10,
+    "goal": "Introduce Werkpilot, build trust, qualify lead",
+    "segment": "new_subscribers",
+    "status": "active"
+  },
+  "emails": [
+    {
+      "position": 1,
+      "delay_days": 0,
+      "delay_hours": 0,
+      "subject_a": "Willkommen bei Werkpilot, {{first_name}}!",
+      "subject_b": "{{first_name}}, schön sind Sie da!",
+      "preview_text": "Ihr erster Schritt zu mehr Sichtbarkeit online",
+      "content_brief": "Welcome message. Introduce Werkpilot mission. Set expectations for what they'll receive. Include quick-win tip (Google Business Profile check). Warm, personal tone.",
+      "cta": "Kostenlose Website-Analyse anfordern",
+      "cta_url": "https://werkpilot.ch/analyse",
+      "tags_add": ["welcomed"],
+      "tags_remove": []
+    },
+    {
+      "position": 2,
+      "delay_days": 2,
+      "delay_hours": 0,
+      "subject_a": "Die 3 grössten Online-Fehler von {{industry}} in der Schweiz",
+      "subject_b": "{{first_name}}, machen Sie diese Fehler auch?",
+      "preview_text": "So verlieren KMU täglich potenzielle Kunden",
+      "content_brief": "Educational email. Top 3 mistakes SMEs make online (no website, no SEO, no reviews). Industry-specific examples. Position Werkpilot as the solution without hard sell.",
+      "cta": "Mehr erfahren",
+      "cta_url": "https://werkpilot.ch/blog",
+      "tags_add": ["engaged_welcome"],
+      "tags_remove": []
+    },
+    {
+      "position": 3,
+      "delay_days": 4,
+      "delay_hours": 0,
+      "subject_a": "Wie {{case_study_industry}} mit uns {{result}} erreichte",
+      "subject_b": "Erfolgsgeschichte: Von unsichtbar zu ausgebucht",
+      "preview_text": "Eine Schweizer Erfolgsgeschichte, die inspiriert",
+      "content_brief": "Case study email. Share a success story relevant to subscriber's industry. Include specific metrics (traffic increase, leads generated). Social proof.",
+      "cta": "Ihre Erfolgsgeschichte starten",
+      "cta_url": "https://werkpilot.ch/demo",
+      "tags_add": [],
+      "tags_remove": []
+    },
+    {
+      "position": 4,
+      "delay_days": 7,
+      "delay_hours": 0,
+      "subject_a": "Was kostet eine professionelle Online-Präsenz wirklich?",
+      "subject_b": "{{first_name}}, lassen Sie uns über Investitionen sprechen",
+      "preview_text": "Transparente Zahlen statt leere Versprechen",
+      "content_brief": "Value/pricing transparency email. Break down cost of NOT being online vs investment in digital presence. ROI examples. Address common objections. Build urgency without pressure.",
+      "cta": "Unverbindlich beraten lassen",
+      "cta_url": "https://werkpilot.ch/beratung",
+      "tags_add": ["pricing_interest"],
+      "tags_remove": []
+    },
+    {
+      "position": 5,
+      "delay_days": 10,
+      "delay_hours": 0,
+      "subject_a": "{{first_name}}, bereit für den nächsten Schritt?",
+      "subject_b": "Lassen Sie uns persönlich sprechen",
+      "preview_text": "15 Minuten, die Ihr Business verändern können",
+      "content_brief": "Conversion email. Direct CTA to book a call. Summarize what they've learned. Personal tone from founder. Include calendar link. Mention it's free and no-obligation.",
+      "cta": "Kostenloses Gespräch buchen",
+      "cta_url": "https://werkpilot.ch/termin",
+      "tags_add": ["welcome_completed"],
+      "tags_remove": ["new_subscriber"],
+      "move_to_sequence": "nurture"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "version": "1.0.0",
+  "qualificationFlow": {
+    "steps": [
+      {
+        "step": 1,
+        "id": "greeting",
+        "type": "message",
+        "message": {
+          "de": "Willkommen bei Werkpilot! Ich bin Ihr digitaler Assistent. Wie kann ich Ihnen helfen?",
+          "fr": "Bienvenue chez Werkpilot! Je suis votre assistant numerique. Comment puis-je vous aider?",
+          "it": "Benvenuti da Werkpilot! Sono il vostro assistente digitale. Come posso aiutarvi?",
+          "en": "Welcome to Werkpilot! I'm your digital assistant. How can I help you?"
+        },
+        "options": {
+          "de": [
+            "Ich brauche eine neue Website",
+            "Ich moechte meine Website verbessern",
+            "Ich habe Fragen zu Preisen",
+            "Ich moechte einen Termin buchen",
+            "Etwas anderes"
+          ],
+          "en": [
+            "I need a new website",
+            "I want to improve my website",
+            "I have pricing questions",
+            "I'd like to book an appointment",
+            "Something else"
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "id": "company_name",
+        "type": "question",
+        "question": {
+          "de": "Fuer welches Unternehmen suchen Sie eine Loesung?",
+          "fr": "Pour quelle entreprise cherchez-vous une solution?",
+          "it": "Per quale azienda cercate una soluzione?",
+          "en": "What company are you looking for a solution for?"
+        },
+        "fieldName": "companyName",
+        "required": true,
+        "validation": "non_empty"
+      },
+      {
+        "step": 3,
+        "id": "industry",
+        "type": "question",
+        "question": {
+          "de": "In welcher Branche ist Ihr Unternehmen taetig?",
+          "fr": "Dans quel secteur votre entreprise opere-t-elle?",
+          "it": "In quale settore opera la vostra azienda?",
+          "en": "What industry is your company in?"
+        },
+        "fieldName": "industry",
+        "required": true,
+        "options": {
+          "de": [
+            "Gastronomie & Hotellerie",
+            "Handwerk & Gewerbe",
+            "Einzelhandel",
+            "Gesundheit & Wellness",
+            "Beratung & Dienstleistung",
+            "Immobilien",
+            "Bildung",
+            "Andere"
+          ],
+          "en": [
+            "Hospitality",
+            "Trades & Crafts",
+            "Retail",
+            "Health & Wellness",
+            "Consulting & Services",
+            "Real Estate",
+            "Education",
+            "Other"
+          ]
+        }
+      },
+      {
+        "step": 4,
+        "id": "challenge",
+        "type": "question",
+        "question": {
+          "de": "Was ist Ihre groesste digitale Herausforderung aktuell?",
+          "fr": "Quel est votre plus grand defi numerique actuellement?",
+          "it": "Qual e la vostra sfida digitale piu grande attualmente?",
+          "en": "What is your biggest digital challenge right now?"
+        },
+        "fieldName": "challenge",
+        "required": true,
+        "options": {
+          "de": [
+            "Wir haben keine Website",
+            "Unsere Website ist veraltet",
+            "Wir werden bei Google nicht gefunden",
+            "Wir brauchen Online-Buchung oder E-Commerce",
+            "Performance-Probleme",
+            "Anderes"
+          ],
+          "en": [
+            "We don't have a website",
+            "Our website is outdated",
+            "We can't be found on Google",
+            "We need online booking or e-commerce",
+            "Performance issues",
+            "Other"
+          ]
+        }
+      },
+      {
+        "step": 5,
+        "id": "budget",
+        "type": "question",
+        "question": {
+          "de": "Haben Sie bereits ein Budget im Kopf?",
+          "fr": "Avez-vous deja un budget en tete?",
+          "it": "Avete gia un budget in mente?",
+          "en": "Do you already have a budget in mind?"
+        },
+        "fieldName": "budget",
+        "required": false,
+        "options": {
+          "de": [
+            "Unter CHF 3'000",
+            "CHF 3'000 - 6'000",
+            "CHF 6'000 - 15'000",
+            "Ueber CHF 15'000",
+            "Noch nicht sicher"
+          ],
+          "en": [
+            "Under CHF 3,000",
+            "CHF 3,000 - 6,000",
+            "CHF 6,000 - 15,000",
+            "Over CHF 15,000",
+            "Not sure yet"
+          ]
+        }
+      },
+      {
+        "step": 6,
+        "id": "contact_info",
+        "type": "question",
+        "question": {
+          "de": "Wie koennen wir Sie am besten erreichen? (Name und E-Mail)",
+          "fr": "Comment pouvons-nous vous contacter? (Nom et e-mail)",
+          "it": "Come possiamo contattarvi? (Nome e e-mail)",
+          "en": "How can we best reach you? (Name and email)"
+        },
+        "fieldName": "contactInfo",
+        "required": true,
+        "validation": "contact_info"
+      }
+    ]
+  },
+  "scoringRules": {
+    "qualified": {
+      "minScore": 60,
+      "action": "book_call",
+      "message": {
+        "de": "Basierend auf Ihren Angaben koennte ein persoenliches Gespraech der beste naechste Schritt sein. Sollen wir einen Termin vereinbaren?",
+        "en": "Based on your input, a personal consultation might be the best next step. Shall we schedule an appointment?"
+      }
+    },
+    "nurture": {
+      "minScore": 30,
+      "action": "fitness_check",
+      "message": {
+        "de": "Ich empfehle Ihnen unseren kostenlosen Website Fitness Check. So erhalten Sie eine klare Analyse und konkrete Empfehlungen.",
+        "en": "I recommend our free Website Fitness Check. This will give you a clear analysis and specific recommendations."
+      }
+    },
+    "low": {
+      "minScore": 0,
+      "action": "information",
+      "message": {
+        "de": "Ich sende Ihnen gerne weitere Informationen zu unseren Dienstleistungen. Welches Thema interessiert Sie am meisten?",
+        "en": "I'd be happy to send you more information about our services. What topic interests you most?"
+      }
+    }
+  },
+  "scoringCriteria": {
+    "hasCompanyName": 15,
+    "hasIndustry": 10,
+    "hasChallenge": 20,
+    "hasBudget": 15,
+    "budgetAbove3k": 10,
+    "budgetAbove6k": 15,
+    "hasContactInfo": 20,
+    "needsNewWebsite": 10,
+    "needsEcommerce": 10,
+    "hasExistingWebsite": 5
+  },
+  "escalationTriggers": [
+    "competitor mention",
+    "complaint",
+    "legal question",
+    "custom integration request",
+    "enterprise requirement",
+    "data privacy question",
+    "accessibility requirements"
+  ],
+  "escalationMessage": {
+    "de": "Fuer diese Frage moechte ich Sie gerne mit einem unserer Experten verbinden. Darf ich Ihre Kontaktdaten aufnehmen?",
+    "fr": "Pour cette question, j'aimerais vous mettre en contact avec l'un de nos experts. Puis-je prendre vos coordonnees?",
+    "it": "Per questa domanda, vorrei mettervi in contatto con uno dei nostri esperti. Posso prendere i vostri dati di contatto?",
+    "en": "For this question, I'd like to connect you with one of our experts. May I take your contact details?"
+  },
+  "languageDetection": {
+    "de": ["website", "unternehmen", "brauche", "preis", "kosten", "wie", "was", "wann", "guten tag", "hallo", "grüezi"],
+    "fr": ["site web", "entreprise", "besoin", "prix", "combien", "comment", "quoi", "bonjour", "salut"],
+    "it": ["sito web", "azienda", "bisogno", "prezzo", "quanto", "come", "cosa", "buongiorno", "ciao"],
+    "en": ["website", "company", "need", "price", "cost", "how", "what", "when", "hello", "hi"]
+  }
+}

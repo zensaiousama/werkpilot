@@ -1,0 +1,52 @@
+{
+  "sequence": {
+    "name": "Re-engagement Sequence",
+    "id": "seq_reengagement",
+    "trigger": "inactive_30_days",
+    "total_emails": 3,
+    "duration_days": 14,
+    "goal": "Win back inactive subscribers before cleanup",
+    "segment": "inactive_subscribers",
+    "status": "active"
+  },
+  "emails": [
+    {
+      "position": 1,
+      "delay_days": 0,
+      "subject_a": "{{first_name}}, wir vermissen Sie!",
+      "subject_b": "Haben wir etwas falsch gemacht?",
+      "preview_text": "Ein kurzes Update und eine Frage an Sie",
+      "content_brief": "Acknowledge absence. Share 1-2 exciting updates they missed. Ask what content they'd prefer. Include re-engagement survey link. Warm, genuine tone.",
+      "cta": "Was interessiert Sie am meisten?",
+      "cta_url": "https://werkpilot.ch/preferences",
+      "tags_add": ["reengagement_attempt_1"]
+    },
+    {
+      "position": 2,
+      "delay_days": 5,
+      "subject_a": "{{first_name}}, das haben Sie verpasst",
+      "subject_b": "Die 3 besten Artikel dieses Monats",
+      "preview_text": "Handverlesene Inhalte, nur für Sie",
+      "content_brief": "Curated best content from recent weeks. Choose content based on their industry/interests. Make it irresistible to click. Zero sales pitch.",
+      "cta": "Jetzt lesen",
+      "cta_url": "https://werkpilot.ch/blog",
+      "tags_add": ["reengagement_attempt_2"]
+    },
+    {
+      "position": 3,
+      "delay_days": 14,
+      "subject_a": "Letzte Nachricht: Sollen wir in Kontakt bleiben?",
+      "subject_b": "{{first_name}}, ein letztes Mal",
+      "preview_text": "Wir respektieren Ihre Entscheidung",
+      "content_brief": "Final email. Transparent: explain they'll be removed if no engagement. One-click to stay subscribed. Respectful tone. Include unsubscribe option prominently.",
+      "cta": "Ja, ich möchte dabei bleiben",
+      "cta_url": "https://werkpilot.ch/stay",
+      "tags_add": ["reengagement_final"],
+      "automation": {
+        "if_no_open": "remove_from_list_after_7_days",
+        "if_open_no_click": "move_to_low_engagement_segment",
+        "if_click": "move_to_nurture_sequence"
+      }
+    }
+  ]
+}

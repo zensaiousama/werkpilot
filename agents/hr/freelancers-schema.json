@@ -1,0 +1,227 @@
+{
+  "tableName": "Freelancers",
+  "description": "Tracks all freelancers in the Werkpilot ecosystem: pipeline, performance, compensation, and contracts",
+  "fields": [
+    {
+      "name": "Name",
+      "type": "singleLineText",
+      "required": true,
+      "description": "Full name of the freelancer"
+    },
+    {
+      "name": "Email",
+      "type": "email",
+      "required": true,
+      "description": "Primary email address"
+    },
+    {
+      "name": "Role",
+      "type": "singleSelect",
+      "options": ["proofreader-fr", "proofreader-it", "va", "sales", "content-writer", "web-developer", "designer"],
+      "required": true,
+      "description": "Primary role at Werkpilot"
+    },
+    {
+      "name": "Status",
+      "type": "singleSelect",
+      "options": ["applicant", "screening", "test-task", "trial", "active", "paused", "terminated"],
+      "required": true,
+      "description": "Current status in the pipeline"
+    },
+    {
+      "name": "Platform",
+      "type": "singleSelect",
+      "options": ["fiverr", "upwork", "remoteok", "jobsch", "linkedin", "referral", "direct"],
+      "description": "Platform where the freelancer was sourced"
+    },
+    {
+      "name": "Market",
+      "type": "singleSelect",
+      "options": ["CH", "DACH", "FR/CH", "IT/CH", "EU", "Global"],
+      "description": "Primary market the freelancer serves"
+    },
+    {
+      "name": "Languages",
+      "type": "multipleSelects",
+      "options": ["DE", "EN", "FR", "IT", "ES", "PT"],
+      "description": "Languages the freelancer works in"
+    },
+    {
+      "name": "Location",
+      "type": "singleLineText",
+      "description": "City/Country of the freelancer"
+    },
+    {
+      "name": "Timezone",
+      "type": "singleLineText",
+      "description": "Primary timezone (e.g., Europe/Zurich)"
+    },
+    {
+      "name": "HourlyRate",
+      "type": "currency",
+      "currency": "CHF",
+      "description": "Agreed hourly rate in CHF"
+    },
+    {
+      "name": "WeeklyHoursAvailable",
+      "type": "number",
+      "description": "Hours available per week"
+    },
+    {
+      "name": "WeeklyHoursUsed",
+      "type": "number",
+      "description": "Hours currently utilized per week"
+    },
+    {
+      "name": "QualityScore",
+      "type": "number",
+      "description": "Quality metric (0-100), based on deliverable reviews"
+    },
+    {
+      "name": "TimelinessScore",
+      "type": "number",
+      "description": "Timeliness metric (0-100), based on deadline adherence"
+    },
+    {
+      "name": "AvailabilityScore",
+      "type": "number",
+      "description": "Availability metric (0-100), based on responsiveness"
+    },
+    {
+      "name": "ClientFeedbackScore",
+      "type": "number",
+      "description": "Client feedback metric (0-100), aggregated from client reviews"
+    },
+    {
+      "name": "CompositeScore",
+      "type": "number",
+      "description": "Weighted composite performance score (0-100)"
+    },
+    {
+      "name": "PreviousCompositeScore",
+      "type": "number",
+      "description": "Previous month's composite score for trend tracking"
+    },
+    {
+      "name": "PerformanceTier",
+      "type": "singleSelect",
+      "options": ["A - Top Performer", "B - Strong", "C - Meets Expectations", "D - Needs Improvement", "F - Under Review"],
+      "description": "Performance tier based on composite score"
+    },
+    {
+      "name": "TasksCompleted",
+      "type": "number",
+      "description": "Total number of tasks completed"
+    },
+    {
+      "name": "HoursLogged",
+      "type": "number",
+      "description": "Total hours logged this month"
+    },
+    {
+      "name": "OnboardingStatus",
+      "type": "singleSelect",
+      "options": ["pending", "in-progress", "completed", "n/a"],
+      "description": "Current onboarding status"
+    },
+    {
+      "name": "ContractStatus",
+      "type": "singleSelect",
+      "options": ["none", "draft", "sent", "signed", "expired"],
+      "description": "Status of the service agreement"
+    },
+    {
+      "name": "NDAStatus",
+      "type": "singleSelect",
+      "options": ["none", "draft", "sent", "signed", "expired"],
+      "description": "Status of the NDA"
+    },
+    {
+      "name": "ActiveSince",
+      "type": "date",
+      "description": "Date when the freelancer became active"
+    },
+    {
+      "name": "StartDate",
+      "type": "date",
+      "description": "Expected or actual start date"
+    },
+    {
+      "name": "LastReviewedAt",
+      "type": "dateTime",
+      "description": "Timestamp of last performance review"
+    },
+    {
+      "name": "Portfolio",
+      "type": "url",
+      "description": "Link to portfolio or profile"
+    },
+    {
+      "name": "Notes",
+      "type": "multilineText",
+      "description": "Internal notes about the freelancer"
+    },
+    {
+      "name": "Highlights",
+      "type": "multilineText",
+      "description": "Key achievements and highlights for testimonials"
+    },
+    {
+      "name": "TenureMonths",
+      "type": "number",
+      "description": "Number of months with Werkpilot"
+    },
+    {
+      "name": "PaymentMethod",
+      "type": "singleSelect",
+      "options": ["bank-transfer", "paypal", "wise", "revolut"],
+      "description": "Preferred payment method"
+    },
+    {
+      "name": "PaymentDetails",
+      "type": "multilineText",
+      "description": "Bank/payment details (encrypted reference)"
+    }
+  ],
+  "views": [
+    {
+      "name": "Active Freelancers",
+      "filter": "{Status} = 'active'",
+      "sort": [{ "field": "CompositeScore", "direction": "desc" }]
+    },
+    {
+      "name": "Pipeline",
+      "filter": "OR({Status} = 'applicant', {Status} = 'screening', {Status} = 'test-task', {Status} = 'trial')",
+      "sort": [{ "field": "Name", "direction": "asc" }]
+    },
+    {
+      "name": "Performance Review",
+      "filter": "{Status} = 'active'",
+      "sort": [{ "field": "CompositeScore", "direction": "asc" }],
+      "groupBy": "PerformanceTier"
+    },
+    {
+      "name": "By Role",
+      "filter": "{Status} = 'active'",
+      "groupBy": "Role"
+    },
+    {
+      "name": "Onboarding Needed",
+      "filter": "{OnboardingStatus} = 'pending'"
+    },
+    {
+      "name": "Contract Issues",
+      "filter": "OR({ContractStatus} = 'none', {ContractStatus} = 'expired', {NDAStatus} = 'none', {NDAStatus} = 'expired')"
+    }
+  ],
+  "relatedTables": [
+    "Applications",
+    "TestTasks",
+    "Contracts",
+    "Invoices",
+    "Payments",
+    "PerformanceReviews",
+    "TrainingRecords",
+    "Assessments"
+  ]
+}

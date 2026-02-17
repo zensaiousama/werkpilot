@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Confetti from '@/components/Confetti';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const kantons = [
@@ -74,9 +75,38 @@ export default function FitnessCheckPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessGlow, setShowSuccessGlow] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const firmennameRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
+
+  // Auto-detect Kanton from browser language/locale
+  const kantonDetectedRef = useRef(false);
+
+  useEffect(() => {
+    if (kantonDetectedRef.current) return;
+    kantonDetectedRef.current = true;
+
+    try {
+      const lang = navigator.language || '';
+      const languages = navigator.languages || [];
+      const allLangs = [lang, ...languages].join(' ').toLowerCase();
+
+      let detected = '';
+      if (allLangs.includes('fr-ch')) detected = 'Genf';
+      else if (allLangs.includes('it-ch')) detected = 'Tessin';
+      else if (allLangs.includes('de-ch')) detected = 'Zürich';
+
+      if (detected) {
+        // Use requestAnimationFrame to avoid synchronous setState in effect
+        requestAnimationFrame(() => {
+          setFormData((prev) => prev.kanton ? prev : { ...prev, kanton: detected });
+        });
+      }
+    } catch {
+      // Silent fail — not critical
+    }
+  }, []);
 
   useEffect(() => {
     if (step === 1) {
@@ -106,6 +136,7 @@ export default function FitnessCheckPage() {
 
     setIsSubmitting(false);
     setShowSuccessGlow(true);
+    setShowConfetti(true);
     setTimeout(() => {
       setIsSubmitted(true);
     }, 800);
@@ -165,6 +196,7 @@ export default function FitnessCheckPage() {
 
   return (
     <>
+      <Confetti active={showConfetti} />
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes successGlow {
           0% {

@@ -64,8 +64,23 @@ export default function KontaktPage() {
     });
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://werkpilot.ch' },
+      { '@type': 'ListItem', position: 2, name: 'Kontakt', item: 'https://werkpilot.ch/kontakt' },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
       <Navigation />
       <main id="main-content">
         {/* Hero Section */}

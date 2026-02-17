@@ -1,0 +1,1199 @@
+{
+  "version": "2.0.0",
+  "lastUpdated": "2026-02-14",
+  "agents": [
+    {
+      "id": 2,
+      "name": "CEO Morning Briefing v2",
+      "department": "CEO",
+      "file": "ceo/morning-briefing-v2.js",
+      "description": "Enhanced executive briefing that integrates with dashboard API for real-time KPIs, agent health, pipeline changes, overnight results, and KPI change detection with trend analysis",
+      "capabilities": [
+        "dashboard-api-integration",
+        "real-time-kpi-tracking",
+        "kpi-change-detection",
+        "agent-health-monitoring",
+        "pipeline-velocity-metrics",
+        "top-leads-prioritization",
+        "activity-timeline",
+        "dashboard-notification-sync"
+      ],
+      "schedule": "30 6 * * *",
+      "priority": "critical",
+      "model": "opus",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "8000"
+      }
+    },
+    {
+      "id": 3,
+      "name": "CEO Decision Support",
+      "department": "CEO",
+      "file": "ceo/decision-support.js",
+      "description": "Monitors Airtable for new decisions, gathers context from category-specific handlers, runs Claude analysis with multiple options, pros/cons, and recommendations, then sends formatted decision cards via email",
+      "capabilities": [
+        "decision-polling",
+        "context-gathering",
+        "multi-option-analysis",
+        "pros-cons-evaluation",
+        "financial-impact-estimation",
+        "risk-assessment",
+        "decision-card-emails",
+        "outcome-tracking",
+        "weekly-decision-insights",
+        "category-handlers-client-issues-pricing-agent-errors-strategy-partnerships"
+      ],
+      "schedule": "*/5 * * * *",
+      "priority": "critical",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "30000",
+        "avgTokenUsage": "4096"
+      }
+    },
+    {
+      "id": 4,
+      "name": "CEO Productivity",
+      "department": "CEO",
+      "file": "ceo/productivity.js",
+      "description": "Manages CEO weekly productivity rhythm with themed days, daily focus reminders, time tracking per category, weekly reviews, and delegation checks when tasks exceed 30 minutes",
+      "capabilities": [
+        "weekly-theme-management",
+        "daily-focus-reminders",
+        "time-tracking-per-category",
+        "task-start-stop-tracking",
+        "delegation-check-threshold",
+        "agent-delegation-suggestions",
+        "weekly-review-generation",
+        "kpi-trend-analysis",
+        "work-life-balance-scoring"
+      ],
+      "schedule": "0 8 * * 1-5",
+      "priority": "high",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "20000",
+        "avgTokenUsage": "2000"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Sales New Business",
+      "department": "Sales",
+      "file": "sales/new-business.js",
+      "description": "Manages cold outreach to new leads via personalized AI-generated email sequences with multi-language support (DE/FR/IT), follow-up sequences, rate limiting, and Swiss anti-spam compliance",
+      "capabilities": [
+        "cold-outreach-email-generation",
+        "multi-language-support-de-fr-it",
+        "kanton-based-language-detection",
+        "industry-specific-subject-lines",
+        "5-step-email-sequences",
+        "rate-limiting",
+        "anti-spam-compliance",
+        "unsubscribe-management",
+        "daily-summary-reports"
+      ],
+      "schedule": "0 9 * * 1-5",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "120000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Sales Partnership Manager",
+      "department": "Sales",
+      "file": "sales/partnerships.js",
+      "description": "Identifies potential partners (marketing agencies, web studios, Treuhand, consultants, IT companies), generates personalized pitch emails, manages partnership pipeline, tracks referral performance and commissions",
+      "capabilities": [
+        "partner-identification",
+        "partner-potential-assessment",
+        "partnership-pitch-generation",
+        "pipeline-management",
+        "partner-follow-ups",
+        "referral-tracking",
+        "commission-calculation",
+        "weekly-pipeline-summary",
+        "partner-models-referral-white-label-co-marketing"
+      ],
+      "schedule": "0 10 * * 1",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "180000",
+        "avgTokenUsage": "4000"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Sales Pricing Engine",
+      "department": "Sales",
+      "file": "sales/pricing-engine.js",
+      "description": "Dynamic quote generation based on industry, kanton, scope, languages, and urgency with branded PDF output via Puppeteer, A/B testing of pricing variants, and data-driven pricing recommendations",
+      "capabilities": [
+        "dynamic-price-calculation",
+        "industry-kanton-multipliers",
+        "urgency-pricing",
+        "addon-management",
+        "discount-codes",
+        "pdf-quote-generation",
+        "ab-test-pricing-variants",
+        "pricing-recommendations",
+        "vat-calculation",
+        "payment-term-splitting"
+      ],
+      "schedule": "on-demand",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "15000",
+        "avgTokenUsage": "1500"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Sales Inside Sales Bot",
+      "department": "Sales",
+      "file": "sales/inside-sales-bot.js",
+      "description": "Express API backend for website chat widget using Claude for real-time conversational AI with multi-language support (DE/FR/IT/EN), lead qualification scoring, structured conversation flow, and automatic escalation",
+      "capabilities": [
+        "real-time-chat-api",
+        "multi-language-de-fr-it-en",
+        "language-auto-detection",
+        "knowledge-base-integration",
+        "qualification-scoring",
+        "lead-creation-from-chat",
+        "escalation-detection",
+        "rate-limiting",
+        "session-management",
+        "conversation-persistence"
+      ],
+      "schedule": "always-on",
+      "priority": "critical",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "3000",
+        "avgTokenUsage": "500"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Sales Key Account Manager",
+      "department": "Sales",
+      "file": "sales/key-account.js",
+      "description": "Monitors active clients with health scoring, usage tracking, NPS monitoring, upsell detection, bi-weekly personalized check-in emails, churn signal flagging, and monthly health reports",
+      "capabilities": [
+        "client-health-scoring",
+        "usage-monitoring",
+        "nps-tracking",
+        "upsell-opportunity-detection",
+        "churn-signal-detection",
+        "personalized-check-in-emails",
+        "monthly-health-reports",
+        "renewal-tracking",
+        "ceo-alert-notifications"
+      ],
+      "schedule": "0 8 * * *",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "90000",
+        "avgTokenUsage": "2500"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Sales Lead Qualifier",
+      "department": "Sales",
+      "file": "sales/lead-qualifier.js",
+      "description": "Advanced lead qualification with multi-factor scoring (website quality, business size, responsiveness, budget fit), Swiss-specific signals (.ch domain, phone format, canton-tier), industry weighting, and dashboard sync",
+      "capabilities": [
+        "multi-factor-lead-scoring",
+        "website-quality-analysis",
+        "business-size-detection",
+        "responsiveness-scoring",
+        "budget-fit-assessment",
+        "swiss-signal-detection",
+        "canton-tier-scoring",
+        "industry-modifiers",
+        "qualification-tier-assignment",
+        "dashboard-sync"
+      ],
+      "schedule": "*/30 * * * *",
+      "priority": "high",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "10000",
+        "avgTokenUsage": "400"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Sales Follow-Up",
+      "department": "Sales",
+      "file": "sales/follow-up.js",
+      "description": "Intelligent follow-up email sequences with business-hours awareness (8am-6pm CET), deep personalization by industry/kanton/company, A/B test variants, escalation after 3 unanswered emails, and Swiss-compliant unsubscribe handling",
+      "capabilities": [
+        "time-of-day-awareness",
+        "follow-up-escalation",
+        "deep-personalization",
+        "ab-test-variants",
+        "multi-language-emails",
+        "business-hours-scheduling",
+        "lead-escalation-to-manual",
+        "swiss-unsubscribe-compliance",
+        "dashboard-sync"
+      ],
+      "schedule": "0 8 * * 1-5",
+      "priority": "high",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": ["Sales Lead Qualifier"],
+      "metrics": {
+        "avgExecutionTime": "15000",
+        "avgTokenUsage": "1000"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Sales Pipeline Manager",
+      "department": "Sales",
+      "file": "sales/pipeline-manager.js",
+      "description": "Intelligent pipeline management with automatic stage progression rules, stale lead detection (14-day threshold), pipeline velocity calculation per stage, and weekly pipeline summary reports with AI insights",
+      "capabilities": [
+        "automatic-stage-progression",
+        "stale-lead-detection",
+        "pipeline-velocity-calculation",
+        "weekly-pipeline-reports",
+        "stage-specific-actions",
+        "conversion-rate-tracking",
+        "at-risk-lead-identification",
+        "ai-pipeline-insights",
+        "dashboard-sync"
+      ],
+      "schedule": "0 7 * * 1-5",
+      "priority": "high",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": ["Sales Lead Qualifier"],
+      "metrics": {
+        "avgExecutionTime": "30000",
+        "avgTokenUsage": "500"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Marketing Content Engine",
+      "department": "Marketing",
+      "file": "marketing/content-engine.js",
+      "description": "Generates SEO-optimized blog content via Claude, manages content calendar (4 weeks ahead), produces multi-language content (DE/FR/EN), creates social media snippets, and performs quality checks on readability and keyword density",
+      "capabilities": [
+        "blog-article-generation",
+        "seo-optimization",
+        "content-calendar-management",
+        "multi-language-content",
+        "social-media-snippet-creation",
+        "auto-internal-linking",
+        "readability-quality-checks",
+        "keyword-density-analysis",
+        "markdown-export-for-nextjs"
+      ],
+      "schedule": "0 8 * * 1,3,5",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "120000",
+        "avgTokenUsage": "6000"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Marketing SEO Optimizer",
+      "department": "Marketing",
+      "file": "marketing/seo-optimizer.js",
+      "description": "Advanced SEO analysis with keyword density analysis, competitor keyword gap identification, Swiss-specific SEO (.ch TLD, hreflang de-CH/fr-CH/it-CH), on-page recommendations, technical SEO audits, and monthly SEO reports",
+      "capabilities": [
+        "keyword-density-analysis",
+        "competitor-keyword-gap-analysis",
+        "swiss-seo-ch-tld-hreflang",
+        "on-page-seo-recommendations",
+        "technical-seo-audit",
+        "monthly-seo-reports",
+        "dashboard-metric-sync"
+      ],
+      "schedule": "0 3 * * *",
+      "priority": "medium",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": ["Marketing Content Engine"],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "2000"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Marketing Social Media",
+      "department": "Marketing",
+      "file": "marketing/social-media.js",
+      "description": "Multi-platform social media management with platform-specific content optimization (LinkedIn, Instagram, Twitter, Facebook), Swiss market hashtag optimization, scheduling at optimal Swiss timezone slots, and A/B content variants",
+      "capabilities": [
+        "platform-specific-content-adaptation",
+        "swiss-market-hashtags",
+        "optimal-time-scheduling",
+        "engagement-metrics-tracking",
+        "ab-content-variants",
+        "swiss-german-tone",
+        "multi-format-content",
+        "social-listening",
+        "weekly-performance-analysis"
+      ],
+      "schedule": "0 7,12,17 * * 1-5",
+      "priority": "medium",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": ["Marketing Content Engine"],
+      "metrics": {
+        "avgExecutionTime": "30000",
+        "avgTokenUsage": "1500"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Marketing Email Campaigns",
+      "department": "Marketing",
+      "file": "marketing/email-marketing.js",
+      "description": "Email marketing via MailerLite API with subscriber management, campaign automation, A/B subject line testing, segmentation by language/industry/engagement, and automated sequences (Welcome, Nurture, Upsell, Re-engagement, Onboarding)",
+      "capabilities": [
+        "mailerlite-api-integration",
+        "email-sequence-automation",
+        "content-generation-in-brand-voice",
+        "ab-subject-line-testing",
+        "segmentation-by-language-industry-engagement",
+        "open-rate-click-conversion-tracking",
+        "auto-cleanup-bounces-unsubscribes",
+        "weekly-reports"
+      ],
+      "schedule": "0 9 * * 2,4",
+      "priority": "medium",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": ["Marketing Content Engine"],
+      "metrics": {
+        "avgExecutionTime": "45000",
+        "avgTokenUsage": "2000"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Marketing Performance",
+      "department": "Marketing",
+      "file": "marketing/performance-marketing.js",
+      "description": "Manages Google Ads campaign preparation, keyword management per industry/language, AI-powered ad copy generation, budget optimization (CPC/CPA/ROAS tracking), competitor ad monitoring, and landing page conversion recommendations",
+      "capabilities": [
+        "google-ads-campaign-preparation",
+        "keyword-management",
+        "ad-copy-generation",
+        "budget-optimization",
+        "cpc-cpa-roas-tracking",
+        "competitor-ad-monitoring",
+        "landing-page-recommendations",
+        "weekly-performance-reports"
+      ],
+      "schedule": "0 7 * * 1-5",
+      "priority": "medium",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "2000"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Marketing Brand Manager",
+      "department": "Marketing",
+      "file": "marketing/brand-marketing.js",
+      "description": "Maintains brand guidelines (voice, tone, colors, typography), reviews content from other agents for brand consistency via Claude, generates brand assets (email signatures, presentation templates), and creates seasonal campaign briefs",
+      "capabilities": [
+        "brand-guideline-management",
+        "content-brand-review",
+        "brand-voice-enforcement",
+        "brand-asset-generation",
+        "seasonal-campaign-briefs",
+        "email-signature-templates",
+        "presentation-templates"
+      ],
+      "schedule": "0 10 * * 1",
+      "priority": "low",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "30000",
+        "avgTokenUsage": "1500"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Marketing PR & Media",
+      "department": "Marketing",
+      "file": "marketing/pr-media.js",
+      "description": "Generates press releases for milestones, manages journalist/media contact database, pitches to Swiss media (Handelszeitung, Bilanz, NZZ, PME Magazine), creates thought leadership content, and monitors media coverage",
+      "capabilities": [
+        "press-release-generation",
+        "media-contact-management",
+        "swiss-media-pitching",
+        "thought-leadership-content",
+        "media-monitoring",
+        "press-kit-management"
+      ],
+      "schedule": "0 9 * * 1-5",
+      "priority": "low",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Product Strategy",
+      "department": "Product",
+      "file": "product/product-strategy.js",
+      "description": "Maintains product roadmap, collects and RICE-scores feature requests, monitors competitor features via web scraping, manages service packages, and generates monthly product reports",
+      "capabilities": [
+        "roadmap-management",
+        "feature-request-collection",
+        "rice-scoring",
+        "competitor-feature-monitoring",
+        "service-package-management",
+        "feature-adoption-tracking",
+        "monthly-product-reports"
+      ],
+      "schedule": "0 7 * * 1-5",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "90000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Product Innovation",
+      "department": "Product",
+      "file": "product/innovation.js",
+      "description": "Scans for new AI models/tools/APIs from Anthropic, OpenAI, and Hugging Face, runs benchmarks, manages experiments, tracks AI costs, and produces monthly innovation reports",
+      "capabilities": [
+        "ai-model-scanning",
+        "benchmark-management",
+        "experiment-tracking",
+        "ai-cost-tracking",
+        "ab-test-management",
+        "monthly-innovation-reports"
+      ],
+      "schedule": "0 5 * * 1",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "120000",
+        "avgTokenUsage": "4000"
+      }
+    },
+    {
+      "id": 22,
+      "name": "Product Customer Experience",
+      "department": "Product",
+      "file": "product/customer-experience.js",
+      "description": "Maps customer journey, manages NPS surveys, performs sentiment analysis, predicts churn, monitors onboarding flows, calculates health scores, and generates intervention recommendations",
+      "capabilities": [
+        "customer-journey-mapping",
+        "nps-survey-management",
+        "sentiment-analysis",
+        "churn-prediction",
+        "onboarding-monitoring",
+        "health-scoring",
+        "intervention-recommendations"
+      ],
+      "schedule": "0 8 * * 1-5",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "2500"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Product Pricing Strategy",
+      "department": "Product",
+      "file": "product/pricing-strategy.js",
+      "description": "Analyzes competitor pricing via web scraping, tracks price sensitivity, calculates customer LTV, recommends pricing changes, models price impact scenarios, and manages promotions",
+      "capabilities": [
+        "competitor-pricing-analysis",
+        "price-sensitivity-tracking",
+        "ltv-calculation",
+        "pricing-recommendations",
+        "price-impact-modeling",
+        "promotion-management",
+        "conversion-analysis"
+      ],
+      "schedule": "0 6 1 * *",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "90000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Product Quality Management",
+      "department": "Product",
+      "file": "product/quality-management.js",
+      "description": "Reviews all outputs from all agents before delivery, checking grammar, spelling, brand voice, factual accuracy, SEO quality, email quality, and report accuracy with per-agent quality scores and improvement feedback",
+      "capabilities": [
+        "grammar-spelling-check",
+        "brand-voice-verification",
+        "factual-accuracy-check",
+        "seo-quality-assessment",
+        "email-quality-review",
+        "report-accuracy-validation",
+        "per-agent-quality-scoring",
+        "improvement-feedback",
+        "weekly-quality-reports"
+      ],
+      "schedule": "*/30 * * * *",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "20000",
+        "avgTokenUsage": "2000"
+      }
+    },
+    {
+      "id": 25,
+      "name": "Operations Process Automation",
+      "department": "Operations",
+      "file": "operations/process-automation.js",
+      "description": "Orchestrates inter-agent workflows using task queue with workflow definitions (New Lead, New Client, Content Publish), task execution with retries (max 3), and SLA monitoring with alerts",
+      "capabilities": [
+        "workflow-orchestration",
+        "task-queue-management",
+        "workflow-definitions-json",
+        "auto-retry-failed-tasks",
+        "sla-monitoring",
+        "new-lead-workflow",
+        "new-client-workflow",
+        "content-publish-workflow"
+      ],
+      "schedule": "* * * * *",
+      "priority": "critical",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "5000",
+        "avgTokenUsage": "500"
+      }
+    },
+    {
+      "id": 26,
+      "name": "Operations Translation Engine",
+      "department": "Operations",
+      "file": "operations/translation-engine.js",
+      "description": "Multi-language translation engine with Swiss localization (DE-CH, FR-CH, IT-CH), DeepL integration for base translation, Claude for localization, customer glossary management, and support for plain text, Markdown, and HTML formats",
+      "capabilities": [
+        "language-detection",
+        "deepl-translation",
+        "claude-swiss-localization",
+        "de-ch-fr-ch-it-ch-support",
+        "customer-glossaries",
+        "plain-text-markdown-html",
+        "batch-processing",
+        "quality-assurance"
+      ],
+      "schedule": "0 6 * * *",
+      "priority": "medium",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "30000",
+        "avgTokenUsage": "1500"
+      }
+    },
+    {
+      "id": 27,
+      "name": "Operations Capacity Planning",
+      "department": "Operations",
+      "file": "operations/capacity-planning.js",
+      "description": "Tracks API usage across all agents (Claude Haiku/Sonnet/Opus, DeepL, MailerLite, Airtable), predicts costs, monitors rate limits, suggests optimizations, manages API key rotation, and provides cost breakdowns",
+      "capabilities": [
+        "api-usage-tracking",
+        "cost-prediction",
+        "rate-limit-monitoring",
+        "optimization-suggestions",
+        "api-key-rotation-management",
+        "cost-breakdown-reports",
+        "budget-alerts",
+        "daily-cost-reports",
+        "weekly-optimization-review"
+      ],
+      "schedule": "0 * * * *",
+      "priority": "high",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "15000",
+        "avgTokenUsage": "500"
+      }
+    },
+    {
+      "id": 28,
+      "name": "Operations Service Quality",
+      "department": "Operations",
+      "file": "operations/service-quality.js",
+      "description": "Real-time monitoring of client deliverables with SLA tracking, feedback integration, complaint handling with categorization, quality trend analysis, and monthly quality reporting to CEO",
+      "capabilities": [
+        "sla-compliance-monitoring",
+        "complaint-handling",
+        "feedback-integration",
+        "quality-trend-analysis",
+        "daily-quality-summary",
+        "weekly-trend-reports",
+        "monthly-ceo-report"
+      ],
+      "schedule": "*/15 * * * *",
+      "priority": "high",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "20000",
+        "avgTokenUsage": "1000"
+      }
+    },
+    {
+      "id": 29,
+      "name": "Operations Infrastructure",
+      "department": "Operations",
+      "file": "operations/infrastructure.js",
+      "description": "Monitors website uptime, API health, email deliverability with 5-minute health checks, manages daily Airtable data backups, security scanning for exposed keys, SSL expiry monitoring, and auto-restart for crashed agents",
+      "capabilities": [
+        "endpoint-health-checks",
+        "uptime-monitoring",
+        "api-health-monitoring",
+        "email-deliverability-check",
+        "daily-airtable-backup",
+        "ssl-expiry-monitoring",
+        "security-key-scanning",
+        "auto-restart-crashed-agents",
+        "performance-reporting"
+      ],
+      "schedule": "*/5 * * * *",
+      "priority": "critical",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "10000",
+        "avgTokenUsage": "200"
+      }
+    },
+    {
+      "id": 30,
+      "name": "Finance Controlling",
+      "department": "Finance",
+      "file": "finance/controlling.js",
+      "description": "Tracks P&L per client, service, and industry with unit economics calculation, margin analysis, budget vs actual comparison, monthly P&L statements in Markdown, and alerts when margins fall below 80%",
+      "capabilities": [
+        "client-level-pl-tracking",
+        "service-level-pl-tracking",
+        "industry-level-pl-tracking",
+        "unit-economics-calculation",
+        "margin-analysis",
+        "budget-vs-actual",
+        "monthly-pl-statements",
+        "margin-alerts-below-80pct",
+        "profitability-ranking",
+        "dashboard-sync"
+      ],
+      "schedule": "0 6 * * *",
+      "priority": "critical",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 31,
+      "name": "Finance FP&A",
+      "department": "Finance",
+      "file": "finance/fpa.js",
+      "description": "Financial Planning & Analysis with revenue forecasting (MRR, NRR, growth rate), cash flow projections, scenario modeling (bull/base/bear), cohort analysis, growth metrics, linear regression prediction, and board-ready dashboards",
+      "capabilities": [
+        "mrr-nrr-calculation",
+        "revenue-forecasting",
+        "cash-flow-projections",
+        "scenario-modeling",
+        "cohort-analysis",
+        "growth-metrics",
+        "linear-regression-prediction",
+        "forecast-accuracy-tracking",
+        "burn-rate-calculation",
+        "board-dashboards"
+      ],
+      "schedule": "0 5 * * 1",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": ["Finance Controlling"],
+      "metrics": {
+        "avgExecutionTime": "90000",
+        "avgTokenUsage": "4000"
+      }
+    },
+    {
+      "id": 32,
+      "name": "Finance Treasury",
+      "department": "Finance",
+      "file": "finance/treasury.js",
+      "description": "Swiss QR Bill invoice generation, auto-sending after service delivery, payment tracking and matching, dunning process (15/30/45 day escalation), Treuhand-compatible exports, and MWST/VAT tracking",
+      "capabilities": [
+        "swiss-qr-bill-generation",
+        "auto-invoice-sending",
+        "payment-tracking-matching",
+        "dunning-15-30-45-days",
+        "treuhand-exports",
+        "mwst-vat-tracking",
+        "payment-reminders",
+        "overdue-alerts"
+      ],
+      "schedule": "0 7 * * *",
+      "priority": "critical",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": ["Finance Controlling"],
+      "metrics": {
+        "avgExecutionTime": "45000",
+        "avgTokenUsage": "1500"
+      }
+    },
+    {
+      "id": 33,
+      "name": "Finance Fundraising",
+      "department": "Finance",
+      "file": "finance/fundraising.js",
+      "description": "Manages investor-ready data room, auto-updates KPI dashboard with investor metrics, generates pitch deck data, tracks investors, prepares bank loan documentation, and models funding scenarios",
+      "capabilities": [
+        "data-room-management",
+        "investor-kpi-dashboard",
+        "pitch-deck-data-generation",
+        "investor-tracking",
+        "bank-loan-documentation",
+        "funding-scenario-modeling",
+        "weekly-kpi-refresh"
+      ],
+      "schedule": "0 8 * * 5",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": ["Finance Controlling", "Finance FP&A"],
+      "metrics": {
+        "avgExecutionTime": "120000",
+        "avgTokenUsage": "4000"
+      }
+    },
+    {
+      "id": 34,
+      "name": "Finance M&A Scout",
+      "department": "Finance",
+      "file": "finance/ma-scout.js",
+      "description": "Identifies acquisition targets (translation bureaus, agencies, SaaS), monitors Handelsregister for opportunities, tracks consolidation trends, generates acquisition briefs, and values targets using revenue/EBITDA multiples and synergy analysis",
+      "capabilities": [
+        "acquisition-target-identification",
+        "handelsregister-monitoring",
+        "consolidation-trend-tracking",
+        "acquisition-brief-generation",
+        "revenue-multiple-valuation",
+        "ebitda-multiple-valuation",
+        "synergy-valuation",
+        "target-scoring"
+      ],
+      "schedule": "0 4 * * 3",
+      "priority": "low",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": ["Finance Controlling"],
+      "metrics": {
+        "avgExecutionTime": "180000",
+        "avgTokenUsage": "5000"
+      }
+    },
+    {
+      "id": 35,
+      "name": "Strategy Market Analyst",
+      "department": "Strategy",
+      "file": "strategy/market-analyst.js",
+      "description": "Advanced Swiss KMU market analysis with TAM/SAM/SOM calculation, market size estimation by industry, growth trend tracking, competitive positioning matrix, and quarterly market intelligence briefings with dashboard sync",
+      "capabilities": [
+        "tam-sam-som-calculation",
+        "market-size-estimation",
+        "growth-trend-tracking",
+        "competitive-positioning-matrix",
+        "quarterly-market-reports",
+        "dashboard-sync",
+        "digitalization-trend-tracking",
+        "ai-adoption-monitoring",
+        "seasonal-pattern-analysis"
+      ],
+      "schedule": "0 4 1 1,4,7,10 *",
+      "priority": "high",
+      "model": "opus",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "300000",
+        "avgTokenUsage": "8000"
+      }
+    },
+    {
+      "id": 37,
+      "name": "Strategy OKR Tracker",
+      "department": "Strategy",
+      "file": "strategy/okr-tracker.js",
+      "description": "Tracks OKR progress with confidence scoring, automated status updates from pipeline/agent data, alignment visualization (company to department to team), risk flagging for at-risk OKRs, and weekly OKR summary for CEO",
+      "capabilities": [
+        "okr-progress-calculation",
+        "confidence-scoring",
+        "automated-status-updates",
+        "alignment-visualization",
+        "risk-flagging",
+        "weekly-okr-summary",
+        "historical-completion-tracking",
+        "monthly-review"
+      ],
+      "schedule": "0 8 * * 1",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "60000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 38,
+      "name": "Strategy M&A Analysis",
+      "department": "Strategy",
+      "file": "strategy/ma-analysis.js",
+      "description": "Performs due diligence, financial modeling (DCF, comparable company, revenue multiples), integration planning, risk assessment, and synergy analysis for potential acquisition targets",
+      "capabilities": [
+        "due-diligence",
+        "dcf-valuation",
+        "comparable-company-analysis",
+        "revenue-multiple-valuation",
+        "integration-planning",
+        "risk-assessment",
+        "synergy-analysis"
+      ],
+      "schedule": "0 6 * * 1",
+      "priority": "medium",
+      "model": "opus",
+      "status": "active",
+      "dependencies": ["Finance Controlling", "Strategy Market Analyst"],
+      "metrics": {
+        "avgExecutionTime": "240000",
+        "avgTokenUsage": "6000"
+      }
+    },
+    {
+      "id": 39,
+      "name": "Strategy Market Expansion",
+      "department": "Strategy",
+      "file": "strategy/market-expansion.js",
+      "description": "Analyzes new market potential across DACH, BeNeLux, and France with TAM/SAM/SOM sizing, competitive landscape evaluation, regulatory requirements, localization needs, and go-to-market strategy proposals",
+      "capabilities": [
+        "market-potential-analysis",
+        "dach-benelux-france-markets",
+        "tam-sam-som-sizing",
+        "competitive-landscape",
+        "regulatory-requirements",
+        "localization-needs",
+        "gtm-strategy-proposals",
+        "quarterly-reporting"
+      ],
+      "schedule": "0 5 1 1,4,7,10 *",
+      "priority": "medium",
+      "model": "opus",
+      "status": "active",
+      "dependencies": ["Strategy Market Analyst"],
+      "metrics": {
+        "avgExecutionTime": "300000",
+        "avgTokenUsage": "8000"
+      }
+    },
+    {
+      "id": 40,
+      "name": "Strategy Competitor Intelligence",
+      "department": "Strategy",
+      "file": "strategy/competitor-intel.js",
+      "description": "Monitors 10-15 competitors weekly via Puppeteer screenshots, pricing/services/blog/social/job posting tracking, win/loss analysis, SWOT analysis via Claude, feature comparison matrix, and monthly competitive reports",
+      "capabilities": [
+        "competitor-website-monitoring",
+        "puppeteer-screenshots",
+        "pricing-tracking",
+        "feature-comparison-matrix",
+        "social-media-tracking",
+        "job-posting-analysis",
+        "win-loss-analysis",
+        "swot-analysis",
+        "weekly-briefings",
+        "monthly-competitive-reports",
+        "dashboard-sync"
+      ],
+      "schedule": "0 3 * * 2",
+      "priority": "high",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "300000",
+        "avgTokenUsage": "5000"
+      }
+    },
+    {
+      "id": 41,
+      "name": "Strategy Business Development",
+      "department": "Strategy",
+      "file": "strategy/bizdev.js",
+      "description": "Evaluates business models (white-label, API-as-a-service, vertical SaaS, franchise), performs revenue modeling per model, identifies partnership opportunities, builds business cases with projected P&L, and manages innovation pipeline",
+      "capabilities": [
+        "business-model-evaluation",
+        "revenue-modeling",
+        "partnership-opportunity-identification",
+        "business-case-building",
+        "projected-pl-generation",
+        "innovation-pipeline-management",
+        "bi-weekly-reporting"
+      ],
+      "schedule": "0 7 1,15 * *",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": ["Strategy Market Analyst", "Finance Controlling"],
+      "metrics": {
+        "avgExecutionTime": "180000",
+        "avgTokenUsage": "5000"
+      }
+    },
+    {
+      "id": 42,
+      "name": "HR Recruiting",
+      "department": "HR",
+      "file": "hr/recruiting.js",
+      "description": "Manages freelancer recruitment pipeline with AI-optimized job postings per platform (Fiverr, Upwork, RemoteOK, jobs.ch, LinkedIn), AI-powered application screening, test task scheduling, performance tracking, and contract/NDA management",
+      "capabilities": [
+        "job-posting-generation",
+        "multi-platform-optimization",
+        "ai-application-screening",
+        "test-task-scheduling",
+        "freelancer-performance-tracking",
+        "contract-nda-management",
+        "pipeline-health-monitoring",
+        "dashboard-sync"
+      ],
+      "schedule": "0 8 * * 1-5",
+      "priority": "medium",
+      "model": "sonnet",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "90000",
+        "avgTokenUsage": "3000"
+      }
+    },
+    {
+      "id": 43,
+      "name": "Master Orchestrator",
+      "department": "System",
+      "file": "orchestrator.js",
+      "description": "Boots all 42 agents in dependency order, manages health monitoring with 5-minute intervals, inter-agent messaging via event bus, performance scoring, nightly self-optimization, and provides a dashboard API on port 3001",
+      "capabilities": [
+        "dependency-ordered-boot",
+        "health-monitoring",
+        "inter-agent-messaging",
+        "performance-scoring",
+        "nightly-self-optimization",
+        "dashboard-api-port-3001",
+        "agent-restart-management",
+        "message-bus",
+        "global-restart-throttling"
+      ],
+      "schedule": "always-on",
+      "priority": "critical",
+      "model": "haiku",
+      "status": "active",
+      "dependencies": [],
+      "metrics": {
+        "avgExecutionTime": "continuous",
+        "avgTokenUsage": "1000"
+      }
+    }
+  ],
+  "departments": {
+    "CEO": {
+      "agents": [2, 3, 4],
+      "lead": 2,
+      "description": "Executive briefings, decision support, and CEO productivity management"
+    },
+    "Sales": {
+      "agents": [5, 6, 7, 8, 9, 10, 11, 12],
+      "lead": 12,
+      "description": "New business outreach, partnerships, pricing, chat bot, key accounts, lead qualification, follow-ups, and pipeline management"
+    },
+    "Marketing": {
+      "agents": [13, 14, 15, 16, 17, 18, 19],
+      "lead": 13,
+      "description": "Content creation, SEO, social media, email campaigns, performance marketing, brand management, and PR/media"
+    },
+    "Product": {
+      "agents": [20, 21, 22, 23, 24],
+      "lead": 20,
+      "description": "Product strategy, innovation scanning, customer experience, pricing strategy, and quality management"
+    },
+    "Operations": {
+      "agents": [25, 26, 27, 28, 29],
+      "lead": 25,
+      "description": "Process automation, translation, capacity planning, service quality, and infrastructure monitoring"
+    },
+    "Finance": {
+      "agents": [30, 31, 32, 33, 34],
+      "lead": 30,
+      "description": "Controlling/P&L, financial planning, treasury/invoicing, fundraising, and M&A scouting"
+    },
+    "Strategy": {
+      "agents": [35, 37, 38, 39, 40, 41],
+      "lead": 35,
+      "description": "Market analysis, OKR tracking, M&A analysis, market expansion, competitor intelligence, and business development"
+    },
+    "HR": {
+      "agents": [42],
+      "lead": 42,
+      "description": "Freelancer recruiting, training, employer branding, performance management, and compensation"
+    },
+    "System": {
+      "agents": [43],
+      "lead": 43,
+      "description": "Master orchestrator for booting, health monitoring, and inter-agent coordination"
+    }
+  },
+  "unmapped_agents": {
+    "description": "Additional agent files that exist but are not in the 43-agent registry. These operate as part of their respective departments but share IDs or serve as extended capabilities.",
+    "files": [
+      {
+        "file": "hr/training.js",
+        "name": "HR Training Agent",
+        "description": "Generates SOPs, onboarding guides, knowledge base management, skill assessments, and training materials",
+        "department": "HR"
+      },
+      {
+        "file": "hr/employer-branding.js",
+        "name": "HR Employer Branding Agent",
+        "description": "LinkedIn employer content, Glassdoor responses, hiring posts, culture content, and freelancer testimonials",
+        "department": "HR"
+      },
+      {
+        "file": "hr/performance.js",
+        "name": "HR Performance Management Agent",
+        "description": "Freelancer performance tracking, monthly reviews, bonus calculation, PIPs, and team capacity analysis",
+        "department": "HR"
+      },
+      {
+        "file": "hr/compensation.js",
+        "name": "HR Compensation Agent",
+        "description": "Market rate research, compensation benchmarking, rate card management, invoice processing, and payment scheduling",
+        "department": "HR"
+      },
+      {
+        "file": "it/systems.js",
+        "name": "IT Systems Agent",
+        "description": "Tool integrations, API health monitoring, data sync, config management, and agent version tracking",
+        "department": "IT"
+      },
+      {
+        "file": "it/automation.js",
+        "name": "IT Automation Agent",
+        "description": "Master workflow orchestrator with error handling, retry logic, performance optimization, and automation suggestions",
+        "department": "IT"
+      },
+      {
+        "file": "it/data-analytics.js",
+        "name": "IT Data Analytics Agent",
+        "description": "Central data warehouse with dashboard API, standard reports, anomaly detection, and natural language queries",
+        "department": "IT"
+      },
+      {
+        "file": "it/ai-optimization.js",
+        "name": "IT AI Optimization Agent",
+        "description": "Prompt A/B testing, model selection, cost tracking, quality benchmarks, and monthly spend reports",
+        "department": "IT"
+      },
+      {
+        "file": "it/infrastructure-monitor.js",
+        "name": "IT Infrastructure Monitor Agent",
+        "description": "Endpoint availability, response times, SSL certificate expiry, disk space, memory/CPU usage monitoring",
+        "department": "IT"
+      },
+      {
+        "file": "it/security-scanner.js",
+        "name": "IT Security Scanner Agent",
+        "description": "Dependency vulnerability scanning, SSL/TLS grading, HTTP header auditing, API key rotation tracking, security reports",
+        "department": "IT"
+      }
+    ]
+  }
+}

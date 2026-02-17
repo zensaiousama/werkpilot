@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-02-13T00:00:00.000Z",
+  "version": "1.0.0",
+  "summary": "Initial model recommendations based on task type analysis. Focus on using Haiku for high-volume, low-complexity tasks and reserving Opus for strategic decisions.",
+  "recommendations": [
+    {
+      "taskType": "lead_classification",
+      "currentModel": "standard",
+      "recommendedModel": "fast",
+      "agents": ["sales-lead-qualifier"],
+      "reason": "Lead classification is a simple categorization task that Haiku handles with 88%+ quality at 75% lower cost",
+      "estimatedSavings": "CHF 15-25/month",
+      "qualityImpact": "none"
+    },
+    {
+      "taskType": "email_routing",
+      "currentModel": "standard",
+      "recommendedModel": "fast",
+      "agents": ["it-automation"],
+      "reason": "Email routing/classification requires simple pattern matching, ideal for Haiku",
+      "estimatedSavings": "CHF 10-15/month",
+      "qualityImpact": "none"
+    },
+    {
+      "taskType": "content_creation",
+      "currentModel": "standard",
+      "recommendedModel": "standard",
+      "agents": ["marketing-content-creator", "marketing-social-media"],
+      "reason": "Content creation benefits from Sonnet's balance of quality and cost. No change needed.",
+      "estimatedSavings": "CHF 0/month",
+      "qualityImpact": "none"
+    },
+    {
+      "taskType": "strategic_analysis",
+      "currentModel": "powerful",
+      "recommendedModel": "powerful",
+      "agents": ["ceo-strategic-advisor", "strategy-market-analyst"],
+      "reason": "Strategic analysis requires Opus-level reasoning. Keep current model.",
+      "estimatedSavings": "CHF 0/month",
+      "qualityImpact": "none"
+    },
+    {
+      "taskType": "report_generation",
+      "currentModel": "powerful",
+      "recommendedModel": "standard",
+      "agents": ["it-data-analytics"],
+      "reason": "Weekly reports can use Sonnet for 80% cost reduction with minimal quality impact. Reserve Opus for monthly strategic reports only.",
+      "estimatedSavings": "CHF 30-50/month",
+      "qualityImpact": "minor"
+    },
+    {
+      "taskType": "bug_triage",
+      "currentModel": "standard",
+      "recommendedModel": "fast",
+      "agents": ["product-bug-triager"],
+      "reason": "Bug triage is primarily classification with short outputs, suitable for Haiku",
+      "estimatedSavings": "CHF 8-12/month",
+      "qualityImpact": "none"
+    }
+  ],
+  "totalEstimatedMonthlySavings": "CHF 63-102",
+  "nextReviewDate": "2026-03-13"
+}

@@ -1,0 +1,150 @@
+{
+  "tableName": "Decisions",
+  "description": "Tracks all CEO decisions requiring analysis and action",
+  "fields": [
+    {
+      "name": "Title",
+      "type": "singleLineText",
+      "description": "Short title of the decision needed"
+    },
+    {
+      "name": "Category",
+      "type": "singleSelect",
+      "options": [
+        "client-issues",
+        "pricing",
+        "agent-errors",
+        "strategy",
+        "partnerships"
+      ],
+      "description": "Decision category for routing to correct handler"
+    },
+    {
+      "name": "Status",
+      "type": "singleSelect",
+      "options": [
+        "new",
+        "analyzing",
+        "awaiting-decision",
+        "decided",
+        "implemented",
+        "archived"
+      ],
+      "description": "Current status in the decision pipeline"
+    },
+    {
+      "name": "Urgency",
+      "type": "singleSelect",
+      "options": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
+      "description": "Urgency level affecting response time"
+    },
+    {
+      "name": "Description",
+      "type": "multilineText",
+      "description": "Full description of the situation requiring a decision"
+    },
+    {
+      "name": "Context",
+      "type": "multilineText",
+      "description": "Additional context gathered by AI analysis"
+    },
+    {
+      "name": "Options",
+      "type": "multilineText",
+      "description": "JSON array of option objects with title, description, pros, cons, impact"
+    },
+    {
+      "name": "AIRecommendation",
+      "type": "multilineText",
+      "description": "Claude AI recommendation with reasoning"
+    },
+    {
+      "name": "CEODecision",
+      "type": "singleLineText",
+      "description": "The option chosen by the CEO"
+    },
+    {
+      "name": "DecisionRationale",
+      "type": "multilineText",
+      "description": "CEO's reasoning for the decision"
+    },
+    {
+      "name": "Outcome",
+      "type": "multilineText",
+      "description": "Result after implementation for learning"
+    },
+    {
+      "name": "OutcomeRating",
+      "type": "singleSelect",
+      "options": [
+        "excellent",
+        "good",
+        "neutral",
+        "poor"
+      ],
+      "description": "How well the decision worked out"
+    },
+    {
+      "name": "RelatedClient",
+      "type": "singleLineText",
+      "description": "Client name if applicable"
+    },
+    {
+      "name": "FinancialImpact",
+      "type": "number",
+      "description": "Estimated financial impact in CHF"
+    },
+    {
+      "name": "CreatedAt",
+      "type": "dateTime",
+      "description": "When the decision request was created"
+    },
+    {
+      "name": "DecidedAt",
+      "type": "dateTime",
+      "description": "When the CEO made the decision"
+    },
+    {
+      "name": "ImplementedAt",
+      "type": "dateTime",
+      "description": "When the decision was implemented"
+    },
+    {
+      "name": "SourceAgent",
+      "type": "singleLineText",
+      "description": "Which agent or system flagged this decision"
+    },
+    {
+      "name": "Tags",
+      "type": "multipleSelects",
+      "description": "Tags for filtering and reporting"
+    }
+  ],
+  "views": [
+    {
+      "name": "New Decisions",
+      "filter": "Status = 'new'",
+      "sort": "Urgency DESC, CreatedAt ASC"
+    },
+    {
+      "name": "Awaiting CEO",
+      "filter": "Status = 'awaiting-decision'",
+      "sort": "Urgency DESC, CreatedAt ASC"
+    },
+    {
+      "name": "Decision History",
+      "filter": "Status = 'decided' OR Status = 'implemented'",
+      "sort": "DecidedAt DESC"
+    },
+    {
+      "name": "Learning Board",
+      "filter": "OutcomeRating != ''",
+      "sort": "DecidedAt DESC"
+    }
+  ]
+}

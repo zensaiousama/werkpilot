@@ -57,7 +57,8 @@ async function scrapeGoogleMaps(query: string, maxResults: number): Promise<Scra
   // Try Puppeteer if available, otherwise fall back to simulated results
   // that demonstrate the UI structure
   try {
-    const puppeteer = await import('puppeteer');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const puppeteer = await import(/* webpackIgnore: true */ 'puppeteer' as string);
     const browser = await puppeteer.default.launch({
       headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],

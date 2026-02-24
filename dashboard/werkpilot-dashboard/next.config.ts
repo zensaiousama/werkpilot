@@ -126,7 +126,7 @@ const nextConfig: NextConfig = {
   // ─── Turbopack ─────────────────────────────────────────
   turbopack: {},
 
-  serverExternalPackages: ["puppeteer", "better-sqlite3"],
+  serverExternalPackages: [],
 };
 
 export default nextConfig;

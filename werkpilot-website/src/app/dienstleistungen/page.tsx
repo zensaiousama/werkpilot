@@ -76,7 +76,7 @@ const packages = [
     tagline: 'Für wachsende Unternehmen',
     price: 'Ab CHF 7\'500',
     period: 'pro Monat',
-    description: 'Alle 43 Agenten + maßgeschneiderte Strategien, Consulting und persönlicher Account Manager.',
+    description: 'Alle 43 Agenten + massgeschneiderte Strategien, Consulting und persönlicher Account Manager.',
     features: [
       { name: 'Alle Agenten aus "Effizienz"', included: true },
       { name: 'Custom AI Agent Development', included: true },

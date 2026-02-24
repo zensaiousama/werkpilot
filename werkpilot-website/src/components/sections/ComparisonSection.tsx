@@ -23,10 +23,10 @@ const comparisons = [
     label: 'Werkpilot',
     price: "CHF 1'500",
     period: '/Monat',
-    features: ['43 Spezialisten, 24/7 im Einsatz', 'Keine Mindestlaufzeit', 'Sofort einsatzbereit (48h)', 'Marketing + Sales + Admin'],
+    features: ['AI-Automatisierung, 24/7 im Einsatz', 'Keine Mindestlaufzeit', 'Sofort einsatzbereit (48h)', 'Marketing + Sales + Admin'],
     highlight: true,
     strikethrough: false,
-    badge: 'Sparen Sie bis zu 78%',
+    badge: 'Die smarte Alternative',
   },
 ];
 

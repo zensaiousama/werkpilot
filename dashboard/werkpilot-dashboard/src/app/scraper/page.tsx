@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import {
   Search,
   Download,
@@ -21,7 +21,18 @@ import {
   Smartphone,
   AlertCircle,
   ExternalLink,
+  Plus,
+  X,
+  ListChecks,
+  AlertTriangle,
+  Copy,
+  UserPlus,
+  BarChart3,
+  CircleDot,
 } from 'lucide-react';
+import Breadcrumb from '@/components/Breadcrumb';
+import { Sparkline } from '@/components/MiniBarChart';
+import { useToast } from '@/components/Toast';
 
 interface ScrapeResult {
   name: string;
@@ -142,7 +153,49 @@ function getScoreBadgeColor(score: number): string {
   return 'var(--red)';
 }
 
+function computeQualityScore(result: ScrapeResult): number {
+  let score = 0;
+  if (result.phone) score += 20;
+  if (result.email) score += 25;
+  if (result.website) score += 20;
+  if (result.rating !== null && result.rating > 4.0) score += 15;
+  if (result.reviews !== null && result.reviews > 10) score += 20;
+  return score;
+}
+
+function getQualityLabel(score: number): string {
+  if (score >= 80) return 'Hoch';
+  if (score >= 60) return 'Mittel';
+  return 'Tief';
+}
+
+function getQualityDotClass(score: number): string {
+  if (score >= 80) return 'active';
+  if (score >= 60) return 'warning';
+  return 'error';
+}
+
+function findDuplicates(results: ScrapeResult[]): Set<number> {
+  const dupes = new Set<number>();
+  for (let i = 0; i < results.length; i++) {
+    for (let j = i + 1; j < results.length; j++) {
+      const nameMatch =
+        results[i].name.toLowerCase().trim() === results[j].name.toLowerCase().trim();
+      const addrMatch =
+        results[i].address &&
+        results[j].address &&
+        results[i].address.toLowerCase().trim() === results[j].address.toLowerCase().trim();
+      if (nameMatch || addrMatch) {
+        dupes.add(i);
+        dupes.add(j);
+      }
+    }
+  }
+  return dupes;
+}
+
 export default function ScraperPage() {
+  const { toast } = useToast();
   const [query, setQuery] = useState('');
   const [maxResults, setMaxResults] = useState(20);
   const [results, setResults] = useState<ScrapeResult[]>([]);
@@ -160,6 +213,121 @@ export default function ScraperPage() {
     totalImported: 0,
     avgRating: 0,
   });
+
+  // Batch queue state
+  const [batchQueue, setBatchQueue] = useState<string[]>([]);
+  const [batchInput, setBatchInput] = useState('');
+  const [batchRunning, setBatchRunning] = useState(false);
+  const [batchProgress, setBatchProgress] = useState({ current: 0, total: 0 });
+
+  // Duplicate detection
+  const duplicateIndices = useMemo(() => findDuplicates(results), [results]);
+  const duplicateCount = useMemo(() => {
+    const uniqueNames = new Set<string>();
+    duplicateIndices.forEach((idx) => {
+      if (results[idx]) uniqueNames.add(results[idx].name.toLowerCase().trim());
+    });
+    return uniqueNames.size;
+  }, [duplicateIndices, results]);
+
+  // Quality breakdown for summary bar
+  const qualityBreakdown = useMemo(() => {
+    let high = 0;
+    let medium = 0;
+    let low = 0;
+    results.forEach((r) => {
+      const score = computeQualityScore(r);
+      if (score >= 80) high++;
+      else if (score >= 60) medium++;
+      else low++;
+    });
+    return { high, medium, low };
+  }, [results]);
+
+  // Track which results are "new" (not yet imported) for visual distinction
+  const [resultsKey, setResultsKey] = useState(0);
+
+  // Bump key when results change to re-trigger stagger animation
+  const prevResultsLength = useRef(0);
+  useEffect(() => {
+    if (results.length !== prevResultsLength.current) {
+      setResultsKey((k) => k + 1);
+      prevResultsLength.current = results.length;
+    }
+  }, [results]);
+
+  // Sparkline data from history
+  const sparklineData = useMemo(
+    () => history.map((h) => h.resultCount).reverse(),
+    [history]
+  );
+
+  const addToQueue = useCallback(() => {
+    const val = batchInput.trim();
+    if (!val || batchQueue.includes(val)) return;
+    setBatchQueue((prev) => [...prev, val]);
+    setBatchInput('');
+  }, [batchInput, batchQueue]);
+
+  const removeFromQueue = useCallback((index: number) => {
+    setBatchQueue((prev) => prev.filter((_, i) => i !== index));
+  }, []);
+
+  const handleBatchScrape = useCallback(async () => {
+    if (batchQueue.length === 0 || batchRunning) return;
+    setBatchRunning(true);
+    setBatchProgress({ current: 0, total: batchQueue.length });
+    let allResults: ScrapeResult[] = [];
+
+    for (let i = 0; i < batchQueue.length; i++) {
+      const q = batchQueue[i];
+      setBatchProgress({ current: i + 1, total: batchQueue.length });
+      setProgress(((i + 1) / batchQueue.length) * 100);
+
+      try {
+        const res = await fetch('/api/scrape', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: q, maxResults }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const scraped = data.results || [];
+          allResults = [...allResults, ...scraped];
+
+          setHistory((prev) => [
+            {
+              query: q,
+              resultCount: scraped.length,
+              timestamp: new Date(),
+              cached: data.cached || false,
+            },
+            ...prev.slice(0, 4),
+          ]);
+        }
+      } catch {
+        toast(`Fehler bei "${q}"`, 'error');
+      }
+    }
+
+    setResults(allResults);
+    setImportedIndices(new Set());
+    setFitnessResults(new Map());
+
+    const totalRating = allResults.reduce((sum, r) => sum + (r.rating || 0), 0);
+    const validRatings = allResults.filter((r) => r.rating !== null).length;
+    setStatistics((prev) => ({
+      totalScraped: prev.totalScraped + allResults.length,
+      totalImported: prev.totalImported,
+      avgRating: validRatings > 0 ? totalRating / validRatings : 0,
+    }));
+
+    setBatchQueue([]);
+    setBatchRunning(false);
+    setProgress(0);
+    toast(`Batch abgeschlossen: ${allResults.length} Ergebnisse`, 'success');
+  }, [batchQueue, batchRunning, maxResults, toast]);
 
   const handleSearch = useCallback(async () => {
     if (!query.trim()) return;
@@ -346,6 +514,7 @@ export default function ScraperPage() {
 
   return (
     <div className="space-y-6">
+      <Breadcrumb items={[{ label: 'Lead Scraper' }]} />
       {/* Header */}
       <div>
         <h1
@@ -365,6 +534,7 @@ export default function ScraperPage() {
           className="card-glass-premium p-5 rounded-xl"
           style={{
             borderColor: 'color-mix(in srgb, var(--green) 20%, var(--border))',
+            boxShadow: '0 0 20px rgba(34, 197, 94, 0.06), inset 0 1px 0 rgba(34, 197, 94, 0.08)',
           }}
         >
           <div className="flex items-center gap-3">
@@ -392,6 +562,7 @@ export default function ScraperPage() {
           className="card-glass-premium p-5 rounded-xl"
           style={{
             borderColor: 'color-mix(in srgb, var(--green) 20%, var(--border))',
+            boxShadow: '0 0 20px rgba(34, 197, 94, 0.06), inset 0 1px 0 rgba(34, 197, 94, 0.08)',
           }}
         >
           <div className="flex items-center gap-3">
@@ -419,6 +590,7 @@ export default function ScraperPage() {
           className="card-glass-premium p-5 rounded-xl"
           style={{
             borderColor: 'color-mix(in srgb, var(--green) 20%, var(--border))',
+            boxShadow: '0 0 20px rgba(34, 197, 94, 0.06), inset 0 1px 0 rgba(34, 197, 94, 0.08)',
           }}
         >
           <div className="flex items-center gap-3">
@@ -433,7 +605,7 @@ export default function ScraperPage() {
                 className="text-2xl font-bold tabular-nums"
                 style={{ fontFamily: 'var(--font-mono)', color: 'var(--green)' }}
               >
-                {statistics.avgRating > 0 ? statistics.avgRating.toFixed(1) : '—'}
+                {statistics.avgRating > 0 ? statistics.avgRating.toFixed(1) : '\u2014'}
               </div>
               <div className="text-xs" style={{ color: 'var(--text-muted)' }}>
                 Durchschn. Rating
@@ -541,6 +713,142 @@ export default function ScraperPage() {
         </div>
       </div>
 
+      {/* Batch Scrape Queue */}
+      <div
+        className="card-glass-premium p-4 md:p-6 rounded-xl"
+        style={{
+          borderColor: 'color-mix(in srgb, var(--purple) 20%, var(--border))',
+          boxShadow: '0 0 20px rgba(168, 85, 247, 0.04)',
+        }}
+      >
+        <div className="flex items-center gap-2 mb-4">
+          <ListChecks size={18} style={{ color: 'var(--purple)' }} />
+          <h2
+            className="text-sm font-bold"
+            style={{ fontFamily: 'var(--font-mono)', color: 'var(--purple)' }}
+          >
+            BATCH SCRAPE QUEUE
+          </h2>
+          {batchQueue.length > 0 && (
+            <span
+              className="px-2 py-0.5 rounded-full text-xs font-bold"
+              style={{
+                backgroundColor: 'color-mix(in srgb, var(--purple) 15%, transparent)',
+                color: 'var(--purple)',
+                fontFamily: 'var(--font-mono)',
+              }}
+            >
+              {batchQueue.length}
+            </span>
+          )}
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-2 mb-3">
+          <div
+            className="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg border"
+            style={{ backgroundColor: 'var(--bg)', borderColor: 'var(--border)' }}
+          >
+            <Plus size={16} style={{ color: 'var(--purple)', flexShrink: 0 }} />
+            <input
+              type="text"
+              value={batchInput}
+              onChange={(e) => setBatchInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && addToQueue()}
+              placeholder="Suchbegriff zur Queue hinzufügen..."
+              className="flex-1 bg-transparent outline-none text-sm"
+              style={{ color: 'var(--text)', fontFamily: 'var(--font-dm-sans)' }}
+            />
+          </div>
+          <button
+            onClick={addToQueue}
+            disabled={!batchInput.trim()}
+            className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-all"
+            style={{
+              backgroundColor: batchInput.trim() ? 'var(--purple)' : 'var(--surface-hover)',
+              color: batchInput.trim() ? '#000' : 'var(--text-muted)',
+              cursor: batchInput.trim() ? 'pointer' : 'not-allowed',
+            }}
+          >
+            <Plus size={14} />
+            Hinzufügen
+          </button>
+        </div>
+
+        {batchQueue.length > 0 && (
+          <div className="space-y-1.5 mb-3">
+            {batchQueue.map((item, idx) => (
+              <div
+                key={`${item}-${idx}`}
+                className="flex items-center justify-between px-3 py-2 rounded-lg"
+                style={{ backgroundColor: 'var(--bg)' }}
+              >
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <span
+                    className="text-xs font-bold w-5 text-center"
+                    style={{ fontFamily: 'var(--font-mono)', color: 'var(--purple)' }}
+                  >
+                    {idx + 1}
+                  </span>
+                  <span className="text-sm truncate" style={{ color: 'var(--text)' }}>
+                    {item}
+                  </span>
+                  {batchRunning && batchProgress.current === idx + 1 && (
+                    <Loader2
+                      size={12}
+                      className="animate-spin shrink-0"
+                      style={{ color: 'var(--purple)' }}
+                    />
+                  )}
+                </div>
+                <button
+                  onClick={() => removeFromQueue(idx)}
+                  disabled={batchRunning}
+                  className="p-1 rounded transition-colors"
+                  style={{
+                    color: 'var(--text-muted)',
+                    cursor: batchRunning ? 'not-allowed' : 'pointer',
+                  }}
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleBatchScrape}
+            disabled={batchQueue.length === 0 || batchRunning}
+            className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all min-h-[40px]"
+            style={{
+              backgroundColor:
+                batchQueue.length === 0 || batchRunning ? 'var(--surface-hover)' : 'var(--purple)',
+              color: batchQueue.length === 0 || batchRunning ? 'var(--text-muted)' : '#000',
+              cursor: batchQueue.length === 0 || batchRunning ? 'not-allowed' : 'pointer',
+            }}
+          >
+            {batchRunning ? (
+              <Loader2 size={16} className="animate-spin" />
+            ) : (
+              <Zap size={16} />
+            )}
+            {batchRunning
+              ? `Scrape ${batchProgress.current}/${batchProgress.total}...`
+              : 'Alle scrapen'}
+          </button>
+          {batchQueue.length > 0 && !batchRunning && (
+            <button
+              onClick={() => setBatchQueue([])}
+              className="text-xs transition-colors"
+              style={{ color: 'var(--text-muted)', cursor: 'pointer' }}
+            >
+              Queue leeren
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* Animated Progress Bar */}
       {progress > 0 && (
         <div
@@ -581,22 +889,160 @@ export default function ScraperPage() {
       {/* Results */}
       {results.length > 0 && (
         <div>
+          {/* Summary Bar */}
+          <div
+            className="card-glass-premium p-4 rounded-xl mb-5"
+            style={{
+              borderColor: 'color-mix(in srgb, var(--green) 20%, var(--border))',
+              boxShadow: '0 0 20px rgba(34, 197, 94, 0.04)',
+            }}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: 'color-mix(in srgb, var(--green) 12%, transparent)' }}
+                >
+                  <BarChart3 size={18} style={{ color: 'var(--green)' }} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="text-sm font-bold"
+                      style={{ fontFamily: 'var(--font-mono)', color: 'var(--text)' }}
+                    >
+                      {results.length} Ergebnisse
+                    </span>
+                    {duplicateCount > 0 && (
+                      <span
+                        className="flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium"
+                        style={{
+                          backgroundColor: 'color-mix(in srgb, var(--amber) 15%, transparent)',
+                          color: 'var(--amber)',
+                        }}
+                      >
+                        <Copy size={10} />
+                        {duplicateCount} Duplikate
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                    Qualitaetsverteilung der Scrape-Resultate
+                  </span>
+                </div>
+              </div>
+
+              {/* Quality Breakdown Pills */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <div
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg"
+                  style={{
+                    backgroundColor: 'color-mix(in srgb, var(--green) 10%, transparent)',
+                    border: '1px solid color-mix(in srgb, var(--green) 20%, transparent)',
+                  }}
+                >
+                  <span className="status-dot active" style={{ width: 6, height: 6 }} />
+                  <span
+                    className="text-xs font-bold tabular-nums"
+                    style={{ fontFamily: 'var(--font-mono)', color: 'var(--green)' }}
+                  >
+                    {qualityBreakdown.high}
+                  </span>
+                  <span className="text-xs" style={{ color: 'var(--green)', opacity: 0.8 }}>
+                    Hoch
+                  </span>
+                </div>
+                <div
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg"
+                  style={{
+                    backgroundColor: 'color-mix(in srgb, var(--amber) 10%, transparent)',
+                    border: '1px solid color-mix(in srgb, var(--amber) 20%, transparent)',
+                  }}
+                >
+                  <span className="status-dot warning" style={{ width: 6, height: 6 }} />
+                  <span
+                    className="text-xs font-bold tabular-nums"
+                    style={{ fontFamily: 'var(--font-mono)', color: 'var(--amber)' }}
+                  >
+                    {qualityBreakdown.medium}
+                  </span>
+                  <span className="text-xs" style={{ color: 'var(--amber)', opacity: 0.8 }}>
+                    Mittel
+                  </span>
+                </div>
+                <div
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg"
+                  style={{
+                    backgroundColor: 'color-mix(in srgb, var(--red) 10%, transparent)',
+                    border: '1px solid color-mix(in srgb, var(--red) 20%, transparent)',
+                  }}
+                >
+                  <span className="status-dot error" style={{ width: 6, height: 6 }} />
+                  <span
+                    className="text-xs font-bold tabular-nums"
+                    style={{ fontFamily: 'var(--font-mono)', color: 'var(--red)' }}
+                  >
+                    {qualityBreakdown.low}
+                  </span>
+                  <span className="text-xs" style={{ color: 'var(--red)', opacity: 0.8 }}>
+                    Tief
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quality distribution bar */}
+            <div className="mt-3 flex rounded-full overflow-hidden" style={{ height: 4 }}>
+              {qualityBreakdown.high > 0 && (
+                <div
+                  style={{
+                    width: `${(qualityBreakdown.high / results.length) * 100}%`,
+                    backgroundColor: 'var(--green)',
+                    transition: 'width 0.5s ease',
+                  }}
+                />
+              )}
+              {qualityBreakdown.medium > 0 && (
+                <div
+                  style={{
+                    width: `${(qualityBreakdown.medium / results.length) * 100}%`,
+                    backgroundColor: 'var(--amber)',
+                    transition: 'width 0.5s ease',
+                  }}
+                />
+              )}
+              {qualityBreakdown.low > 0 && (
+                <div
+                  style={{
+                    width: `${(qualityBreakdown.low / results.length) * 100}%`,
+                    backgroundColor: 'var(--red)',
+                    transition: 'width 0.5s ease',
+                  }}
+                />
+              )}
+            </div>
+          </div>
+
+          {/* Header with Import All */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-            <h2
-              className="text-sm font-bold"
-              style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}
-            >
-              {results.length} ERGEBNISSE
-            </h2>
+            <div className="flex items-center gap-2">
+              <span
+                className="text-xs font-bold uppercase tracking-wider"
+                style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
+              >
+                {importedCount}/{results.length} importiert
+              </span>
+            </div>
             <button
               onClick={handleImportAll}
               disabled={allImported || importingAll}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all min-h-[44px] w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all min-h-[44px] w-full sm:w-auto"
               style={{
                 backgroundColor: allImported ? 'color-mix(in srgb, var(--green) 15%, transparent)' : 'var(--green)',
                 color: allImported ? 'var(--green)' : '#000',
                 opacity: allImported ? 0.7 : 1,
                 cursor: allImported ? 'default' : 'pointer',
+                boxShadow: allImported ? 'none' : '0 0 20px rgba(34, 197, 94, 0.15)',
               }}
             >
               {importingAll ? (
@@ -610,337 +1056,416 @@ export default function ScraperPage() {
             </button>
           </div>
 
-          {/* Results Table */}
-          <div className="space-y-3">
+          {/* Rich Preview Cards */}
+          <div key={resultsKey} className="space-y-4 stagger-children">
             {results.map((result, index) => {
               const isImported = importedIndices.has(index);
               const isImporting = importingIndices.has(index);
               const fitnessData = fitnessResults.get(index);
               const isCheckingFitness = checkingFitness.has(index);
+              const qualityScore = computeQualityScore(result);
+              const qualityColor = getScoreBadgeColor(qualityScore);
+              const qualityLabel = getQualityLabel(qualityScore);
+              const qualityDotClass = getQualityDotClass(qualityScore);
+              const isDuplicate = duplicateIndices.has(index);
 
               return (
                 <div
                   key={`${result.name}-${index}`}
-                  className="card-glass-premium p-5 rounded-xl transition-all"
+                  className="card-glass-premium rounded-xl transition-all"
                   style={{
-                    borderColor: isImported
-                      ? 'color-mix(in srgb, var(--green) 30%, var(--border))'
-                      : 'color-mix(in srgb, var(--green) 20%, var(--border))',
+                    borderColor: isDuplicate
+                      ? 'color-mix(in srgb, var(--amber) 30%, var(--border))'
+                      : isImported
+                        ? 'color-mix(in srgb, var(--green) 30%, var(--border))'
+                        : 'color-mix(in srgb, var(--green) 15%, var(--border))',
+                    opacity: isImported ? 0.75 : 1,
                   }}
                 >
-                  {/* Header Row */}
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-4">
-                    <div className="flex-1 min-w-0">
-                      <h3
-                        className="font-bold text-base mb-1"
-                        style={{ fontFamily: 'var(--font-mono)', color: 'var(--text)' }}
-                      >
-                        {result.name}
-                      </h3>
-                      {result.category && (
-                        <span
-                          className="text-xs inline-block px-2 py-0.5 rounded"
+                  {/* Top color accent bar based on quality */}
+                  <div
+                    style={{
+                      height: 3,
+                      borderRadius: '20px 20px 0 0',
+                      background: `linear-gradient(90deg, ${qualityColor}, transparent)`,
+                      opacity: 0.6,
+                    }}
+                  />
+
+                  <div className="p-5">
+                    {/* Card Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2.5 mb-1.5">
+                          {/* Confidence Dot */}
+                          <span
+                            className={`status-dot ${qualityDotClass}`}
+                            title={`Qualitaet: ${qualityLabel} (${qualityScore})`}
+                          />
+                          <h3
+                            className="font-bold text-base truncate"
+                            style={{ fontFamily: 'var(--font-mono)', color: 'var(--text)' }}
+                          >
+                            {result.name}
+                          </h3>
+                          {/* Quality Score Badge */}
+                          <span
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold shrink-0"
+                            style={{
+                              backgroundColor: `color-mix(in srgb, ${qualityColor} 15%, transparent)`,
+                              color: qualityColor,
+                              fontFamily: 'var(--font-mono)',
+                              fontSize: '10px',
+                              border: `1px solid color-mix(in srgb, ${qualityColor} 25%, transparent)`,
+                            }}
+                          >
+                            <CircleDot size={8} />
+                            {qualityScore} {qualityLabel}
+                          </span>
+                          {/* Duplicate Warning */}
+                          {isDuplicate && (
+                            <span
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium shrink-0"
+                              style={{
+                                backgroundColor: 'color-mix(in srgb, var(--amber) 15%, transparent)',
+                                color: 'var(--amber)',
+                                fontSize: '10px',
+                              }}
+                              title="Duplikat erkannt"
+                            >
+                              <AlertTriangle size={10} />
+                              Duplikat
+                            </span>
+                          )}
+                          {/* Imported Badge */}
+                          {isImported && (
+                            <span
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium shrink-0"
+                              style={{
+                                backgroundColor: 'color-mix(in srgb, var(--green) 15%, transparent)',
+                                color: 'var(--green)',
+                                fontSize: '10px',
+                                border: '1px solid color-mix(in srgb, var(--green) 25%, transparent)',
+                              }}
+                            >
+                              <CheckCircle2 size={10} />
+                              Importiert
+                            </span>
+                          )}
+                        </div>
+                        {/* Category + Rating inline */}
+                        <div className="flex items-center gap-3 flex-wrap">
+                          {result.category && (
+                            <span
+                              className="text-xs inline-block px-2 py-0.5 rounded"
+                              style={{
+                                backgroundColor: 'color-mix(in srgb, var(--green) 10%, transparent)',
+                                color: 'var(--green)',
+                              }}
+                            >
+                              {result.category}
+                            </span>
+                          )}
+                          {result.rating !== null && (
+                            <div className="flex items-center gap-1">
+                              {Array.from({ length: 5 }).map((_, i) => (
+                                <Star
+                                  key={i}
+                                  size={12}
+                                  style={{
+                                    color:
+                                      i < Math.round(result.rating!)
+                                        ? 'var(--amber)'
+                                        : 'var(--border)',
+                                    fill:
+                                      i < Math.round(result.rating!)
+                                        ? 'var(--amber)'
+                                        : 'none',
+                                  }}
+                                />
+                              ))}
+                              <span
+                                className="text-xs ml-0.5 font-medium"
+                                style={{ fontFamily: 'var(--font-mono)', color: 'var(--amber)' }}
+                              >
+                                {result.rating}
+                              </span>
+                              {result.reviews !== null && (
+                                <span
+                                  className="text-xs ml-1"
+                                  style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
+                                >
+                                  ({result.reviews})
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex items-center gap-2 shrink-0">
+                        {result.website && (
+                          <button
+                            onClick={() => handleFitnessCheck(index)}
+                            disabled={isCheckingFitness || !!fitnessData}
+                            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all"
+                            style={{
+                              backgroundColor: fitnessData
+                                ? 'color-mix(in srgb, var(--blue) 10%, transparent)'
+                                : 'var(--bg)',
+                              color: fitnessData ? 'var(--blue)' : 'var(--text-secondary)',
+                              borderWidth: '1px',
+                              borderStyle: 'solid',
+                              borderColor: fitnessData ? 'var(--blue)' : 'var(--border)',
+                              cursor: isCheckingFitness || fitnessData ? 'default' : 'pointer',
+                            }}
+                          >
+                            {isCheckingFitness ? (
+                              <Loader2 size={12} className="animate-spin" />
+                            ) : fitnessData ? (
+                              <CheckCircle2 size={12} />
+                            ) : (
+                              <Activity size={12} />
+                            )}
+                            {isCheckingFitness ? 'Pruefen...' : fitnessData ? 'Geprueft' : 'Fitness'}
+                          </button>
+                        )}
+                        <button
+                          onClick={() => handleImportSingle(index)}
+                          disabled={isImported || isImporting}
+                          className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all"
                           style={{
-                            backgroundColor: 'color-mix(in srgb, var(--green) 10%, transparent)',
-                            color: 'var(--green)',
+                            backgroundColor: isImported
+                              ? 'color-mix(in srgb, var(--green) 12%, transparent)'
+                              : 'var(--green)',
+                            color: isImported ? 'var(--green)' : '#000',
+                            cursor: isImported ? 'default' : 'pointer',
+                            boxShadow: isImported
+                              ? 'none'
+                              : '0 0 12px rgba(34, 197, 94, 0.15)',
                           }}
                         >
-                          {result.category}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => handleImportSingle(index)}
-                        disabled={isImported || isImporting}
-                        className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all"
-                        style={{
-                          backgroundColor: isImported
-                            ? 'color-mix(in srgb, var(--green) 15%, transparent)'
-                            : 'var(--bg)',
-                          color: isImported ? 'var(--green)' : 'var(--text-secondary)',
-                          borderWidth: '1px',
-                          borderStyle: 'solid',
-                          borderColor: isImported ? 'var(--green)' : 'var(--border)',
-                          cursor: isImported ? 'default' : 'pointer',
-                        }}
-                      >
-                        {isImporting ? (
-                          <Loader2 size={14} className="animate-spin" />
-                        ) : isImported ? (
-                          <CheckCircle2 size={14} />
-                        ) : (
-                          <Download size={14} />
-                        )}
-                        {isImported ? 'Importiert' : isImporting ? '...' : 'Import to CRM'}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Details Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                    {/* Address */}
-                    {result.address && (
-                      <div className="flex items-center gap-2">
-                        <MapPin size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
-                        <span className="text-xs truncate" style={{ color: 'var(--text-secondary)' }}>
-                          {result.address}
-                        </span>
+                          {isImporting ? (
+                            <Loader2 size={14} className="animate-spin" />
+                          ) : isImported ? (
+                            <CheckCircle2 size={14} />
+                          ) : (
+                            <UserPlus size={14} />
+                          )}
+                          {isImported ? 'Importiert' : isImporting ? 'Lade...' : 'Als Lead hinzufuegen'}
+                        </button>
                       </div>
-                    )}
+                    </div>
 
-                    {/* Phone */}
-                    <div className="flex items-center gap-2">
-                      <Phone size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
-                      <span
-                        className="text-xs"
-                        style={{ color: result.phone ? 'var(--text-secondary)' : 'var(--text-muted)' }}
+                    {/* Contact Details Grid */}
+                    <div
+                      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4 pt-4 border-t"
+                      style={{ borderColor: 'color-mix(in srgb, var(--border) 60%, transparent)' }}
+                    >
+                      {/* Website */}
+                      <div
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
+                        style={{ backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)' }}
                       >
-                        {result.phone || 'Nicht verfügbar'}
-                      </span>
-                    </div>
-
-                    {/* Website */}
-                    <div className="flex items-center gap-2">
-                      <Globe size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
-                      {result.website ? (
-                        <a
-                          href={result.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs truncate flex items-center gap-1"
-                          style={{ color: 'var(--green)' }}
-                        >
-                          {result.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
-                          <ExternalLink size={10} />
-                        </a>
-                      ) : (
-                        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                          Nicht verfügbar
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Email */}
-                    <div className="flex items-center gap-2">
-                      <Mail size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
-                      {result.email ? (
-                        <div className="flex items-center gap-1.5">
-                          <CheckCircle2 size={12} style={{ color: 'var(--green)' }} />
-                          <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                            {result.email}
-                          </span>
-                        </div>
-                      ) : (
-                        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                          Nicht gefunden
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Rating & Fitness Check */}
-                  <div
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t"
-                    style={{ borderColor: 'var(--border)' }}
-                  >
-                    <div className="flex items-center gap-3">
-                      {/* Rating */}
-                      <div className="flex items-center gap-1">
-                        {result.rating !== null ? (
-                          <>
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <Star
-                                key={i}
-                                size={14}
-                                style={{
-                                  color:
-                                    i < Math.round(result.rating!)
-                                      ? 'var(--amber)'
-                                      : 'var(--border)',
-                                  fill:
-                                    i < Math.round(result.rating!)
-                                      ? 'var(--amber)'
-                                      : 'none',
-                                }}
-                              />
-                            ))}
-                            <span
-                              className="text-xs ml-1 font-medium"
-                              style={{ fontFamily: 'var(--font-mono)', color: 'var(--amber)' }}
-                            >
-                              {result.rating}
-                            </span>
-                          </>
+                        <Globe size={14} style={{ color: result.website ? 'var(--green)' : 'var(--text-muted)', flexShrink: 0 }} />
+                        {result.website ? (
+                          <a
+                            href={result.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs truncate flex items-center gap-1 hover:underline"
+                            style={{ color: 'var(--green)' }}
+                          >
+                            {result.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                            <ExternalLink size={10} className="shrink-0" />
+                          </a>
                         ) : (
                           <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                            Kein Rating
+                            Kei Website
                           </span>
                         )}
                       </div>
-                      {result.reviews !== null && (
-                        <span
-                          className="text-xs"
-                          style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}
-                        >
-                          ({result.reviews} Bewertungen)
-                        </span>
-                      )}
+
+                      {/* Email */}
+                      <div
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
+                        style={{ backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)' }}
+                      >
+                        <Mail size={14} style={{ color: result.email ? 'var(--green)' : 'var(--text-muted)', flexShrink: 0 }} />
+                        {result.email ? (
+                          <span className="text-xs truncate" style={{ color: 'var(--text-secondary)' }}>
+                            {result.email}
+                          </span>
+                        ) : (
+                          <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                            Kei E-Mail
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Phone */}
+                      <div
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
+                        style={{ backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)' }}
+                      >
+                        <Phone size={14} style={{ color: result.phone ? 'var(--green)' : 'var(--text-muted)', flexShrink: 0 }} />
+                        {result.phone ? (
+                          <span className="text-xs" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>
+                            {result.phone}
+                          </span>
+                        ) : (
+                          <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                            Kei Telefon
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Address */}
+                      <div
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
+                        style={{ backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)' }}
+                      >
+                        <MapPin size={14} style={{ color: result.address ? 'var(--text-secondary)' : 'var(--text-muted)', flexShrink: 0 }} />
+                        {result.address ? (
+                          <span className="text-xs truncate" style={{ color: 'var(--text-secondary)' }}>
+                            {result.address}
+                          </span>
+                        ) : (
+                          <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                            Kei Adresse
+                          </span>
+                        )}
+                      </div>
                     </div>
 
-                    {/* Fitness Check Button */}
-                    {result.website && (
-                      <button
-                        onClick={() => handleFitnessCheck(index)}
-                        disabled={isCheckingFitness || !!fitnessData}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-                        style={{
-                          backgroundColor: fitnessData
-                            ? 'color-mix(in srgb, var(--green) 10%, transparent)'
-                            : 'var(--bg)',
-                          color: fitnessData ? 'var(--green)' : 'var(--text-secondary)',
-                          borderWidth: '1px',
-                          borderStyle: 'solid',
-                          borderColor: fitnessData ? 'var(--green)' : 'var(--border)',
-                          cursor: isCheckingFitness || fitnessData ? 'default' : 'pointer',
-                        }}
+                    {/* Fitness Check Results (expanded) */}
+                    {fitnessData && (
+                      <div
+                        className="mt-4 pt-4 border-t"
+                        style={{ borderColor: 'color-mix(in srgb, var(--border) 60%, transparent)' }}
                       >
-                        {isCheckingFitness ? (
-                          <Loader2 size={12} className="animate-spin" />
-                        ) : (
-                          <Activity size={12} />
-                        )}
-                        {isCheckingFitness ? 'Prüfe...' : fitnessData ? 'Geprüft' : 'Fitness Check'}
-                      </button>
+                        <div className="flex items-center justify-between mb-3">
+                          <span
+                            className="text-xs font-bold uppercase tracking-wider"
+                            style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}
+                          >
+                            Website Fitness
+                          </span>
+                          <div
+                            className="px-3 py-1 rounded-full text-sm font-bold"
+                            style={{
+                              backgroundColor: `color-mix(in srgb, ${getScoreBadgeColor(fitnessData.score)} 15%, transparent)`,
+                              color: getScoreBadgeColor(fitnessData.score),
+                              fontFamily: 'var(--font-mono)',
+                            }}
+                          >
+                            {fitnessData.score}/100
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                          <div
+                            className="px-3 py-2 rounded-lg flex items-center gap-2"
+                            style={{
+                              backgroundColor: fitnessData.ssl
+                                ? 'color-mix(in srgb, var(--green) 10%, transparent)'
+                                : 'color-mix(in srgb, var(--red) 10%, transparent)',
+                            }}
+                          >
+                            <Shield
+                              size={14}
+                              style={{ color: fitnessData.ssl ? 'var(--green)' : 'var(--red)' }}
+                            />
+                            <span
+                              className="text-xs font-medium"
+                              style={{ color: fitnessData.ssl ? 'var(--green)' : 'var(--red)' }}
+                            >
+                              SSL
+                            </span>
+                          </div>
+
+                          <div
+                            className="px-3 py-2 rounded-lg flex items-center gap-2"
+                            style={{
+                              backgroundColor: fitnessData.mobile
+                                ? 'color-mix(in srgb, var(--green) 10%, transparent)'
+                                : 'color-mix(in srgb, var(--red) 10%, transparent)',
+                            }}
+                          >
+                            <Smartphone
+                              size={14}
+                              style={{ color: fitnessData.mobile ? 'var(--green)' : 'var(--red)' }}
+                            />
+                            <span
+                              className="text-xs font-medium"
+                              style={{ color: fitnessData.mobile ? 'var(--green)' : 'var(--red)' }}
+                            >
+                              Mobile
+                            </span>
+                          </div>
+
+                          <div
+                            className="px-3 py-2 rounded-lg flex items-center gap-2"
+                            style={{
+                              backgroundColor:
+                                fitnessData.seo.metaTitle && fitnessData.seo.metaDescription
+                                  ? 'color-mix(in srgb, var(--green) 10%, transparent)'
+                                  : 'color-mix(in srgb, var(--amber) 10%, transparent)',
+                            }}
+                          >
+                            <Search
+                              size={14}
+                              style={{
+                                color:
+                                  fitnessData.seo.metaTitle && fitnessData.seo.metaDescription
+                                    ? 'var(--green)'
+                                    : 'var(--amber)',
+                              }}
+                            />
+                            <span
+                              className="text-xs font-medium"
+                              style={{
+                                color:
+                                  fitnessData.seo.metaTitle && fitnessData.seo.metaDescription
+                                    ? 'var(--green)'
+                                    : 'var(--amber)',
+                              }}
+                            >
+                              SEO
+                            </span>
+                          </div>
+
+                          <div
+                            className="px-3 py-2 rounded-lg flex items-center gap-2"
+                            style={{
+                              backgroundColor:
+                                fitnessData.performance.loadTime < 3000
+                                  ? 'color-mix(in srgb, var(--green) 10%, transparent)'
+                                  : 'color-mix(in srgb, var(--amber) 10%, transparent)',
+                            }}
+                          >
+                            <Zap
+                              size={14}
+                              style={{
+                                color:
+                                  fitnessData.performance.loadTime < 3000 ? 'var(--green)' : 'var(--amber)',
+                              }}
+                            />
+                            <span
+                              className="text-xs font-medium"
+                              style={{
+                                color:
+                                  fitnessData.performance.loadTime < 3000 ? 'var(--green)' : 'var(--amber)',
+                              }}
+                            >
+                              {(fitnessData.performance.loadTime / 1000).toFixed(1)}s
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     )}
                   </div>
-
-                  {/* Fitness Check Results */}
-                  {fitnessData && (
-                    <div
-                      className="mt-4 pt-4 border-t"
-                      style={{ borderColor: 'var(--border)' }}
-                    >
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs font-bold" style={{ color: 'var(--text-secondary)' }}>
-                          FITNESS SCORE
-                        </span>
-                        <div
-                          className="px-3 py-1 rounded-full text-sm font-bold"
-                          style={{
-                            backgroundColor: `color-mix(in srgb, ${getScoreBadgeColor(fitnessData.score)} 15%, transparent)`,
-                            color: getScoreBadgeColor(fitnessData.score),
-                          }}
-                        >
-                          {fitnessData.score}/100
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        {/* SSL */}
-                        <div
-                          className="px-3 py-2 rounded-lg flex items-center gap-2"
-                          style={{
-                            backgroundColor: fitnessData.ssl
-                              ? 'color-mix(in srgb, var(--green) 10%, transparent)'
-                              : 'color-mix(in srgb, var(--red) 10%, transparent)',
-                          }}
-                        >
-                          <Shield
-                            size={14}
-                            style={{ color: fitnessData.ssl ? 'var(--green)' : 'var(--red)' }}
-                          />
-                          <span
-                            className="text-xs font-medium"
-                            style={{ color: fitnessData.ssl ? 'var(--green)' : 'var(--red)' }}
-                          >
-                            SSL
-                          </span>
-                        </div>
-
-                        {/* Mobile */}
-                        <div
-                          className="px-3 py-2 rounded-lg flex items-center gap-2"
-                          style={{
-                            backgroundColor: fitnessData.mobile
-                              ? 'color-mix(in srgb, var(--green) 10%, transparent)'
-                              : 'color-mix(in srgb, var(--red) 10%, transparent)',
-                          }}
-                        >
-                          <Smartphone
-                            size={14}
-                            style={{ color: fitnessData.mobile ? 'var(--green)' : 'var(--red)' }}
-                          />
-                          <span
-                            className="text-xs font-medium"
-                            style={{ color: fitnessData.mobile ? 'var(--green)' : 'var(--red)' }}
-                          >
-                            Mobile
-                          </span>
-                        </div>
-
-                        {/* SEO */}
-                        <div
-                          className="px-3 py-2 rounded-lg flex items-center gap-2"
-                          style={{
-                            backgroundColor:
-                              fitnessData.seo.metaTitle && fitnessData.seo.metaDescription
-                                ? 'color-mix(in srgb, var(--green) 10%, transparent)'
-                                : 'color-mix(in srgb, var(--amber) 10%, transparent)',
-                          }}
-                        >
-                          <Search
-                            size={14}
-                            style={{
-                              color:
-                                fitnessData.seo.metaTitle && fitnessData.seo.metaDescription
-                                  ? 'var(--green)'
-                                  : 'var(--amber)',
-                            }}
-                          />
-                          <span
-                            className="text-xs font-medium"
-                            style={{
-                              color:
-                                fitnessData.seo.metaTitle && fitnessData.seo.metaDescription
-                                  ? 'var(--green)'
-                                  : 'var(--amber)',
-                            }}
-                          >
-                            SEO
-                          </span>
-                        </div>
-
-                        {/* Performance */}
-                        <div
-                          className="px-3 py-2 rounded-lg flex items-center gap-2"
-                          style={{
-                            backgroundColor:
-                              fitnessData.performance.loadTime < 3000
-                                ? 'color-mix(in srgb, var(--green) 10%, transparent)'
-                                : 'color-mix(in srgb, var(--amber) 10%, transparent)',
-                          }}
-                        >
-                          <Zap
-                            size={14}
-                            style={{
-                              color:
-                                fitnessData.performance.loadTime < 3000 ? 'var(--green)' : 'var(--amber)',
-                            }}
-                          />
-                          <span
-                            className="text-xs font-medium"
-                            style={{
-                              color:
-                                fitnessData.performance.loadTime < 3000 ? 'var(--green)' : 'var(--amber)',
-                            }}
-                          >
-                            {(fitnessData.performance.loadTime / 1000).toFixed(1)}s
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               );
             })}
@@ -971,12 +1496,23 @@ export default function ScraperPage() {
           style={{ borderColor: 'color-mix(in srgb, var(--green) 20%, var(--border))' }}
         >
           <div className="flex items-center justify-between mb-4">
-            <h2
-              className="text-sm font-bold"
-              style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}
-            >
-              SUCHVERLAUF (Letzte 5)
-            </h2>
+            <div className="flex items-center gap-4">
+              <h2
+                className="text-sm font-bold"
+                style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}
+              >
+                SUCHVERLAUF (Letzte 5)
+              </h2>
+              {sparklineData.length >= 2 && (
+                <Sparkline
+                  data={sparklineData}
+                  width={80}
+                  height={24}
+                  color="var(--green)"
+                  filled
+                />
+              )}
+            </div>
             <button
               onClick={() => setHistory([])}
               className="flex items-center gap-1.5 text-xs transition-colors"

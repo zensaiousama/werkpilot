@@ -34,7 +34,7 @@ export default function ImpressumPage() {
                 className="text-lg"
                 style={{ color: 'var(--color-text-secondary)' }}
               >
-                Angaben gemäß Schweizer Recht
+                Angaben gemäss Schweizer Recht
               </p>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function ImpressumPage() {
                     style={{ color: 'var(--color-text)' }}
                   >
                     <p>
-                      Verantwortlich für den Inhalt dieser Website gemäß Schweizer
+                      Verantwortlich für den Inhalt dieser Website gemäss Schweizer
                       Recht ist Werkpilot.
                     </p>
                     <p>
@@ -233,8 +233,8 @@ export default function ImpressumPage() {
                       </h3>
                       <p style={{ color: 'var(--color-text-secondary)' }}>
                         Bei direkten oder indirekten Verweisen auf fremde Webseiten
-                        (&ldquo;Hyperlinks&rdquo;), die außerhalb des Verantwortungsbereiches des
-                        Autors liegen, würde eine Haftungsverpflichtung ausschließlich
+                        (&ldquo;Hyperlinks&rdquo;), die ausserhalb des Verantwortungsbereiches des
+                        Autors liegen, würde eine Haftungsverpflichtung ausschliesslich
                         in dem Fall in Kraft treten, in dem der Autor von den Inhalten
                         Kenntnis hat und es ihm technisch möglich und zumutbar wäre,
                         die Nutzung im Falle rechtswidriger Inhalte zu verhindern.

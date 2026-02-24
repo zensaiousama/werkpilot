@@ -22,9 +22,9 @@ function getServerSnapshot(): TimeOfDay {
 }
 
 const greetings: Record<TimeOfDay, string> = {
-  morning: 'Guten Morgen',
-  afternoon: 'Guten Tag',
-  evening: 'Guten Abend',
+  morning: 'Grüezi',
+  afternoon: 'Grüezi mitenand',
+  evening: 'Grüezi',
 };
 
 const subtext: Record<TimeOfDay, string> = {

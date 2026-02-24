@@ -167,3 +167,168 @@ model Webhook {
   @@index([active])
   @@index([events])
 }
+
+// ============================
+// MAILING SYSTEM
+// ============================
+
+model EmailTemplate {
+  id        String   @id @default(cuid())
+  name      String
+  subject   String
+  body      String
+  category  String   @default("general")
+  variables String   @default("[]")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  campaigns Campaign[]
+
+  @@index([category])
+  @@index([active])
+}
+
+model Campaign {
+  id           String    @id @default(cuid())
+  name         String
+  templateId   String?
+  template     EmailTemplate? @relation(fields: [templateId], references: [id])
+  status       String    @default("draft")
+  recipients   String    @default("[]")
+  sentCount    Int       @default(0)
+  openCount    Int       @default(0)
+  clickCount   Int       @default(0)
+  bounceCount  Int       @default(0)
+  scheduledAt  DateTime?
+  sentAt       DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  emails       EmailLog[]
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model EmailLog {
+  id          String    @id @default(cuid())
+  campaignId  String?
+  campaign    Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  leadId      String?
+  to          String
+  subject     String
+  status      String    @default("queued")
+  openedAt    DateTime?
+  clickedAt   DateTime?
+  bouncedAt   DateTime?
+  error       String?
+  createdAt   DateTime  @default(now())
+
+  @@index([campaignId])
+  @@index([leadId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ============================
+// FINANCE SYSTEM
+// ============================
+
+model Invoice {
+  id            String    @id @default(cuid())
+  invoiceNumber String    @unique
+  leadId        String?
+  clientName    String
+  clientEmail   String?
+  clientAddress String?
+  items         String    @default("[]")
+  subtotal      Float     @default(0)
+  vatRate       Float     @default(8.1)
+  vatAmount     Float     @default(0)
+  total         Float     @default(0)
+  currency      String    @default("CHF")
+  status        String    @default("draft")
+  dueDate       DateTime?
+  paidAt        DateTime?
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  payments      Payment[]
+
+  @@index([status])
+  @@index([leadId])
+  @@index([createdAt])
+  @@index([dueDate])
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  invoiceId   String
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  amount      Float
+  method      String   @default("bank_transfer")
+  reference   String?
+  notes       String?
+  paidAt      DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([invoiceId])
+  @@index([paidAt])
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  description String
+  category    String
+  amount      Float
+  currency    String   @default("CHF")
+  date        DateTime
+  recurring   Boolean  @default(false)
+  notes       String?
+  createdAt   DateTime @default(now())
+
+  @@index([category])
+  @@index([date])
+}
+
+// ============================
+// FOLLOW-UP SYSTEM
+// ============================
+
+model FollowUp {
+  id          String    @id @default(cuid())
+  leadId      String
+  type        String    @default("email")
+  subject     String
+  message     String?
+  status      String    @default("pending")
+  priority    Int       @default(1)
+  dueDate     DateTime
+  completedAt DateTime?
+  assignedTo  String?
+  sequence    String?
+  stepNumber  Int       @default(1)
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([leadId])
+  @@index([status])
+  @@index([dueDate])
+  @@index([priority])
+  @@index([status, dueDate])
+}
+
+model FollowUpSequence {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  steps       String   @default("[]")
+  trigger     String   @default("manual")
+  active      Boolean  @default(true)
+  usageCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([active])
+  @@index([trigger])
+}

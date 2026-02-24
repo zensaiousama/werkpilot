@@ -31,7 +31,7 @@ const enterpriseFeatures = [
     icon: '🔧',
     title: 'Custom AI Agent Development',
     description:
-      'Wir entwickeln maßgeschneiderte Agenten für Ihre spezifischen Geschäftsprozesse.',
+      'Wir entwickeln massgeschneiderte Agenten für Ihre spezifischen Geschäftsprozesse.',
   },
   {
     icon: '🎨',
@@ -67,13 +67,13 @@ const enterpriseFeatures = [
     icon: '📝',
     title: 'Individuelle SLAs',
     description:
-      'Maßgeschneiderte Service Level Agreements für Ihre Anforderungen.',
+      'Massgeschneiderte Service Level Agreements für Ihre Anforderungen.',
   },
   {
     icon: '🎓',
     title: 'Training & Workshops',
     description:
-      'Regelmäßige Schulungen für Ihr Team zur optimalen Nutzung des Systems.',
+      'Regelmässige Schulungen für Ihr Team zur optimalen Nutzung des Systems.',
   },
   {
     icon: '🖥️',
@@ -263,7 +263,7 @@ export default function WachstumPage() {
                 className="text-xl mb-8"
                 style={{ color: 'var(--color-text-secondary)' }}
               >
-                Die Enterprise-Lösung für Unternehmen, die Großes vorhaben. Alle 43
+                Die Enterprise-Lösung für Unternehmen, die Grosses vorhaben. Alle 43
                 AI-Agenten, individuell angepasst auf Ihre Prozesse, mit persönlichem
                 Account Manager und strategischem Consulting.
               </p>
@@ -571,7 +571,7 @@ export default function WachstumPage() {
                     className="text-sm"
                     style={{ color: 'var(--color-text-secondary)' }}
                   >
-                    Wir erstellen ein maßgeschneidertes Angebot basierend auf Ihren
+                    Wir erstellen ein massgeschneidertes Angebot basierend auf Ihren
                     Bedürfnissen.
                   </p>
                 </div>
@@ -629,7 +629,7 @@ export default function WachstumPage() {
                     className="text-sm"
                     style={{ color: 'var(--color-text-secondary)' }}
                   >
-                    Regelmäßige Reviews und Optimierungen für maximale Performance.
+                    Regelmässige Reviews und Optimierungen für maximale Performance.
                   </p>
                 </div>
               </div>

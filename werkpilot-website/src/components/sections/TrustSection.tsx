@@ -29,7 +29,7 @@ const trustBadges = [
       </svg>
     ),
     title: 'Ihre Daten bleiben in der Schweiz',
-    description: 'DSGVO-konform, Server in Schweizer Rechenzentren',
+    description: 'DSG- und DSGVO-konform, Server in Schweizer Rechenzentren',
   },
   {
     icon: (
@@ -85,24 +85,18 @@ const trustBadges = [
   },
 ];
 
-const mediaLogos = [
-  { name: 'Handelszeitung', weight: 700, size: '1.1rem', tracking: '-0.02em' },
-  { name: 'NZZ', weight: 900, size: '1.4rem', tracking: '0.1em' },
-  { name: '20 Minuten', weight: 800, size: '1rem', tracking: '-0.01em' },
-  { name: 'Bilanz', weight: 700, size: '1.15rem', tracking: '0.08em' },
-];
 
 export default function TrustSection() {
   return (
     <section className="section" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
       <div className="container mx-auto px-4">
         <AnimatedSection className="text-center mb-16">
-          <h2>Schweizer Qualität</h2>
+          <h2>Schweizer Qualität — von hier, für hier</h2>
           <p
             className="text-xl mt-4 max-w-2xl mx-auto"
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            15+ Jahre Erfahrung in Marketing, Vertrieb und Technologie
+            Zuverlässig, präzis und transparent — so wie Sie es von einem Schweizer Partner erwarten
           </p>
         </AnimatedSection>
 
@@ -132,50 +126,13 @@ export default function TrustSection() {
           ))}
         </div>
 
-        {/* Bekannt aus: media mentions */}
-        <AnimatedSection className="mt-16 text-center" delay={300}>
-          <p
-            className="text-sm uppercase tracking-widest mb-6"
-            style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.15em' }}
-          >
-            Bekannt aus:
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 max-w-3xl mx-auto">
-            {mediaLogos.map((logo, index) => (
-              <div
-                key={index}
-                className="media-logo flex items-center justify-center"
-                style={{
-                  minWidth: '140px',
-                  height: '48px',
-                  padding: '0 24px',
-                }}
-              >
-                <span
-                  style={{
-                    color: 'var(--color-primary)',
-                    fontFamily: 'var(--font-jakarta)',
-                    userSelect: 'none',
-                    fontSize: logo.size,
-                    fontWeight: logo.weight,
-                    letterSpacing: logo.tracking,
-                    textTransform: logo.name === 'NZZ' ? 'uppercase' as const : undefined,
-                  }}
-                >
-                  {logo.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
-
         {/* DSGVO / DSG compliance note */}
         <AnimatedSection className="mt-12 text-center" delay={500}>
           <p
             className="text-xs"
             style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.05em' }}
           >
-            DSGVO- und DSG-konform — Ihre Daten verlassen nie die Schweiz
+            DSG- und DSGVO-konform — Ihre Daten verlassen nie die Schweiz
           </p>
         </AnimatedSection>
       </div>

@@ -19,7 +19,7 @@ const resources = [
   {
     title: '7 Fehler, die Schweizer KMUs online Kunden kosten',
     description:
-      'Die h\u00e4ufigsten Fehler, die wir bei \u00fcber 200 KMU-Websites gefunden haben \u2014 und wie Sie sie vermeiden. Inkl. konkreter Checkliste zum Abhaken.',
+      'Die h\u00e4ufigsten Fehler auf KMU-Websites \u2014 und wie Sie sie vermeiden. Inkl. konkreter Checkliste zum Abhaken.',
     type: 'Checkliste',
     pages: '12 Seiten',
     icon: (
@@ -104,7 +104,7 @@ export default function ResourcesPage() {
                 Praxiswissen f&uuml;r Schweizer KMUs &mdash; kostenlos und ohne Haken.
               </p>
               <p className="text-base" style={{ color: 'var(--color-text-secondary)' }}>
-                Alle Ressourcen basieren auf unserer Erfahrung mit &uuml;ber 200 Schweizer Unternehmen.
+                Alle Ressourcen basieren auf unserer Erfahrung mit Schweizer KMUs und aktuellen Marktdaten.
               </p>
             </div>
           </div>

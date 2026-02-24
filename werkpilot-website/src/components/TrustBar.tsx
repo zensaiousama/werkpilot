@@ -36,7 +36,7 @@ export default function TrustBar() {
               className="text-xs font-medium"
               style={{ color: 'rgba(255, 255, 255, 0.7)' }}
             >
-              Vertraut von 200+ Schweizer KMUs
+              Schweizer Qualit&auml;t &middot; Made in Switzerland
             </span>
           </div>
 

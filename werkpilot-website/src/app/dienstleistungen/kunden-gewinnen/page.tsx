@@ -588,7 +588,7 @@ export default function KundenGewinnenPage() {
                       color: 'var(--color-primary)',
                     }}
                   >
-                    Kann ich später auf ein größeres Paket upgraden?
+                    Kann ich später auf ein grösseres Paket upgraden?
                   </h3>
                   <p
                     className="text-sm"

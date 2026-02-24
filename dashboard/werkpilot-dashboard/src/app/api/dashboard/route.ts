@@ -207,6 +207,91 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(result);
     }
 
+    // --- Trend calculations (current month vs previous month) ---
+    const now = new Date();
+    const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+
+    const [leadsThisMonth, leadsLastMonth, clientsThisMonth, clientsLastMonth, wonThisMonth, wonLastMonth] = await Promise.all([
+      prisma.lead.count({ where: { createdAt: { gte: thisMonthStart } } }),
+      prisma.lead.count({ where: { createdAt: { gte: lastMonthStart, lt: thisMonthStart } } }),
+      prisma.lead.count({ where: { status: 'Client', updatedAt: { gte: thisMonthStart } } }),
+      prisma.lead.count({ where: { status: 'Client', updatedAt: { gte: lastMonthStart, lt: thisMonthStart } } }),
+      prisma.lead.count({ where: { status: 'Won', updatedAt: { gte: thisMonthStart } } }),
+      prisma.lead.count({ where: { status: 'Won', updatedAt: { gte: lastMonthStart, lt: thisMonthStart } } }),
+    ]);
+
+    const calcTrend = (curr: number, prev: number) => prev > 0 ? Math.round(((curr - prev) / prev) * 100) : curr > 0 ? 100 : 0;
+
+    const trends = {
+      leads: calcTrend(leadsThisMonth, leadsLastMonth),
+      clients: calcTrend(clientsThisMonth, clientsLastMonth),
+      won: calcTrend(wonThisMonth, wonLastMonth),
+    };
+
+    // --- New system queries: Mailing, Finance, Follow-Up ---
+    const [
+      campaignStats,
+      totalEmails,
+      invoiceStats,
+      overdueInvoices,
+      expenseTotal,
+      followUpsDueToday,
+      followUpsOverdue,
+    ] = await Promise.all([
+      prisma.campaign.findMany({
+        select: { status: true, sentCount: true, openCount: true, clickCount: true },
+      }).catch(() => []),
+      prisma.emailLog.count().catch(() => 0),
+      prisma.invoice.findMany({
+        select: { status: true, total: true },
+      }).catch(() => []),
+      prisma.invoice.count({
+        where: { status: 'sent', dueDate: { lt: new Date() } },
+      }).catch(() => 0),
+      prisma.expense.aggregate({
+        _sum: { amount: true },
+        where: { date: { gte: new Date(new Date().getFullYear(), new Date().getMonth(), 1) } },
+      }).catch(() => ({ _sum: { amount: 0 } })),
+      prisma.followUp.count({
+        where: {
+          status: 'pending',
+          dueDate: {
+            gte: new Date(new Date().setHours(0, 0, 0, 0)),
+            lt: new Date(new Date().setHours(23, 59, 59, 999)),
+          },
+        },
+      }).catch(() => 0),
+      prisma.followUp.count({
+        where: { status: 'pending', dueDate: { lt: new Date(new Date().setHours(0, 0, 0, 0)) } },
+      }).catch(() => 0),
+    ]);
+
+    // Calculate mailing stats
+    const mailingStats = {
+      totalCampaigns: Array.isArray(campaignStats) ? campaignStats.length : 0,
+      activeCampaigns: Array.isArray(campaignStats) ? campaignStats.filter((c: { status: string }) => c.status === 'sending' || c.status === 'sent').length : 0,
+      totalSent: Array.isArray(campaignStats) ? campaignStats.reduce((s: number, c: { sentCount: number }) => s + c.sentCount, 0) : 0,
+      totalOpened: Array.isArray(campaignStats) ? campaignStats.reduce((s: number, c: { openCount: number }) => s + c.openCount, 0) : 0,
+      totalClicked: Array.isArray(campaignStats) ? campaignStats.reduce((s: number, c: { clickCount: number }) => s + c.clickCount, 0) : 0,
+      totalEmails: typeof totalEmails === 'number' ? totalEmails : 0,
+    };
+
+    // Calculate finance stats
+    const financeStats = {
+      revenue: Array.isArray(invoiceStats) ? invoiceStats.filter((i: { status: string }) => i.status === 'paid').reduce((s: number, i: { total: number }) => s + i.total, 0) : 0,
+      outstanding: Array.isArray(invoiceStats) ? invoiceStats.filter((i: { status: string }) => i.status === 'sent').reduce((s: number, i: { total: number }) => s + i.total, 0) : 0,
+      overdue: typeof overdueInvoices === 'number' ? overdueInvoices : 0,
+      expenses: (expenseTotal as { _sum: { amount: number | null } })._sum?.amount || 0,
+      totalInvoices: Array.isArray(invoiceStats) ? invoiceStats.length : 0,
+    };
+
+    // Calculate follow-up stats
+    const followUpStats = {
+      dueToday: typeof followUpsDueToday === 'number' ? followUpsDueToday : 0,
+      overdue: typeof followUpsOverdue === 'number' ? followUpsOverdue : 0,
+    };
+
     // --- "full" view (default): everything including notifications, agent logs, insights ---
     const [notifications, agentExecutions, agentsWithLogs] = await Promise.all([
       prisma.notification.findMany({
@@ -286,6 +371,10 @@ export async function GET(request: NextRequest) {
       notifications,
       unreadCount: notifications.length,
       insights: insights.slice(0, 5),
+      mailingStats,
+      financeStats,
+      followUpStats,
+      trends,
     };
 
     cache.set(cacheKey, result, CACHE_TTL);

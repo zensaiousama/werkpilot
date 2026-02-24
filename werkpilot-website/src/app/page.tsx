@@ -49,7 +49,7 @@ const FinalCTASection = dynamic(() => import('@/components/sections/FinalCTASect
 export const metadata: Metadata = {
   title: 'Werkpilot — Mehr Kunden. Weniger Admin. Ihr virtuelles Backoffice.',
   description:
-    'Werkpilot übernimmt Marketing, Sales, Admin und mehr — damit Sie sich auf Ihr Kerngeschäft konzentrieren können. 43 Spezialisten arbeiten 24/7 für Sie. Ab CHF 1\'500/Monat.',
+    'Werkpilot übernimmt Marketing, Sales, Admin und mehr — damit Sie sich auf Ihr Kerngeschäft konzentrieren können. AI-gestützte Automatisierung rund um die Uhr. Ab CHF 1\'500/Monat.',
   openGraph: {
     title: 'Werkpilot — Mehr Kunden. Weniger Admin.',
     description: 'Ihr komplettes Backoffice — ohne die Kosten eines Teams.',
@@ -136,13 +136,6 @@ export default function HomePage() {
         },
       ],
       priceRange: 'CHF 1500-7500',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        bestRating: '5',
-        ratingCount: '47',
-        reviewCount: '47',
-      },
     },
     // SoftwareApplication
     {
@@ -177,12 +170,6 @@ export default function HomePage() {
           availability: 'https://schema.org/InStock',
         },
       ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        bestRating: '5',
-        ratingCount: '47',
-      },
     },
     // BreadcrumbList
     {
@@ -196,31 +183,6 @@ export default function HomePage() {
           item: 'https://werkpilot.ch',
         },
       ],
-    },
-    // Individual Reviews
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Review',
-      author: { '@type': 'Person', name: 'Thomas Müller' },
-      reviewBody: 'Seit Werkpilot haben wir endlich Zeit für das, was wir am besten können: Unsere Kunden beraten.',
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      itemReviewed: { '@type': 'Organization', name: 'Werkpilot' },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Review',
-      author: { '@type': 'Person', name: 'Sandra Weber' },
-      reviewBody: 'Unser Online-Marketing läuft jetzt komplett automatisiert. Die Anfragen kommen — ohne dass wir uns darum kümmern müssen.',
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      itemReviewed: { '@type': 'Organization', name: 'Werkpilot' },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Review',
-      author: { '@type': 'Person', name: 'Michael Schneider' },
-      reviewBody: 'ROI nach 2 Monaten. Das Team ist professionell, schnell und liefert messbare Resultate.',
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      itemReviewed: { '@type': 'Organization', name: 'Werkpilot' },
     },
     // ProfessionalService
     {
@@ -276,12 +238,6 @@ export default function HomePage() {
           },
         ],
       },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        bestRating: '5',
-        ratingCount: '47',
-      },
     },
     // Speakable (for voice search / Google Assistant)
     {
@@ -293,37 +249,6 @@ export default function HomePage() {
         cssSelector: ['h1', '.hero-fade-in p'],
       },
       url: 'https://werkpilot.ch',
-    },
-    // Event (upcoming webinar / consultation)
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Event',
-      name: 'Gratis KMU Digital-Strategie Webinar',
-      description: 'Lernen Sie, wie Schweizer KMUs mit automatisiertem Marketing mehr Kunden gewinnen.',
-      startDate: '2026-03-15T10:00:00+01:00',
-      endDate: '2026-03-15T11:00:00+01:00',
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
-      location: {
-        '@type': 'VirtualLocation',
-        url: 'https://werkpilot.ch/kontakt',
-      },
-      organizer: {
-        '@type': 'Organization',
-        name: 'Werkpilot',
-        url: 'https://werkpilot.ch',
-      },
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'CHF',
-        availability: 'https://schema.org/InStock',
-        url: 'https://werkpilot.ch/kontakt',
-      },
-      performer: {
-        '@type': 'Organization',
-        name: 'Werkpilot',
-      },
     },
     // Product (for Google Merchant/Shopping)
     {
@@ -343,20 +268,6 @@ export default function HomePage() {
         offerCount: '3',
         availability: 'https://schema.org/InStock',
       },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        bestRating: '5',
-        ratingCount: '47',
-      },
-      review: [
-        {
-          '@type': 'Review',
-          author: { '@type': 'Person', name: 'Thomas Müller' },
-          reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-          reviewBody: 'Seit Werkpilot haben wir endlich Zeit für unser Kerngeschäft.',
-        },
-      ],
     },
   ];
 

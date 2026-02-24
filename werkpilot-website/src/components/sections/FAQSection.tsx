@@ -28,7 +28,7 @@ const faqs = [
   {
     question: 'Sind meine Daten sicher?',
     answer:
-      'Ja. Alle Daten werden in Schweizer Rechenzentren gespeichert. Wir sind DSGVO-konform und halten uns an höchste Sicherheitsstandards. Wir haben Zugriff nur auf die Systeme, die für die Arbeit notwendig sind — mit Ihrer expliziten Genehmigung.',
+      'Ja. Alle Daten werden in Schweizer Rechenzentren gespeichert. Wir sind DSG-konform (Schweizer Datenschutzgesetz) sowie DSGVO-konform und halten uns an höchste Sicherheitsstandards. Wir haben Zugriff nur auf die Systeme, die für die Arbeit notwendig sind — mit Ihrer expliziten Genehmigung.',
   },
   {
     question: 'Kann ich jederzeit kündigen?',
@@ -38,7 +38,7 @@ const faqs = [
   {
     question: 'Für welche Branchen eignet sich Werkpilot?',
     answer:
-      'Werkpilot funktioniert für die meisten B2B-KMUs: Treuhand, Beratung, Handwerk, IT-Services, Immobilien, und mehr. Wenn Sie online Kunden gewinnen wollen oder effizienter arbeiten möchten, können wir helfen.',
+      'Werkpilot funktioniert für die meisten Schweizer KMUs: Treuhand, Beratung, Handwerk, IT-Services, Immobilien, Gastronomie und mehr. Ob Einzelfirma im Kanton Zürich oder GmbH in der Romandie — wenn Sie online Kunden gewinnen oder effizienter arbeiten möchten, können wir helfen.',
   },
   {
     question: 'Wie startet man mit Werkpilot?',

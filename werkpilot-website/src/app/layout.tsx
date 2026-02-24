@@ -69,10 +69,10 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  manifest: '/manifest.webmanifest',
+  manifest: '/manifest.json',
   openGraph: {
     title: "Werkpilot — Das Betriebssystem für Schweizer KMUs",
-    description: "Mehr Kunden. Weniger Admin. Ihr virtuelles Backoffice. 43 Spezialisten arbeiten 24/7 für Ihr KMU — ab CHF 1'500/Monat.",
+    description: "Mehr Kunden. Weniger Admin. Ihr virtuelles Backoffice. AI-gestützte Automatisierung rund um die Uhr für Ihr KMU — ab CHF 1'500/Monat.",
     url: "https://werkpilot.ch",
     siteName: "Werkpilot",
     locale: "de_CH",
@@ -131,7 +131,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de-CH">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon-192.svg" type="image/svg+xml" />

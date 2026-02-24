@@ -37,8 +37,8 @@ export default function Footer() {
               className="text-sm mb-4 max-w-md"
               style={{ color: 'var(--color-text-secondary)' }}
             >
-              Das Betriebssystem für Schweizer KMUs. Mehr Kunden. Weniger Admin.
-              Ihr virtuelles Backoffice.
+              Das Betriebssystem für Schweizer KMUs. Mehr Kunden. Weniger Büez.
+              Ihr virtuelles Backoffice — made in Switzerland.
             </p>
             <p
               className="text-xs"
@@ -164,7 +164,7 @@ export default function Footer() {
             </svg>
             SSL-verschl&uuml;sselt
           </div>
-          {['DSGVO & DSG konform', 'Daten in der Schweiz', '100% Schweizer Unternehmen'].map((label) => (
+          {['DSG & DSGVO konform', 'Daten in der Schweiz', '100% Schweizer Unternehmen'].map((label) => (
             <div key={label} className="flex items-center gap-2 text-xs" style={{ color: 'var(--color-text-secondary)' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--color-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

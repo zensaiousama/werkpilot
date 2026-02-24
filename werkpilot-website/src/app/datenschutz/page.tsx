@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung — Werkpilot',
   description:
-    'Datenschutzerklärung von Werkpilot. Erfahren Sie, wie wir Ihre Daten schützen und verarbeiten gemäß Schweizer DSG und EU DSGVO.',
+    'Datenschutzerklärung von Werkpilot. Erfahren Sie, wie wir Ihre Daten schützen und verarbeiten gemäss Schweizer DSG und EU DSGVO.',
 };
 
 export default function DatenschutzPage() {
@@ -213,7 +213,7 @@ export default function DatenschutzPage() {
                         <li>Verwendeter Browser und ggf. das Betriebssystem</li>
                       </ul>
                       <p className="mt-2">
-                        Diese Daten werden ausschließlich zur Sicherstellung eines
+                        Diese Daten werden ausschliesslich zur Sicherstellung eines
                         störungsfreien Betriebs der Seite verwendet und nach 7 Tagen
                         gelöscht.
                       </p>
@@ -281,7 +281,7 @@ export default function DatenschutzPage() {
                     className="space-y-2 text-base"
                     style={{ color: 'var(--color-text-secondary)' }}
                   >
-                    <p>Wir verarbeiten Ihre Daten ausschließlich für folgende Zwecke:</p>
+                    <p>Wir verarbeiten Ihre Daten ausschliesslich für folgende Zwecke:</p>
                     <ul className="list-disc list-inside ml-4 space-y-1">
                       <li>Bereitstellung und Optimierung unserer Website</li>
                       <li>Beantwortung von Anfragen</li>
@@ -335,16 +335,16 @@ export default function DatenschutzPage() {
                     style={{ color: 'var(--color-text-secondary)' }}
                   >
                     <p>
-                      Wir treffen umfassende Sicherheitsmaßnahmen, um Ihre Daten vor
+                      Wir treffen umfassende Sicherheitsmassnahmen, um Ihre Daten vor
                       unbefugtem Zugriff, Verlust oder Missbrauch zu schützen:
                     </p>
                     <ul className="list-disc list-inside ml-4 space-y-1">
                       <li>SSL/TLS-Verschlüsselung für alle Datenübertragungen</li>
-                      <li>Server-Standort ausschließlich in der Schweiz</li>
-                      <li>Regelmäßige Sicherheits-Audits</li>
+                      <li>Server-Standort ausschliesslich in der Schweiz</li>
+                      <li>Regelmässige Sicherheits-Audits</li>
                       <li>Zugriffsbeschränkungen und Authentifizierung</li>
                       <li>Verschlüsselte Datenspeicherung</li>
-                      <li>Regelmäßige Backups</li>
+                      <li>Regelmässige Backups</li>
                     </ul>
                   </div>
                 </div>
@@ -365,7 +365,7 @@ export default function DatenschutzPage() {
                     style={{ color: 'var(--color-text-secondary)' }}
                   >
                     <p>
-                      Wir geben Ihre Daten nicht an Dritte weiter, außer:
+                      Wir geben Ihre Daten nicht an Dritte weiter, ausser:
                     </p>
                     <ul className="list-disc list-inside ml-4 space-y-1">
                       <li>Sie haben ausdrücklich eingewilligt</li>
